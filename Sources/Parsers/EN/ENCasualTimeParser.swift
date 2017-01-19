@@ -20,12 +20,9 @@ public class ENCasualTimeParser: Parser {
     override var pattern: String { return PATTERN }
     
     override public func extract(text: String, ref: Date, match: NSTextCheckingResult, opt: [OptionType: Int]) -> ParsedResult? {
-        
-        let index1Length = match.rangeAt(1).length
-        let matchText = match.string(from: text, atRangeIndex: 0).substring(from: index1Length)
-        let index = match.rangeAt(0).location + index1Length
-        
+        let (matchText, index) = matchTextAndIndex(from: text, andMatchResult: match)
         var result = ParsedResult(ref: ref, index: index, text: matchText)
+        
         if match.isNotEmpty(atRangeIndex: timeMatch) {
             let time = match.string(from: text, atRangeIndex: timeMatch)
             switch time {
@@ -41,7 +38,7 @@ public class ENCasualTimeParser: Parser {
             }
         }
         
-        result.tags[.ENCasualTimeParser] = true
+        result.tags[.enCasualTimeParser] = true
         return result
     }
 }

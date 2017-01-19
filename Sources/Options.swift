@@ -20,9 +20,10 @@ struct ModeOptio {
 
 private func baseOption(strictMode: Bool) -> ModeOptio {
     return ModeOptio(parsers: [
-        ENCasualTimeParser(strictMode: strictMode)
+        ENCasualTimeParser(strictMode: strictMode),
+        ENCasualDateParser(strictMode: strictMode)
     ], refiners: [
-        
+        ENMergeDateTimeRefiner()
     ])
 }
 

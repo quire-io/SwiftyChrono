@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct Refiner {
-    func refine(text: String, results: [ParsedResult], opt: [OptionType: Int]) -> [ParsedResult] {
+class Refiner {
+    public func refine(text: String, results: [ParsedResult], opt: [OptionType: Int]) -> [ParsedResult] {
         return results
     }
 }

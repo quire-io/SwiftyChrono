@@ -47,12 +47,20 @@ public class Parser {
                 let remainingTextLength = remainingText.characters.count
                 
                 match = remainingTextLength > 0 ?
-                    regex?.firstMatch(in: remainingText, range: NSRange(location: startIndex, length: remainingTextLength)) : nil
+                    regex?.firstMatch(in: text, range: NSRange(location: startIndex, length: remainingTextLength)) : nil
             }
             
             return results
 //        } catch {
 //            return []
 //        }
+    }
+    
+    final func matchTextAndIndex(from text: String, andMatchResult matchResult: NSTextCheckingResult) -> (matchText: String, index: Int) {
+        let index1Length = matchResult.rangeAt(1).length
+        let matchText = matchResult.string(from: text, atRangeIndex: 0).substring(from: index1Length)
+        let index = matchResult.rangeAt(0).location + index1Length
+        
+        return (matchText, index)
     }
 }

@@ -62,13 +62,7 @@ extension Date {
         }
     }
     
-    func add(_ value: Int, _ unit: NSCalendar.Unit) -> Date {
-        return (cal as NSCalendar).date(byAdding: unit, value: value,
-                                        to: self, options: [])!
-    }
-    
-    func subtract(_ value: Int, _ unit: NSCalendar.Unit) -> Date {
-        return (cal as NSCalendar).date(byAdding: unit, value: -value,
-                                        to: self, options: [])!
+    func added(_ value: Int, _ unit: Calendar.Component) -> Date {
+        return cal.date(byAdding: unit, value: value, to: self)!
     }
 }
