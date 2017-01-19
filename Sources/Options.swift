@@ -21,7 +21,8 @@ struct ModeOptio {
 private func baseOption(strictMode: Bool) -> ModeOptio {
     return ModeOptio(parsers: [
         ENCasualTimeParser(strictMode: strictMode),
-        ENCasualDateParser(strictMode: strictMode)
+        ENCasualDateParser(strictMode: strictMode),
+        ENDeadlineFormatParser(strictMode: strictMode),
     ], refiners: [
         ENMergeDateTimeRefiner()
     ])

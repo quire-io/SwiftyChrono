@@ -169,6 +169,7 @@ public enum ComponentUnit {
 public enum TagUnit { case
     enCasualTimeParser,
     enCasualDateParser,
+    enDeadlineFormatParser,
     
     enMergeDateAndTimeRefiner
 }
