@@ -45,9 +45,9 @@ public class ENCasualDateParser: Parser {
             result.start.imply(.millisecond, to: ref.millisecond)
         }
         
-        result.start.assign(component: .day, value: startMoment.day)
-        result.start.assign(component: .month, value: startMoment.month)
-        result.start.assign(component: .year, value: startMoment.year)
+        result.start.assign(.day, value: startMoment.day)
+        result.start.assign(.month, value: startMoment.month)
+        result.start.assign(.year, value: startMoment.year)
         result.tags[.enCasualDateParser] = true
         return result
     }

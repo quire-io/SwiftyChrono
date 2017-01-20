@@ -23,6 +23,7 @@ private func baseOption(strictMode: Bool) -> ModeOptio {
         ENCasualTimeParser(strictMode: strictMode),
         ENCasualDateParser(strictMode: strictMode),
         ENDeadlineFormatParser(strictMode: strictMode),
+        ENISOFormatParser(strictMode: strictMode),
     ], refiners: [
         ENMergeDateTimeRefiner()
     ])

@@ -31,12 +31,12 @@ private func mergeResult(text: String, dateResult: ParsedResult, timeResult: Par
     let beginTime = timeResult.start
     
     var beginDateTime = beginDate
-    beginDateTime.assign(component: .hour, value: beginTime[.hour])
-    beginDateTime.assign(component: .minute, value: beginTime[.minute])
-    beginDateTime.assign(component: .second, value: beginTime[.second])
+    beginDateTime.assign(.hour, value: beginTime[.hour])
+    beginDateTime.assign(.minute, value: beginTime[.minute])
+    beginDateTime.assign(.second, value: beginTime[.second])
     
     if beginTime.isCertain(component: .meridiem) {
-        beginDateTime.assign(component: .meridiem, value: beginTime[.meridiem]!)
+        beginDateTime.assign(.meridiem, value: beginTime[.meridiem]!)
     } else if let meridiem = beginTime[.meridiem], beginDateTime[.meridiem] == nil {
         beginDateTime.imply(.meridiem, to: meridiem)
     }
@@ -45,7 +45,7 @@ private func mergeResult(text: String, dateResult: ParsedResult, timeResult: Par
         let meridiem = beginDateTime[.meridiem], meridiem == 1,
         let hour = beginDateTime[.hour], hour < 12
     {
-        beginDateTime.assign(component: .hour, value: hour + 12)
+        beginDateTime.assign(.hour, value: hour + 12)
     }
     
     if dateResult.end != nil || timeResult.end != nil {
@@ -53,12 +53,12 @@ private func mergeResult(text: String, dateResult: ParsedResult, timeResult: Par
         let endTime = timeResult.end ?? timeResult.start
         
         var endDateTime = endDate
-        endDateTime.assign(component: .hour, value: endTime[.hour])
-        endDateTime.assign(component: .minute, value: endTime[.minute])
-        endDateTime.assign(component: .second, value: endTime[.second])
+        endDateTime.assign(.hour, value: endTime[.hour])
+        endDateTime.assign(.minute, value: endTime[.minute])
+        endDateTime.assign(.second, value: endTime[.second])
         
         if endTime.isCertain(component: .meridiem) {
-            endDateTime.assign(component: .meridiem, value: endTime[.meridiem]!)
+            endDateTime.assign(.meridiem, value: endTime[.meridiem]!)
         } else if beginTime[.meridiem] != nil {
             endDateTime.imply(.meridiem, to: endTime[.meridiem])
         }
@@ -66,7 +66,7 @@ private func mergeResult(text: String, dateResult: ParsedResult, timeResult: Par
         if dateResult.end != nil && endDateTime.date.timeIntervalSince1970 < beginDateTime.date.timeIntervalSince1970 {
             // Ex. 9pm - 1am
             if endDateTime.isCertain(component: .day) {
-                endDateTime.assign(component: .day, value: endDateTime[.day]! + 1)
+                endDateTime.assign(.day, value: endDateTime[.day]! + 1)
             } else if let day = endDateTime[.day] {
                 endDateTime.imply(.day, to: day + 1)
             }

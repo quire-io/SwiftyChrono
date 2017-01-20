@@ -47,9 +47,9 @@ public class ENDeadlineFormatParser: Parser {
         var date = ref
         let matchText4 = match.string(from: text, atRangeIndex: 4)
         func ymdResult() -> ParsedResult {
-            result.start.assign(component: .year, value: date.year)
-            result.start.assign(component: .month, value: date.month + 1)
-            result.start.assign(component: .day, value: date.day)
+            result.start.assign(.year, value: date.year)
+            result.start.assign(.month, value: date.month + 1)
+            result.start.assign(.day, value: date.day)
             return result
         }
         if NSRegularExpression.isMatch(forPattern: "day", in: matchText4) {
@@ -80,9 +80,9 @@ public class ENDeadlineFormatParser: Parser {
         result.start.imply(.year, to: date.year)
         result.start.imply(.month, to: date.month + 1)
         result.start.imply(.day, to: date.day)
-        result.start.assign(component: .hour, value: date.hour)
-        result.start.assign(component: .minute, value: date.minute)
-        result.start.assign(component: .second, value: date.second)
+        result.start.assign(.hour, value: date.hour)
+        result.start.assign(.minute, value: date.minute)
+        result.start.assign(.second, value: date.second)
         result.tags[.enDeadlineFormatParser] = true
         return result
 

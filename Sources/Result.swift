@@ -78,7 +78,7 @@ public struct ParsedComponents {
         return nil
     }
     
-    public mutating func assign(component: ComponentUnit, value: Int?) {
+    public mutating func assign(_ component: ComponentUnit, value: Int?) {
         if let value = value {
             knownValues[component] = value
             impliedValues.removeValue(forKey: component)
@@ -170,6 +170,7 @@ public enum TagUnit { case
     enCasualTimeParser,
     enCasualDateParser,
     enDeadlineFormatParser,
+    enISOFormatParser,
     
     enMergeDateAndTimeRefiner
 }
