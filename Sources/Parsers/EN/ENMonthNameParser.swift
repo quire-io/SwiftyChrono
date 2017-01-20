@@ -1,5 +1,5 @@
 //
-//  ENMonthNameLittleEndianParser.swift
+//  ENMonthNameParser.swift
 //  SwiftyChrono
 //
 //  Created by Jerry Chen on 1/20/17.
@@ -8,31 +8,19 @@
 
 import Foundation
 
-private let PATTERN = "(\\W|^)" +
-    "(?:on\\s*?)?" +
-    "(?:(Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sun|Mon|Tue|Wed|Thu|Fri|Sat)\\s*,?\\s*)?" +
-    "(([0-9]{1,2})(?:st|nd|rd|th)?|\(EN_ORDINAL_WORDS_PATTERN))" +
-    "(?:\\s*" +
-        "(?:to|\\-|\\–|until|through|till|\\s)\\s*" +
-        "(([0-9]{1,2})(?:st|nd|rd|th)?|\(EN_ORDINAL_WORDS_PATTERN))" +
-    ")?\\s*(?:of)?\\s*" +
-    "(Jan(?:uary|\\.)?|Feb(?:ruary|\\.)?|Mar(?:ch|\\.)?|Apr(?:il|\\.)?|May|Jun(?:e|\\.)?|Jul(?:y|\\.)?|Aug(?:ust|\\.)?|Sep(?:tember|\\.)?|Oct(?:ober|\\.)?|Nov(?:ember|\\.)?|Dec(?:ember|\\.)?)" +
+private let PATTERN = "(^|\\D\\s+|[^\\w\\s])" +
+    "(Jan\\.?|January|Feb\\.?|February|Mar\\.?|March|Apr\\.?|April|May\\.?|Jun\\.?|June|Jul\\.?|July|Aug\\.?|August|Sep\\.?|Sept\\.?|September|Oct\\.?|October|Nov\\.?|November|Dec\\.?|December)" +
+    "\\s*" +
     "(?:" +
-        ",?\\s*([0-9]{1,4}(?![^\\s]\\d))" +
-        "(\\s*(?:BE|AD|BC))?" +
+        "[,-]?\\s*([0-9]{4})(\\s*BE|AD|BC)?" +
     ")?" +
-    "(?=\\W|$)"
+    "(?=[^\\s\\w]|\\s+[^0-9]|\\s+$|$)"
 
-private let weekdayGroup = 2
-private let dateGroup = 3
-private let dateNumGroup = 4
-private let dateToGroup = 5
-private let dateToNumGroup = 6
-private let monthNameGroup = 7
-private let yearGroup = 8
-private let yearBeGroup = 9
+private let monthNameGroup = 2
+private let yearGroup = 3
+private let yearBeGroup = 4
 
-public class ENMonthNameLittleEndianParser: Parser {
+public class ENMonthNameParser: Parser {
     override var pattern: String { return PATTERN }
     
     override public func extract(text: String, ref: Date, match: NSTextCheckingResult, opt: [OptionType: Int]) -> ParsedResult? {
@@ -40,10 +28,7 @@ public class ENMonthNameLittleEndianParser: Parser {
         var result = ParsedResult(ref: ref, index: index, text: matchText)
         
         let month = EN_MONTH_OFFSET[match.string(from: text, atRangeIndex: monthNameGroup).lowercased()]!
-        
-        let day = match.isNotEmpty(atRangeIndex: dateNumGroup) ?
-            Int(match.string(from: text, atRangeIndex: dateNumGroup))! :
-            EN_ORDINAL_WORDS[match.string(from: text, atRangeIndex: dateGroup).trimmed().replacingOccurrences(of: "-", with: " ").lowercased()]!
+        let day = 1
         
         if match.isNotEmpty(atRangeIndex: yearGroup) {
             var year = Int(match.string(from: text, atRangeIndex: yearGroup))!
@@ -88,23 +73,7 @@ public class ENMonthNameLittleEndianParser: Parser {
             result.start.assign(.year, value: refMoment.year)
         }
         
-        // Weekday component
-        if match.isNotEmpty(atRangeIndex: weekdayGroup) {
-            let weekday = EN_WEEKDAY_OFFSET[match.string(from: text, atRangeIndex: weekdayGroup)]
-            result.start.assign(.weekday, value: weekday)
-        }
-        
-        // Text can be 'range' value. Such as '12 - 13 January 2012'
-        if match.isNotEmpty(atRangeIndex: dateToGroup) {
-            let endDate = match.isNotEmpty(atRangeIndex: dateToNumGroup) ?
-                Int(match.string(from: text, atRangeIndex: dateToNumGroup)) :
-                EN_ORDINAL_WORDS[match.string(from: text, atRangeIndex: dateToGroup).trimmed().replacingOccurrences(of: "-", with: " ").lowercased()]
-            
-            result.end = result.start.clone()
-            result.end?.assign(.day, value: endDate)
-        }
-        
-        result.tags[.enMonthNameLittleEndianParser] = true
+        result.tags[.enMonthNameParser] = true
         return result
     }
 }

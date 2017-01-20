@@ -173,6 +173,7 @@ public enum TagUnit { case
     enISOFormatParser,
     enMonthNameLittleEndianParser,
     enMonthNameMiddleEndianParser,
+    enMonthNameParser,
     
     enMergeDateAndTimeRefiner,
     enMergeDateRangeRefiner

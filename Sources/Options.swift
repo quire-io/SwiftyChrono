@@ -25,6 +25,7 @@ private func baseOption(strictMode: Bool) -> ModeOptio {
         ENDeadlineFormatParser(strictMode: strictMode),
         ENMonthNameLittleEndianParser(strictMode: strictMode),
         ENMonthNameMiddleEndianParser(strictMode: strictMode),
+        ENMonthNameParser(strictMode: strictMode),
         
         // JP
         // ES
