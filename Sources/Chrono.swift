@@ -31,7 +31,7 @@ struct Chrono {
             allResults += parser.execute(text: text, ref: refDate, opt: opt)
         }
         
-        allResults.sort { $0.index > $1.index }
+        allResults.sort { $0.index < $1.index }
         
         for refiner in refiners {
             allResults = refiner.refine(text: text, results: allResults, opt: opt)

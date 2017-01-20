@@ -20,12 +20,24 @@ struct ModeOptio {
 
 private func baseOption(strictMode: Bool) -> ModeOptio {
     return ModeOptio(parsers: [
-        ENCasualTimeParser(strictMode: strictMode),
-        ENCasualDateParser(strictMode: strictMode),
-        ENDeadlineFormatParser(strictMode: strictMode),
+        // EN
         ENISOFormatParser(strictMode: strictMode),
+        ENDeadlineFormatParser(strictMode: strictMode),
+        ENMonthNameLittleEndianParser(strictMode: strictMode),
+        
+        // JP
+        // ES
+        // FR
+        // ZH-Hant
+        
     ], refiners: [
-        ENMergeDateTimeRefiner()
+        // Removing overlaping first
+        
+        // ETC
+        ENMergeDateTimeRefiner(),
+        ENMergeDateRangeRefiner(),
+        
+        // Extract additional info later
     ])
 }
 
@@ -34,7 +46,17 @@ func strictModeOption() -> ModeOptio {
 }
 
 func casualModeOption() -> ModeOptio {
-    let options = baseOption(strictMode: false)
+    var options = baseOption(strictMode: false)
+    
+    options.parsers.insert(contentsOf: [
+        // EN
+        ENCasualTimeParser(strictMode: false),
+        ENCasualDateParser(strictMode: false),
+        
+        // JP
+        // ES
+        // FR
+    ], at: 0)
     
     return options
 }

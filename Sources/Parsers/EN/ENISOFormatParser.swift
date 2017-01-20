@@ -27,15 +27,15 @@ private let PATTERN = "(\\W|^)" +
     ")?" + //..
     "(?=\\W|$)"
 
-let yearNumberGroup = 2
-let monthNumberGroup = 3
-let dayNumberGroup  = 4
-let hourNumberGroup  = 5
-let minuteNumberGroup = 6
-let secondNumberGroup = 7
-let millisecondNumberGroup = 8
-let tzdHourOffsetGroup = 9
-let tzdMinuteOffsetGroup = 10
+private let yearNumberGroup = 2
+private let monthNumberGroup = 3
+private let dayNumberGroup  = 4
+private let hourNumberGroup  = 5
+private let minuteNumberGroup = 6
+private let secondNumberGroup = 7
+private let millisecondNumberGroup = 8
+private let tzdHourOffsetGroup = 9
+private let tzdMinuteOffsetGroup = 10
 
 public class ENISOFormatParser: Parser {
     override var pattern: String { return PATTERN }

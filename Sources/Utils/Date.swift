@@ -16,7 +16,22 @@ var utcCal: Calendar {
 }
 let utcTimeZone: TimeZone = TimeZone(identifier: "UTC")!
 
+private let noneZeroComponents: Set<Calendar.Component> = [.year, .month, .day]
+
 extension Date {
+    init(_ date: Date, byComponentUpdates componentUpdates: [(component: Calendar.Component, value: Int)]) {
+        var dateComponents = cal.dateComponents([.year, .month, .day, .hour, .minute, .second, .nanosecond], from: date)
+        for componentUpdate in componentUpdates {
+            if noneZeroComponents.contains(componentUpdate.component) && componentUpdate.value == 0 {
+                continue
+            }
+            
+            dateComponents.setValue(componentUpdate.value, for: componentUpdate.component)
+        }
+        
+        self = cal.date(from: dateComponents)!
+    }
+    
     var year: Int {
         return cal.component(.year, from: self)
     }
@@ -47,6 +62,10 @@ extension Date {
     
     var weekday: Int {
         return cal.component(.weekday, from: self)
+    }
+    
+    func differenceOfTimeInterval(to date: Date) -> TimeInterval {
+        return timeIntervalSince1970 - date.timeIntervalSince1970
     }
     
     /// offset minutes between UTC and current time zone, the value could be 60, 0, -60, etc.

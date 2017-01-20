@@ -24,11 +24,11 @@ public class Parser {
         var results = [ParsedResult]()
         
 //        do {
-            let regex = try? NSRegularExpression(pattern: pattern)
+            let regex = try? NSRegularExpression(pattern: pattern, options: .caseInsensitive)
         
             var startIndex = 0
             var remainingText = text
-            var match = regex?.firstMatch(in: remainingText, range: NSRange(location: startIndex, length: remainingText.characters.count))
+            var match = regex?.firstMatch(in: text, range: NSRange(location: startIndex, length: remainingText.characters.count))
             
             while let existingMatch = match {
                 if let result = extract(text: text, ref: ref, match: existingMatch, opt: opt) {

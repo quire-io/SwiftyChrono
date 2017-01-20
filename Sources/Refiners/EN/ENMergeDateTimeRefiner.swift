@@ -25,7 +25,7 @@ private func isAbleToMerge(text: String, previousResult: ParsedResult, currentRe
     return NSRegularExpression.isMatch(forPattern: PATTERN, in: textBetween)
 }
 
-private func mergeResult(text: String, dateResult: ParsedResult, timeResult: ParsedResult) -> ParsedResult {
+private func mergeResult(refText text: String, dateResult: ParsedResult, timeResult: ParsedResult) -> ParsedResult {
     var dateResult = dateResult
     let beginDate = dateResult.start
     let beginTime = timeResult.start
@@ -110,13 +110,13 @@ class ENMergeDateTimeRefiner: Refiner {
             if isDateOnly(result: previousResult) && isTimeOnly(result: currentResult!) &&
                 isAbleToMerge(text: text, previousResult: previousResult, currentResult: currentResult!) {
                 
-                previousResult = mergeResult(text: text, dateResult: previousResult, timeResult: currentResult!)
+                previousResult = mergeResult(refText: text, dateResult: previousResult, timeResult: currentResult!)
                 currentResult = nil
                 i += 1
             } else if isDateOnly(result: currentResult!) && isTimeOnly(result: previousResult) &&
                 isAbleToMerge(text: text, previousResult: currentResult!, currentResult: previousResult) {
                 
-                previousResult = mergeResult(text: text, dateResult: currentResult!, timeResult: previousResult)
+                previousResult = mergeResult(refText: text, dateResult: currentResult!, timeResult: previousResult)
                 currentResult = nil
                 i += 1
             }
