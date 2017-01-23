@@ -27,6 +27,7 @@ private func baseOption(strictMode: Bool) -> ModeOptio {
         ENMonthNameMiddleEndianParser(strictMode: strictMode),
         ENMonthNameParser(strictMode: strictMode),
         ENSlashDateFormatParser(strictMode: strictMode),
+        ENSlashDateFormatStartWithYearParser(strictMode: strictMode),
         
         // JP
         // ES

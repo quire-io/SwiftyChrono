@@ -8,8 +8,6 @@
 
 import Foundation
 
-import Foundation
-
 private let PATTERN = "(\\W|^)" +
     "(?:" +
         "(?:on\\s*?)?" +
