@@ -13,6 +13,10 @@ extension NSTextCheckingResult {
         return rangeAt(index).length != 0
     }
     
+    func isEmpty(atRangeIndex index: Int) -> Bool {
+        return rangeAt(index).length == 0
+    }
+    
     func string(from text: String, atRangeIndex index: Int) -> String {
         return text.subString(with: rangeAt(index))
     }

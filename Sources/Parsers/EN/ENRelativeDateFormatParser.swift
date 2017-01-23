@@ -100,7 +100,7 @@ public class ENRelativeDateFormatParser: Parser {
         
         result.start.assign(.hour, value: date.hour)
         result.start.assign(.year, value: date.year)
-        result.start.assign(.month, value: date.month + 1)
+        result.start.assign(.month, value: date.month)
         result.start.assign(.day, value: date.day)
         return result
     }

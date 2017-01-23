@@ -48,7 +48,7 @@ public class ENDeadlineFormatParser: Parser {
         let matchText4 = match.string(from: text, atRangeIndex: 4)
         func ymdResult() -> ParsedResult {
             result.start.assign(.year, value: date.year)
-            result.start.assign(.month, value: date.month + 1)
+            result.start.assign(.month, value: date.month)
             result.start.assign(.day, value: date.day)
             return result
         }
@@ -78,7 +78,7 @@ public class ENDeadlineFormatParser: Parser {
         
         
         result.start.imply(.year, to: date.year)
-        result.start.imply(.month, to: date.month + 1)
+        result.start.imply(.month, to: date.month)
         result.start.imply(.day, to: date.day)
         result.start.assign(.hour, value: date.hour)
         result.start.assign(.minute, value: date.minute)

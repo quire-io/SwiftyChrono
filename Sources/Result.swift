@@ -52,7 +52,7 @@ public struct ParsedComponents {
         
         if let ref = ref {
             imply(.day, to: ref.day)
-            imply(.month, to: ref.month + 1)
+            imply(.month, to: ref.month)
             imply(.year, to: ref.year)
         }
         
@@ -175,6 +175,7 @@ public enum TagUnit { case
     enMonthNameMiddleEndianParser,
     enMonthNameParser,
     enRelativeDateFormatParser,
+    enSlashDateFormatParser,
     
     enMergeDateAndTimeRefiner,
     enMergeDateRangeRefiner
