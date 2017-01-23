@@ -183,7 +183,8 @@ public enum TagUnit { case
     enWeekdayParser,
     
     enMergeDateAndTimeRefiner,
-    enMergeDateRangeRefiner
+    enMergeDateRangeRefiner,
+    enPrioritizeSpecificDateRefiner
 }
 
 

@@ -26,7 +26,7 @@ private func updateParsedComponent(result: ParsedResult, ref: Date, offset: Int,
     
     var startMoment = ref
     var startMomentFixed = false
-    var refOffset = startMoment.day
+    let refOffset = startMoment.day
     
     var day = startMoment.day
     

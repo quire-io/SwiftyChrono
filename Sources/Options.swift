@@ -43,6 +43,7 @@ private func baseOption(strictMode: Bool) -> ModeOptio {
         // ETC
         ENMergeDateTimeRefiner(),
         ENMergeDateRangeRefiner(),
+        ENPrioritizeSpecificDateRefiner(),
         
         // Extract additional info later
     ])
