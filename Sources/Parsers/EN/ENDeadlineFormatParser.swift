@@ -59,7 +59,7 @@ public class ENDeadlineFormatParser: Parser {
             date = number != HALF ? date.added(Int(number * 7), .day) : date.added(3, .day).added(12, .hour)
             return ymdResult()
         } else if NSRegularExpression.isMatch(forPattern: "month", in: matchText4) {
-            date = number != HALF ? date.added(Int(number), .month) : date.added(15, .day)
+            date = number != HALF ? date.added(Int(number), .month) : date.added((date.numberOf(.day, inA: .month) ?? 30)/2, .day)
             return ymdResult()
         } else if NSRegularExpression.isMatch(forPattern: "year", in: matchText4) {
             date = number != HALF ? date.added(Int(number), .year) : date.added(182, .day).added(12, .hour)
@@ -84,14 +84,6 @@ public class ENDeadlineFormatParser: Parser {
         result.start.assign(.minute, value: date.minute)
         result.start.assign(.second, value: date.second)
         result.tags[.enDeadlineFormatParser] = true
-        return result
-
-        
-        
-        
-        
-        
-        result.tags[.enCasualTimeParser] = true
         return result
     }
 }

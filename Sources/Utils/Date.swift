@@ -64,6 +64,17 @@ extension Date {
         return cal.component(.weekday, from: self)
     }
     
+    /// ask number of day in the current month.
+    ///
+    /// e.g. the "unit" will be .day, the "baseUnit" will be .month
+    func numberOf(_ unit: Calendar.Component, inA baseUnit: Calendar.Component) -> Int? {
+        if let range = cal.range(of: unit, in: baseUnit, for: self) {
+            return range.upperBound - range.lowerBound
+        }
+        
+        return nil
+    }
+    
     func differenceOfTimeInterval(to date: Date) -> TimeInterval {
         return timeIntervalSince1970 - date.timeIntervalSince1970
     }

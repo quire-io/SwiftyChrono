@@ -54,6 +54,7 @@ func casualModeOption() -> ModeOptio {
         // EN
         ENCasualTimeParser(strictMode: false),
         ENCasualDateParser(strictMode: false),
+        ENRelativeDateFormatParser(strictMode: false),
         
         // JP
         // ES
