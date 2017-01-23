@@ -177,6 +177,7 @@ public enum TagUnit { case
     enRelativeDateFormatParser,
     enSlashDateFormatParser,
     enSlashDateFormatStartWithYearParser,
+    enSlashMonthFormatParser,
     
     enMergeDateAndTimeRefiner,
     enMergeDateRangeRefiner

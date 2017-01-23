@@ -8,6 +8,14 @@
 
 import Foundation
 
+/*
+ Date format with slash "/" between numbers like ENSlashDateFormatParser,
+ but this parser expect year before month and date.
+ - YYYY/MM/DD
+ - YYYY-MM-DD
+ - YYYY.MM.DD
+ */
+
 private let PATTERN = "(\\W|^)" +
     "([0-9]{4})[\\-\\.\\/]([0-9]{1,2})[\\-\\.\\/]([0-9]{1,2})" +
     "(?=\\W|$)"
