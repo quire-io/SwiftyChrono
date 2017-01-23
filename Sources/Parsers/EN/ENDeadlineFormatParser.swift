@@ -62,7 +62,7 @@ public class ENDeadlineFormatParser: Parser {
             date = number != HALF ? date.added(Int(number), .month) : date.added((date.numberOf(.day, inA: .month) ?? 30)/2, .day)
             return ymdResult()
         } else if NSRegularExpression.isMatch(forPattern: "year", in: matchText4) {
-            date = number != HALF ? date.added(Int(number), .year) : date.added(182, .day).added(12, .hour)
+            date = number != HALF ? date.added(Int(number), .year) : date.added(6, .month)
             return ymdResult()
         }
         

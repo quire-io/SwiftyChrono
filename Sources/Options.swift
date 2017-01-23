@@ -29,6 +29,7 @@ private func baseOption(strictMode: Bool) -> ModeOptio {
         ENSlashDateFormatParser(strictMode: strictMode),
         ENSlashDateFormatStartWithYearParser(strictMode: strictMode),
         ENSlashMonthFormatParser(strictMode: strictMode),
+        ENTimeAgoFormatParser(strictMode: strictMode),
         
         // JP
         // ES

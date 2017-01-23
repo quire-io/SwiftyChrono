@@ -15,7 +15,7 @@ class SwiftyChronoTests: XCTestCase {
 //        XCTAssertEqual(hello(), "Hello!")
         
         let chrono = Chrono()
-        let results = chrono.parse(text: "sleep 1/12")
+        let results = chrono.parse(text: "9 hours ago")
         let d = results.first?.start.date
         let c = results.first?.end?.date
         print("\(d) \(c)")
