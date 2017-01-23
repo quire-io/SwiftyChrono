@@ -18,11 +18,11 @@ private let PATTERN = "(^|[^\\d/]\\s+|[^\\w\\s])" +
     "([0-9]|0[1-9]|1[012])/([0-9]{4})" +
     "([^\\d/]|$)"
 
-private var openningGroup = 1
-private var endingGroup = 4
+private let openningGroup = 1
+private let endingGroup = 4
 
-private var yearGroup = 2
-private var monthGroup = 3
+private let yearGroup = 2
+private let monthGroup = 3
 
 public class ENSlashMonthFormatParser: Parser {
     override var pattern: String { return PATTERN }

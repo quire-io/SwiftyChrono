@@ -139,6 +139,13 @@
 		C4B94A7F1E35FA9200B703E7 /* ENTimeExpressionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B94A7A1E35FA9200B703E7 /* ENTimeExpressionParser.swift */; };
 		C4B94A801E35FA9200B703E7 /* ENTimeExpressionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B94A7A1E35FA9200B703E7 /* ENTimeExpressionParser.swift */; };
 		C4B94A811E35FA9200B703E7 /* ENTimeExpressionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B94A7A1E35FA9200B703E7 /* ENTimeExpressionParser.swift */; };
+		C4B94A831E360D4B00B703E7 /* ENWeekdayParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B94A821E360D4B00B703E7 /* ENWeekdayParser.swift */; };
+		C4B94A841E360D4B00B703E7 /* ENWeekdayParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B94A821E360D4B00B703E7 /* ENWeekdayParser.swift */; };
+		C4B94A851E360D4B00B703E7 /* ENWeekdayParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B94A821E360D4B00B703E7 /* ENWeekdayParser.swift */; };
+		C4B94A861E360D4B00B703E7 /* ENWeekdayParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B94A821E360D4B00B703E7 /* ENWeekdayParser.swift */; };
+		C4B94A871E360D4B00B703E7 /* ENWeekdayParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B94A821E360D4B00B703E7 /* ENWeekdayParser.swift */; };
+		C4B94A881E360D4B00B703E7 /* ENWeekdayParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B94A821E360D4B00B703E7 /* ENWeekdayParser.swift */; };
+		C4B94A891E360D4B00B703E7 /* ENWeekdayParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B94A821E360D4B00B703E7 /* ENWeekdayParser.swift */; };
 		C4DFF43F1E30CA1000E851B1 /* ENDeadlineFormatParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DFF43E1E30CA1000E851B1 /* ENDeadlineFormatParser.swift */; };
 		C4DFF4401E30CA1000E851B1 /* ENDeadlineFormatParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DFF43E1E30CA1000E851B1 /* ENDeadlineFormatParser.swift */; };
 		C4DFF4411E30CA1000E851B1 /* ENDeadlineFormatParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DFF43E1E30CA1000E851B1 /* ENDeadlineFormatParser.swift */; };
@@ -236,6 +243,7 @@
 		C4B94A6A1E35E1D400B703E7 /* ENSlashMonthFormatParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSlashMonthFormatParser.swift; sourceTree = "<group>"; };
 		C4B94A721E35E61800B703E7 /* ENTimeAgoFormatParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENTimeAgoFormatParser.swift; sourceTree = "<group>"; };
 		C4B94A7A1E35FA9200B703E7 /* ENTimeExpressionParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENTimeExpressionParser.swift; sourceTree = "<group>"; };
+		C4B94A821E360D4B00B703E7 /* ENWeekdayParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENWeekdayParser.swift; sourceTree = "<group>"; };
 		C4DFF43E1E30CA1000E851B1 /* ENDeadlineFormatParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ENDeadlineFormatParser.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		C4DFF4461E30CDF300E851B1 /* ENUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENUtil.swift; sourceTree = "<group>"; };
 		C4DFF44E1E31A3FF00E851B1 /* ENISOFormatParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ENISOFormatParser.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -381,6 +389,7 @@
 				C4B94A6A1E35E1D400B703E7 /* ENSlashMonthFormatParser.swift */,
 				C4B94A721E35E61800B703E7 /* ENTimeAgoFormatParser.swift */,
 				C4B94A7A1E35FA9200B703E7 /* ENTimeExpressionParser.swift */,
+				C4B94A821E360D4B00B703E7 /* ENWeekdayParser.swift */,
 			);
 			path = EN;
 			sourceTree = "<group>";
@@ -735,6 +744,7 @@
 				C4B94A731E35E61800B703E7 /* ENTimeAgoFormatParser.swift in Sources */,
 				C4169A021E2F6E19007B7423 /* Chrono.swift in Sources */,
 				C4B94A531E35973F00B703E7 /* ENRelativeDateFormatParser.swift in Sources */,
+				C4B94A831E360D4B00B703E7 /* ENWeekdayParser.swift in Sources */,
 				C47EB23F1E2E0797000F3D38 /* Result.swift in Sources */,
 				C47EB2471E2E0DF8000F3D38 /* Date.swift in Sources */,
 				C4B94A7B1E35FA9200B703E7 /* ENTimeExpressionParser.swift in Sources */,
@@ -756,6 +766,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4DFF4531E31A3FF00E851B1 /* ENISOFormatParser.swift in Sources */,
+				C4B94A871E360D4B00B703E7 /* ENWeekdayParser.swift in Sources */,
 				C4B94A771E35E61800B703E7 /* ENTimeAgoFormatParser.swift in Sources */,
 				C4FE689A1E31FB0800C04AD9 /* ENMergeDateRangeRefiner.swift in Sources */,
 				C4B94A571E35973F00B703E7 /* ENRelativeDateFormatParser.swift in Sources */,
@@ -796,6 +807,7 @@
 				C4B94A741E35E61800B703E7 /* ENTimeAgoFormatParser.swift in Sources */,
 				C4169A031E2F6E19007B7423 /* Chrono.swift in Sources */,
 				C4B94A541E35973F00B703E7 /* ENRelativeDateFormatParser.swift in Sources */,
+				C4B94A841E360D4B00B703E7 /* ENWeekdayParser.swift in Sources */,
 				C47EB2401E2E0797000F3D38 /* Result.swift in Sources */,
 				C47EB2481E2E0DF8000F3D38 /* Date.swift in Sources */,
 				C4B94A7C1E35FA9200B703E7 /* ENTimeExpressionParser.swift in Sources */,
@@ -817,6 +829,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4DFF4541E31A3FF00E851B1 /* ENISOFormatParser.swift in Sources */,
+				C4B94A881E360D4B00B703E7 /* ENWeekdayParser.swift in Sources */,
 				C4B94A781E35E61800B703E7 /* ENTimeAgoFormatParser.swift in Sources */,
 				C4FE689B1E31FB0800C04AD9 /* ENMergeDateRangeRefiner.swift in Sources */,
 				C4B94A581E35973F00B703E7 /* ENRelativeDateFormatParser.swift in Sources */,
@@ -857,6 +870,7 @@
 				C4B94A751E35E61800B703E7 /* ENTimeAgoFormatParser.swift in Sources */,
 				C4169A041E2F6E19007B7423 /* Chrono.swift in Sources */,
 				C4B94A551E35973F00B703E7 /* ENRelativeDateFormatParser.swift in Sources */,
+				C4B94A851E360D4B00B703E7 /* ENWeekdayParser.swift in Sources */,
 				C47EB2411E2E0797000F3D38 /* Result.swift in Sources */,
 				C47EB2491E2E0DF8000F3D38 /* Date.swift in Sources */,
 				C4B94A7D1E35FA9200B703E7 /* ENTimeExpressionParser.swift in Sources */,
@@ -887,6 +901,7 @@
 				C4B94A761E35E61800B703E7 /* ENTimeAgoFormatParser.swift in Sources */,
 				C4169A051E2F6E19007B7423 /* Chrono.swift in Sources */,
 				C4B94A561E35973F00B703E7 /* ENRelativeDateFormatParser.swift in Sources */,
+				C4B94A861E360D4B00B703E7 /* ENWeekdayParser.swift in Sources */,
 				C47EB2421E2E0797000F3D38 /* Result.swift in Sources */,
 				C47EB24A1E2E0DF8000F3D38 /* Date.swift in Sources */,
 				C4B94A7E1E35FA9200B703E7 /* ENTimeExpressionParser.swift in Sources */,
@@ -908,6 +923,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4DFF4551E31A3FF00E851B1 /* ENISOFormatParser.swift in Sources */,
+				C4B94A891E360D4B00B703E7 /* ENWeekdayParser.swift in Sources */,
 				C4B94A791E35E61800B703E7 /* ENTimeAgoFormatParser.swift in Sources */,
 				C4FE689C1E31FB0800C04AD9 /* ENMergeDateRangeRefiner.swift in Sources */,
 				C4B94A591E35973F00B703E7 /* ENRelativeDateFormatParser.swift in Sources */,

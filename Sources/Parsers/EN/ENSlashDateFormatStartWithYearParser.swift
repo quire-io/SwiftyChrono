@@ -20,9 +20,9 @@ private let PATTERN = "(\\W|^)" +
     "([0-9]{4})[\\-\\.\\/]([0-9]{1,2})[\\-\\.\\/]([0-9]{1,2})" +
     "(?=\\W|$)"
 
-private var yearNumberGroup = 2
-private var monthNumberGroup = 3
-private var dateNumberGroup = 4
+private let yearNumberGroup = 2
+private let monthNumberGroup = 3
+private let dateNumberGroup = 4
 
 public class ENSlashDateFormatStartWithYearParser: Parser {
     override var pattern: String { return PATTERN }

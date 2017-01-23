@@ -21,27 +21,13 @@ private let PATTERN = "(\\W|^)" +
     ")?" +
     "(\\W|$)"
 
-private var daysOffset = [
-    "sunday": 0,
-    "sun": 0,
-    "monday": 1,
-    "mon": 1,"tuesday": 2,
-    "wednesday": 3,
-    "wed": 3,
-    
-    "thursday": 4,
-    "thur": 4,"friday": 5,
-    "fri": 5,"saturday": 6,
-    "sat": 6,
-]
+private let openningGroup = 1
+private let endingGroup = 6
 
-private var openningGroup = 1
-private var endingGroup = 6
-
-private var weekdayGroup = 2
-private var monthGroup = 3
-private var dayGroup = 4
-private var yearGroup = 5
+private let weekdayGroup = 2
+private let monthGroup = 3
+private let dayGroup = 4
+private let yearGroup = 5
 
 public class ENSlashDateFormatParser: Parser {
     override var pattern: String { return PATTERN }
@@ -104,7 +90,7 @@ public class ENSlashDateFormatParser: Parser {
         //Day of week
         if match.isNotEmpty(atRangeIndex: weekdayGroup) {
             let weekday = match.string(from: text, atRangeIndex: weekdayGroup)
-            result.start.assign(.weekday, value: daysOffset[weekday])
+            result.start.assign(.weekday, value: EN_WEEKDAY_OFFSET[weekday])
         }
         
         result.tags[.enSlashDateFormatParser] = true

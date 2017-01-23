@@ -180,6 +180,7 @@ public enum TagUnit { case
     enSlashMonthFormatParser,
     enTimeAgoFormatParser,
     enTimeExpressionParser,
+    enWeekdayParser,
     
     enMergeDateAndTimeRefiner,
     enMergeDateRangeRefiner
