@@ -12,15 +12,15 @@ private let PATTERN = "^\\s*(to|\\-)\\s*$"
 
 class ENMergeDateRangeRefiner: Refiner {
     override public func refine(text: String, results: [ParsedResult], opt: [OptionType: Int]) -> [ParsedResult] {
-        let resultsLengh = results.count
-        if resultsLengh < 2 { return results }
+        let resultsLength = results.count
+        if resultsLength < 2 { return results }
         
         var mergedResults = [ParsedResult]()
         var currentResult: ParsedResult?
         var previousResult: ParsedResult
         
         var i = 1
-        while i < resultsLengh {
+        while i < resultsLength {
             currentResult = results[i]
             previousResult = results[i-1]
 

@@ -32,6 +32,10 @@ extension Date {
         self = cal.date(from: dateComponents)!
     }
     
+    func isAfter(_ other: Date) -> Bool {
+        return self.timeIntervalSince1970 > other.timeIntervalSince1970
+    }
+    
     var year: Int {
         return cal.component(.year, from: self)
     }

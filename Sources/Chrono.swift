@@ -12,7 +12,9 @@ public enum OptionType: String { case
     morning = "morning",
     afternoon = "afternoon",
     evening = "evening",
-    noon = "noon"
+    noon = "noon",
+    forwardDate = "forwardDate",
+    forwardDatesOnly = "forwardDatesOnly"
 }
 
 struct Chrono {

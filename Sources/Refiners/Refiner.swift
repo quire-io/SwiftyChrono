@@ -14,12 +14,12 @@ class Refiner {
     }
 }
 
-struct Filter {
-    func isValid(text: String, result: ParsedResult, opt: [OptionType: Int]) -> Bool {
+class Filter: Refiner {
+    public func isValid(text: String, result: ParsedResult, opt: [OptionType: Int]) -> Bool {
         return true
     }
     
-    func refine(text: String, results: [ParsedResult], opt: [OptionType: Int]) -> [ParsedResult] {
+    public override func refine(text: String, results: [ParsedResult], opt: [OptionType: Int]) -> [ParsedResult] {
         var filteredResults = [ParsedResult]()
         
         for r in results {

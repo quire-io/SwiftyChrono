@@ -94,8 +94,8 @@ private func mergeResult(refText text: String, dateResult: ParsedResult, timeRes
 
 class ENMergeDateTimeRefiner: Refiner {
     override public func refine(text: String, results: [ParsedResult], opt: [OptionType: Int]) -> [ParsedResult] {
-        let resultsLengh = results.count
-        if resultsLengh < 2 { return results }
+        let resultsLength = results.count
+        if resultsLength < 2 { return results }
         
         var mergedResults = [ParsedResult]()
         var currentResult: ParsedResult?
@@ -103,7 +103,7 @@ class ENMergeDateTimeRefiner: Refiner {
         
         
         var i = 1
-        while i < resultsLengh {
+        while i < resultsLength {
             currentResult = results[i]
             previousResult = results[i-1]
             

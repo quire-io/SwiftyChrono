@@ -39,6 +39,8 @@ private func baseOption(strictMode: Bool) -> ModeOptio {
         
     ], refiners: [
         // Removing overlaping first
+        OverlapRemovalRefiner(),
+        ForwardDateRefiner(),
         
         // ETC
         ENMergeDateTimeRefiner(),
@@ -46,6 +48,10 @@ private func baseOption(strictMode: Bool) -> ModeOptio {
         ENPrioritizeSpecificDateRefiner(),
         
         // Extract additional info later
+        ExtractTimezoneOffsetRefiner(),
+        ExtractTimezoneAbbrRefiner(),
+        
+        UnlikelyFormatFilter(),
     ])
 }
 
