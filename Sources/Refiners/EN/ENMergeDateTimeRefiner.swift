@@ -19,9 +19,9 @@ private func isTimeOnly(result: ParsedResult) -> Bool {
 }
 
 private func isAbleToMerge(text: String, previousResult: ParsedResult, currentResult: ParsedResult) -> Bool {
-    let textBetween = text.substring(with: text.range(
-        ofStartIndex: previousResult.index + previousResult.text.characters.count,
-        andEndIndex: currentResult.index))
+    let (startIndex, endIndex) = sortTwoNumbers(previousResult.index + previousResult.text.characters.count, currentResult.index)
+    
+    let textBetween = text.substring(from: startIndex, to: endIndex)
     return NSRegularExpression.isMatch(forPattern: PATTERN, in: textBetween)
 }
 

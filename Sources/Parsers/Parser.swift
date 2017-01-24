@@ -42,6 +42,7 @@ public class Parser {
                 } else {
                     // If fail, move on by 1
                     remainingText = text.substring(from: text.index(text.startIndex, offsetBy: existingMatch.range.location + 1))
+                    startIndex += 1
                 }
                 
                 let remainingTextLength = remainingText.characters.count

@@ -8,6 +8,18 @@
 
 import Foundation
 
+/// get ascending order from two number.
+/// ATTENSION:
+func sortTwoNumbers(_ index1: Int, _ index2: Int) -> (lessNumber: Int, greaterNumber: Int) {
+    if index1 == index2 {
+        return (index1, index2)
+    }
+    
+    let lessNumber = index1 < index2 ? index1 : index2
+    let greaterNumber = index1 > index2 ? index1 : index2
+    return (lessNumber, greaterNumber)
+}
+
 extension NSTextCheckingResult {
     func isNotEmpty(atRangeIndex index: Int) -> Bool {
         return rangeAt(index).length != 0

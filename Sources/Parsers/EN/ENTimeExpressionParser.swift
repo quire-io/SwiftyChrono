@@ -128,7 +128,7 @@ public class ENTimeExpressionParser: Parser {
         //                  Extracting the 'to' chunk
         // ==============================================================
         
-        let regex = try? NSRegularExpression(pattern: pattern, options: .caseInsensitive)
+        let regex = try? NSRegularExpression(pattern: SECOND_REG_PATTERN, options: .caseInsensitive)
         let secondText = text.substring(from: result.index + result.text.characters.count)
         guard let match = regex?.firstMatch(in: secondText, range: NSRange(location: 0, length: secondText.characters.count)) else {
             // Not accept number only result
