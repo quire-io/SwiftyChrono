@@ -153,6 +153,12 @@
 		C4B94A971E36170A00B703E7 /* ENPrioritizeSpecificDateRefiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B94A921E36170A00B703E7 /* ENPrioritizeSpecificDateRefiner.swift */; };
 		C4B94A981E36170A00B703E7 /* ENPrioritizeSpecificDateRefiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B94A921E36170A00B703E7 /* ENPrioritizeSpecificDateRefiner.swift */; };
 		C4B94A991E36170A00B703E7 /* ENPrioritizeSpecificDateRefiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B94A921E36170A00B703E7 /* ENPrioritizeSpecificDateRefiner.swift */; };
+		C4B94A9B1E363ADA00B703E7 /* TestEn.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B94A9A1E363ADA00B703E7 /* TestEn.swift */; };
+		C4B94A9C1E363ADA00B703E7 /* TestEn.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B94A9A1E363ADA00B703E7 /* TestEn.swift */; };
+		C4B94A9D1E363ADA00B703E7 /* TestEn.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B94A9A1E363ADA00B703E7 /* TestEn.swift */; };
+		C4B94AA31E363B9A00B703E7 /* TestUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B94A9E1E363B9A00B703E7 /* TestUtil.swift */; };
+		C4B94AA41E363B9A00B703E7 /* TestUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B94A9E1E363B9A00B703E7 /* TestUtil.swift */; };
+		C4B94AA51E363B9A00B703E7 /* TestUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B94A9E1E363B9A00B703E7 /* TestUtil.swift */; };
 		C4DFF43F1E30CA1000E851B1 /* ENDeadlineFormatParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DFF43E1E30CA1000E851B1 /* ENDeadlineFormatParser.swift */; };
 		C4DFF4401E30CA1000E851B1 /* ENDeadlineFormatParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DFF43E1E30CA1000E851B1 /* ENDeadlineFormatParser.swift */; };
 		C4DFF4411E30CA1000E851B1 /* ENDeadlineFormatParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DFF43E1E30CA1000E851B1 /* ENDeadlineFormatParser.swift */; };
@@ -252,6 +258,8 @@
 		C4B94A7A1E35FA9200B703E7 /* ENTimeExpressionParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENTimeExpressionParser.swift; sourceTree = "<group>"; };
 		C4B94A821E360D4B00B703E7 /* ENWeekdayParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENWeekdayParser.swift; sourceTree = "<group>"; };
 		C4B94A921E36170A00B703E7 /* ENPrioritizeSpecificDateRefiner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENPrioritizeSpecificDateRefiner.swift; sourceTree = "<group>"; };
+		C4B94A9A1E363ADA00B703E7 /* TestEn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestEn.swift; sourceTree = "<group>"; };
+		C4B94A9E1E363B9A00B703E7 /* TestUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestUtil.swift; sourceTree = "<group>"; };
 		C4DFF43E1E30CA1000E851B1 /* ENDeadlineFormatParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ENDeadlineFormatParser.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		C4DFF4461E30CDF300E851B1 /* ENUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENUtil.swift; sourceTree = "<group>"; };
 		C4DFF44E1E31A3FF00E851B1 /* ENISOFormatParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ENISOFormatParser.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -364,6 +372,8 @@
 			children = (
 				BBB55AC11C8F80020050DDA9 /* SwiftyChronoTests.swift */,
 				BBB55AC31C8F80020050DDA9 /* Info.plist */,
+				C4B94A9A1E363ADA00B703E7 /* TestEn.swift */,
+				C4B94A9E1E363B9A00B703E7 /* TestUtil.swift */,
 			);
 			name = Tests;
 			path = Tests/SwiftyChronoTests;
@@ -783,6 +793,7 @@
 				C4B94A571E35973F00B703E7 /* ENRelativeDateFormatParser.swift in Sources */,
 				C40D6A811E2F294F00796D93 /* Parser.swift in Sources */,
 				C4169A261E2F8209007B7423 /* Util.swift in Sources */,
+				C4B94A9B1E363ADA00B703E7 /* TestEn.swift in Sources */,
 				C40992891E3216520009CA05 /* ENMonthNameMiddleEndianParser.swift in Sources */,
 				C4DFF4431E30CA1000E851B1 /* ENDeadlineFormatParser.swift in Sources */,
 				C43A02E11E30A8C50041B7B1 /* ENMergeDateTimeRefiner.swift in Sources */,
@@ -801,6 +812,7 @@
 				C4DFF44B1E30CDF300E851B1 /* ENUtil.swift in Sources */,
 				C4B94A5F1E35BE2900B703E7 /* ENSlashDateFormatParser.swift in Sources */,
 				BBB55AC21C8F80020050DDA9 /* SwiftyChronoTests.swift in Sources */,
+				C4B94AA31E363B9A00B703E7 /* TestUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -848,6 +860,7 @@
 				C4B94A581E35973F00B703E7 /* ENRelativeDateFormatParser.swift in Sources */,
 				C40D6A821E2F294F00796D93 /* Parser.swift in Sources */,
 				C4169A271E2F8209007B7423 /* Util.swift in Sources */,
+				C4B94A9C1E363ADA00B703E7 /* TestEn.swift in Sources */,
 				C409928A1E3216520009CA05 /* ENMonthNameMiddleEndianParser.swift in Sources */,
 				C4DFF4441E30CA1000E851B1 /* ENDeadlineFormatParser.swift in Sources */,
 				C43A02E21E30A8C50041B7B1 /* ENMergeDateTimeRefiner.swift in Sources */,
@@ -866,6 +879,7 @@
 				C4DFF44C1E30CDF300E851B1 /* ENUtil.swift in Sources */,
 				C4B94A601E35BE2900B703E7 /* ENSlashDateFormatParser.swift in Sources */,
 				BBB55B151C8F8FE70050DDA9 /* SwiftyChronoTests.swift in Sources */,
+				C4B94AA41E363B9A00B703E7 /* TestUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -945,6 +959,7 @@
 				C4B94A591E35973F00B703E7 /* ENRelativeDateFormatParser.swift in Sources */,
 				C40D6A831E2F294F00796D93 /* Parser.swift in Sources */,
 				C4169A281E2F8209007B7423 /* Util.swift in Sources */,
+				C4B94A9D1E363ADA00B703E7 /* TestEn.swift in Sources */,
 				C409928B1E3216520009CA05 /* ENMonthNameMiddleEndianParser.swift in Sources */,
 				C4DFF4451E30CA1000E851B1 /* ENDeadlineFormatParser.swift in Sources */,
 				C43A02E31E30A8C50041B7B1 /* ENMergeDateTimeRefiner.swift in Sources */,
@@ -963,6 +978,7 @@
 				C4DFF44D1E30CDF300E851B1 /* ENUtil.swift in Sources */,
 				C4B94A611E35BE2900B703E7 /* ENSlashDateFormatParser.swift in Sources */,
 				BBB55B161C8F8FE80050DDA9 /* SwiftyChronoTests.swift in Sources */,
+				C4B94AA51E363B9A00B703E7 /* TestUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
