@@ -222,6 +222,13 @@
 		C4ED15C01E3757FC00C4676B /* UnlikelyFormatFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4ED15BB1E3757FC00C4676B /* UnlikelyFormatFilter.swift */; };
 		C4ED15C11E3757FC00C4676B /* UnlikelyFormatFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4ED15BB1E3757FC00C4676B /* UnlikelyFormatFilter.swift */; };
 		C4ED15C21E3757FC00C4676B /* UnlikelyFormatFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4ED15BB1E3757FC00C4676B /* UnlikelyFormatFilter.swift */; };
+		C4ED15C51E385B7600C4676B /* test_en.js in Resources */ = {isa = PBXBuildFile; fileRef = C4ED15C41E385B7600C4676B /* test_en.js */; };
+		C4ED15C61E385B7600C4676B /* test_en.js in Resources */ = {isa = PBXBuildFile; fileRef = C4ED15C41E385B7600C4676B /* test_en.js */; };
+		C4ED15C71E385B7600C4676B /* test_en.js in Resources */ = {isa = PBXBuildFile; fileRef = C4ED15C41E385B7600C4676B /* test_en.js */; };
+		C4ED15C81E385B7600C4676B /* test_en.js in Resources */ = {isa = PBXBuildFile; fileRef = C4ED15C41E385B7600C4676B /* test_en.js */; };
+		C4ED15C91E385B7600C4676B /* test_en.js in Resources */ = {isa = PBXBuildFile; fileRef = C4ED15C41E385B7600C4676B /* test_en.js */; };
+		C4ED15CA1E385B7600C4676B /* test_en.js in Resources */ = {isa = PBXBuildFile; fileRef = C4ED15C41E385B7600C4676B /* test_en.js */; };
+		C4ED15CB1E385B7600C4676B /* test_en.js in Resources */ = {isa = PBXBuildFile; fileRef = C4ED15C41E385B7600C4676B /* test_en.js */; };
 		C4FE68961E31FB0800C04AD9 /* ENMergeDateRangeRefiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FE68951E31FB0800C04AD9 /* ENMergeDateRangeRefiner.swift */; };
 		C4FE68971E31FB0800C04AD9 /* ENMergeDateRangeRefiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FE68951E31FB0800C04AD9 /* ENMergeDateRangeRefiner.swift */; };
 		C4FE68981E31FB0800C04AD9 /* ENMergeDateRangeRefiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FE68951E31FB0800C04AD9 /* ENMergeDateRangeRefiner.swift */; };
@@ -304,6 +311,7 @@
 		C4ED15AB1E373E5B00C4676B /* ForwardDateRefiner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForwardDateRefiner.swift; sourceTree = "<group>"; };
 		C4ED15B31E37448400C4676B /* OverlapRemovalRefiner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlapRemovalRefiner.swift; sourceTree = "<group>"; };
 		C4ED15BB1E3757FC00C4676B /* UnlikelyFormatFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnlikelyFormatFilter.swift; sourceTree = "<group>"; };
+		C4ED15C41E385B7600C4676B /* test_en.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = test_en.js; sourceTree = "<group>"; };
 		C4FE68951E31FB0800C04AD9 /* ENMergeDateRangeRefiner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENMergeDateRangeRefiner.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -410,6 +418,7 @@
 		BBB55AC01C8F80020050DDA9 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				C4ED15C31E385B7600C4676B /* JS */,
 				BBB55AC11C8F80020050DDA9 /* SwiftyChronoTests.swift */,
 				BBB55AC31C8F80020050DDA9 /* Info.plist */,
 				C4B94A9A1E363ADA00B703E7 /* TestEn.swift */,
@@ -521,6 +530,14 @@
 				C4DFF4461E30CDF300E851B1 /* ENUtil.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		C4ED15C31E385B7600C4676B /* JS */ = {
+			isa = PBXGroup;
+			children = (
+				C4ED15C41E385B7600C4676B /* test_en.js */,
+			);
+			path = JS;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -746,6 +763,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4ED15C51E385B7600C4676B /* test_en.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -753,6 +771,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4ED15C91E385B7600C4676B /* test_en.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -760,6 +779,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4ED15C61E385B7600C4676B /* test_en.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -767,6 +787,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4ED15CA1E385B7600C4676B /* test_en.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -774,6 +795,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4ED15C71E385B7600C4676B /* test_en.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -781,6 +803,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4ED15C81E385B7600C4676B /* test_en.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -788,6 +811,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4ED15CB1E385B7600C4676B /* test_en.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

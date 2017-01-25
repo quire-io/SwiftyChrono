@@ -7,6 +7,7 @@
 //
 import Foundation
 import XCTest
+import JavaScriptCore
 
 extension XCTestCase {
     func ok(_ result: Bool) {
@@ -82,3 +83,91 @@ extension String {
         return Date.iso8601Formatter.date(from: self)
     }
 }
+
+
+//MARK: JS
+@objc protocol JSParsedResult: JSExport {
+    var ref: Date { get }
+    var index: Int { get }
+    var text: String { get }
+    var start: JSParsedComponents { get }
+    var end: JSParsedComponents? { get }
+}
+
+@objc protocol JSParsedComponents: JSExport {
+    func date() -> Date
+    func get(_ key: String) -> Int
+}
+
+class TestParsedResult: NSObject, JSParsedResult {
+    private let parsedResult: ParsedResult
+    init(_ parsedResult: ParsedResult) {
+        self.parsedResult = parsedResult
+    }
+    
+    var ref: Date { return parsedResult.ref }
+    var index: Int { return parsedResult.index }
+    var text: String { return parsedResult.text }
+    private var _start: JSParsedComponents? = nil
+    var start: JSParsedComponents {
+        if _start == nil {
+            _start = TestParsedComponents(parsedResult.start)
+        }
+        return _start!
+    }
+    private var _end: JSParsedComponents? = nil
+    var end: JSParsedComponents? {
+        if _end == nil { // will query every time if parsedResult.end is nil. but it's not a big deal in test case, we keep it simple.
+            _end = parsedResult.end != nil ? TestParsedComponents(parsedResult.end!) : nil
+        }
+        return _end
+    }
+}
+class TestParsedComponents: NSObject, JSParsedComponents {
+    private let parsedComponents: ParsedComponents
+    init(_ parsedComponents: ParsedComponents) {
+        self.parsedComponents = parsedComponents
+    }
+    
+    func date() -> Date {
+        return parsedComponents.date
+    }
+
+    func get(_ key: String) -> Int {
+        let k: ComponentUnit
+        switch key {
+        case "year":
+            k = .year
+        case "month":
+            k = .month
+        case "day":
+            k = .day
+        case "hour":
+            k = .hour
+        case "minute":
+            k = .minute
+        case "second":
+            k = .second
+        case "millisecond":
+            k = .millisecond
+        case "weekday":
+            k = .weekday
+        case "timeZoneOffset":
+            k = .timeZoneOffset
+        case "meridiem":
+            k = .meridiem
+        default:
+            assert(false, "won't enter in this case...")
+            k = .year
+        }
+        return parsedComponents[k]!
+    }
+}
+
+
+
+
+
+
+
+
