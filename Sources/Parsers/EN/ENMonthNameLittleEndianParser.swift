@@ -90,7 +90,7 @@ public class ENMonthNameLittleEndianParser: Parser {
         
         // Weekday component
         if match.isNotEmpty(atRangeIndex: weekdayGroup) {
-            let weekday = EN_WEEKDAY_OFFSET[match.string(from: text, atRangeIndex: weekdayGroup)]
+            let weekday = EN_WEEKDAY_OFFSET[match.string(from: text, atRangeIndex: weekdayGroup).lowercased()]
             result.start.assign(.weekday, value: weekday)
         }
         

@@ -15,6 +15,14 @@ class TestEn: XCTestCase {
     let chrono = Chrono()
     var testTitle = ""
     
+    /// we assign each js call from chrono parse to those variables, so the value while test fail occur will be the corresponding value
+    var lastResultsForFailCase: [ParsedResult] = []
+    var lastTextForFailCase: String = ""
+    // current fail test in JS test file within same text source
+    var nthTest = 0
+    // used to calculate diff of [nthTest]
+    var _lastText = ""
+    
     override func setUp() {
         super.setUp()
         
@@ -48,6 +56,17 @@ class TestEn: XCTestCase {
         /// set function callbacks
         //  ok(passed: Bool, message: String)
         let ok: @convention(block) (Bool, String?) -> Void = { (passed, message) in
+            if self._lastText != self.lastTextForFailCase {
+                self._lastText = self.lastTextForFailCase
+                self.nthTest = 1
+            } else {
+                self.nthTest += 1
+            }
+            
+            if !passed {
+                print("the \(self.nthTest) case of text:\"\(self.lastTextForFailCase)\", results: \(self.lastResultsForFailCase.first?.start.date)")
+            }
+            
             if let message = message {
                 XCTAssert(passed, message)
             } else {
@@ -59,12 +78,16 @@ class TestEn: XCTestCase {
         /// set function callbacks
         //  chronoParse()
         let chronoParse: @convention(block) (String, NSDate, NSDictionary) -> NSArray = { (text, ref, opt) -> NSArray in
+            self.lastTextForFailCase = text
+            
             var opts = [OptionType: Int]()
             for o in opt {
                 opts[OptionType(rawValue: o.key as! String)!] = o.value as? Int ?? 1
             }
             
-            let results = self.chrono.parse(text: text, refDate: ref as Date, opt: opts).map{ TestParsedResult($0) }
+            let parseResults = self.chrono.parse(text: text, refDate: ref as Date, opt: opts)
+            let results = parseResults.map{ TestParsedResult($0) }
+            self.lastResultsForFailCase = parseResults
             return results as NSArray
         }
         jsContext.setObject(unsafeBitCast(chronoParse, to: AnyObject.self), forKeyedSubscript: "chronoParse" as (NSCopying & NSObjectProtocol)!)
@@ -72,12 +95,20 @@ class TestEn: XCTestCase {
         /// set function callbacks
         //  chronoParseDate()
         let chronoParseDate: @convention(block) (String, NSDate, NSDictionary) -> NSDate = { (text, ref, opt) in
+            self.lastTextForFailCase = text
+            
             var opts = [OptionType: Int]()
             for o in opt {
                 opts[OptionType(rawValue: o.key as! String)!] = o.value as? Int ?? 1
             }
             
-            return (self.chrono.parseDate(text: text, refDate: ref as Date, opt: opts) ?? Date()) as NSDate
+            //return (self.chrono.parseDate(text: text, refDate: ref as Date, opt: opts) ?? Date()) as NSDate
+            // for debugging, we get the raw parse result and get the first start date.
+            // make sure this logic didn't change in chrono's parseDate()
+            let results = self.chrono.parse(text: text, refDate: ref as Date, opt: opts)
+            self.lastResultsForFailCase = results
+            return (results.first?.start.date ?? Date()) as NSDate
+            
         }
         jsContext.setObject(unsafeBitCast(chronoParseDate, to: AnyObject.self), forKeyedSubscript: "chronoParseDate" as (NSCopying & NSObjectProtocol)!)
         

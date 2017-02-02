@@ -89,7 +89,7 @@ public class ENSlashDateFormatParser: Parser {
         
         //Day of week
         if match.isNotEmpty(atRangeIndex: weekdayGroup) {
-            let weekday = match.string(from: text, atRangeIndex: weekdayGroup)
+            let weekday = match.string(from: text, atRangeIndex: weekdayGroup).lowercased()
             result.start.assign(.weekday, value: EN_WEEKDAY_OFFSET[weekday])
         }
         

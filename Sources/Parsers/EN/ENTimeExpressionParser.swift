@@ -105,18 +105,18 @@ public class ENTimeExpressionParser: Parser {
                 return nil
             }
             
-            let ampm = match.string(from: text, atRangeIndex: amPmHourGroup).lowercased()
+            let ampm = String(match.string(from: text, atRangeIndex: amPmHourGroup).characters.first!).lowercased()
             if ampm == "a" {
                 meridiem = 0
                 if hour == 12 {
                     hour = 0
                 }
-                
-                if ampm == "p" {
-                    meridiem = 1
-                    if hour != 12 {
-                        hour += 12
-                    }
+            }
+            
+            if ampm == "p" {
+                meridiem = 1
+                if hour != 12 {
+                    hour += 12
                 }
             }
         }
