@@ -44,7 +44,7 @@ class ForwardDateRefiner: Refiner {
             {
                 // Adjust date to the coming week
                 let weekday = result.start[.weekday]!
-                let day = refMoment.day > weekday ? weekday + 7 : weekday
+                let day = refMoment.weekday > weekday ? weekday + 7 : weekday
                 
                 let newRefMoment = Date(refMoment, byComponentUpdates: [(.day, day)])
                 

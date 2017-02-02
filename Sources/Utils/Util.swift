@@ -44,6 +44,9 @@ extension String {
     }
     
     func substring(from startIdx: Int, to endIdx: Int? = nil) -> String {
+        if startIdx < 0 || (endIdx != nil && endIdx! < 0) {
+            return ""
+        }
         let start = characters.index(startIndex, offsetBy: startIdx)
         let end = endIdx != nil ? characters.index(startIndex, offsetBy: endIdx!) : endIndex
         return substring(with: start..<end)

@@ -65,7 +65,8 @@ extension Date {
     }
     
     var weekday: Int {
-        return cal.component(.weekday, from: self)
+        // by default, start from 1. we mimic the moment.js' SPEC, start from 0
+        return cal.component(.weekday, from: self) - 1
     }
     
     /// ask number of day in the current month.

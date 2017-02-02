@@ -114,7 +114,7 @@ class ENMergeDateTimeRefiner: Refiner {
                 currentResult = nil
                 i += 1
             } else if isDateOnly(result: currentResult!) && isTimeOnly(result: previousResult) &&
-                isAbleToMerge(text: text, previousResult: currentResult!, currentResult: previousResult) {
+                isAbleToMerge(text: text, previousResult: previousResult, currentResult: currentResult!) {
                 
                 previousResult = mergeResult(refText: text, dateResult: currentResult!, timeResult: previousResult)
                 currentResult = nil

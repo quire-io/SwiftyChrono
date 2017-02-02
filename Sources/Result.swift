@@ -117,9 +117,6 @@ public struct ParsedComponents {
     }
     
     public var moment: Date {
-        var calendar = Calendar(identifier: Calendar.Identifier.gregorian)
-        calendar.timeZone = utcTimeZone
-        
         var comps = DateComponents()
         
         if let year = self[.year] {
@@ -150,7 +147,7 @@ public struct ParsedComponents {
             comps.nanosecond = millisecond * 1000
         }
         
-        let date = calendar.date(from: comps)!
+        let date = cal.date(from: comps)!
         
         let currenttimeZoneOffset = date.utcOffset
         let targettimeZoneOffset =

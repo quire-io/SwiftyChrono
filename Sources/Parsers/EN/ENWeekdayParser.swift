@@ -26,29 +26,29 @@ private func updateParsedComponent(result: ParsedResult, ref: Date, offset: Int,
     
     var startMoment = ref
     var startMomentFixed = false
-    let refOffset = startMoment.day
+    let refOffset = startMoment.weekday
     
-    var day = startMoment.day
+    var weekday: Int
     
     if modifier == "last" || modifier == "past" {
-        day = offset - 7
+        weekday = offset - 7
         startMomentFixed = true
     } else if modifier == "next" {
-        day = offset + 7
+        weekday = offset + 7
         startMomentFixed = true
     } else if modifier == "this" {
-        day = offset
+        weekday = offset
     } else {
         if abs(offset - 7 - refOffset) < abs(offset - refOffset) {
-            day = offset - 7
+            weekday = offset - 7
         } else if abs(offset + 7 - refOffset) < abs(offset - refOffset) {
-            day = offset + 7
+            weekday = offset + 7
         } else {
-            day = offset
+            weekday = offset
         }
     }
     
-    startMoment = Date(startMoment, byComponentUpdates: [(component: .day, value: day)])
+    startMoment = Date(startMoment, byComponentUpdates: [(component: .weekday, value: weekday)])
     
     result.start.assign(.weekday, value: offset)
     if startMomentFixed {

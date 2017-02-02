@@ -14,13 +14,16 @@ class ExtractTimezoneAbbrRefiner: Refiner {
     override public func refine(text: String, results: [ParsedResult], opt: [OptionType: Int]) -> [ParsedResult] {
         let resultsLength = results.count
         let availableTagUnits: Set<TagUnit> = [.enTimeExpressionParser, ] // zhTimeExpressionParser, .frTimeExpressionParser
+        var newResults = [ParsedResult]()
         
-        var i = 1
+        var i = 0
         while i < resultsLength {
             var result = results[i]
             let keys = Set(result.tags.keys)
+            
             if keys.intersection(availableTagUnits).isEmpty {
                 i += 1
+                newResults.append(result)
                 continue
             }
             
@@ -33,6 +36,7 @@ class ExtractTimezoneAbbrRefiner: Refiner {
                 let timezoneAbbr = (match.isNotEmpty(atRangeIndex: 1) ? match.string(from: substring, atRangeIndex: 1) : "").uppercased()
                 guard let timezoneOffset = timezoneAbbrs[timezoneAbbr] else {
                     i += 1
+                    newResults.append(result)
                     continue
                 }
                 
@@ -49,9 +53,10 @@ class ExtractTimezoneAbbrRefiner: Refiner {
             }
             
             i += 1
+            newResults.append(result)
         }
         
-        return results
+        return newResults
     }
 }
 

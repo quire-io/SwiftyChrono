@@ -96,7 +96,7 @@ class ENPrioritizeSpecificDateRefiner: Refiner {
                 i += 1
             } else if isMoreSpecific(previousResult: currentResult!, currentResult: previousResult) &&
                 isAbleToMerge(text: text, previousResult: currentResult!, currentResult: previousResult) {
-                previousResult = mergeResult(text: text, specificResult: currentResult!, nonSpecificResult: previousResult)
+                previousResult = mergeResult(text: text, specificResult: previousResult, nonSpecificResult: currentResult!)
                 currentResult = nil
                 i += 1
             }
