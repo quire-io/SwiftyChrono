@@ -17,7 +17,7 @@ private let PATTERN = "(\\W|^)" +
     "([0-3]{0,1}[0-9]{1})[\\/\\.\\-]([0-3]{0,1}[0-9]{1})" +
     "(?:" +
         "[\\/\\.\\-]" +
-        "([0-9]{4}\\s*\\,?\\s*|[0-9]{2}\\s*\\,?\\s*)" +
+        "([0-9]{4}|[0-9]{2})" +
     ")?" +
     "(\\W|$)"
 
@@ -41,7 +41,11 @@ public class ENSlashDateFormatParser: Parser {
             return nil
         }
         
-        let (matchText, index) = matchTextAndIndex(from: text, andMatchResult: match)
+        let openGroup = match.isNotEmpty(atRangeIndex: openningGroup) ? match.string(from: text, atRangeIndex: openningGroup) : ""
+        let endGroup = match.isNotEmpty(atRangeIndex: endingGroup) ? match.string(from: text, atRangeIndex: endingGroup) : ""
+        let fullMatchText = match.string(from: text, atRangeIndex: 0)
+        let index = match.rangeAt(0).location + match.rangeAt(1).length
+        let matchText = fullMatchText.substring(from: openGroup.characters.count, to: fullMatchText.characters.count - endGroup.characters.count)
         var result = ParsedResult(ref: ref, index: index, text: matchText)
         
         if NSRegularExpression.isMatch(forPattern: "^\\d\\.\\d$", in: matchText) ||
