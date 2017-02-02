@@ -19,7 +19,7 @@ private let multiplierWordGroup = 3
 private let relativeWordGroup = 4
 
 private let HALF = 0.5
-private let HALF_SECOND = 500 * 1000 // unit: nanosecond
+private let HALF_SECOND = millisecondsToNanoSeconds(500) // unit: nanosecond
 
 public class ENRelativeDateFormatParser: Parser {
     override var pattern: String { return PATTERN }

@@ -144,7 +144,7 @@ public struct ParsedComponents {
         }
         
         if let millisecond = self[.millisecond] {
-            comps.nanosecond = millisecond * 1000
+            comps.nanosecond = millisecondsToNanoSeconds(millisecond)
         }
         
         let date = cal.date(from: comps)!

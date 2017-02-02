@@ -101,3 +101,7 @@ extension Date {
         return cal.date(byAdding: unit, value: value, to: self)!
     }
 }
+
+func millisecondsToNanoSeconds(_ milliseconds: Int) -> Int {
+    return milliseconds * 1000000
+}

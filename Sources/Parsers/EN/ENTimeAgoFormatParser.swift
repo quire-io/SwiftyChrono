@@ -21,7 +21,7 @@ private let STRICT_PATTERN = "(\\W|^)" +
     "ago(?=(?:\\W|$))"
 
 private let HALF = 0.5
-private let HALF_SECOND = 500 * 1000 // unit: nanosecond
+private let HALF_SECOND = millisecondsToNanoSeconds(500) // unit: nanosecond
 
 public class ENTimeAgoFormatParser: Parser {
     override var pattern: String { return strictMode ? STRICT_PATTERN : PATTERN }
