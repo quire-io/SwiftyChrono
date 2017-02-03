@@ -77,7 +77,8 @@ class TestEn: XCTestCase {
         
         /// set function callbacks
         //  chronoParse()
-        let chronoParse: @convention(block) (String, NSDate, NSDictionary) -> NSArray = { (text, ref, opt) -> NSArray in
+        let chronoParse: @convention(block) (String, NSDate, NSDictionary, String) -> NSArray = { (text, ref, opt, mode) -> NSArray in
+            let chrono = mode == "strict" ? Chrono.strict : mode == "casual" ? Chrono.casual : self.chrono
             self.lastTextForFailCase = text
             
             var opts = [OptionType: Int]()
@@ -85,7 +86,7 @@ class TestEn: XCTestCase {
                 opts[OptionType(rawValue: o.key as! String)!] = o.value as? Int ?? 1
             }
             
-            let parseResults = self.chrono.parse(text: text, refDate: ref as Date, opt: opts)
+            let parseResults = chrono.parse(text: text, refDate: ref as Date, opt: opts)
             let results = parseResults.map{ TestParsedResult($0) }
             self.lastResultsForFailCase = parseResults
             return results as NSArray
@@ -94,7 +95,8 @@ class TestEn: XCTestCase {
         
         /// set function callbacks
         //  chronoParseDate()
-        let chronoParseDate: @convention(block) (String, NSDate, NSDictionary) -> NSDate = { (text, ref, opt) in
+        let chronoParseDate: @convention(block) (String, NSDate, NSDictionary, String) -> NSDate = { (text, ref, opt, mode) in
+            let chrono = mode == "strict" ? Chrono.strict : mode == "casual" ? Chrono.casual : self.chrono
             self.lastTextForFailCase = text
             
             var opts = [OptionType: Int]()
@@ -105,7 +107,7 @@ class TestEn: XCTestCase {
             //return (self.chrono.parseDate(text: text, refDate: ref as Date, opt: opts) ?? Date()) as NSDate
             // for debugging, we get the raw parse result and get the first start date.
             // make sure this logic didn't change in chrono's parseDate()
-            let results = self.chrono.parse(text: text, refDate: ref as Date, opt: opts)
+            let results = chrono.parse(text: text, refDate: ref as Date, opt: opts)
             self.lastResultsForFailCase = results
             return (results.first?.start.date ?? Date()) as NSDate
             
@@ -125,20 +127,57 @@ class TestEn: XCTestCase {
         /// expose test() at the top scope for using objectForKeyedSubscript
         jsContext.evaluateScript(
             "chrono = {" +
-            "    parse: function(text) {" +
-            "        return chronoParse(text);" +
+            "    parse: function(text, ref, opt) {" +
+            "        return chronoParse(text, ref, opt);" +
             "    }," +
-            "    parseDate: function(text) {" +
-            "        return chronoParseDate(text);" +
+            "    parseDate: function(text, ref, opt) {" +
+            "        return chronoParseDate(text, ref, opt);" +
+            "    }," +
+            "    strict: {" +
+            "        parse: function(text, ref, opt) {" +
+            "            return chronoParse(text, ref, opt, 'strict');" +
+            "        }," +
+            "        parseDate: function(text, ref, opt) {" +
+            "            return chronoParseDate(text, ref, opt, 'strict');" +
+            "        }" +
+            "    }," +
+            "    casual: {" +
+            "        parse: function(text, ref, opt) {" +
+            "            return chronoParse(text, ref, opt, 'casual');" +
+            "        }," +
+            "        parseDate: function(text, ref, opt) {" +
+            "            return chronoParseDate(text, ref, opt, 'casual');" +
+            "        }" +
             "    }" +
             "};"
         )
     }
     
+    private let files = [
+        "test_en",
+        "test_en_casual",
+        "test_en_dash",
+        "test_en_deadline",
+//        "test_en_inter_std",
+//        "test_en_little_endian",
+//        "test_en_middle_endian",
+//        "test_en_month",
+//        "test_en_option_forward",
+//        "test_en_relative",
+//        "test_en_slash",
+//        "test_en_time_ago",
+//        "test_en_time_exp",
+//        "test_en_weekday",
+    ]
+    
     func testExample() {
-        let js = try! String(contentsOfFile: Bundle(identifier: "io.quire.lib.SwiftyChrono.iOS")!.path(forResource: "test_en", ofType: "js")!)
-        //let js = try! String(contentsOfFile: Bundle.main.path(forResource: "test_en", ofType: "js")!)
-        jsContext.evaluateScript(js)
+//        let js = try! String(contentsOfFile: Bundle(identifier: "io.quire.lib.SwiftyChrono.iOS")!.path(forResource: "test_en", ofType: "js")!)
+//        jsContext.evaluateScript(js)
+        for fileName in files {
+            print("start to test with: \(fileName)")
+            let js = try! String(contentsOfFile: Bundle(identifier: "io.quire.lib.SwiftyChrono.iOS")!.path(forResource: fileName, ofType: "js")!)
+            jsContext.evaluateScript(js)
+        }
     }
     
     override func tearDown() {

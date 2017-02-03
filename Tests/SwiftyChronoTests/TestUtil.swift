@@ -52,9 +52,8 @@ extension Date {
     
     /// ATTENTION: this is Javascript compatible init function.
     /// the range of month is between 0 ~ 11
-    init(_ year: Int, _ month: Int, date: Int = 1, _ hours: Int = 0, _ minutes: Int = 0, seconds: Int = 0, milliseconds: Int = 0) {
-        
-        let component = DateComponents(calendar: cal, timeZone: TimeZone.current, year: year, month: month, day: date, hour: hours, minute: minutes, second: seconds, nanosecond: milliseconds * 1000)
+    init(_ year: Int, _ month: Int, _ date: Int = 1, _ hours: Int = 0, _ minutes: Int = 0, _ seconds: Int = 0, _ milliseconds: Int = 0) {
+        let component = DateComponents(calendar: cal, timeZone: TimeZone.current, year: year, month: month, day: date, hour: hours, minute: minutes, second: seconds, nanosecond: millisecondsToNanoSeconds(milliseconds))
         self = component.date ?? Date()
     }
     
@@ -97,6 +96,7 @@ extension String {
 @objc protocol JSParsedComponents: JSExport {
     func date() -> Date
     func get(_ key: String) -> Int
+    func isCertain(_ key: String) -> Bool
 }
 
 class TestParsedResult: NSObject, JSParsedResult {
@@ -134,34 +134,45 @@ class TestParsedComponents: NSObject, JSParsedComponents {
     }
 
     func get(_ key: String) -> Int {
-        let k: ComponentUnit
-        switch key {
-        case "year":
-            k = .year
-        case "month":
-            k = .month
-        case "day":
-            k = .day
-        case "hour":
-            k = .hour
-        case "minute":
-            k = .minute
-        case "second":
-            k = .second
-        case "millisecond":
-            k = .millisecond
-        case "weekday":
-            k = .weekday
-        case "timeZoneOffset":
-            k = .timeZoneOffset
-        case "meridiem":
-            k = .meridiem
-        default:
-            assert(false, "won't enter in this case...")
-            k = .year
-        }
-        return parsedComponents[k]!
+        
+        return parsedComponents[keyToComponentUnit(key)]!
     }
+    
+    func isCertain(_ key: String) -> Bool {
+        return parsedComponents.isCertain(component: keyToComponentUnit(key))
+    }
+}
+
+private func keyToComponentUnit(_ key: String) -> ComponentUnit {
+    let k: ComponentUnit
+    switch key {
+    case "year":
+        k = .year
+    case "month":
+        k = .month
+    case "day":
+        k = .day
+    case "hour":
+        k = .hour
+    case "minute":
+        k = .minute
+    case "second":
+        k = .second
+    case "millisecond":
+        k = .millisecond
+    case "weekday":
+        k = .weekday
+    case "timezoneOffset":
+        fallthrough
+    case "timeZoneOffset":
+        k = .timeZoneOffset
+    case "meridiem":
+        k = .meridiem
+    default:
+        assert(false, "won't enter in this case...")
+        k = .year
+    }
+    return k
 }
 
 

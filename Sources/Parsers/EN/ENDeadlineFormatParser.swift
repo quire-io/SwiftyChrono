@@ -29,6 +29,7 @@ public class ENDeadlineFormatParser: Parser {
     override public func extract(text: String, ref: Date, match: NSTextCheckingResult, opt: [OptionType: Int]) -> ParsedResult? {
         let (matchText, index) = matchTextAndIndex(from: text, andMatchResult: match)
         var result = ParsedResult(ref: ref, index: index, text: matchText)
+        result.tags[.enDeadlineFormatParser] = true
         
         let number: Double
         let numberText = match.string(from: text, atRangeIndex: 3).lowercased()
@@ -83,7 +84,7 @@ public class ENDeadlineFormatParser: Parser {
         result.start.assign(.hour, value: date.hour)
         result.start.assign(.minute, value: date.minute)
         result.start.assign(.second, value: date.second)
-        result.tags[.enDeadlineFormatParser] = true
+        
         return result
     }
 }

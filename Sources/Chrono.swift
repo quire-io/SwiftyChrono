@@ -47,6 +47,6 @@ struct Chrono {
         return results.first?.start.date
     }
     
-    private static let strict = Chrono(modeOption: strictModeOption())
-    private static let casual = Chrono(modeOption: casualModeOption())
+    static let strict = Chrono(modeOption: strictModeOption())
+    static let casual = Chrono(modeOption: casualModeOption())
 }

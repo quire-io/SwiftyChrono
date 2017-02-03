@@ -61,7 +61,7 @@ extension Date {
     }
     
     var millisecond: Int {
-        return cal.component(.second, from: self)
+        return nanoSecondsToMilliseconds(cal.component(.nanosecond, from: self))
     }
     
     var weekday: Int {
@@ -104,4 +104,12 @@ extension Date {
 
 func millisecondsToNanoSeconds(_ milliseconds: Int) -> Int {
     return milliseconds * 1000000
+}
+
+func nanoSecondsToMilliseconds(_ nanoSeconds: Int) -> Int {
+    /// this convert is used to prevent from nanoseconds error
+    /// test case, create a date with nanoseconds 11000000, and get it via Calendar.Component, you will get 10999998
+    let doubleMs = Double(nanoSeconds) / 1000000
+    let ms = Int(doubleMs)
+    return doubleMs > Double(ms) ? ms + 1 : ms
 }
