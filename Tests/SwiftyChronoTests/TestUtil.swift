@@ -53,7 +53,7 @@ extension Date {
     /// ATTENTION: this is Javascript compatible init function.
     /// the range of month is between 0 ~ 11
     init(_ year: Int, _ month: Int, _ date: Int = 1, _ hours: Int = 0, _ minutes: Int = 0, _ seconds: Int = 0, _ milliseconds: Int = 0) {
-        let component = DateComponents(calendar: cal, timeZone: TimeZone.current, year: year, month: month, day: date, hour: hours, minute: minutes, second: seconds, nanosecond: millisecondsToNanoSeconds(milliseconds))
+        let component = DateComponents(calendar: cal, timeZone: TimeZone.current, year: year, month: month + 1, day: date, hour: hours, minute: minutes, second: seconds, nanosecond: millisecondsToNanoSeconds(milliseconds))
         self = component.date ?? Date()
     }
     

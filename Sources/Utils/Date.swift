@@ -19,17 +19,31 @@ let utcTimeZone: TimeZone = TimeZone(identifier: "UTC")!
 private let noneZeroComponents: Set<Calendar.Component> = [.year, .month, .day]
 
 extension Date {
-    init(_ date: Date, byComponentUpdates componentUpdates: [(component: Calendar.Component, value: Int)]) {
-        var dateComponents = cal.dateComponents([.year, .month, .day, .hour, .minute, .second, .nanosecond], from: date)
-        for componentUpdate in componentUpdates {
-            if noneZeroComponents.contains(componentUpdate.component) && componentUpdate.value == 0 {
-                continue
-            }
-            
-            dateComponents.setValue(componentUpdate.value, for: componentUpdate.component)
-        }
+    func setOrAdded(_ value: Int, _ component: Calendar.Component) -> Date {
+        let d = self
+        var value = value
         
-        self = cal.date(from: dateComponents)!
+        switch component {
+        case .year:
+            value -= d.year
+        case .month:
+            value -= d.month
+        case .day:
+            value -= d.day
+        case .hour:
+            value -= d.hour
+        case .minute:
+            value -= d.minute
+        case .second:
+            value -= d.second
+        case .nanosecond:
+            value -= d.nanosecond
+        case .weekday:
+            value -= d.weekday
+        default:
+            assert(false, "unsupported component...")
+        }
+        return d.added(value, component)
     }
     
     func isAfter(_ other: Date) -> Bool {
@@ -62,6 +76,10 @@ extension Date {
     
     var millisecond: Int {
         return nanoSecondsToMilliseconds(cal.component(.nanosecond, from: self))
+    }
+    
+    var nanosecond: Int {
+        return cal.component(.nanosecond, from: self)
     }
     
     var weekday: Int {

@@ -70,10 +70,9 @@ public class ENMonthNameMiddleEndianParser: Parser {
             result.start.assign(.year, value: year)
         } else {
             //Find the most appropriated year
-            var refMoment = Date(ref, byComponentUpdates: [
-                (.month, month - 1),
-                (.day, day)
-            ])
+            var refMoment = ref
+            refMoment = refMoment.setOrAdded(month, .month)
+            refMoment = refMoment.setOrAdded(day, .day)
             
             let nextYear = refMoment.added(1, .year)
             let lastYear = refMoment.added(-1, .year)

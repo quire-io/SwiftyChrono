@@ -48,7 +48,7 @@ private func updateParsedComponent(result: ParsedResult, ref: Date, offset: Int,
         }
     }
     
-    startMoment = Date(startMoment, byComponentUpdates: [(component: .weekday, value: weekday)])
+    startMoment = startMoment.setOrAdded(weekday, .weekday)
     
     result.start.assign(.weekday, value: offset)
     if startMomentFixed {
