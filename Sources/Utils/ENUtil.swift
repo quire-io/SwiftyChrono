@@ -18,6 +18,7 @@ let EN_WEEKDAY_OFFSET = [
     "wednesday": 3,
     "wed": 3,
     "thursday": 4,
+    "thurs": 4,
     "thur": 4,
     "thu": 4,
     "friday": 5,

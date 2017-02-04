@@ -123,7 +123,11 @@ public class ENTimeExpressionParser: Parser {
         
         result.start.assign(.hour, value: hour)
         result.start.assign(.minute, value: minute)
-        result.start.assign(.meridiem, value: meridiem >= 0 ? meridiem : hour < 12 ? 0 : 1)
+        if meridiem >= 0 {
+            result.start.assign(.meridiem, value: meridiem)
+        } else {
+            result.start.imply(.meridiem, to: hour < 12 ? 0 : 1)
+        }
         
         // ==============================================================
         //                  Extracting the 'to' chunk

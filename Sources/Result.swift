@@ -37,7 +37,7 @@ public struct ParsedResult {
     }
     
     func hasPossibleDates() -> Bool {
-        return start.isPossibleDate() && end?.isPossibleDate() ?? true
+        return start.isPossibleDate() && (end == nil || end!.isPossibleDate())
     }
 }
 
@@ -99,15 +99,18 @@ public struct ParsedComponents {
     
     public func isPossibleDate() -> Bool {
         var date = moment
+        var isUTC = false
         if isCertain(component: .timeZoneOffset) {
+            // iOS only: in moment.js lib, set utcOffset will turn on isUTC, so the getter will count on utc based time zone
+            isUTC = true
             date.utcOffset = self[.timeZoneOffset]!
         }
         
-        if date.year != self[.year] { return false }
-        if date.month != self[.month] { return false }
-        if date.day != self[.day] { return false }
-        if date.hour != self[.hour] { return false }
-        if date.minute != self[.minute] { return false }
+        if (isUTC ? date.utcYear : date.year) != self[.year] { return false }
+        if (isUTC ? date.utcMonth : date.month) != self[.month] { return false }
+        if (isUTC ? date.utcDay : date.day) != self[.day] { return false }
+        if (isUTC ? date.utcHour : date.hour) != self[.hour] { return false }
+        if (isUTC ? date.utcMinute : date.minute) != self[.minute] { return false }
         
         return true
     }
