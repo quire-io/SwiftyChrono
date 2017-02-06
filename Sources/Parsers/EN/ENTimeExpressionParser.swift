@@ -154,8 +154,8 @@ public class ENTimeExpressionParser: Parser {
             result.end = ParsedComponents(components: nil, ref: result.start.date)
         }
         
-        hour = 1
-        minute = 1
+        hour = 0
+        minute = 0
         meridiem = -1
         
         // ----- Second

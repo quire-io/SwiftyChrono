@@ -21,20 +21,24 @@ private let PATTERN = "(^|[^\\d/]\\s+|[^\\w\\s])" +
 private let openningGroup = 1
 private let endingGroup = 4
 
-private let yearGroup = 2
-private let monthGroup = 3
+private let monthGroup = 2
+private let yearGroup = 3
 
 public class ENSlashMonthFormatParser: Parser {
     override var pattern: String { return PATTERN }
     
-    override public func extract(text: String, ref: Date, match: NSTextCheckingResult, opt: [OptionType: Int]) -> ParsedResult? {
+    override public func extract(text: String, ref: Date, match: NSTextCheckingResult, opt: [OptionType: Int]) -> ParsedResult? {        
+        let openGroup = match.isNotEmpty(atRangeIndex: openningGroup) ? match.string(from: text, atRangeIndex: openningGroup) : ""
+        let endGroup = match.isNotEmpty(atRangeIndex: endingGroup) ? match.string(from: text, atRangeIndex: endingGroup) : ""
+        let fullMatchText = match.string(from: text, atRangeIndex: 0)
+        let index = match.rangeAt(0).location + match.rangeAt(openningGroup).length
+        let matchText = fullMatchText.substring(from: openGroup.characters.count, to: fullMatchText.characters.count - endGroup.characters.count).trimmed()
         
-        let (matchText, index) = matchTextAndIndex(from: text, andMatchResult: match)
         var result = ParsedResult(ref: ref, index: index, text: matchText)
         
-        result.start.assign(.year, value: Int(match.string(from: text, atRangeIndex: yearGroup)))
+        result.start.imply(.day, to: 1)
         result.start.assign(.month, value: Int(match.string(from: text, atRangeIndex: monthGroup)))
-        result.start.assign(.day, value: 1)
+        result.start.assign(.year, value: Int(match.string(from: text, atRangeIndex: yearGroup)))
         
         result.tags[.enSlashMonthFormatParser] = true
         return result

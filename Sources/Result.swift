@@ -16,7 +16,10 @@ public struct ParsedResult {
     public var start: ParsedComponents
     public var end: ParsedComponents?
     
-    init(ref: Date, index: Int, text: String, tags: [TagUnit: Bool] = [TagUnit: Bool](), start: [ComponentUnit: Int]? = nil, end: [ComponentUnit: Int]? = nil) {
+    // used for parsing logic controll
+    public let isMoveIndexMode: Bool
+    
+    init(ref: Date, index: Int, text: String, tags: [TagUnit: Bool] = [TagUnit: Bool](), start: [ComponentUnit: Int]? = nil, end: [ComponentUnit: Int]? = nil, isMoveIndexMode: Bool = false) {
         self.ref = ref
         self.index = index
         self.text = text
@@ -25,6 +28,11 @@ public struct ParsedResult {
         if let end = end {
             self.end = ParsedComponents(components: end, ref: ref)
         }
+        self.isMoveIndexMode = isMoveIndexMode
+    }
+    
+    static func moveIndexMode(index: Int) -> ParsedResult {
+        return self.init(ref: Date(), index: index, text: "", isMoveIndexMode: true)
     }
     
     func clone() -> ParsedResult {

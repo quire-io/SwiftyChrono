@@ -50,7 +50,7 @@ public class ENMonthNameParser: Parser {
                 year += 2000
             }
             
-            result.start.assign(.day, value: day)
+            result.start.imply(.day, to: day)
             result.start.assign(.month, value: month)
             result.start.assign(.year, value: year)
         } else {
@@ -67,9 +67,9 @@ public class ENMonthNameParser: Parser {
                 refMoment = lastYear
             }
             
-            result.start.assign(.day, value: day)
+            result.start.imply(.day, to: day)
             result.start.assign(.month, value: month)
-            result.start.assign(.year, value: refMoment.year)
+            result.start.imply(.year, to: refMoment.year)
         }
         
         result.tags[.enMonthNameParser] = true

@@ -84,7 +84,7 @@ public class ENMonthNameMiddleEndianParser: Parser {
             
             result.start.assign(.day, value: day)
             result.start.assign(.month, value: month)
-            result.start.assign(.year, value: refMoment.year)
+            result.start.imply(.year, to: refMoment.year)
         }
         
         // Weekday component

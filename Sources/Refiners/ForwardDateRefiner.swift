@@ -15,8 +15,9 @@ class ForwardDateRefiner: Refiner {
         }
         
         let resultsLength = results.count
+        var newResults = [ParsedResult]()
         
-        var i = 1
+        var i = 0
         while i < resultsLength {
             var result = results[i]
             var refMoment = result.ref
@@ -29,7 +30,7 @@ class ForwardDateRefiner: Refiner {
                         break
                     }
                     
-                    result.start.imply(.year, to: result.start[.year])
+                    result.start.imply(.year, to: result.start[.year]! + 1)
                     if result.end != nil && !result.end!.isCertain(component: .year) {
                         result.end!.imply(.year, to: result.end![.year]! + 1)
                     }
@@ -52,9 +53,10 @@ class ForwardDateRefiner: Refiner {
                 result.tags[.forwardDateRefiner] = true
             }
             
+            newResults.append(result)
             i += 1
         }
         
-        return results
+        return newResults
     }
 }
