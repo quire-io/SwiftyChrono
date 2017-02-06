@@ -13,7 +13,7 @@ private let PATTERN = "^\\s*\\(?([A-Z]{2,4})\\)?(?=\\W|$)"
 class ExtractTimezoneAbbrRefiner: Refiner {
     override public func refine(text: String, results: [ParsedResult], opt: [OptionType: Int]) -> [ParsedResult] {
         let resultsLength = results.count
-        let availableTagUnits: Set<TagUnit> = [.enTimeExpressionParser, ] // zhTimeExpressionParser, .frTimeExpressionParser
+        let availableTagUnits: Set<TagUnit> = [.enTimeExpressionParser, .frTimeExpressionParser] // zhTimeExpressionParser,
         var newResults = [ParsedResult]()
         
         var i = 0

@@ -1,5 +1,5 @@
 //
-//  ESMonthNameLittleEndianParser.swift
+//  FRMonthNameLittleEndianParser.swift
 //  SwiftyChrono
 //
 //  Created by Jerry Chen on 2/6/17.
@@ -9,11 +9,11 @@
 import Foundation
 
 private let PATTERN = "(\\W|^)" +
-    "(?:(Domingo|Lunes|Martes|Miércoles|Miercoles|Jueves|Viernes|Sábado|Sabado|Dom|Lun|Mar|Mie|Jue|Vie|Sab)\\s*,?\\s*)?" +
-    "([0-9]{1,2})(?:º|ª|°)?" +
-    "(?:\\s*(?:desde|de|\\-|\\–|al?|hasta|\\s)\\s*([0-9]{1,2})(?:º|ª|°)?)?\\s*(?:de)?\\s*" +
-    "(Ene(?:ro|\\.)?|Feb(?:rero|\\.)?|Mar(?:zo|\\.)?|Abr(?:il|\\.)?|May(?:o|\\.)?|Jun(?:io|\\.)?|Jul(?:io|\\.)?|Ago(?:sto|\\.)?|Sep(?:tiembre|\\.)?|Oct(?:ubre|\\.)?|Nov(?:iembre|\\.)?|Dic(?:iembre|\\.)?)" +
-    "(?:\\s*(?:del?)?(\\s*[0-9]{1,4}(?![^\\s]\\d))(\\s*[ad]\\.?\\s*c\\.?|a\\.?\\s*d\\.?)?)?" +
+    "(?:(Dimanche|Lundi|Mardi|mercredi|Jeudi|Vendredi|Samedi|Dim|Lun|Mar|Mer|Jeu|Ven|Sam)\\s*,?\\s*)?" +
+    "([0-9]{1,2}|1er)" +
+    "(?:\\s*(?:au|\\-|\\–|jusqu\'au?|\\s)\\s*([0-9]{1,2})(?:er)?)?\\s*(?:de)?\\s*" +
+    "(Jan(?:vier|\\.)?|Fév(?:rier|\\.)?|Mars|Avr(?:il|\\.)?|Mai|Juin|Juil(?:let|\\.)?|Ao[uû]t|Sept(?:embre|\\.)?|Oct(?:obre|\\.)?|Nov(?:embre|\\.)?|déc(?:embre|\\.)?)" +
+    "(?:\\s*(\\s*[0-9]{1,4}(?![^\\s]\\d))(?:\\s*(AC|[ap]\\.?\\s*c(?:h(?:r)?)?\\.?\\s*n\\.?))?)?" +
     "(?=\\W|$)"
 
 private let weekdayGroup = 2
@@ -23,24 +23,25 @@ private let monthNameGroup = 5
 private let yearGroup = 6
 private let yearBeGroup = 7
 
-public class ESMonthNameLittleEndianParser: Parser {
+public class FRMonthNameLittleEndianParser: Parser {
     override var pattern: String { return PATTERN }
     
     override public func extract(text: String, ref: Date, match: NSTextCheckingResult, opt: [OptionType: Int]) -> ParsedResult? {
         let (matchText, index) = matchTextAndIndex(from: text, andMatchResult: match)
         var result = ParsedResult(ref: ref, index: index, text: matchText)
         
-        let month = ES_MONTH_OFFSET[match.string(from: text, atRangeIndex: monthNameGroup).lowercased()]!
+        let a = match.string(from: text, atRangeIndex: monthNameGroup).lowercased()
+        let month = FR_MONTH_OFFSET[a]!
         
-        let day = Int(match.string(from: text, atRangeIndex: dateGroup))!
+        let day = Int(match.string(from: text, atRangeIndex: dateGroup).replacingOccurrences(of: "er", with: ""))!
         
         if match.isNotEmpty(atRangeIndex: yearGroup) {
             var year = Int(match.string(from: text, atRangeIndex: yearGroup).trimmed())!
             
             if match.isNotEmpty(atRangeIndex: yearBeGroup) {
                 let yearBe = match.string(from: text, atRangeIndex: yearBeGroup)
-                if NSRegularExpression.isMatch(forPattern: "a\\.?\\s*c\\.?", in: yearBe) {
-                    // antes de Cristo
+                if NSRegularExpression.isMatch(forPattern: "a", in: yearBe) {
+                    // Ante Christe natum
                     year = -year
                 }
             } else if year < 100 {
@@ -73,19 +74,20 @@ public class ESMonthNameLittleEndianParser: Parser {
         
         // Weekday component
         if match.isNotEmpty(atRangeIndex: weekdayGroup) {
-            let weekday = ES_WEEKDAY_OFFSET[match.string(from: text, atRangeIndex: weekdayGroup).lowercased()]
+            let weekday = FR_WEEKDAY_OFFSET[match.string(from: text, atRangeIndex: weekdayGroup).lowercased()]
             result.start.assign(.weekday, value: weekday)
         }
         
-        // Text can be 'range' value. Such as '12 - 13 January 2012'
+        // Text can be 'range' value. Such as '12 - 13 janvier 2012'
         if match.isNotEmpty(atRangeIndex: dateToGroup) {
             result.end = result.start.clone()
             result.end?.assign(.day, value: Int(match.string(from: text, atRangeIndex: dateToGroup))!)
         }
         
-        result.tags[.esMonthNameLittleEndianParser] = true
+        result.tags[.frMonthNameLittleEndianParser] = true
         return result
     }
 }
+
 
 

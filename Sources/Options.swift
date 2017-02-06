@@ -41,6 +41,12 @@ private func baseOption(strictMode: Bool) -> ModeOptio {
         ESSlashDateFormatParser(strictMode: strictMode),
         
         // FR
+        FRDeadlineFormatParser(strictMode: strictMode),
+        FRMonthNameLittleEndianParser(strictMode: strictMode),
+        FRSlashDateFormatParser(strictMode: strictMode),
+        FRTimeAgoFormatParser(strictMode: strictMode),
+        FRTimeExpressionParser(strictMode: strictMode),
+        
         // ZH-Hant
         
     ], refiners: [
@@ -52,6 +58,8 @@ private func baseOption(strictMode: Bool) -> ModeOptio {
         ENMergeDateTimeRefiner(),
         ENMergeDateRangeRefiner(),
         ENPrioritizeSpecificDateRefiner(),
+        FRMergeDateRangeRefiner(),
+        FRMergeDateTimeRefiner(),
         
         // Extract additional info later
         ExtractTimezoneOffsetRefiner(),
@@ -81,6 +89,9 @@ func casualModeOption() -> ModeOptio {
         ESWeekdayParser(strictMode: false),
         
         // FR
+        FRCasualDateParser(strictMode: false),
+        FRWeekdayParser(strictMode: false)
+        
     ], at: 0)
     
     return options
