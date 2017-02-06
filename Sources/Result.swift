@@ -165,8 +165,13 @@ public struct ParsedComponents {
             isCertain(component: .timeZoneOffset) ? self[.timeZoneOffset]! : currenttimeZoneOffset
         
         let adjustedtimeZoneOffset = targettimeZoneOffset - currenttimeZoneOffset
+        let newDate = date.added(-adjustedtimeZoneOffset, .minute)
         
-        return date.added(-adjustedtimeZoneOffset, .minute)
+        if Chrono.sixMinutesFixBefore1900 && newDate.utcYear < 1900 {
+            return newDate.added(6, .minute)
+        }
+        
+        return newDate
     }
 }
 

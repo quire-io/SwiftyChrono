@@ -17,7 +17,12 @@ public enum OptionType: String { case
     forwardDatesOnly = "forwardDatesOnly"
 }
 
-struct Chrono {
+public struct Chrono {
+    /// iOS's Calender.Component to date that has 6 minutes less if the date is before 1900 (compared to JavaScript or Java)
+    /// If your use case will include both be ealier than 1900 and its minutes, seconds, nanoseconds, (milliseconds)
+    /// you should turn on this fix.
+    static var sixMinutesFixBefore1900 = false
+    
     let modeOption: ModeOptio
     var parsers: [Parser] { return modeOption.parsers }
     var refiners: [Refiner] { return modeOption.refiners }

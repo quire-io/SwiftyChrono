@@ -349,6 +349,9 @@
 		C43A02E11E30A8C50041B7B1 /* ENMergeDateTimeRefiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A02DC1E30A8C50041B7B1 /* ENMergeDateTimeRefiner.swift */; };
 		C43A02E21E30A8C50041B7B1 /* ENMergeDateTimeRefiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A02DC1E30A8C50041B7B1 /* ENMergeDateTimeRefiner.swift */; };
 		C43A02E31E30A8C50041B7B1 /* ENMergeDateTimeRefiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A02DC1E30A8C50041B7B1 /* ENMergeDateTimeRefiner.swift */; };
+		C43A78251E48347A005E3BFF /* ChronoJSXCTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A78201E48347A005E3BFF /* ChronoJSXCTestCase.swift */; };
+		C43A78261E48347A005E3BFF /* ChronoJSXCTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A78201E48347A005E3BFF /* ChronoJSXCTestCase.swift */; };
+		C43A78271E48347A005E3BFF /* ChronoJSXCTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A78201E48347A005E3BFF /* ChronoJSXCTestCase.swift */; };
 		C47EB23F1E2E0797000F3D38 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47EB23E1E2E0797000F3D38 /* Result.swift */; };
 		C47EB2401E2E0797000F3D38 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47EB23E1E2E0797000F3D38 /* Result.swift */; };
 		C47EB2411E2E0797000F3D38 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47EB23E1E2E0797000F3D38 /* Result.swift */; };
@@ -587,6 +590,7 @@
 		C4169A211E2F8209007B7423 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		C4169A291E307CE6007B7423 /* ENCasualDateParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ENCasualDateParser.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		C43A02DC1E30A8C50041B7B1 /* ENMergeDateTimeRefiner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ENMergeDateTimeRefiner.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		C43A78201E48347A005E3BFF /* ChronoJSXCTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChronoJSXCTestCase.swift; sourceTree = "<group>"; };
 		C47EB23E1E2E0797000F3D38 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		C47EB2461E2E0DF8000F3D38 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		C4B94A521E35973F00B703E7 /* ENRelativeDateFormatParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENRelativeDateFormatParser.swift; sourceTree = "<group>"; };
@@ -719,6 +723,7 @@
 				BBB55AC31C8F80020050DDA9 /* Info.plist */,
 				C4B94A9A1E363ADA00B703E7 /* TestEn.swift */,
 				C4B94A9E1E363B9A00B703E7 /* TestUtil.swift */,
+				C43A78201E48347A005E3BFF /* ChronoJSXCTestCase.swift */,
 			);
 			name = Tests;
 			path = Tests/SwiftyChronoTests;
@@ -1479,6 +1484,7 @@
 				C47EB24B1E2E0DF8000F3D38 /* Date.swift in Sources */,
 				C4169A0E1E2F6EB3007B7423 /* Options.swift in Sources */,
 				C4DFF45B1E31BC2400E851B1 /* ENMonthNameLittleEndianParser.swift in Sources */,
+				C43A78251E48347A005E3BFF /* ChronoJSXCTestCase.swift in Sources */,
 				C4DFF44B1E30CDF300E851B1 /* ENUtil.swift in Sources */,
 				C4B94A5F1E35BE2900B703E7 /* ENSlashDateFormatParser.swift in Sources */,
 				BBB55AC21C8F80020050DDA9 /* SwiftyChronoTests.swift in Sources */,
@@ -1556,6 +1562,7 @@
 				C47EB24C1E2E0DF8000F3D38 /* Date.swift in Sources */,
 				C4169A0F1E2F6EB3007B7423 /* Options.swift in Sources */,
 				C4DFF45C1E31BC2400E851B1 /* ENMonthNameLittleEndianParser.swift in Sources */,
+				C43A78261E48347A005E3BFF /* ChronoJSXCTestCase.swift in Sources */,
 				C4DFF44C1E30CDF300E851B1 /* ENUtil.swift in Sources */,
 				C4B94A601E35BE2900B703E7 /* ENSlashDateFormatParser.swift in Sources */,
 				BBB55B151C8F8FE70050DDA9 /* SwiftyChronoTests.swift in Sources */,
@@ -1670,6 +1677,7 @@
 				C47EB24D1E2E0DF8000F3D38 /* Date.swift in Sources */,
 				C4169A101E2F6EB3007B7423 /* Options.swift in Sources */,
 				C4DFF45D1E31BC2400E851B1 /* ENMonthNameLittleEndianParser.swift in Sources */,
+				C43A78271E48347A005E3BFF /* ChronoJSXCTestCase.swift in Sources */,
 				C4DFF44D1E30CDF300E851B1 /* ENUtil.swift in Sources */,
 				C4B94A611E35BE2900B703E7 /* ENSlashDateFormatParser.swift in Sources */,
 				BBB55B161C8F8FE80050DDA9 /* SwiftyChronoTests.swift in Sources */,
