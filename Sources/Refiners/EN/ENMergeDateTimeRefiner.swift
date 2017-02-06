@@ -63,7 +63,7 @@ private func mergeResult(refText text: String, dateResult: ParsedResult, timeRes
             endDateTime.imply(.meridiem, to: endTime[.meridiem])
         }
         
-        if dateResult.end != nil && endDateTime.date.timeIntervalSince1970 < beginDateTime.date.timeIntervalSince1970 {
+        if dateResult.end == nil && endDateTime.date.timeIntervalSince1970 < beginDateTime.date.timeIntervalSince1970 {
             // Ex. 9pm - 1am
             if endDateTime.isCertain(component: .day) {
                 endDateTime.assign(.day, value: endDateTime[.day]! + 1)

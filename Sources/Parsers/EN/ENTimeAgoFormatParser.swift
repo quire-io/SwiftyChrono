@@ -73,7 +73,7 @@ public class ENTimeAgoFormatParser: Parser {
         }
         
         if NSRegularExpression.isMatch(forPattern: "week", in: matchText3) {
-            date = number != HALF ? date.added(-Int(number), .weekday) : date.added(-3, .day).added(-12, .hour)
+            date = number != HALF ? date.added(-Int(number) * 7, .day) : date.added(-3, .day).added(-12, .hour)
             
             result.start.imply(.day, to: date.day)
             result.start.imply(.month, to: date.month)

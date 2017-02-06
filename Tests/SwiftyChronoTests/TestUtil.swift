@@ -134,8 +134,7 @@ class TestParsedComponents: NSObject, JSParsedComponents {
     }
 
     func get(_ key: String) -> Int {
-        
-        return parsedComponents[keyToComponentUnit(key)]!
+        return parsedComponents[keyToComponentUnit(key)] ?? 0
     }
     
     func isCertain(_ key: String) -> Bool {
