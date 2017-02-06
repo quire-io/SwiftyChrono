@@ -8,9 +8,9 @@
 
 import Foundation
 
-private let PATTERN = "^\\s*(to|\\-)\\s*$"
-
 class ENMergeDateRangeRefiner: Refiner {
+    var PATTERN: String { return "^\\s*(to|\\-)\\s*$" }
+    
     override public func refine(text: String, results: [ParsedResult], opt: [OptionType: Int]) -> [ParsedResult] {
         let resultsLength = results.count
         if resultsLength < 2 { return results }

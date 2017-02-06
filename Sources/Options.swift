@@ -33,6 +33,8 @@ private func baseOption(strictMode: Bool) -> ModeOptio {
         ENTimeExpressionParser(strictMode: strictMode),
         
         // JP
+        JPStandardParser(strictMode: strictMode),
+        
         // ES
         ESTimeAgoFormatParser(strictMode: strictMode),
         ESDeadlineFormatParser(strictMode: strictMode),
@@ -60,6 +62,7 @@ private func baseOption(strictMode: Bool) -> ModeOptio {
         ENPrioritizeSpecificDateRefiner(),
         FRMergeDateRangeRefiner(),
         FRMergeDateTimeRefiner(),
+        JPMergeDateRangeRefiner(),
         
         // Extract additional info later
         ExtractTimezoneOffsetRefiner(),
@@ -84,6 +87,8 @@ func casualModeOption() -> ModeOptio {
         ENRelativeDateFormatParser(strictMode: false),
         
         // JP
+        JPCasualDateParser(strictMode: false),
+        
         // ES
         ESCasualDateParser(strictMode: false),
         ESWeekdayParser(strictMode: false),
