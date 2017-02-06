@@ -26,7 +26,8 @@ public class ChronoJSXCTestCase: XCTestCase, ChronoJSTestable {
     // used to calculate diff of [nthTest]
     var _lastText = ""
     
-    public func evalJS(_ script: String) {
+    public func evalJS(_ script: String, fileName: String) {
+        print("start to test: \(fileName)")
         jsContext.evaluateScript(script)
     }
     
