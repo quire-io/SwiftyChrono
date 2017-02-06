@@ -17,8 +17,8 @@ public class ENCasualDateParser: Parser {
         let (matchText, index) = matchTextAndIndex(from: text, andMatchResult: match)
         var result = ParsedResult(ref: ref, index: index, text: matchText)
         
-        
-        var startMoment = ref
+        let refMoment = ref
+        var startMoment = refMoment
         let lowerText = matchText.lowercased()
         
         if lowerText == "tonight" {
@@ -28,21 +28,21 @@ public class ENCasualDateParser: Parser {
             
         } else if NSRegularExpression.isMatch(forPattern: "^tomorrow|^tmr", in: lowerText) {
             // Check not "Tomorrow" on late night
-            if ref.hour > 1 {
+            if refMoment.hour > 1 {
                 startMoment = startMoment.added(1, .day)
             }
         } else if NSRegularExpression.isMatch(forPattern: "^yesterday", in: lowerText) {
             startMoment = startMoment.added(-1, .day)
         } else if NSRegularExpression.isMatch(forPattern: "last\\s*night", in: lowerText) {
             result.start.imply(.hour, to: 0)
-            if ref.hour > 6 {
+            if refMoment.hour > 6 {
                 startMoment = startMoment.added(-1, .day)
             }
         } else if NSRegularExpression.isMatch(forPattern: "now", in: lowerText) {
-            result.start.imply(.hour, to: ref.hour)
-            result.start.imply(.minute, to: ref.minute)
-            result.start.imply(.second, to: ref.second)
-            result.start.imply(.millisecond, to: ref.millisecond)
+            result.start.imply(.hour, to: refMoment.hour)
+            result.start.imply(.minute, to: refMoment.minute)
+            result.start.imply(.second, to: refMoment.second)
+            result.start.imply(.millisecond, to: refMoment.millisecond)
         }
         
         result.start.assign(.day, value: startMoment.day)

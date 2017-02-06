@@ -34,6 +34,12 @@ private func baseOption(strictMode: Bool) -> ModeOptio {
         
         // JP
         // ES
+        ESTimeAgoFormatParser(strictMode: strictMode),
+        ESDeadlineFormatParser(strictMode: strictMode),
+        ESTimeExpressionParser(strictMode: strictMode),
+        ESMonthNameLittleEndianParser(strictMode: strictMode),
+        ESSlashDateFormatParser(strictMode: strictMode),
+        
         // FR
         // ZH-Hant
         
@@ -71,6 +77,9 @@ func casualModeOption() -> ModeOptio {
         
         // JP
         // ES
+        ESCasualDateParser(strictMode: false),
+        ESWeekdayParser(strictMode: false),
+        
         // FR
     ], at: 0)
     

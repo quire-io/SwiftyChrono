@@ -10,7 +10,7 @@ import XCTest
 import JavaScriptCore
 
 public protocol ChronoJSTestable {
-    func evalJS(_ script: String)
+    func evalJS(_ script: String, fileName: String)
 }
 
 public class ChronoJSXCTestCase: XCTestCase, ChronoJSTestable {

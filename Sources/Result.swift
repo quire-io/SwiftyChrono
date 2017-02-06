@@ -195,6 +195,14 @@ public enum TagUnit { case
     enTimeExpressionParser,
     enWeekdayParser,
     
+    esCasualDateParser,
+    esDeadlineFormatParser,
+    esMonthNameLittleEndianParser,
+    esSlashDateFormatParser,
+    esTimeAgoFormatParser,
+    esTimeExpressionParser,
+    esWeekdayParser,
+    
     extractTimezoneAbbrRefiner,
     extractTimezoneOffsetRefiner,
     forwardDateRefiner,

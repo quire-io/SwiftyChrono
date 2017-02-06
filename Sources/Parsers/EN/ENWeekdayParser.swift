@@ -21,7 +21,7 @@ private let prefixGroup = 2
 private let weekdayGroup = 3
 private let postfixGroup = 4
 
-private func updateParsedComponent(result: ParsedResult, ref: Date, offset: Int, modifier: String) -> ParsedResult {
+public func updateParsedComponent(result: ParsedResult, ref: Date, offset: Int, modifier: String) -> ParsedResult {
     var result = result
     
     var startMoment = ref
