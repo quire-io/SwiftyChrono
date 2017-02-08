@@ -9,23 +9,22 @@
 import Foundation
 
 let DE_WEEKDAY_OFFSET = [
-    "Sonntag": 0,
-    "sun": 0,
-    "Montag": 1,
-    "mon": 1,
-    "Dienstag": 2,
-    "tue":2,
-    "Mittwoch": 3,
-    "wed": 3,
-    "Donnerstag": 4,
-    "thurs": 4,
-    "thur": 4,
-    "thu": 4,
-    "Freitag": 5,
-    "fri": 5,
-    "Samstag": 6,
-    "sat": 6
+    "sonntag": 0,
+    "so": 0,
+    "montag": 1,
+    "mo": 1,
+    "dienstag": 2,
+    "di":2,
+    "mittwoch": 3,
+    "mi": 3,
+    "donnerstag": 4,
+    "do": 4,
+    "freitag": 5,
+    "fr": 5,
+    "samstag": 6,
+    "sa": 6
 ]
+let DE_WEEKDAY_WORDS_PATTERN = "(?:" + DE_INTEGER1_WORDS.keys.joined(separator: "|") + ")"
 
 let DE_MONTH_OFFSET = [
     "Januar": 1,

@@ -77,7 +77,7 @@ extension NSRegularExpression {
 
 extension Dictionary {
     
-    func merged(with dictionary: Dictionary) {
+    mutating func merge(with dictionary: Dictionary) {
         dictionary.forEach { updateValue($1, forKey: $0) }
     }
     

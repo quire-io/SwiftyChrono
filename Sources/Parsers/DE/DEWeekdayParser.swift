@@ -1,8 +1,8 @@
 //
-//  ESWeekdayParser.swift
+//  DEWeekdayParser.swift
 //  SwiftyChrono
 //
-//  Created by Jerry Chen on 2/6/17.
+//  Created by Jerry Chen on 2/8/17.
 //  Copyright © 2017 Potix. All rights reserved.
 //
 
@@ -11,16 +11,16 @@ import Foundation
 private let PATTERN = "(\\W|^)" +
     "(?:(?:\\,|\\(|\\（)\\s*)?" +
     "(?:(este|pasado|pr[oó]ximo)\\s*)?" +
-    "(\(ES_WEEKDAY_OFFSET.keys.joined(separator: "|")))" +
+    "(\(DE_WEEKDAY_OFFSET.keys.joined(separator: "|")))" +
     "(?:\\s*(?:\\,|\\)|\\）))?" +
-    "(?:\\s*(este|pasado|pr[óo]ximo)\\s*week)?" +
-    "(?=\\W|$)"
+    "(?:\\s*(diese|letzte|nächste)\\s*Woche)?" +
+"(?=\\W|$)"
 
 private let prefixGroup = 2
 private let weekdayGroup = 3
 private let postfixGroup = 4
 
-public class ESWeekdayParser: Parser {
+public class DEWeekdayParser: Parser {
     override var pattern: String { return PATTERN }
     
     override public func extract(text: String, ref: Date, match: NSTextCheckingResult, opt: [OptionType: Int]) -> ParsedResult? {
@@ -28,7 +28,7 @@ public class ESWeekdayParser: Parser {
         var result = ParsedResult(ref: ref, index: index, text: matchText)
         
         let dayOfWeek = match.string(from: text, atRangeIndex: weekdayGroup).lowercased()
-        guard let offset = ES_WEEKDAY_OFFSET[dayOfWeek] else {
+        guard let offset = DE_WEEKDAY_OFFSET[dayOfWeek] else {
             return nil
         }
         
@@ -38,20 +38,22 @@ public class ESWeekdayParser: Parser {
         if prefix != nil || postfix != nil {
             let norm = (prefix ?? postfix ?? "").lowercased()
             
-            if norm == "pasado" {
+            if norm == "letzte" {
                 modifier = "last"
             }
-            else if norm == "próximo" || norm == "proximo" {
+            else if norm == "nächste" {
                 modifier = "next"
             }
-            else if norm == "este" {
+            else if norm == "diese" {
                 modifier =  "this"
             }
         }
         
         result = updateParsedComponent(result: result, ref: ref, offset: offset, modifier: modifier)
-        result.tags[.esWeekdayParser] = true
+        result.tags[.deWeekdayParser] = true
         return result
     }
 }
+
+
 

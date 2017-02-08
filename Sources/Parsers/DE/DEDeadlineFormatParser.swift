@@ -9,7 +9,7 @@
 import Foundation
 
 private let PATTERN = "(\\W|^)" +
-    "(Innerhalb|in)\\s*" +
+    "(Innerhalb|i[n|m])\\s*" +
     "(\(DE_INTEGER_WORDS_PATTERN)|[0-9]+|\(DE_INTEGER1_WORDS_PATTERN)(?:\\s*(?:weniger|paar))?|Halb(?:e?s?)(?:\\s*\(DE_INTEGER1_WORDS_PATTERN))?)\\s*" +
     "(sekunden?|minuten?|stunden?|tage?|wochen?|monate?|jahre?)\\s*" +
     "(?=\\W|$)"
