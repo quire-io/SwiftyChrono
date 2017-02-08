@@ -214,6 +214,9 @@ public enum TagUnit { case
     jpCasualDateParser,
     jpStandardParser,
     
+    deCasualDateParser,
+    deDeadlineFormatParser,
+    
     extractTimezoneAbbrRefiner,
     extractTimezoneOffsetRefiner,
     forwardDateRefiner,

@@ -74,3 +74,16 @@ extension NSRegularExpression {
         return (try? NSRegularExpression(pattern: pattern, options: .caseInsensitive))?.firstMatch(in: text, range: NSRange(location: 0, length: text.characters.count)) != nil
     }
 }
+
+extension Dictionary {
+    
+    func merged(with dictionary: Dictionary) {
+        dictionary.forEach { updateValue($1, forKey: $0) }
+    }
+    
+    func merged(with dictionary: Dictionary) -> Dictionary {
+        var dict = self
+        dict.merge(with: dictionary)
+        return dict
+    }
+}

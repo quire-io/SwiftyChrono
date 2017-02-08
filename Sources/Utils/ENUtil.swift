@@ -80,7 +80,7 @@ let EN_INTEGER_WORDS = [
     "eleven": 11,
     "twelve": 12
 ]
-let EN_INTEGER_WORDS_PATTERN = "(?:" + EN_INTEGER_WORDS.keys.joined(separator: "|") + ")";
+let EN_INTEGER_WORDS_PATTERN = "(?:" + EN_INTEGER_WORDS.keys.joined(separator: "|") + ")"
 
 let EN_ORDINAL_WORDS = [
     "first": 1,
@@ -115,4 +115,4 @@ let EN_ORDINAL_WORDS = [
     "thirtieth": 30,
     "thirty first": 31
 ]
-let EN_ORDINAL_WORDS_PATTERN = "(?:\(EN_ORDINAL_WORDS.keys.joined(separator: "|").replacingOccurrences(of: " ", with: "[ -]")))";
+let EN_ORDINAL_WORDS_PATTERN = "(?:\(EN_ORDINAL_WORDS.keys.joined(separator: "|").replacingOccurrences(of: " ", with: "[ -]")))"
