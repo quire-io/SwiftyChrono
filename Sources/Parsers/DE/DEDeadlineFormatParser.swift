@@ -10,8 +10,8 @@ import Foundation
 
 private let PATTERN = "(\\W|^)" +
     "(Innerhalb|i[n|m])\\s*" +
-    "(\(DE_INTEGER_WORDS_PATTERN)|[0-9]+|\(DE_INTEGER1_WORDS_PATTERN)(?:\\s*(?:weniger|paar))?|Halb(?:e?s?)(?:\\s*\(DE_INTEGER1_WORDS_PATTERN))?)\\s*" +
-    "(sekunden?|minuten?|stunden?|tage?|wochen?|monate?|jahre?)\\s*" +
+    "(\(DE_INTEGER_WORDS_PATTERN)|[0-9]+|\(DE_INTEGER1_WORDS_PATTERN)(?:\\s*(?:wenigen?|einigen?|paar))?|halbe(?:n|s)?(?:\\s*\(DE_INTEGER1_WORDS_PATTERN))?)\\s*" +
+    "(sekunden?|minuten?|stunden?|tag(?:e|en)?|wochen?|monat(?:e|en)?|jahr(?:e|en)??)\\s*" +
     "(?=\\W|$)"
 
 private let HALF = 0.5
@@ -31,9 +31,9 @@ public class DEDeadlineFormatParser: Parser {
             number = Double(number0)
         } else if DE_INTEGER1_WORDS[numberText] != nil {
             number = 1
-        } else if NSRegularExpression.isMatch(forPattern: "weniger|paar", in: numberText) {
+        } else if NSRegularExpression.isMatch(forPattern: "wenige|einige|paar", in: numberText) {
             number = 3
-        } else if NSRegularExpression.isMatch(forPattern: "Halb", in: numberText) {
+        } else if NSRegularExpression.isMatch(forPattern: "halbe", in: numberText) {
             number = HALF
         } else {
             number = Double(numberText)!

@@ -10,11 +10,12 @@ import Foundation
 
 private let PATTERN = "(\\W|^)" +
     "(?:(?:\\,|\\(|\\（)\\s*)?" +
-    "(?:(este|pasado|pr[oó]ximo)\\s*)" +
+    "(?:(?:a[mn]\\s*?)?" +
+    "(?:(diese[nmrs]|letzte[nmr]|nächste[nmr])\\s*)" +
     "(\(DE_WEEKDAY_OFFSET.keys.joined(separator: "|")))" +
     "(?:\\s*(?:\\,|\\)|\\）))?" +
-    "(?:\\s*(diese|letzte|nächste)\\s*Woche)?" +
-"(?=\\W|$)"
+    "(?:\\s*(dieser?|letzte[nr]?|nächste[nr]?)\\s*Woche)?" +
+    "(?=\\W|$)"
 
 private let prefixGroup = 2
 private let weekdayGroup = 3
@@ -38,14 +39,15 @@ public class DEWeekdayParser: Parser {
         if prefix != nil || postfix != nil {
             let norm = (prefix ?? postfix ?? "").lowercased()
             
-            if norm == "letzte" {
+            // fix it later
+            if norm.hasPrefix("letzte") {
                 modifier = "last"
             }
-            else if norm == "nächste" {
+            else if norm.hasPrefix("nächste") {
                 modifier = "next"
             }
-            else if norm == "diese" {
-                modifier =  "this"
+            else if norm.hasPrefix("diese") {
+                modifier = "this"
             }
         }
         

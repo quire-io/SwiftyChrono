@@ -10,8 +10,6 @@ import Foundation
 
 private let PATTERN = "(\\W|^)(jetzt|heute|heute\\s*Abend|letzte\\s*Nacht|(?:morgen|gestern)\\s*|morgen|gestern)(?=\\W|$)"
 
-//private let PATTERN = "(\\W|^)(now|today|tonight|last\\s*night|(?:tomorrow|tmr|yesterday)\\s*|tomorrow|tmr|yesterday)(?=\\W|$)"
-
 public class DECasualDateParser: Parser {
     override var pattern: String { return PATTERN }
     
