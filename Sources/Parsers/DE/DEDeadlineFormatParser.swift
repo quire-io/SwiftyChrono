@@ -14,17 +14,11 @@ private let PATTERN = "(\\W|^)" +
     "(sekunden?|minuten?|stunden?|tage?|wochen?|monate?|jahre?)\\s*" +
     "(?=\\W|$)"
 
-private let STRICT_PATTERN = "(\\W|^)" +
-    "(within|in)\\s*" +
-    "(\(DE_INTEGER_WORDS_PATTERN)|[0-9]+|ein(?:en?)?)\\s*" +
-    "(sekunden?|minuten?|stunden?|tage?)\\s*" +
-    "(?=\\W|$)"
-
 private let HALF = 0.5
 private let HALF_SECOND = millisecondsToNanoSeconds(500) // unit: nanosecond
 
 public class DEDeadlineFormatParser: Parser {
-    override var pattern: String { return strictMode ? STRICT_PATTERN : PATTERN }
+    override var pattern: String { return PATTERN }
     
     override public func extract(text: String, ref: Date, match: NSTextCheckingResult, opt: [OptionType: Int]) -> ParsedResult? {
         let (matchText, index) = matchTextAndIndex(from: text, andMatchResult: match)

@@ -49,6 +49,13 @@ private func baseOption(strictMode: Bool) -> ModeOptio {
         FRTimeAgoFormatParser(strictMode: strictMode),
         FRTimeExpressionParser(strictMode: strictMode),
         
+        // DE
+        DEDeadlineFormatParser(strictMode: strictMode),
+        DEMonthNameLittleEndianParser(strictMode: strictMode),
+        DESlashDateFormatParser(strictMode: strictMode),
+        DETimeAgoFormatParser(strictMode: strictMode),
+        DETimeExpressionParser(strictMode: strictMode),
+        
         // ZH-Hant
         
     ], refiners: [
@@ -95,7 +102,11 @@ func casualModeOption() -> ModeOptio {
         
         // FR
         FRCasualDateParser(strictMode: false),
-        FRWeekdayParser(strictMode: false)
+        FRWeekdayParser(strictMode: false),
+        
+        // DE
+        DECasualDateParser(strictMode: false),
+        DEWeekdayParser(strictMode: false),
         
     ], at: 0)
     

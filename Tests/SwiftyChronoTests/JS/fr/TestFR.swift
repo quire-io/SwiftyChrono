@@ -9,7 +9,7 @@
 import XCTest
 import JavaScriptCore
 
-class TestFr: ChronoJSXCTestCase {
+class TestFR: ChronoJSXCTestCase {
     private let files = [
         "test_fr_casual",
         "test_fr_dash",

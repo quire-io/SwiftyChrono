@@ -76,17 +76,17 @@ let DE_INTEGER1_WORDS = [
 let DE_INTEGER1_WORDS_PATTERN = "(?:" + DE_INTEGER1_WORDS.keys.joined(separator: "|") + ")"
 
 let DE_INTEGER_WORDS = DE_INTEGER1_WORDS.merged(with: [
-    "two": 2,
-    "three": 3,
-    "four": 4,
-    "five": 5,
-    "six": 6,
-    "seven": 7,
-    "eight": 8,
-    "nine": 9,
-    "ten": 10,
-    "eleven": 11,
-    "twelve": 12
+    "zwei": 2,
+    "drei": 3,
+    "vier": 4,
+    "fünf": 5,
+    "sechs": 6,
+    "sieben": 7,
+    "acht": 8,
+    "neun": 9,
+    "zehn": 10,
+    "elf": 11,
+    "zwölf": 12
 ])
 let DE_INTEGER_WORDS_PATTERN = "(?:" + DE_INTEGER_WORDS.keys.joined(separator: "|") + ")"
 

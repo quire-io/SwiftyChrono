@@ -10,7 +10,7 @@ import Foundation
 
 private let PATTERN = "(\\W|^)" +
     "(?:(?:\\,|\\(|\\（)\\s*)?" +
-    "(?:(este|pasado|pr[oó]ximo)\\s*)?" +
+    "(?:(este|pasado|pr[oó]ximo)\\s*)" +
     "(\(DE_WEEKDAY_OFFSET.keys.joined(separator: "|")))" +
     "(?:\\s*(?:\\,|\\)|\\）))?" +
     "(?:\\s*(diese|letzte|nächste)\\s*Woche)?" +
