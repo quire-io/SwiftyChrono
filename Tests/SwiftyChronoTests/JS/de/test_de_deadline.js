@@ -1,7 +1,8 @@
 
 test("Test - Single Expression", function() {
 
-    var text = "we have to do something in 5 days.";
+//     var text = "we have to do something in 5 days.";
+    var text = "Wir haben etwas in 5 Tagen zu tun.";
     var results = chrono.parse(text, new Date(2012,7,10));
     ok(results.length == 1, JSON.stringify( results ) );
 
@@ -21,8 +22,8 @@ test("Test - Single Expression", function() {
     }
 
 
-
-    var text = "we have to do something in five days.";
+//     var text = "we have to do something in five days.";
+    var text = "Wir müssen in fünf Tagen etwas tun.";
     var results = chrono.parse(text, new Date(2012,7,10));
     ok(results.length == 1, JSON.stringify( results ) );
 
@@ -42,7 +43,8 @@ test("Test - Single Expression", function() {
     }
 
 
-    var text = "we have to do something within 10 day";
+//     var text = "we have to do something within 10 day";
+    var text = "Wir müssen etwas innerhalb von 10 Tagen tun";
     var results = chrono.parse(text, new Date(2012,7,10));
     ok(results.length == 1, JSON.stringify( results ) );
 
@@ -62,7 +64,8 @@ test("Test - Single Expression", function() {
     }
 
 
-    var text = "in 5 minutes";
+//     var text = "in 5 minutes";
+     var text = "in 5 Minuten";
     var results = chrono.parse(text, new Date(2012,7,10,12,14));
     ok(results.length == 1, JSON.stringify( results ) );
 
@@ -76,7 +79,8 @@ test("Test - Single Expression", function() {
         ok(Math.abs(expectDate.getTime() - resultDate.getTime()) < 100000, 'Test result.startDate ' + resultDate +'/' +expectDate)
     }
 
-    var text = "within 1 hour";
+//     var text = "within 1 hour";
+    var text = "Innerhalb von 1 Stunde";
     var results = chrono.parse(text, new Date(2012,7,10,12,14));
     ok(results.length == 1, JSON.stringify( results ) );
 
@@ -90,7 +94,8 @@ test("Test - Single Expression", function() {
         ok(Math.abs(expectDate.getTime() - resultDate.getTime()) < 100000, 'Test result.startDate ' + resultDate +'/' +expectDate)
     }
 
-    var text = "In 5 minutes I will go home";
+//     var text = "In 5 minutes I will go home";
+    var text = "In 5 Minuten gehe ich nach Hause";
     var results = chrono.parse(text, new Date(2012,7,10,12,14));
     ok(results.length == 1, JSON.stringify( results ) );
 
@@ -105,7 +110,8 @@ test("Test - Single Expression", function() {
     }
 
 
-    var text = "In 5 minutes A car need to move";
+//     var text = "In 5 minutes A car need to move";
+    var text = "In 5 Minuten Ein Auto muss sich bewegen";
     var results = chrono.parse(text, new Date(2012,7,10,12,14));
     ok(results.length == 1, JSON.stringify( results ) );
 
@@ -120,7 +126,8 @@ test("Test - Single Expression", function() {
     }
 
 
-    var text = "In 5 seconds A car need to move";
+//     var text = "In 5 seconds A car need to move";
+    var text = "In 5 Sekunden Ein Auto muss sich bewegen";
     var results = chrono.parse(text, new Date(2012,7, 10, 12, 14));
     ok(results.length == 1, JSON.stringify( results ) );
 
@@ -135,7 +142,8 @@ test("Test - Single Expression", function() {
     }
 
 
-    var text = "within half an hour";
+//     var text = "within half an hour";
+    var text = "Innerhalb einer halben Stunde";
     var results = chrono.parse(text, new Date(2012,7,10,12,14));
     ok(results.length == 1, JSON.stringify( results ) );
 
@@ -150,7 +158,8 @@ test("Test - Single Expression", function() {
     }
 
 
-    var text = "within two weeks";
+//     var text = "within two weeks";
+    var text = "innerhalb von zwei Wochen";
     var results = chrono.parse(text, new Date(2012, 7, 10, 12, 14));
     ok(results.length == 1, JSON.stringify( results ) );
 
@@ -165,7 +174,8 @@ test("Test - Single Expression", function() {
     }
 
 
-    var text = "within a month";
+//     var text = "within a month";
+    var text = "innerhalb eines Monats";
     var results = chrono.parse(text, new Date(2012, 7, 10, 12, 14));
     ok(results.length == 1, JSON.stringify( results ) );
 
@@ -180,7 +190,8 @@ test("Test - Single Expression", function() {
     }
 
 
-    var text = "within a few months";
+//     var text = "within a few months";
+    var text = "Innerhalb weniger Monate";
     var results = chrono.parse(text, new Date(2012, 7, 10, 12, 14));
     ok(results.length == 1, JSON.stringify( results ) );
 
@@ -195,22 +206,8 @@ test("Test - Single Expression", function() {
     }
 
 
-    var text = "within one year";
-    var results = chrono.parse(text, new Date(2012, 7, 10, 12, 14));
-    ok(results.length == 1, JSON.stringify( results ) );
-
-    var result = results[0];
-    if(result){
-        ok(result.index == 0, 'Wrong index');
-        ok(result.text == 'within one year', result.text );
-
-        var resultDate = result.start.date();
-        var expectDate = new Date(2013, 7, 10, 12);
-        ok(Math.abs(expectDate.getTime() - resultDate.getTime()) < 100000, 'Test result.startDate ' + resultDate +'/' +expectDate)
-    }
-
-
-    var text = "within one Year";
+//     var text = "within one Year";
+    var text = "innerhalb eines Jahres";
     var results = chrono.parse(text, new Date(2012, 7, 10, 12, 14));
     ok(results.length == 1, JSON.stringify( results ) );
 
@@ -224,75 +221,18 @@ test("Test - Single Expression", function() {
         ok(Math.abs(expectDate.getTime() - resultDate.getTime()) < 100000, 'Test result.startDate ' + resultDate +'/' +expectDate)
     }
 
-
-    var text = "within One year";
-    var results = chrono.parse(text, new Date(2012, 7, 10, 12, 14));
-    ok(results.length == 1, JSON.stringify( results ) );
-
-    var result = results[0];
-    if(result){
-        ok(result.index == 0, 'Wrong index');
-        ok(result.text == 'within One year', result.text );
-
-        var resultDate = result.start.date();
-        var expectDate = new Date(2013, 7, 10, 12);
-        ok(Math.abs(expectDate.getTime() - resultDate.getTime()) < 100000, 'Test result.startDate ' + resultDate +'/' +expectDate)
-    }
-
-
-    var text = "In 5 Minutes A car need to move";
-    var results = chrono.parse(text, new Date(2012,7,10,12,14));
-    ok(results.length == 1, JSON.stringify( results ) );
-
-    var result = results[0];
-    if(result){
-        ok(result.index == 0, 'Wrong index');
-        ok(result.text == 'In 5 Minutes', result.text );
-
-        var resultDate = result.start.date();
-        var expectDate = new Date(2012,7,10,12,19);
-        ok(Math.abs(expectDate.getTime() - resultDate.getTime()) < 100000, 'Test result.startDate ' + resultDate +'/' +expectDate)
-    }
-
-
-    var text = "In 5 mins a car need to move";
-    var results = chrono.parse(text, new Date(2012,7,10,12,14));
-    ok(results.length == 1, JSON.stringify( results ) );
-
-    var result = results[0];
-    if(result){
-        ok(result.index == 0, 'Wrong index');
-        ok(result.text == 'In 5 mins', result.text );
-
-        var resultDate = result.start.date();
-        var expectDate = new Date(2012,7,10,12,19);
-        ok(Math.abs(expectDate.getTime() - resultDate.getTime()) < 100000, 'Test result.startDate ' + resultDate +'/' +expectDate)
-    }
-
-    var text = "in a week";
-    var result = chrono.parse(text, new Date(2016, 10-1, 1))[0];
-    ok(result.text == text, result.text);
-    ok(result.start.get('year') == 2016, JSON.stringify(result.start));
-    ok(result.start.get('month') == 10, JSON.stringify(result.start));
-    ok(result.start.get('day') == 8, JSON.stringify(result.start));
-    ok(result.start.get('hour') == 12, JSON.stringify(result.start));
-
 });
 
 
 test("Test - Single Expression (Strict)", function() {
-
-    var text = "within one year";
-    var results = chrono.strict.parse(text, new Date(2012,7,10,12,14));
-    ok(results.length == 0, JSON.stringify( results ) );
-
-
-    var text = "within a few months";
+//     var text = "within a few months";
+    var text = "Innerhalb weniger Monate";
     var results = chrono.strict.parse(text, new Date(2012, 8-1, 3));
     ok(results.length == 0, JSON.stringify( results ) )
 
 
-    var text = "within a few days";
+//     var text = "within a few days";
+    var text = "innerhalb weniger Tage";
     var results = chrono.strict.parse(text, new Date(2012, 8-1, 3));
     ok(results.length == 0, JSON.stringify( results ) )
 });
