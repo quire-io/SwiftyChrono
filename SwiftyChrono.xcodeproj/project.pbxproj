@@ -55,6 +55,23 @@
 		C40E0F0F1E4B263A00629263 /* DEWeekdayParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40E0F0A1E4B263A00629263 /* DEWeekdayParser.swift */; };
 		C40E0F101E4B263A00629263 /* DEWeekdayParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40E0F0A1E4B263A00629263 /* DEWeekdayParser.swift */; };
 		C40E0F111E4B263A00629263 /* DEWeekdayParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40E0F0A1E4B263A00629263 /* DEWeekdayParser.swift */; };
+		C40E0F131E4BFF1600629263 /* DETimeExpressionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40E0F121E4BFF1600629263 /* DETimeExpressionParser.swift */; };
+		C40E0F141E4BFF1600629263 /* DETimeExpressionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40E0F121E4BFF1600629263 /* DETimeExpressionParser.swift */; };
+		C40E0F151E4BFF1600629263 /* DETimeExpressionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40E0F121E4BFF1600629263 /* DETimeExpressionParser.swift */; };
+		C40E0F161E4BFF1600629263 /* DETimeExpressionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40E0F121E4BFF1600629263 /* DETimeExpressionParser.swift */; };
+		C40E0F171E4BFF1600629263 /* DETimeExpressionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40E0F121E4BFF1600629263 /* DETimeExpressionParser.swift */; };
+		C40E0F181E4BFF1600629263 /* DETimeExpressionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40E0F121E4BFF1600629263 /* DETimeExpressionParser.swift */; };
+		C40E0F191E4BFF1600629263 /* DETimeExpressionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40E0F121E4BFF1600629263 /* DETimeExpressionParser.swift */; };
+		C40E0F1B1E4C0D9100629263 /* DEMonthNameLittleEndianParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40E0F1A1E4C0D9100629263 /* DEMonthNameLittleEndianParser.swift */; };
+		C40E0F1C1E4C0D9100629263 /* DEMonthNameLittleEndianParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40E0F1A1E4C0D9100629263 /* DEMonthNameLittleEndianParser.swift */; };
+		C40E0F1D1E4C0D9100629263 /* DEMonthNameLittleEndianParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40E0F1A1E4C0D9100629263 /* DEMonthNameLittleEndianParser.swift */; };
+		C40E0F1E1E4C0D9100629263 /* DEMonthNameLittleEndianParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40E0F1A1E4C0D9100629263 /* DEMonthNameLittleEndianParser.swift */; };
+		C40E0F1F1E4C0D9100629263 /* DEMonthNameLittleEndianParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40E0F1A1E4C0D9100629263 /* DEMonthNameLittleEndianParser.swift */; };
+		C40E0F201E4C0D9100629263 /* DEMonthNameLittleEndianParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40E0F1A1E4C0D9100629263 /* DEMonthNameLittleEndianParser.swift */; };
+		C40E0F211E4C0D9100629263 /* DEMonthNameLittleEndianParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40E0F1A1E4C0D9100629263 /* DEMonthNameLittleEndianParser.swift */; };
+		C40E0F231E4C235100629263 /* TestDE.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40E0F221E4C235100629263 /* TestDE.swift */; };
+		C40E0F241E4C235100629263 /* TestDE.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40E0F221E4C235100629263 /* TestDE.swift */; };
+		C40E0F251E4C235100629263 /* TestDE.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40E0F221E4C235100629263 /* TestDE.swift */; };
 		C4169A021E2F6E19007B7423 /* Chrono.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4169A011E2F6E19007B7423 /* Chrono.swift */; };
 		C4169A031E2F6E19007B7423 /* Chrono.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4169A011E2F6E19007B7423 /* Chrono.swift */; };
 		C4169A041E2F6E19007B7423 /* Chrono.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4169A011E2F6E19007B7423 /* Chrono.swift */; };
@@ -373,9 +390,9 @@
 		C43A795B1E484B5F005E3BFF /* test_zh_hant_weekday.js in Resources */ = {isa = PBXBuildFile; fileRef = C43A78531E484B5E005E3BFF /* test_zh_hant_weekday.js */; };
 		C43A795C1E484B5F005E3BFF /* test_zh_hant_weekday.js in Resources */ = {isa = PBXBuildFile; fileRef = C43A78531E484B5E005E3BFF /* test_zh_hant_weekday.js */; };
 		C43A795D1E484B5F005E3BFF /* test_zh_hant_weekday.js in Resources */ = {isa = PBXBuildFile; fileRef = C43A78531E484B5E005E3BFF /* test_zh_hant_weekday.js */; };
-		C43A795F1E484BA4005E3BFF /* TestEn.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A795E1E484BA4005E3BFF /* TestEn.swift */; };
-		C43A79601E484BA4005E3BFF /* TestEn.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A795E1E484BA4005E3BFF /* TestEn.swift */; };
-		C43A79611E484BA4005E3BFF /* TestEn.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A795E1E484BA4005E3BFF /* TestEn.swift */; };
+		C43A795F1E484BA4005E3BFF /* TestEN.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A795E1E484BA4005E3BFF /* TestEN.swift */; };
+		C43A79601E484BA4005E3BFF /* TestEN.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A795E1E484BA4005E3BFF /* TestEN.swift */; };
+		C43A79611E484BA4005E3BFF /* TestEN.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A795E1E484BA4005E3BFF /* TestEN.swift */; };
 		C43A79631E484E76005E3BFF /* ESCasualDateParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A79621E484E76005E3BFF /* ESCasualDateParser.swift */; };
 		C43A79641E484E76005E3BFF /* ESCasualDateParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A79621E484E76005E3BFF /* ESCasualDateParser.swift */; };
 		C43A79651E484E76005E3BFF /* ESCasualDateParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A79621E484E76005E3BFF /* ESCasualDateParser.swift */; };
@@ -432,9 +449,9 @@
 		C43A799F1E48665F005E3BFF /* ESWeekdayParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A799A1E48665F005E3BFF /* ESWeekdayParser.swift */; };
 		C43A79A01E48665F005E3BFF /* ESWeekdayParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A799A1E48665F005E3BFF /* ESWeekdayParser.swift */; };
 		C43A79A11E48665F005E3BFF /* ESWeekdayParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A799A1E48665F005E3BFF /* ESWeekdayParser.swift */; };
-		C43A79A71E486A1E005E3BFF /* TestEs.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A79A61E486A1E005E3BFF /* TestEs.swift */; };
-		C43A79A81E486A1E005E3BFF /* TestEs.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A79A61E486A1E005E3BFF /* TestEs.swift */; };
-		C43A79A91E486A1E005E3BFF /* TestEs.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A79A61E486A1E005E3BFF /* TestEs.swift */; };
+		C43A79A71E486A1E005E3BFF /* TestES.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A79A61E486A1E005E3BFF /* TestES.swift */; };
+		C43A79A81E486A1E005E3BFF /* TestES.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A79A61E486A1E005E3BFF /* TestES.swift */; };
+		C43A79A91E486A1E005E3BFF /* TestES.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A79A61E486A1E005E3BFF /* TestES.swift */; };
 		C43A79AB1E487D3F005E3BFF /* FRCasualDateParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A79AA1E487D3F005E3BFF /* FRCasualDateParser.swift */; };
 		C43A79AC1E487D3F005E3BFF /* FRCasualDateParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A79AA1E487D3F005E3BFF /* FRCasualDateParser.swift */; };
 		C43A79AD1E487D3F005E3BFF /* FRCasualDateParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A79AA1E487D3F005E3BFF /* FRCasualDateParser.swift */; };
@@ -505,9 +522,9 @@
 		C43A79F71E488AF3005E3BFF /* FRMergeDateTimeRefiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A79F21E488AF3005E3BFF /* FRMergeDateTimeRefiner.swift */; };
 		C43A79F81E488AF3005E3BFF /* FRMergeDateTimeRefiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A79F21E488AF3005E3BFF /* FRMergeDateTimeRefiner.swift */; };
 		C43A79F91E488AF3005E3BFF /* FRMergeDateTimeRefiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A79F21E488AF3005E3BFF /* FRMergeDateTimeRefiner.swift */; };
-		C43A79FF1E488CC2005E3BFF /* TestFr.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A79FA1E488CC2005E3BFF /* TestFr.swift */; };
-		C43A7A001E488CC2005E3BFF /* TestFr.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A79FA1E488CC2005E3BFF /* TestFr.swift */; };
-		C43A7A011E488CC2005E3BFF /* TestFr.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A79FA1E488CC2005E3BFF /* TestFr.swift */; };
+		C43A79FF1E488CC2005E3BFF /* TestFR.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A79FA1E488CC2005E3BFF /* TestFR.swift */; };
+		C43A7A001E488CC2005E3BFF /* TestFR.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A79FA1E488CC2005E3BFF /* TestFR.swift */; };
+		C43A7A011E488CC2005E3BFF /* TestFR.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A79FA1E488CC2005E3BFF /* TestFR.swift */; };
 		C43A7A031E48B8E4005E3BFF /* JPCasualDateParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A7A021E48B8E4005E3BFF /* JPCasualDateParser.swift */; };
 		C43A7A041E48B8E4005E3BFF /* JPCasualDateParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A7A021E48B8E4005E3BFF /* JPCasualDateParser.swift */; };
 		C43A7A051E48B8E4005E3BFF /* JPCasualDateParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A7A021E48B8E4005E3BFF /* JPCasualDateParser.swift */; };
@@ -536,9 +553,9 @@
 		C43A7A1F1E48D116005E3BFF /* JPMergeDateRangeRefiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A7A1A1E48D116005E3BFF /* JPMergeDateRangeRefiner.swift */; };
 		C43A7A201E48D116005E3BFF /* JPMergeDateRangeRefiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A7A1A1E48D116005E3BFF /* JPMergeDateRangeRefiner.swift */; };
 		C43A7A211E48D116005E3BFF /* JPMergeDateRangeRefiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A7A1A1E48D116005E3BFF /* JPMergeDateRangeRefiner.swift */; };
-		C43A7A231E48D395005E3BFF /* TestJp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A7A221E48D395005E3BFF /* TestJp.swift */; };
-		C43A7A241E48D395005E3BFF /* TestJp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A7A221E48D395005E3BFF /* TestJp.swift */; };
-		C43A7A251E48D395005E3BFF /* TestJp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A7A221E48D395005E3BFF /* TestJp.swift */; };
+		C43A7A231E48D395005E3BFF /* TestJP.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A7A221E48D395005E3BFF /* TestJP.swift */; };
+		C43A7A241E48D395005E3BFF /* TestJP.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A7A221E48D395005E3BFF /* TestJP.swift */; };
+		C43A7A251E48D395005E3BFF /* TestJP.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A7A221E48D395005E3BFF /* TestJP.swift */; };
 		C43A7A271E4986AA005E3BFF /* DEUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A7A261E4986AA005E3BFF /* DEUtil.swift */; };
 		C43A7A281E4986AA005E3BFF /* DEUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A7A261E4986AA005E3BFF /* DEUtil.swift */; };
 		C43A7A291E4986AA005E3BFF /* DEUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A7A261E4986AA005E3BFF /* DEUtil.swift */; };
@@ -809,6 +826,9 @@
 		C40E0EF81E4AD9CB00629263 /* DESlashDateFormatParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DESlashDateFormatParser.swift; sourceTree = "<group>"; };
 		C40E0F001E4B067C00629263 /* DETimeAgoFormatParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DETimeAgoFormatParser.swift; sourceTree = "<group>"; };
 		C40E0F0A1E4B263A00629263 /* DEWeekdayParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DEWeekdayParser.swift; sourceTree = "<group>"; };
+		C40E0F121E4BFF1600629263 /* DETimeExpressionParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DETimeExpressionParser.swift; sourceTree = "<group>"; };
+		C40E0F1A1E4C0D9100629263 /* DEMonthNameLittleEndianParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DEMonthNameLittleEndianParser.swift; sourceTree = "<group>"; };
+		C40E0F221E4C235100629263 /* TestDE.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestDE.swift; sourceTree = "<group>"; };
 		C4169A011E2F6E19007B7423 /* Chrono.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chrono.swift; sourceTree = "<group>"; };
 		C4169A091E2F6EB3007B7423 /* Options.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Options.swift; sourceTree = "<group>"; };
 		C4169A111E2F7195007B7423 /* Refiner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Refiner.swift; sourceTree = "<group>"; };
@@ -855,7 +875,7 @@
 		C43A78511E484B5E005E3BFF /* test_zh_hant_deadline.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = test_zh_hant_deadline.js; sourceTree = "<group>"; };
 		C43A78521E484B5E005E3BFF /* test_zh_hant_time_exp.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = test_zh_hant_time_exp.js; sourceTree = "<group>"; };
 		C43A78531E484B5E005E3BFF /* test_zh_hant_weekday.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = test_zh_hant_weekday.js; sourceTree = "<group>"; };
-		C43A795E1E484BA4005E3BFF /* TestEn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestEn.swift; sourceTree = "<group>"; };
+		C43A795E1E484BA4005E3BFF /* TestEN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestEN.swift; sourceTree = "<group>"; };
 		C43A79621E484E76005E3BFF /* ESCasualDateParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESCasualDateParser.swift; sourceTree = "<group>"; };
 		C43A796A1E485743005E3BFF /* ESDeadlineFormatParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESDeadlineFormatParser.swift; sourceTree = "<group>"; };
 		C43A79721E485BC0005E3BFF /* ESUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESUtil.swift; sourceTree = "<group>"; };
@@ -864,7 +884,7 @@
 		C43A798A1E48613A005E3BFF /* ESTimeAgoFormatParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESTimeAgoFormatParser.swift; sourceTree = "<group>"; };
 		C43A79921E4863C1005E3BFF /* ESTimeExpressionParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESTimeExpressionParser.swift; sourceTree = "<group>"; };
 		C43A799A1E48665F005E3BFF /* ESWeekdayParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESWeekdayParser.swift; sourceTree = "<group>"; };
-		C43A79A61E486A1E005E3BFF /* TestEs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestEs.swift; sourceTree = "<group>"; };
+		C43A79A61E486A1E005E3BFF /* TestES.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestES.swift; sourceTree = "<group>"; };
 		C43A79AA1E487D3F005E3BFF /* FRCasualDateParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRCasualDateParser.swift; sourceTree = "<group>"; };
 		C43A79B21E487F8D005E3BFF /* FRDeadlineFormatParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRDeadlineFormatParser.swift; sourceTree = "<group>"; };
 		C43A79BA1E487FE1005E3BFF /* FRUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRUtil.swift; sourceTree = "<group>"; };
@@ -875,12 +895,12 @@
 		C43A79E21E48890A005E3BFF /* FRWeekdayParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRWeekdayParser.swift; sourceTree = "<group>"; };
 		C43A79EA1E488A13005E3BFF /* FRMergeDateRangeRefiner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRMergeDateRangeRefiner.swift; sourceTree = "<group>"; };
 		C43A79F21E488AF3005E3BFF /* FRMergeDateTimeRefiner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRMergeDateTimeRefiner.swift; sourceTree = "<group>"; };
-		C43A79FA1E488CC2005E3BFF /* TestFr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestFr.swift; sourceTree = "<group>"; };
+		C43A79FA1E488CC2005E3BFF /* TestFR.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestFR.swift; sourceTree = "<group>"; };
 		C43A7A021E48B8E4005E3BFF /* JPCasualDateParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPCasualDateParser.swift; sourceTree = "<group>"; };
 		C43A7A0A1E48BD0D005E3BFF /* JPStandardParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPStandardParser.swift; sourceTree = "<group>"; };
 		C43A7A121E48BD37005E3BFF /* JPUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPUtil.swift; sourceTree = "<group>"; };
 		C43A7A1A1E48D116005E3BFF /* JPMergeDateRangeRefiner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPMergeDateRangeRefiner.swift; sourceTree = "<group>"; };
-		C43A7A221E48D395005E3BFF /* TestJp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestJp.swift; sourceTree = "<group>"; };
+		C43A7A221E48D395005E3BFF /* TestJP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestJP.swift; sourceTree = "<group>"; };
 		C43A7A261E4986AA005E3BFF /* DEUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DEUtil.swift; sourceTree = "<group>"; };
 		C43A7A361E49C784005E3BFF /* DECasualDateParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DECasualDateParser.swift; sourceTree = "<group>"; };
 		C43A7A871E4AD3D4005E3BFF /* test_de_casual.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = test_de_casual.js; sourceTree = "<group>"; };
@@ -1060,7 +1080,7 @@
 				C43A78351E484B5E005E3BFF /* test_en_time_ago.js */,
 				C43A78361E484B5E005E3BFF /* test_en_time_exp.js */,
 				C43A78371E484B5E005E3BFF /* test_en_weekday.js */,
-				C43A795E1E484BA4005E3BFF /* TestEn.swift */,
+				C43A795E1E484BA4005E3BFF /* TestEN.swift */,
 			);
 			path = en;
 			sourceTree = "<group>";
@@ -1075,7 +1095,7 @@
 				C43A783D1E484B5E005E3BFF /* test_es_slash.js */,
 				C43A783E1E484B5E005E3BFF /* test_es_time_ago.js */,
 				C43A783F1E484B5E005E3BFF /* test_es_time_exp.js */,
-				C43A79A61E486A1E005E3BFF /* TestEs.swift */,
+				C43A79A61E486A1E005E3BFF /* TestES.swift */,
 			);
 			path = es;
 			sourceTree = "<group>";
@@ -1091,7 +1111,7 @@
 				C43A78461E484B5E005E3BFF /* test_fr_time_ago.js */,
 				C43A78471E484B5E005E3BFF /* test_fr_time_exp.js */,
 				C43A78481E484B5E005E3BFF /* test_fr_weekday.js */,
-				C43A79FA1E488CC2005E3BFF /* TestFr.swift */,
+				C43A79FA1E488CC2005E3BFF /* TestFR.swift */,
 			);
 			path = fr;
 			sourceTree = "<group>";
@@ -1101,7 +1121,7 @@
 			children = (
 				C43A784A1E484B5E005E3BFF /* test_jp_casual.js */,
 				C43A784B1E484B5E005E3BFF /* test_jp_standard.js */,
-				C43A7A221E48D395005E3BFF /* TestJp.swift */,
+				C43A7A221E48D395005E3BFF /* TestJP.swift */,
 			);
 			path = jp;
 			sourceTree = "<group>";
@@ -1123,8 +1143,10 @@
 			children = (
 				C43A7A361E49C784005E3BFF /* DECasualDateParser.swift */,
 				C43A7AC71E4AD446005E3BFF /* DEDeadlineFormatParser.swift */,
+				C40E0F1A1E4C0D9100629263 /* DEMonthNameLittleEndianParser.swift */,
 				C40E0EF81E4AD9CB00629263 /* DESlashDateFormatParser.swift */,
 				C40E0F001E4B067C00629263 /* DETimeAgoFormatParser.swift */,
+				C40E0F121E4BFF1600629263 /* DETimeExpressionParser.swift */,
 				C40E0F0A1E4B263A00629263 /* DEWeekdayParser.swift */,
 			);
 			path = DE;
@@ -1141,6 +1163,7 @@
 				C43A7A8C1E4AD3D4005E3BFF /* test_de_time_ago.js */,
 				C43A7A8D1E4AD3D4005E3BFF /* test_de_time_exp.js */,
 				C43A7A8E1E4AD3D4005E3BFF /* test_de_weekday.js */,
+				C40E0F221E4C235100629263 /* TestDE.swift */,
 			);
 			path = de;
 			sourceTree = "<group>";
@@ -1886,6 +1909,7 @@
 				C43A79D31E48861C005E3BFF /* FRTimeAgoFormatParser.swift in Sources */,
 				C43A7AC81E4AD446005E3BFF /* DEDeadlineFormatParser.swift in Sources */,
 				C4DFF43F1E30CA1000E851B1 /* ENDeadlineFormatParser.swift in Sources */,
+				C40E0F1B1E4C0D9100629263 /* DEMonthNameLittleEndianParser.swift in Sources */,
 				C4B94A731E35E61800B703E7 /* ENTimeAgoFormatParser.swift in Sources */,
 				C4ED159C1E37115D00C4676B /* ExtractTimezoneAbbrRefiner.swift in Sources */,
 				C43A79CB1E4883D3005E3BFF /* FRSlashDateFormatParser.swift in Sources */,
@@ -1900,6 +1924,7 @@
 				C43A79F31E488AF3005E3BFF /* FRMergeDateTimeRefiner.swift in Sources */,
 				C43A79B31E487F8D005E3BFF /* FRDeadlineFormatParser.swift in Sources */,
 				C43A798B1E48613A005E3BFF /* ESTimeAgoFormatParser.swift in Sources */,
+				C40E0F131E4BFF1600629263 /* DETimeExpressionParser.swift in Sources */,
 				C40E0F0B1E4B263A00629263 /* DEWeekdayParser.swift in Sources */,
 				C43A79731E485BC0005E3BFF /* ESUtil.swift in Sources */,
 				C47EB2471E2E0DF8000F3D38 /* Date.swift in Sources */,
@@ -1936,7 +1961,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4DFF4531E31A3FF00E851B1 /* ENISOFormatParser.swift in Sources */,
-				C43A7A231E48D395005E3BFF /* TestJp.swift in Sources */,
+				C43A7A231E48D395005E3BFF /* TestJP.swift in Sources */,
 				C43A79671E484E76005E3BFF /* ESCasualDateParser.swift in Sources */,
 				C4B94A971E36170A00B703E7 /* ENPrioritizeSpecificDateRefiner.swift in Sources */,
 				C4B94A871E360D4B00B703E7 /* ENWeekdayParser.swift in Sources */,
@@ -1957,7 +1982,7 @@
 				C43A02E11E30A8C50041B7B1 /* ENMergeDateTimeRefiner.swift in Sources */,
 				C4B94A671E35D80500B703E7 /* ENSlashDateFormatStartWithYearParser.swift in Sources */,
 				C43A7A1F1E48D116005E3BFF /* JPMergeDateRangeRefiner.swift in Sources */,
-				C43A795F1E484BA4005E3BFF /* TestEn.swift in Sources */,
+				C43A795F1E484BA4005E3BFF /* TestEN.swift in Sources */,
 				C43A79B71E487F8D005E3BFF /* FRDeadlineFormatParser.swift in Sources */,
 				C43A798F1E48613A005E3BFF /* ESTimeAgoFormatParser.swift in Sources */,
 				C43A79871E485F61005E3BFF /* ESSlashDateFormatParser.swift in Sources */,
@@ -1977,12 +2002,13 @@
 				C4169A061E2F6E19007B7423 /* Chrono.swift in Sources */,
 				C4B94A7F1E35FA9200B703E7 /* ENTimeExpressionParser.swift in Sources */,
 				C43A79CF1E4883D3005E3BFF /* FRSlashDateFormatParser.swift in Sources */,
-				C43A79FF1E488CC2005E3BFF /* TestFr.swift in Sources */,
+				C43A79FF1E488CC2005E3BFF /* TestFR.swift in Sources */,
 				C43A796F1E485743005E3BFF /* ESDeadlineFormatParser.swift in Sources */,
 				C4169A1E1E2F7BC8007B7423 /* ENCasualTimeParser.swift in Sources */,
 				C47EB2431E2E0797000F3D38 /* Result.swift in Sources */,
 				C43A79BF1E487FE1005E3BFF /* FRUtil.swift in Sources */,
 				C4169A2E1E307CE6007B7423 /* ENCasualDateParser.swift in Sources */,
+				C40E0F231E4C235100629263 /* TestDE.swift in Sources */,
 				C43A79D71E48861C005E3BFF /* FRTimeAgoFormatParser.swift in Sources */,
 				C43A7ACC1E4AD446005E3BFF /* DEDeadlineFormatParser.swift in Sources */,
 				C47EB24B1E2E0DF8000F3D38 /* Date.swift in Sources */,
@@ -1998,8 +2024,10 @@
 				C40E0F051E4B067C00629263 /* DETimeAgoFormatParser.swift in Sources */,
 				C4ED15A01E37115D00C4676B /* ExtractTimezoneAbbrRefiner.swift in Sources */,
 				C4B94AA31E363B9A00B703E7 /* TestUtil.swift in Sources */,
+				C40E0F1F1E4C0D9100629263 /* DEMonthNameLittleEndianParser.swift in Sources */,
 				C40E0EFD1E4AD9CB00629263 /* DESlashDateFormatParser.swift in Sources */,
-				C43A79A71E486A1E005E3BFF /* TestEs.swift in Sources */,
+				C40E0F171E4BFF1600629263 /* DETimeExpressionParser.swift in Sources */,
+				C43A79A71E486A1E005E3BFF /* TestES.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2023,6 +2051,7 @@
 				C43A79D41E48861C005E3BFF /* FRTimeAgoFormatParser.swift in Sources */,
 				C43A7AC91E4AD446005E3BFF /* DEDeadlineFormatParser.swift in Sources */,
 				C4DFF4401E30CA1000E851B1 /* ENDeadlineFormatParser.swift in Sources */,
+				C40E0F1C1E4C0D9100629263 /* DEMonthNameLittleEndianParser.swift in Sources */,
 				C4B94A741E35E61800B703E7 /* ENTimeAgoFormatParser.swift in Sources */,
 				C4ED159D1E37115D00C4676B /* ExtractTimezoneAbbrRefiner.swift in Sources */,
 				C43A79CC1E4883D3005E3BFF /* FRSlashDateFormatParser.swift in Sources */,
@@ -2037,6 +2066,7 @@
 				C43A79F41E488AF3005E3BFF /* FRMergeDateTimeRefiner.swift in Sources */,
 				C43A79B41E487F8D005E3BFF /* FRDeadlineFormatParser.swift in Sources */,
 				C43A798C1E48613A005E3BFF /* ESTimeAgoFormatParser.swift in Sources */,
+				C40E0F141E4BFF1600629263 /* DETimeExpressionParser.swift in Sources */,
 				C40E0F0C1E4B263A00629263 /* DEWeekdayParser.swift in Sources */,
 				C43A79741E485BC0005E3BFF /* ESUtil.swift in Sources */,
 				C47EB2481E2E0DF8000F3D38 /* Date.swift in Sources */,
@@ -2073,7 +2103,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4DFF4541E31A3FF00E851B1 /* ENISOFormatParser.swift in Sources */,
-				C43A7A241E48D395005E3BFF /* TestJp.swift in Sources */,
+				C43A7A241E48D395005E3BFF /* TestJP.swift in Sources */,
 				C43A79681E484E76005E3BFF /* ESCasualDateParser.swift in Sources */,
 				C4B94A981E36170A00B703E7 /* ENPrioritizeSpecificDateRefiner.swift in Sources */,
 				C4B94A881E360D4B00B703E7 /* ENWeekdayParser.swift in Sources */,
@@ -2094,7 +2124,7 @@
 				C43A02E21E30A8C50041B7B1 /* ENMergeDateTimeRefiner.swift in Sources */,
 				C4B94A681E35D80500B703E7 /* ENSlashDateFormatStartWithYearParser.swift in Sources */,
 				C43A7A201E48D116005E3BFF /* JPMergeDateRangeRefiner.swift in Sources */,
-				C43A79601E484BA4005E3BFF /* TestEn.swift in Sources */,
+				C43A79601E484BA4005E3BFF /* TestEN.swift in Sources */,
 				C43A79B81E487F8D005E3BFF /* FRDeadlineFormatParser.swift in Sources */,
 				C43A79901E48613A005E3BFF /* ESTimeAgoFormatParser.swift in Sources */,
 				C43A79881E485F61005E3BFF /* ESSlashDateFormatParser.swift in Sources */,
@@ -2114,12 +2144,13 @@
 				C4169A071E2F6E19007B7423 /* Chrono.swift in Sources */,
 				C4B94A801E35FA9200B703E7 /* ENTimeExpressionParser.swift in Sources */,
 				C43A79D01E4883D3005E3BFF /* FRSlashDateFormatParser.swift in Sources */,
-				C43A7A001E488CC2005E3BFF /* TestFr.swift in Sources */,
+				C43A7A001E488CC2005E3BFF /* TestFR.swift in Sources */,
 				C43A79701E485743005E3BFF /* ESDeadlineFormatParser.swift in Sources */,
 				C4169A1F1E2F7BC8007B7423 /* ENCasualTimeParser.swift in Sources */,
 				C47EB2441E2E0797000F3D38 /* Result.swift in Sources */,
 				C43A79C01E487FE1005E3BFF /* FRUtil.swift in Sources */,
 				C4169A2F1E307CE6007B7423 /* ENCasualDateParser.swift in Sources */,
+				C40E0F241E4C235100629263 /* TestDE.swift in Sources */,
 				C43A79D81E48861C005E3BFF /* FRTimeAgoFormatParser.swift in Sources */,
 				C43A7ACD1E4AD446005E3BFF /* DEDeadlineFormatParser.swift in Sources */,
 				C47EB24C1E2E0DF8000F3D38 /* Date.swift in Sources */,
@@ -2135,8 +2166,10 @@
 				C40E0F061E4B067C00629263 /* DETimeAgoFormatParser.swift in Sources */,
 				C4ED15A11E37115D00C4676B /* ExtractTimezoneAbbrRefiner.swift in Sources */,
 				C4B94AA41E363B9A00B703E7 /* TestUtil.swift in Sources */,
+				C40E0F201E4C0D9100629263 /* DEMonthNameLittleEndianParser.swift in Sources */,
 				C40E0EFE1E4AD9CB00629263 /* DESlashDateFormatParser.swift in Sources */,
-				C43A79A81E486A1E005E3BFF /* TestEs.swift in Sources */,
+				C40E0F181E4BFF1600629263 /* DETimeExpressionParser.swift in Sources */,
+				C43A79A81E486A1E005E3BFF /* TestES.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2160,6 +2193,7 @@
 				C43A79D51E48861C005E3BFF /* FRTimeAgoFormatParser.swift in Sources */,
 				C43A7ACA1E4AD446005E3BFF /* DEDeadlineFormatParser.swift in Sources */,
 				C4DFF4411E30CA1000E851B1 /* ENDeadlineFormatParser.swift in Sources */,
+				C40E0F1D1E4C0D9100629263 /* DEMonthNameLittleEndianParser.swift in Sources */,
 				C4B94A751E35E61800B703E7 /* ENTimeAgoFormatParser.swift in Sources */,
 				C4ED159E1E37115D00C4676B /* ExtractTimezoneAbbrRefiner.swift in Sources */,
 				C43A79CD1E4883D3005E3BFF /* FRSlashDateFormatParser.swift in Sources */,
@@ -2174,6 +2208,7 @@
 				C43A79F51E488AF3005E3BFF /* FRMergeDateTimeRefiner.swift in Sources */,
 				C43A79B51E487F8D005E3BFF /* FRDeadlineFormatParser.swift in Sources */,
 				C43A798D1E48613A005E3BFF /* ESTimeAgoFormatParser.swift in Sources */,
+				C40E0F151E4BFF1600629263 /* DETimeExpressionParser.swift in Sources */,
 				C40E0F0D1E4B263A00629263 /* DEWeekdayParser.swift in Sources */,
 				C43A79751E485BC0005E3BFF /* ESUtil.swift in Sources */,
 				C47EB2491E2E0DF8000F3D38 /* Date.swift in Sources */,
@@ -2225,6 +2260,7 @@
 				C43A79D61E48861C005E3BFF /* FRTimeAgoFormatParser.swift in Sources */,
 				C43A7ACB1E4AD446005E3BFF /* DEDeadlineFormatParser.swift in Sources */,
 				C4DFF4421E30CA1000E851B1 /* ENDeadlineFormatParser.swift in Sources */,
+				C40E0F1E1E4C0D9100629263 /* DEMonthNameLittleEndianParser.swift in Sources */,
 				C4B94A761E35E61800B703E7 /* ENTimeAgoFormatParser.swift in Sources */,
 				C4ED159F1E37115D00C4676B /* ExtractTimezoneAbbrRefiner.swift in Sources */,
 				C43A79CE1E4883D3005E3BFF /* FRSlashDateFormatParser.swift in Sources */,
@@ -2239,6 +2275,7 @@
 				C43A79F61E488AF3005E3BFF /* FRMergeDateTimeRefiner.swift in Sources */,
 				C43A79B61E487F8D005E3BFF /* FRDeadlineFormatParser.swift in Sources */,
 				C43A798E1E48613A005E3BFF /* ESTimeAgoFormatParser.swift in Sources */,
+				C40E0F161E4BFF1600629263 /* DETimeExpressionParser.swift in Sources */,
 				C40E0F0E1E4B263A00629263 /* DEWeekdayParser.swift in Sources */,
 				C43A79761E485BC0005E3BFF /* ESUtil.swift in Sources */,
 				C47EB24A1E2E0DF8000F3D38 /* Date.swift in Sources */,
@@ -2275,7 +2312,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4DFF4551E31A3FF00E851B1 /* ENISOFormatParser.swift in Sources */,
-				C43A7A251E48D395005E3BFF /* TestJp.swift in Sources */,
+				C43A7A251E48D395005E3BFF /* TestJP.swift in Sources */,
 				C43A79691E484E76005E3BFF /* ESCasualDateParser.swift in Sources */,
 				C4B94A991E36170A00B703E7 /* ENPrioritizeSpecificDateRefiner.swift in Sources */,
 				C4B94A891E360D4B00B703E7 /* ENWeekdayParser.swift in Sources */,
@@ -2296,7 +2333,7 @@
 				C43A02E31E30A8C50041B7B1 /* ENMergeDateTimeRefiner.swift in Sources */,
 				C4B94A691E35D80500B703E7 /* ENSlashDateFormatStartWithYearParser.swift in Sources */,
 				C43A7A211E48D116005E3BFF /* JPMergeDateRangeRefiner.swift in Sources */,
-				C43A79611E484BA4005E3BFF /* TestEn.swift in Sources */,
+				C43A79611E484BA4005E3BFF /* TestEN.swift in Sources */,
 				C43A79B91E487F8D005E3BFF /* FRDeadlineFormatParser.swift in Sources */,
 				C43A79911E48613A005E3BFF /* ESTimeAgoFormatParser.swift in Sources */,
 				C43A79891E485F61005E3BFF /* ESSlashDateFormatParser.swift in Sources */,
@@ -2316,12 +2353,13 @@
 				C4169A081E2F6E19007B7423 /* Chrono.swift in Sources */,
 				C4B94A811E35FA9200B703E7 /* ENTimeExpressionParser.swift in Sources */,
 				C43A79D11E4883D3005E3BFF /* FRSlashDateFormatParser.swift in Sources */,
-				C43A7A011E488CC2005E3BFF /* TestFr.swift in Sources */,
+				C43A7A011E488CC2005E3BFF /* TestFR.swift in Sources */,
 				C43A79711E485743005E3BFF /* ESDeadlineFormatParser.swift in Sources */,
 				C4169A201E2F7BC8007B7423 /* ENCasualTimeParser.swift in Sources */,
 				C47EB2451E2E0797000F3D38 /* Result.swift in Sources */,
 				C43A79C11E487FE1005E3BFF /* FRUtil.swift in Sources */,
 				C4169A301E307CE6007B7423 /* ENCasualDateParser.swift in Sources */,
+				C40E0F251E4C235100629263 /* TestDE.swift in Sources */,
 				C43A79D91E48861C005E3BFF /* FRTimeAgoFormatParser.swift in Sources */,
 				C43A7ACE1E4AD446005E3BFF /* DEDeadlineFormatParser.swift in Sources */,
 				C47EB24D1E2E0DF8000F3D38 /* Date.swift in Sources */,
@@ -2337,8 +2375,10 @@
 				C40E0F071E4B067C00629263 /* DETimeAgoFormatParser.swift in Sources */,
 				C4ED15A21E37115D00C4676B /* ExtractTimezoneAbbrRefiner.swift in Sources */,
 				C4B94AA51E363B9A00B703E7 /* TestUtil.swift in Sources */,
+				C40E0F211E4C0D9100629263 /* DEMonthNameLittleEndianParser.swift in Sources */,
 				C40E0EFF1E4AD9CB00629263 /* DESlashDateFormatParser.swift in Sources */,
-				C43A79A91E486A1E005E3BFF /* TestEs.swift in Sources */,
+				C40E0F191E4BFF1600629263 /* DETimeExpressionParser.swift in Sources */,
+				C43A79A91E486A1E005E3BFF /* TestES.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

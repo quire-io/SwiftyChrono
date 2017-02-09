@@ -216,8 +216,10 @@ public enum TagUnit { case
     
     deCasualDateParser,
     deDeadlineFormatParser,
+    deMonthNameLittleEndianParser,
     deSlashDateFormatParser,
     deTimeAgoFormatParser,
+    deTimeExpressionParser,
     deWeekdayParser,
     
     extractTimezoneAbbrRefiner,
