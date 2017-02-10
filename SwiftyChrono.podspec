@@ -10,7 +10,7 @@ Pod::Spec.new do |spec|
     spec.homepage     = 'https://github.com/quire-io/SwiftyChrono'
     spec.license      = { :type => 'MIT', :file => 'LICENSE.md' }
     spec.source       = { :git => 'https://github.com/lorentey/SwiftyChrono.git', :tag => 'v0.0.1' }
-    spec.source_files = 'Sources/*.swift'
+    spec.source_files = 'Sources/**/*.swift'
     spec.social_media_url = 'https://twitter.com/quire_io'
-    #spec.documentation_url = 'https://github.com/quire-io/SwiftyChrono'
+    spec.documentation_url = 'https://github.com/quire-io/SwiftyChrono'
 end
