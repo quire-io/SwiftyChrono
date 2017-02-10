@@ -19,7 +19,7 @@ public struct ParsedResult {
     // used for parsing logic controll
     public let isMoveIndexMode: Bool
     
-    init(ref: Date, index: Int, text: String, tags: [TagUnit: Bool] = [TagUnit: Bool](), start: [ComponentUnit: Int]? = nil, end: [ComponentUnit: Int]? = nil, isMoveIndexMode: Bool = false) {
+    public init(ref: Date, index: Int, text: String, tags: [TagUnit: Bool] = [TagUnit: Bool](), start: [ComponentUnit: Int]? = nil, end: [ComponentUnit: Int]? = nil, isMoveIndexMode: Bool = false) {
         self.ref = ref
         self.index = index
         self.text = text

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ModeOptio {
+public struct ModeOptio {
     var parsers: [Parser]
     var refiners: [Refiner]
     
