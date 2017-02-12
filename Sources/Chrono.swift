@@ -27,7 +27,7 @@ public struct Chrono {
     var parsers: [Parser] { return modeOption.parsers }
     var refiners: [Refiner] { return modeOption.refiners }
     
-    init(modeOption: ModeOptio = casualModeOption()) {
+    public init(modeOption: ModeOptio = casualModeOption()) {
         self.modeOption = modeOption
     }
     
