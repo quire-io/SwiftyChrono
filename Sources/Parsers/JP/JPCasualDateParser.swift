@@ -12,6 +12,7 @@ private let PATTERN = "今日|当日|昨日|明日|今夜|今夕|今晩|今朝"
 
 public class JPCasualDateParser: Parser {
     override var pattern: String { return PATTERN }
+    override var language: Language { return .japanese }
     
     override public func extract(text: String, ref: Date, match: NSTextCheckingResult, opt: [OptionType: Int]) -> ParsedResult? {
         let index = match.rangeAt(0).location

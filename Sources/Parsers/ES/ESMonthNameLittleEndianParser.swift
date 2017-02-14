@@ -25,6 +25,7 @@ private let yearBeGroup = 7
 
 public class ESMonthNameLittleEndianParser: Parser {
     override var pattern: String { return PATTERN }
+    override var language: Language { return .spanish }
     
     override public func extract(text: String, ref: Date, match: NSTextCheckingResult, opt: [OptionType: Int]) -> ParsedResult? {
         let (matchText, index) = matchTextAndIndex(from: text, andMatchResult: match)

@@ -15,6 +15,7 @@ private let HALF_SECOND = millisecondsToNanoSeconds(500) // unit: nanosecond
 
 public class ESTimeAgoFormatParser: Parser {
     override var pattern: String { return PATTERN }
+    override var language: Language { return .spanish }
     
     override public func extract(text: String, ref: Date, match: NSTextCheckingResult, opt: [OptionType: Int]) -> ParsedResult? {
         let idx = match.rangeAt(0).location

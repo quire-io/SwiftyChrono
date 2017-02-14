@@ -64,10 +64,10 @@ public struct ParsedComponents {
             imply(.year, to: ref.year)
         }
         
-        imply(.hour, to: 12)
-        imply(.minute, to: 0)
-        imply(.second, to: 0)
-        imply(.millisecond, to: 0)
+        imply(.hour, to: Chrono.defaultImpliedHour)
+        imply(.minute, to: Chrono.defaultImpliedMinute)
+        imply(.second, to: Chrono.defaultImpliedSecond)
+        imply(.millisecond, to: Chrono.defaultImpliedHour)
     }
     
     private init(parsedComponents: ParsedComponents) {

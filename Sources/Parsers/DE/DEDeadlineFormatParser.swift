@@ -19,6 +19,7 @@ private let HALF_SECOND = millisecondsToNanoSeconds(500) // unit: nanosecond
 
 public class DEDeadlineFormatParser: Parser {
     override var pattern: String { return PATTERN }
+    override var language: Language { return .german }
     
     override public func extract(text: String, ref: Date, match: NSTextCheckingResult, opt: [OptionType: Int]) -> ParsedResult? {
         let (matchText, index) = matchTextAndIndex(from: text, andMatchResult: match)

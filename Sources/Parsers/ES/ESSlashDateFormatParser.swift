@@ -31,6 +31,7 @@ private let yearGroup = 5
 
 public class ESSlashDateFormatParser: Parser {
     override var pattern: String { return PATTERN }
+    override var language: Language { return .spanish }
     
     override public func extract(text: String, ref: Date, match: NSTextCheckingResult, opt: [OptionType: Int]) -> ParsedResult? {
         if (match.isNotEmpty(atRangeIndex: openningGroup) && match.string(from: text, atRangeIndex: openningGroup) == "/") ||

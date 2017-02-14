@@ -39,6 +39,7 @@ private let amPmHourGroup = 5
 
 public class FRTimeExpressionParser: Parser {
     override var pattern: String { return FIRST_REG_PATTERN }
+    override var language: Language { return .french }
     
     override public func extract(text: String, ref: Date, match: NSTextCheckingResult, opt: [OptionType: Int]) -> ParsedResult? {
         // This pattern can be overlaped Ex. [12] AM, 1[2] AM

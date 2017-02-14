@@ -11,6 +11,7 @@ import Foundation
 public class Parser {
     let strictMode: Bool
     var pattern: String { return "" }
+    var language: Language { return .english }
     
     public init(strictMode: Bool) {
         self.strictMode = strictMode

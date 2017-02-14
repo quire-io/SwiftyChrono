@@ -12,6 +12,7 @@ private let PATTERN = "(\\W|^)(maintenant|aujourd'hui|ajd|cette\\s*nuit|la\\s*ve
 
 public class FRCasualDateParser: Parser {
     override var pattern: String { return PATTERN }
+    override var language: Language { return .french }
     
     override public func extract(text: String, ref: Date, match: NSTextCheckingResult, opt: [OptionType: Int]) -> ParsedResult? {
         let (matchText, index) = matchTextAndIndex(from: text, andMatchResult: match)
