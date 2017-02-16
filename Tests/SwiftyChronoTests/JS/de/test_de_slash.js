@@ -3,7 +3,8 @@
 
 test("Test - Single Expression", function() {
      
-     var text = "lunes 8/2/2016";
+//     var text = "lunes 8/2/2016";
+     var text = "montag 2016-02-08";
      var results = chrono.parse(text, new Date(2012,7,10));
      ok(results.length == 1, JSON.stringify( results ) )
      
@@ -22,4 +23,4 @@ test("Test - Single Expression", function() {
      ok(Math.abs(expectDate.getTime() - resultDate.getTime()) < 100000, 'Test result.startDate ' + resultDate +'/' +expectDate)
      }
      
-     });
+    });

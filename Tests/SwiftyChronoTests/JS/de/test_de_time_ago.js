@@ -1,7 +1,8 @@
 
 test("Test - Single Expression", function() {
 
-    var text = "5 days ago, we did something";
+//     var text = "5 days ago, we did something";
+    var text = "Vor 5 Tagen wir haben etwas getan";
     var results = chrono.parse(text, new Date(2012,7,10));
     ok(results.length == 1, JSON.stringify( results ) );
 
@@ -20,7 +21,8 @@ test("Test - Single Expression", function() {
         ok(Math.abs(expectDate.getTime() - resultDate.getTime()) < 100000, 'Test result.startDate ' + resultDate +'/' +expectDate)
     }
 
-    var text = "10 days ago, we did something";
+//     var text = "10 days ago, we did something";
+    var text = "Vor 10 Tagen haben wir etwas getan";
     var results = chrono.parse(text, new Date(2012,7,10));
     ok(results.length == 1, JSON.stringify( results ) );
 
@@ -40,7 +42,8 @@ test("Test - Single Expression", function() {
     }
 
 
-    var text = "15 minute ago";
+//     var text = "15 minute ago";
+    var text = "vor 15 Minuten";
     var results = chrono.parse(text, new Date(2012,7,10,12,14));
     ok(results.length == 1, JSON.stringify( results ) );
 
@@ -56,39 +59,8 @@ test("Test - Single Expression", function() {
         ok(Math.abs(expectDate.getTime() - resultDate.getTime()) < 100000, 'Test result.startDate ' + resultDate +'/' +expectDate)
     }
 
-    var text = "15 minute earlier";
-    var results = chrono.parse(text, new Date(2012,7,10,12,14));
-    ok(results.length == 1, JSON.stringify( results ) );
-
-    var result = results[0];
-    if(result){
-        ok(result.index == 0, 'Wrong index');
-        ok(result.text == '15 minute earlier', result.text );
-        ok(result.start.get('hour') == 11, 'Test Result - (Month) ' + JSON.stringify(result.start) );
-        ok(result.start.get('minute') == 59, 'Test Result - (Day) ' + JSON.stringify(result.start) );
-
-        var resultDate = result.start.date();
-        var expectDate = new Date(2012,7,10,11,59);
-        ok(Math.abs(expectDate.getTime() - resultDate.getTime()) < 100000, 'Test result.startDate ' + resultDate +'/' +expectDate)
-    }
-
-    var text = "15 minute before";
-    var results = chrono.parse(text, new Date(2012,7,10,12,14));
-    ok(results.length == 1, JSON.stringify( results ) );
-
-    var result = results[0];
-    if(result){
-        ok(result.index == 0, 'Wrong index');
-        ok(result.text == '15 minute before', result.text );
-        ok(result.start.get('hour') == 11, 'Test Result - (Month) ' + JSON.stringify(result.start) );
-        ok(result.start.get('minute') == 59, 'Test Result - (Day) ' + JSON.stringify(result.start) );
-
-        var resultDate = result.start.date();
-        var expectDate = new Date(2012,7,10,11,59);
-        ok(Math.abs(expectDate.getTime() - resultDate.getTime()) < 100000, 'Test result.startDate ' + resultDate +'/' +expectDate)
-    }
-
-    var text = "   12 hours ago";
+//     var text = "   12 hours ago";
+    var text = "   vor 12 Stunden";
     var results = chrono.parse(text, new Date(2012,7,10,12,14));
     ok(results.length == 1, JSON.stringify( results ) );
 
@@ -104,7 +76,8 @@ test("Test - Single Expression", function() {
         ok(Math.abs(expectDate.getTime() - resultDate.getTime()) < 100000, 'Test result.startDate ' + resultDate +'/' +expectDate)
     }
 
-    var text = "   half an hour ago";
+//    var text = "   half an hour ago";
+    var text = "   vor einer halben Stunde";
     var results = chrono.parse(text, new Date(2012,7,10,12,14));
     ok(results.length == 1, JSON.stringify( results ) );
 
@@ -121,7 +94,8 @@ test("Test - Single Expression", function() {
     }
 
 
-    var text = "12 hours ago I did something";
+//     var text = "12 hours ago I did something";
+    var text = "Vor 12 Stunden habe ich etwas getan";
     var results = chrono.parse(text, new Date(2012,7,10,12,14));
     ok(results.length == 1, JSON.stringify( results ) );
 
@@ -138,7 +112,8 @@ test("Test - Single Expression", function() {
     }
 
 
-    var text = "12 seconds ago I did something";
+//     var text = "12 seconds ago I did something";
+    var text = "vor 12 Sekunden habe ich etwas getan";
     var results = chrono.parse(text, new Date(2012, 7, 10, 12, 14));
     ok(results.length == 1, JSON.stringify( results ) );
 
@@ -156,7 +131,8 @@ test("Test - Single Expression", function() {
     }
 
 
-    var text = "three seconds ago I did something";
+//     var text = "three seconds ago I did something";
+    var text = "vor 3 Sekunden habe ich etwas getan";
     var results = chrono.parse(text, new Date(2012, 7, 10, 12, 14));
     ok(results.length == 1, JSON.stringify( results ) );
 
@@ -175,7 +151,8 @@ test("Test - Single Expression", function() {
 
 
 
-    var text = "5 Days ago, we did something";
+//     var text = "5 Days ago, we did something";
+    var text = "vor 5 Tage wir haben etwas getan";
     var results = chrono.parse(text, new Date(2012,7,10));
     ok(results.length == 1, JSON.stringify( results ) );
 
@@ -195,7 +172,8 @@ test("Test - Single Expression", function() {
     }
 
 
-    var text = "   half An hour ago";
+//     var text = "   half An hour ago";
+    var text = "   vor einer halben Stunde";
     var results = chrono.parse(text, new Date(2012,7,10,12,14));
     ok(results.length == 1, JSON.stringify( results ) );
 
@@ -212,7 +190,8 @@ test("Test - Single Expression", function() {
     }
 
 
-    var text = "A days ago, we did something";
+//     var text = "A days ago, we did something";
+    var text = "Vor einer Woche wir haben etwas getan";
     var results = chrono.parse(text, new Date(2012,7,10));
     ok(results.length == 1, JSON.stringify( results ) );
 
@@ -232,7 +211,8 @@ test("Test - Single Expression", function() {
     }
 
 
-    var text = "a min before";
+//     var text = "a min ago";
+    var text = "vor einer Minute";
     var results = chrono.parse(text, new Date(2012,7,10,12,14));
     ok(results.length == 1, JSON.stringify( results ) );
 
@@ -253,7 +233,8 @@ test("Test - Single Expression", function() {
 
 test("Test - Single Expression (Casual)", function() {
 
-    var text = "5 months ago, we did something";
+//     var text = "5 months ago, we did something";
+    var text = "Vor 5 Monaten wir haben etwas getan";
     var results = chrono.parse(text, new Date(2012, 8-1,10));
     ok(results.length == 1, JSON.stringify( results ) );
 
@@ -272,7 +253,8 @@ test("Test - Single Expression (Casual)", function() {
         ok(Math.abs(expectDate.getTime() - resultDate.getTime()) < 100000, 'Test result.startDate ' + resultDate +'/' +expectDate)
     }
 
-    var text = "5 years ago, we did something";
+//     var text = "5 years ago, we did something";
+    var text = "Vor 5 Jahren wir haben etwas getan";
     var results = chrono.parse(text, new Date(2012, 8-1,10));
     ok(results.length == 1, JSON.stringify( results ) );
 
@@ -292,7 +274,8 @@ test("Test - Single Expression (Casual)", function() {
     }
 
 
-    var text = "a week ago, we did something";
+//     var text = "a week ago, we did something";
+    var text = "Vor einer Woche haben wir etwas getan";
     var results = chrono.parse(text, new Date(2012, 8-1, 3));
     ok(results.length == 1, JSON.stringify( results ) );
 
@@ -312,7 +295,8 @@ test("Test - Single Expression (Casual)", function() {
     }
 
 
-    var text = "a few days ago, we did something";
+//     var text = "a few days ago, we did something";
+    var text = "vor ein paar Tagen haben wir etwas getan";
     var results = chrono.parse(text, new Date(2012, 8-1, 3));
     ok(results.length == 1, JSON.stringify( results ) );
 
@@ -330,15 +314,4 @@ test("Test - Single Expression (Casual)", function() {
         var expectDate = new Date(2012, 7-1, 31, 12);
         ok(Math.abs(expectDate.getTime() - resultDate.getTime()) < 100000, 'Test result.startDate ' + resultDate +'/' +expectDate)
     }
-});
-
-test("Test - Single Expression (Strict)", function() {
-
-    var text = "15 minute before";
-    var results = chrono.strict.parse(text, new Date(2012,7,10,12,14));
-    ok(results.length == 0, JSON.stringify( results ) );
-
-    var text = "a week ago, we did something";
-    var results = chrono.strict.parse(text, new Date(2012, 8-1, 3));
-    ok(results.length == 0, JSON.stringify( results ) )
 });
