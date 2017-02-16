@@ -235,6 +235,7 @@ public enum TagUnit { case
     frMergeDateRangeRefiner,
     frMergeDateAndTimeRefiner,
     
+    deMergeDateAndTimeRefiner,
     deMergeDateRangeRefiner
 }
 

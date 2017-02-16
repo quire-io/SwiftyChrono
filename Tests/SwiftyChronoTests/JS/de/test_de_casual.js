@@ -277,7 +277,7 @@ test('Test - Random text', function() {
     ok(result.start.get('year') == 2012, JSON.stringify(result.start));
     ok(result.start.get('month') == 1, JSON.stringify(result.start));
     ok(result.start.get('day') == 1, JSON.stringify(result.start));
-    ok(result.start.get('hour') == 22, JSON.stringify(result.start));
+    ok(result.start.get('hour') == 18, JSON.stringify(result.start));
     ok(result.start.get('meridiem')  == 1, JSON.stringify(result.start));
 
 //     var text = "tonight 8pm";

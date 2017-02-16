@@ -24,7 +24,7 @@ public class DECasualDateParser: Parser {
         
         if lowerText == "heute\\s*Abend" {
             // Normally means this coming midnight
-            result.start.imply(.hour, to: 22)
+            result.start.imply(.hour, to: 18)
             result.start.imply(.meridiem, to: 1)
             
         } else if NSRegularExpression.isMatch(forPattern: "^morgen", in: lowerText) {

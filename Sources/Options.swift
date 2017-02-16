@@ -70,6 +70,7 @@ private func baseOption(strictMode: Bool) -> ModeOptio {
         FRMergeDateRangeRefiner(),
         FRMergeDateTimeRefiner(),
         JPMergeDateRangeRefiner(),
+        DEMergeDateTimeRefiner(),
         DEMergeDateRangeRefiner(),
         
         // Extract additional info later
