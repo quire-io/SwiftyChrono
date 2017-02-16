@@ -34,12 +34,12 @@ let DE_MONTH_OFFSET = [
     "feb": 2,
     "feb.": 2,
     "märz": 3,
-    "mar": 3,
-    "mar.": 3,
+    "mär": 3,
+    "mär.": 3,
     "april": 4,
     "apr": 4,
     "apr.": 4,
-    "may": 5,
+    "mai": 5,
     "juni": 6,
     "jun": 6,
     "jun.": 6,
@@ -55,14 +55,14 @@ let DE_MONTH_OFFSET = [
     "sept": 9,
     "sept.": 9,
     "oktober": 10,
-    "oct": 10,
-    "oct.": 10,
+    "okt": 10,
+    "okt.": 10,
     "november": 11,
     "nov": 11,
     "nov.": 11,
     "dezember": 12,
-    "dec": 12,
-    "dec.": 12
+    "dez": 12,
+    "dez.": 12
 ]
 let DE_MONTH_OFFSET_PATTERN = "(?:" + DE_MONTH_OFFSET.keys.joined(separator: "|") + ")"
 

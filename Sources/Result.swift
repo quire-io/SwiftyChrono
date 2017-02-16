@@ -180,6 +180,7 @@ public enum ComponentUnit {
 }
 
 public enum TagUnit { case
+    none,
     enCasualTimeParser,
     enCasualDateParser,
     enDeadlineFormatParser,
@@ -214,6 +215,7 @@ public enum TagUnit { case
     jpCasualDateParser,
     jpStandardParser,
     
+    deCasualTimeParser,
     deCasualDateParser,
     deDeadlineFormatParser,
     deMonthNameLittleEndianParser,
@@ -230,7 +232,10 @@ public enum TagUnit { case
     enMergeDateRangeRefiner,
     enPrioritizeSpecificDateRefiner,
     
-    frMergeDateAndTimeRefiner
+    frMergeDateRangeRefiner,
+    frMergeDateAndTimeRefiner,
+    
+    deMergeDateRangeRefiner
 }
 
 

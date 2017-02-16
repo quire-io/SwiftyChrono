@@ -70,6 +70,7 @@ private func baseOption(strictMode: Bool) -> ModeOptio {
         FRMergeDateRangeRefiner(),
         FRMergeDateTimeRefiner(),
         JPMergeDateRangeRefiner(),
+        DEMergeDateRangeRefiner(),
         
         // Extract additional info later
         ExtractTimezoneOffsetRefiner(),
@@ -105,6 +106,7 @@ func casualModeOption() -> ModeOptio {
         FRWeekdayParser(strictMode: false),
         
         // DE
+        DECasualTimeParser(strictMode: false),
         DECasualDateParser(strictMode: false),
         DEWeekdayParser(strictMode: false),
         
