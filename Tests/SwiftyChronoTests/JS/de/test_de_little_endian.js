@@ -21,14 +21,14 @@ test("Test - Single expression", function() {
         ok(Math.abs(expectDate.getTime() - resultDate.getTime()) < 100000, 'Test result.startDate ' + resultDate +'/' +expectDate)
     }
 
-    var text = "10. August 2555 v. chr.";
+    var text = "10. August 234 v. chr.";
     var results = chrono.parse(text, new Date(2012,7,10));
     ok(results.length == 1, JSON.stringify( results ) );
 
     var result = results[0];
     if (result) {
         ok(result.index == 0, 'Wrong index');
-        ok(result.text == '10. August 2555 v. chr.', result.text );
+        ok(result.text == '10. August 234 v. chr.', result.text );
 
         ok(result.start, JSON.stringify(result.start) );
         ok(result.start.get('year') == -234, 'Test Result - (Year) ' + JSON.stringify(result.start) );
@@ -286,7 +286,7 @@ test("Test - Range expression", function() {
     if(result){
 
         ok(result.index == 0, 'Wrong index');
-        ok(result.text == '10 August - 12 September', result.text );
+        ok(result.text == '10. August bis 12. September', result.text );
 
         ok(result.start, JSON.stringify(result.start) );
         ok(result.start.get('year') == 2012, 'Test Result - (Year) ' + JSON.stringify(result.start) );
@@ -317,7 +317,7 @@ test("Test - Range expression", function() {
     if(result){
 
         ok(result.index == 0, 'Wrong index');
-        ok(result.text == '10 August - 12 September 2013', result.text );
+        ok(result.text == '10. August bis 12. September 2013', result.text );
 
         ok(result.start, JSON.stringify(result.start) );
         ok(result.start.get('year') == 2013, 'Test Result - (Year) ' + JSON.stringify(result.start) );
@@ -351,7 +351,7 @@ test("Test - Combined expression", function() {
     var result = results[0];
     if(result){
         ok(result.index == 0, 'Wrong index');
-        ok(result.text == '12th of July at 19:00', result.text );
+        ok(result.text == '12. Juli um 19:00 Uhr', result.text );
 
         ok(result.start, JSON.stringify(result.start) );
         ok(result.start.get('year') == 2012, 'Test Result - (Year) ' + JSON.stringify(result.start) );
@@ -373,7 +373,7 @@ test("Test - Combined expression", function() {
     var result = results[0];
     if(result){
         ok(result.index == 0, 'Wrong index');
-        ok(result.text == '7 May 11:00', result.text );
+        ok(result.text == '7. Mai 11:00', result.text );
 
         ok(result.start, JSON.stringify(result.start) );
         ok(result.start.get('year') == 2012, 'Test Result - (Year) ' + JSON.stringify(result.start) );
@@ -399,7 +399,7 @@ test("Test - Ordinal Words", function () {
     var result = results[0];
     if(result){
 
-        ok(result.text == 'Twenty-fourth of May', result.text );
+        ok(result.text == 'Vierundzwanzigster Mai', result.text );
 
         ok(result.start, JSON.stringify(result.start));
         ok(result.start.get('year') == 2012, 'Test Result - (Year) ' + JSON.stringify(result.start) );
@@ -416,7 +416,7 @@ test("Test - Ordinal Words", function () {
     var result = results[0];
     if(result){
 
-        ok(result.text == 'Eighth to eleventh May 2010', result.text );
+        ok(result.text == 'Achter bis elfter Mai 2010', result.text );
 
         ok(result.start, JSON.stringify(result.start));
         ok(result.start.get('year') == 2010, 'Test Result - (Year) ' + JSON.stringify(result.start) );

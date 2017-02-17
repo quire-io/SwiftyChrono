@@ -24,7 +24,7 @@ let DE_WEEKDAY_OFFSET = [
     "samstag": 6,
     "sa": 6
 ]
-let DE_WEEKDAY_WORDS_PATTERN = "(?:" + DE_INTEGER1_WORDS.keys.joined(separator: "|") + ")"
+let DE_WEEKDAY_WORDS_PATTERN = "(?:" + DE_WEEKDAY_OFFSET.keys.joined(separator: "|") + ")"
 
 let DE_MONTH_OFFSET = [
     "januar": 1,
@@ -92,41 +92,47 @@ let DE_INTEGER_WORDS = DE_INTEGER1_WORDS.merged(with: [
 let DE_INTEGER_WORDS_PATTERN = "(?:" + DE_INTEGER_WORDS.keys.joined(separator: "|") + ")"
 
 // all need /n/r/m/s
-let DE_ORDINAL_WORDS = [
-    "Ersten": 1,
-    "Erster": 1,
-    "Erste": 1,
-    "Erstem": 1,
-    "Erstes": 1,
-    "Zweite": 2,
-    "Dritte": 3,
-    "Vierte": 4,
-    "Fünfte": 5,
-    "Sechste": 6,
-    "Siebte": 7,
-    "Achte": 8,
-    "Neunte": 9,
-    "Zehnte": 10,
-    "Elfte": 11,
-    "Zwölfte": 12,
-    "Dreizehnte": 13,
-    "Vierzehnte": 14,
-    "Fünfzehnte": 15,
-    "Sechzehnte": 16,
-    "Siebzehnte": 17,
-    "Achtzehnte": 18,
-    "Neunzehnte": 19,
-    "Zwanzigste": 20,
-    "Einundzwanzigste": 21,
-    "Zweiundzwanzigste": 22,
-    "Dreiundzwanzigste": 23,
-    "Viewundzwanzigste": 24,
-    "Fünfundzwanzigste": 25,
-    "Sechsundzwanzigste": 26,
-    "Siebenundzwanzigste": 27,
-    "Achtundzwanzigste": 28,
-    "Neunundzwanzigste": 29,
-    "Dreißigste": 30,
-    "Einunddreißigste": 31
+private let DE_ORDINAL_WORDS_BASIC = [
+    "erste": 1,
+    "zweite": 2,
+    "dritte": 3,
+    "vierte": 4,
+    "fünfte": 5,
+    "sechste": 6,
+    "siebte": 7,
+    "achte": 8,
+    "neunte": 9,
+    "zehnte": 10,
+    "elfte": 11,
+    "zwölfte": 12,
+    "dreizehnte": 13,
+    "vierzehnte": 14,
+    "fünfzehnte": 15,
+    "sechzehnte": 16,
+    "siebzehnte": 17,
+    "achtzehnte": 18,
+    "neunzehnte": 19,
+    "zwanzigste": 20,
+    "einundzwanzigste": 21,
+    "zweiundzwanzigste": 22,
+    "dreiundzwanzigste": 23,
+    "vierundzwanzigste": 24,
+    "fünfundzwanzigste": 25,
+    "sechsundzwanzigste": 26,
+    "siebenundzwanzigste": 27,
+    "achtundzwanzigste": 28,
+    "neunundzwanzigste": 29,
+    "dreißigste": 30,
+    "einunddreißigste": 31
 ]
-let DE_ORDINAL_WORDS_PATTERN = "(?:\(DE_ORDINAL_WORDS.keys.joined(separator: "|").replacingOccurrences(of: " ", with: "[ -]")))";
+
+let DE_ORDINAL_WORDS = DE_ORDINAL_WORDS_BASIC.reduce([String: Int]()) { (result, keyValue) -> [String: Int] in
+    var result = result
+    result[keyValue.key + "n"] = keyValue.value
+    result[keyValue.key + "r"] = keyValue.value
+    result[keyValue.key + "m"] = keyValue.value
+    result[keyValue.key + "s"] = keyValue.value
+    return result
+}
+
+let DE_ORDINAL_WORDS_PATTERN = "(?:\(DE_ORDINAL_WORDS_BASIC.keys.map{ $0 + "[nrms]?" }.joined(separator: "|").replacingOccurrences(of: " ", with: "[ -]")))";

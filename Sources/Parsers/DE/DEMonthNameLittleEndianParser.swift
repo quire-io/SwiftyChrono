@@ -10,13 +10,13 @@ import Foundation
 
 private let PATTERN = "(\\W|^)" +
     "(?:vo(?:n|m)|am\\s*?)?" +
-    "(\(DE_WEEKDAY_WORDS_PATTERN)\\s*,?\\s*)?" +
+    "(?:(\(DE_WEEKDAY_WORDS_PATTERN))\\s*,?\\s*)?" +
     "(([0-9]{1,2})(?:\\.)?|\(DE_ORDINAL_WORDS_PATTERN))" +
     "(?:\\s*" +
         "(?:bis|\\-|\\–|\\s)\\s*" +
         "(([0-9]{1,2})(?:\\.)?|\(DE_ORDINAL_WORDS_PATTERN))" +
     ")?\\s*(?:of)?\\s*" +
-    "(\(DE_MONTH_OFFSET_PATTERN)?)" +
+    "(\(DE_MONTH_OFFSET_PATTERN))" +
     "(?:" +
         ",?\\s*([0-9]{1,4}(?![^\\s]\\d))" +
         "(\\s*(?:n\\.?\\s?chr\\.?|v\\.?\\s?chr\\.?))?" +
@@ -44,7 +44,7 @@ public class DEMonthNameLittleEndianParser: Parser {
         
         let day = match.isNotEmpty(atRangeIndex: dateNumGroup) ?
             Int(match.string(from: text, atRangeIndex: dateNumGroup))! :
-            DE_ORDINAL_WORDS[match.string(from: text, atRangeIndex: dateGroup).trimmed().replacingOccurrences(of: "-", with: " ").lowercased()]!
+            DE_ORDINAL_WORDS[match.string(from: text, atRangeIndex: dateGroup).trimmed().lowercased()]!
         
         if match.isNotEmpty(atRangeIndex: yearGroup) {
             var year = Int(match.string(from: text, atRangeIndex: yearGroup))!
