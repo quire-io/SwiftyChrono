@@ -8,11 +8,6 @@
 
 import Foundation
 
-private let morning = OptionType.morning.rawValue
-private let afternoon = OptionType.afternoon.rawValue
-private let evening = OptionType.evening.rawValue
-private let noon = OptionType.noon.rawValue
-
 private let PATTERN = "(\\W|^)((this)?\\s*(morning|afternoon|evening|noon))"
 private let timeMatch = 4
 

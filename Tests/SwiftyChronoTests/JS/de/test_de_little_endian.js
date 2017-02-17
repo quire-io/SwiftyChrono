@@ -14,7 +14,7 @@ test("Test - Single expression", function() {
         ok(result.start.get('day') == 10, 'Test Result - (Day) ' + JSON.stringify(result.start) );
 
         ok(result.index == 0, 'Wrong index');
-        ok(result.text == '10 August 2012', result.text );
+        ok(result.text == '10. August 2012', result.text );
 
         var resultDate = result.start.date();
         var expectDate = new Date(2012, 8-1, 10, 12);
@@ -28,7 +28,7 @@ test("Test - Single expression", function() {
     var result = results[0];
     if (result) {
         ok(result.index == 0, 'Wrong index');
-        ok(result.text == '10 August 234 BC', result.text );
+        ok(result.text == '10. August 2555 v. chr.', result.text );
 
         ok(result.start, JSON.stringify(result.start) );
         ok(result.start.get('year') == -234, 'Test Result - (Year) ' + JSON.stringify(result.start) );
@@ -47,7 +47,7 @@ test("Test - Single expression", function() {
     var result = results[0];
     if (result) {
         ok(result.index == 0, 'Wrong index');
-        ok(result.text == '10 August 88 AD', result.text );
+        ok(result.text == '10. August 88 n. chr.', result.text );
 
         ok(result.start, JSON.stringify(result.start) );
         ok(result.start.get('year') == 88, 'Test Result - (Year) ' + JSON.stringify(result.start) );
@@ -106,7 +106,7 @@ test("Test - Single expression", function() {
     var result = results[0];
     if (result) {
 
-        ok(result.index == 16, 'Wrong index');
+        ok(result.index == 19, 'Wrong index');
         ok(result.text == '10. August', result.text );
 
         ok(result.start, JSON.stringify(result.start) );
@@ -127,8 +127,8 @@ test("Test - Single expression", function() {
     var result = results[0];
     if (result) {
 
-        ok(result.index == 16, 'Wrong index');
-        ok(result.text == 'Tuesday, 10 January', result.text );
+        ok(result.index == 15, 'Wrong index');
+        ok(result.text == 'Dienstag, 10. Januar', result.text );
 
         ok(result.start, JSON.stringify(result.start) );
         ok(result.start.get('year') == 2013, 'Test Result - (Year) ' + JSON.stringify(result.start) );
@@ -150,8 +150,8 @@ test("Test - Single expression", function() {
     var result = results[0];
     if (result) {
 
-        ok(result.index == 16, 'Wrong index');
-        ok(result.text == 'Tue, 10 January', result.text );
+        ok(result.index == 15, 'Wrong index');
+        ok(result.text == 'Di, 10. Januar', result.text );
 
         ok(result.start, JSON.stringify(result.start) );
         ok(result.start.get('year') == 2013, 'Test Result - (Year) ' + JSON.stringify(result.start) );
@@ -174,7 +174,7 @@ test("Test - Single expression", function() {
     if (result) {
 
         ok(result.index == 0, 'Wrong index');
-        ok(result.text == '31st March, 2016', result.text );
+        ok(result.text == '31. März 2016', result.text );
 
         ok(result.start, JSON.stringify(result.start) );
         ok(result.start.get('year') == 2016, 'Test Result - (Year) ' + JSON.stringify(result.start) );
@@ -195,7 +195,7 @@ test("Test - Single expression", function() {
     if (result) {
 
         ok(result.index == 0, 'Wrong index');
-        ok(result.text == '23rd february, 2016', result.text );
+        ok(result.text == '23. februar 2016', result.text );
 
         ok(result.start, JSON.stringify(result.start) );
         ok(result.start.get('year') == 2016, 'Test Result - (Year) ' + JSON.stringify(result.start) );
@@ -223,7 +223,7 @@ test("Test - Range expression", function() {
     if(result){
 
         ok(result.index == 0, 'Wrong index');
-        ok(result.text == '10 - 22 August 2012', result.text );
+        ok(result.text == '10. - 22. August 2012', result.text );
 
         ok(result.start, JSON.stringify(result.start) );
         ok(result.start.get('year') == 2012, 'Test Result - (Year) ' + JSON.stringify(result.start) );
@@ -255,7 +255,7 @@ test("Test - Range expression", function() {
     if(result){
 
         ok(result.index == 0, 'Wrong index');
-        ok(result.text == '10 to 22 August 2012', result.text );
+        ok(result.text == '10. bis 22. August 2012', result.text );
 
         ok(result.start, JSON.stringify(result.start) );
         ok(result.start.get('year') == 2012, 'Test Result - (Year) ' + JSON.stringify(result.start) );

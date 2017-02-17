@@ -71,6 +71,7 @@ let DE_INTEGER1_WORDS = [
     "eine": 1,
     "einer": 1,
     "ein": 1,
+    "eines": 1,
     "einem": 1,
 ]
 let DE_INTEGER1_WORDS_PATTERN = "(?:" + DE_INTEGER1_WORDS.keys.joined(separator: "|") + ")"

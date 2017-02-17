@@ -9,9 +9,9 @@
 import Foundation
 
 private let PATTERN = "(\\W|^)" +
-    "(Innerhalb|i[n|m])\\s*(?:von)\\s*" +
-    "(\(DE_INTEGER_WORDS_PATTERN)|[0-9]+|\(DE_INTEGER1_WORDS_PATTERN)(?:\\s*(?:wenigen?|einigen?|paar))?|halbe(?:n|s)?(?:\\s*\(DE_INTEGER1_WORDS_PATTERN))?)\\s*" +
-    "(sekunden?|minuten?|stunden?|tag(?:e|en)?|wochen?|monat(?:e|en)?|jahr(?:e|en)??)\\s*" +
+    "(innerhalb|i[n|m])\\s*(?:von)?\\s*" +
+    "(\(DE_INTEGER_WORDS_PATTERN)|[0-9]+|\(DE_INTEGER1_WORDS_PATTERN)?(?:\\s*(?:wenige[r|n]?|einigen?|paar))?|(?:\(DE_INTEGER1_WORDS_PATTERN)\\s*)?halbe(?:n|s)?)\\s*" +
+    "(sekunden?|minuten?|stunden?|tag(?:en|e)?|wochen?|monat(?:en|e|s)?|jahr(?:en|(?:es)|e)??)\\s*" +
     "(?=\\W|$)"
 
 private let HALF = 0.5

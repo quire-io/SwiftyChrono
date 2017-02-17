@@ -9,7 +9,7 @@ test("Test - Single Expression", function() {
     var result = results[0];
     if(result){
         ok(result.index == 0, 'Wrong index');
-        ok(result.text == 'in 5 days', result.text );
+        ok(result.text == 'In 5 Tagen', result.text );
 
         ok(result.start, JSON.stringify(result.start) );
         ok(result.start.get('year') == 2012, 'Test Result - (Year) ' + JSON.stringify(result.start) );
@@ -29,8 +29,8 @@ test("Test - Single Expression", function() {
 
     var result = results[0];
     if(result){
-        ok(result.index == 24, 'Wrong index');
-        ok(result.text == 'in five days', result.text );
+        ok(result.index == 0, 'Wrong index');
+        ok(result.text == 'In fünf Tagen', result.text );
 
         ok(result.start, JSON.stringify(result.start) );
         ok(result.start.get('year') == 2012, 'Test Result - (Year) ' + JSON.stringify(result.start) );
@@ -50,7 +50,7 @@ test("Test - Single Expression", function() {
 
     var result = results[0];
     if(result){
-        ok(result.index == 24, 'Wrong index');
+        ok(result.index == 17, 'Wrong index');
         ok(result.text == 'innerhalb von 10 Tagen', result.text );
 
         ok(result.start, JSON.stringify(result.start) );
@@ -72,7 +72,7 @@ test("Test - Single Expression", function() {
     var result = results[0];
     if(result){
         ok(result.index == 0, 'Wrong index');
-        ok(result.text == 'in 5 minutes', result.text );
+        ok(result.text == 'in 5 Minuten', result.text );
 
         var resultDate = result.start.date();
         var expectDate = new Date(2012,7,10,12,19);
@@ -87,7 +87,7 @@ test("Test - Single Expression", function() {
     var result = results[0];
     if(result){
         ok(result.index == 0, 'Wrong index');
-        ok(result.text == 'within 1 hour', result.text );
+        ok(result.text == 'innerhalb 1 Stunde', result.text );
 
         var resultDate = result.start.date();
         var expectDate = new Date(2012,7,10,13,14);
@@ -102,7 +102,7 @@ test("Test - Single Expression", function() {
     var result = results[0];
     if(result){
         ok(result.index == 0, 'Wrong index');
-        ok(result.text == 'In 5 minutes', result.text );
+        ok(result.text == 'In 5 Minuten', result.text );
 
         var resultDate = result.start.date();
         var expectDate = new Date(2012,7,10,12,19);
@@ -117,8 +117,8 @@ test("Test - Single Expression", function() {
 
     var result = results[0];
     if(result){
-        ok(result.index == 0, 'Wrong index');
-        ok(result.text == 'In 5 minutes', result.text );
+        ok(result.index == 21, 'Wrong index');
+        ok(result.text == 'in 5 minuten', result.text );
 
         var resultDate = result.start.date();
         var expectDate = new Date(2012,7,10,12,19);
@@ -133,8 +133,8 @@ test("Test - Single Expression", function() {
 
     var result = results[0];
     if(result){
-        ok(result.index == 0, 'Wrong index');
-        ok(result.text == 'In 5 seconds', result.text );
+        ok(result.index == 21, 'Wrong index');
+        ok(result.text == 'in 5 Sekunden', result.text );
 
         var resultDate = result.start.date();
         var expectDate = new Date(2012, 7, 10, 12, 14, 5);
@@ -150,7 +150,7 @@ test("Test - Single Expression", function() {
     var result = results[0];
     if(result){
         ok(result.index == 0, 'Wrong index');
-        ok(result.text == 'within half an hour', result.text );
+        ok(result.text == 'Innerhalb einer halben Stunde', result.text );
 
         var resultDate = result.start.date();
         var expectDate = new Date(2012,7,10,12,44);
@@ -166,7 +166,7 @@ test("Test - Single Expression", function() {
     var result = results[0];
     if(result){
         ok(result.index == 0, 'Wrong index');
-        ok(result.text == 'within two weeks', result.text );
+        ok(result.text == 'innerhalb von zwei Wochen', result.text );
 
         var resultDate = result.start.date();
         var expectDate = new Date(2012, 7, 24, 12);
@@ -182,7 +182,7 @@ test("Test - Single Expression", function() {
     var result = results[0];
     if(result){
         ok(result.index == 0, 'Wrong index');
-        ok(result.text == 'within a month', result.text );
+        ok(result.text == 'innerhalb eines Monats', result.text );
 
         var resultDate = result.start.date();
         var expectDate = new Date(2012, 8, 10, 12);
@@ -198,7 +198,7 @@ test("Test - Single Expression", function() {
     var result = results[0];
     if(result){
         ok(result.index == 0, 'Wrong index');
-        ok(result.text == 'within a few months', result.text );
+        ok(result.text == 'Innerhalb weniger Monate', result.text );
 
         var resultDate = result.start.date();
         var expectDate = new Date(2012, 10, 10, 12);
@@ -214,25 +214,11 @@ test("Test - Single Expression", function() {
     var result = results[0];
     if(result){
         ok(result.index == 0, 'Wrong index');
-        ok(result.text == 'within one Year', result.text );
+        ok(result.text == 'innerhalb eines Jahres', result.text );
 
         var resultDate = result.start.date();
         var expectDate = new Date(2013, 7, 10, 12);
         ok(Math.abs(expectDate.getTime() - resultDate.getTime()) < 100000, 'Test result.startDate ' + resultDate +'/' +expectDate)
     }
 
-});
-
-
-test("Test - Single Expression (Strict)", function() {
-//     var text = "within a few months";
-    var text = "Innerhalb weniger Monate";
-    var results = chrono.strict.parse(text, new Date(2012, 8-1, 3));
-    ok(results.length == 0, JSON.stringify( results ) )
-
-
-//     var text = "within a few days";
-    var text = "innerhalb weniger Tage";
-    var results = chrono.strict.parse(text, new Date(2012, 8-1, 3));
-    ok(results.length == 0, JSON.stringify( results ) )
 });

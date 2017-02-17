@@ -10,16 +10,16 @@ import Foundation
 
 private let PATTERN = "(\\W|^)" +
     "(?:vo(?:n|m)|am\\s*?)?" +
-    "\(DE_WEEKDAY_WORDS_PATTERN)\\s*,?\\s*)?" +
+    "(\(DE_WEEKDAY_WORDS_PATTERN)\\s*,?\\s*)?" +
     "(([0-9]{1,2})(?:\\.)?|\(DE_ORDINAL_WORDS_PATTERN))" +
     "(?:\\s*" +
-    "(?:bis|\\-|\\–|\\s)\\s*" +
-    "(([0-9]{1,2})(?:\\.)?|\(DE_ORDINAL_WORDS_PATTERN))" +
+        "(?:bis|\\-|\\–|\\s)\\s*" +
+        "(([0-9]{1,2})(?:\\.)?|\(DE_ORDINAL_WORDS_PATTERN))" +
     ")?\\s*(?:of)?\\s*" +
     "(\(DE_MONTH_OFFSET_PATTERN)?)" +
     "(?:" +
-    ",?\\s*([0-9]{1,4}(?![^\\s]\\d))" +
-    "(\\s*(?:n\\.?\\s?chr\\.?|v\\.?\\s?chr\\.?))?" +
+        ",?\\s*([0-9]{1,4}(?![^\\s]\\d))" +
+        "(\\s*(?:n\\.?\\s?chr\\.?|v\\.?\\s?chr\\.?))?" +
     ")?" +
 "(?=\\W|$)"
 
