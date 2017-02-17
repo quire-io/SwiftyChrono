@@ -10,23 +10,36 @@ import Foundation
 private let PATTERN = "(\\W|^)" +
     "(?:" +
         "(?:(?:am)\\s*?)?" +
-        "(\(DE_WEEKDAY_WORDS_PATTERN)(?:.?,?\\s*de[rnms])?" +
+        "(\(DE_WEEKDAY_WORDS_PATTERN)(?:.?,?\\s*de[rnms])?)" +
         "\\s*\\,?\\s*" +
     ")?" +
-    "([0-3]{0,1}[0-9]{1})[\\/\\.\\-]([0-3]{0,1}[0-9]{1})" +
+    "(?:" +
+        "([0-3]{0,1}[0-9]{1})\\.([0-3]{0,1}[0-9]{1})" +
         "(?:" +
-        "[\\/\\.\\-]" +
-    "([0-9]{4}|[0-9]{2})" +
+            "\\." +
+            "([0-9]{4}|[0-9]{2})" +
+        ")?" +
+    "|" +
+        "(?:" +
+            "([0-9]{4}|[0-9]{2})" +
+            "\\-" +
+        ")?" +
+        "([0-3]{0,1}[0-9]{1})\\-([0-3]{0,1}[0-9]{1})" +
     ")?" +
-"(\\W|$)"
+    "(\\W|$)"
 
 private let openningGroup = 1
-private let endingGroup = 6
+private let endingGroup = 9
 
 private let weekdayGroup = 2
-private let dayGroup = 3
-private let monthGroup = 4
-private let yearGroup = 5
+
+private let day1Group = 3
+private let month1Group = 4
+private let year1Group = 5
+
+private let year2Group = 6
+private let month2Group = 7
+private let day2Group = 8
 
 public class DESlashDateFormatParser: Parser {
     override var pattern: String { return PATTERN }
@@ -54,15 +67,20 @@ public class DESlashDateFormatParser: Parser {
             return nil
         }
         
-        // MM/dd -> OK
-        // MM.dd -> NG
-        if match.isEmpty(atRangeIndex: yearGroup) && (text.range(of: "/")?.isEmpty ?? true) {
-            return nil
+        var year: Int
+        var month: Int
+        var day: Int
+        
+        if match.isNotEmpty(atRangeIndex: day1Group) {
+            year = match.isNotEmpty(atRangeIndex: year1Group) ? Int(match.string(from: text, atRangeIndex: year1Group)) ?? ref.year : ref.year
+            month = match.isNotEmpty(atRangeIndex: month1Group) ? Int(match.string(from: text, atRangeIndex: month1Group)) ?? 0 : 0
+            day = match.isNotEmpty(atRangeIndex: day1Group) ? Int(match.string(from: text, atRangeIndex: day1Group)) ?? 0 : 0
+        } else {
+            year = match.isNotEmpty(atRangeIndex: year2Group) ? Int(match.string(from: text, atRangeIndex: year2Group)) ?? ref.year : ref.year
+            month = match.isNotEmpty(atRangeIndex: month2Group) ? Int(match.string(from: text, atRangeIndex: month2Group)) ?? 0 : 0
+            day = match.isNotEmpty(atRangeIndex: day2Group) ? Int(match.string(from: text, atRangeIndex: day2Group)) ?? 0 : 0
         }
         
-        var year = match.isNotEmpty(atRangeIndex: yearGroup) ? Int(match.string(from: text, atRangeIndex: yearGroup)) ?? ref.year : ref.year
-        var month = match.isNotEmpty(atRangeIndex: monthGroup) ? Int(match.string(from: text, atRangeIndex: monthGroup)) ?? 0 : 0
-        var day = match.isNotEmpty(atRangeIndex: dayGroup) ? Int(match.string(from: text, atRangeIndex: dayGroup)) ?? 0 : 0
         
         if month < 1 || month > 12 {
             if month > 12 {

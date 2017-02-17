@@ -2,14 +2,14 @@
 test("Test - Single Expression", function() {
 
 
-    var text = '1 bis 3 Uhr';
+    var text = '13 bis 15 Uhr';
     var results = chrono.parse(text, new Date(2012,7,10));
     ok(results.length == 1, JSON.stringify( results ) )
 
     var result = results[0];
     if(result){
         ok(result.index == 0, 'Wrong index')
-        ok(result.text == '1-3pm', result.text )
+        ok(result.text == '13 bis 15 Uhr', result.text )
 
         ok(result.start, JSON.stringify(result.start) )
         ok(result.start.get('hour') == 13, 'Test Result - (Hour) ' + JSON.stringify(result.start) )

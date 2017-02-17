@@ -9,7 +9,7 @@
 import Foundation
 
 private let FIRST_REG_PATTERN = "(^|\\s|T)" +
-    "(?:(?:um|zu)\\s*)?" +
+    "(?:(?:am|um|zu)\\s*)?" +
     "(\\d{1,4}|mittag|mitternacht)" +
     "(?:" +
         "(?:\\.|\\:|\\：)(\\d{1,2})" +
@@ -18,7 +18,7 @@ private let FIRST_REG_PATTERN = "(^|\\s|T)" +
         ")?" +
     ")?" +
     "(?:\\s*Uhr)?" +
-    "(?:\\s*(A\\.M\\.|P\\.M\\.|AM?|PM?))?" +
+    "(?:\\s*(?:(A\\.M\\.|P\\.M\\.|AM?|PM?)|uhr))?" +
     "(?=\\W|$)"
 
 private let SECOND_REG_PATTERN = "^\\s*" +
@@ -31,7 +31,7 @@ private let SECOND_REG_PATTERN = "^\\s*" +
         ")?" +
         "(?:\\s*Uhr)?" +
     ")?" +
-    "(?:\\s*(A\\.M\\.|P\\.M\\.|AM?|PM?))?" +
+    "(?:\\s*(?:(A\\.M\\.|P\\.M\\.|AM?|PM?)|uhr))?" +
     "(?=\\W|$)"
 
 private let hourGroup = 2

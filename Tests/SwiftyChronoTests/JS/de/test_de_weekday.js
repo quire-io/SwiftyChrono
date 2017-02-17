@@ -101,8 +101,8 @@ test("Test - Single Expression", function () {
 
     var result = results[0];
     if (result) {
-        ok(result.index == 21, 'Wrong index');
-        ok(result.text == 'on Friday next week', result.text);
+        ok(result.index == 22, 'Wrong index');
+        ok(result.text == 'am Freitag nächste Woche', result.text);
 
         ok(result.start, JSON.stringify(result.start));
         ok(result.start.get('year') == 2015, 'Test Result - (Year) ' + JSON.stringify(result.start));
@@ -123,7 +123,7 @@ test("Test - Single Expression", function () {
 
     var result = results[0];
     if (result) {
-        ok(result.index == 29, 'Wrong index');
+        ok(result.index == 27, 'Wrong index');
         ok(result.text == 'nächste Woche Dienstag', result.text);
 
         ok(result.start, JSON.stringify(result.start));
@@ -148,7 +148,7 @@ test("Test - Weekday Overlap", function () {
     var result = results[0];
     if (result) {
         ok(result.index == 0, 'Wrong index');
-        ok(result.text == 'Sunday, December 7, 2014', result.text);
+        ok(result.text == 'Sonntag, den 7. Dezember 2014', result.text);
 
         ok(result.start, JSON.stringify(result.start));
         ok(result.start.get('year') == 2014, 'Test Result - (Year) ' + JSON.stringify(result.start));
@@ -176,12 +176,12 @@ test("Test - Weekday Overlap", function () {
     var result = results[0];
     if (result) {
         ok(result.index == 0, 'Wrong index');
-        ok(result.text == 'Sunday 12/7/2014', result.text);
+        ok(result.text == 'Sonntag 12.7.2014', result.text);
 
         ok(result.start, JSON.stringify(result.start));
         ok(result.start.get('year') == 2014, 'Test Result - (Year) ' + JSON.stringify(result.start));
-        ok(result.start.get('month') == 12, 'Test Result - (Month) ' + JSON.stringify(result.start));
-        ok(result.start.get('day') == 7, 'Test Result - (Day) ' + JSON.stringify(result.start));
+        ok(result.start.get('month') == 7, 'Test Result - (Month) ' + JSON.stringify(result.start));
+        ok(result.start.get('day') == 12, 'Test Result - (Day) ' + JSON.stringify(result.start));
         ok(result.start.get('weekday') == 0, 'Test Result - (Weekday) ' + JSON.stringify(result.start));
 
 
@@ -191,7 +191,7 @@ test("Test - Weekday Overlap", function () {
         ok(result.start.isCertain('weekday'));
 
         var resultDate = result.start.date();
-        var expectDate = new Date(2014, 12 - 1, 7, 12);
+        var expectDate = new Date(2014, 7 - 1, 12, 12);
         ok(Math.abs(expectDate.getTime() - resultDate.getTime()) < 100000, 'Test result.startDate ' + resultDate + '/' + expectDate)
     }
 });
@@ -207,7 +207,7 @@ test('Test - forward dates only option', function () {
     var result = results[0];
     if (result) {
         ok(result.index == 0, 'Wrong index');
-        ok(result.text == 'An diesem Freitag', result.text);
+        ok(result.text == 'diesem Freitag bis Montag', result.text);
 
         ok(result.start, JSON.stringify(result.start));
         ok(result.start.get('year') == 2016, 'Test Result - (Year) ' + JSON.stringify(result.start));

@@ -10,7 +10,7 @@ import Foundation
 
 private let PATTERN = "(\\W|^)" +
     "(?:vo(?:n|m)|am\\s*?)?" +
-    "(?:(\(DE_WEEKDAY_WORDS_PATTERN))\\s*,?\\s*)?" +
+    "(?:(\(DE_WEEKDAY_WORDS_PATTERN))\\s*,?\\s*)?(?:den\\s*)?" +
     "(([0-9]{1,2})(?:\\.)?|\(DE_ORDINAL_WORDS_PATTERN))" +
     "(?:\\s*" +
         "(?:bis|\\-|\\–|\\s)\\s*" +

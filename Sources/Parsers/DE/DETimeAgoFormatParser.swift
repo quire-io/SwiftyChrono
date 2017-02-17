@@ -9,7 +9,7 @@
 import Foundation
 
 private let PATTERN = "(\\W|^)vor\\s*" +
-    "(\(DE_INTEGER_WORDS_PATTERN)|[0-9]+|\(DE_INTEGER1_WORDS_PATTERN)?(?:\\s*(?:wenige[r|n]?|einigen?|paar))?|halbe(?:n|s)?(?:\\s*\(DE_INTEGER1_WORDS_PATTERN))?)\\s*" +
+    "(\(DE_INTEGER_WORDS_PATTERN)|[0-9]+|\(DE_INTEGER1_WORDS_PATTERN)?(?:\\s*(?:wenige[r|n]?|einigen?|paar))?|(?:\(DE_INTEGER1_WORDS_PATTERN))?\\s*halbe(?:n|s)?)\\s*" +
     "(sekunden?|minuten?|stunden?|tag(?:en|e)?|wochen?|monat(?:en|e|s)?|jahr(?:en|(?:es)|e)??)(?=(?:\\W|$))"
 
 private let HALF = 0.5
@@ -50,6 +50,7 @@ public class DETimeAgoFormatParser: Parser {
             result.start.imply(.year, to: date.year)
             result.start.assign(.hour, value: date.hour)
             result.start.assign(.minute, value: date.minute)
+            result.start.assign(.second, value: date.second)
             result.tags[.deTimeAgoFormatParser] = true
             return result
         }

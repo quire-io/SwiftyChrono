@@ -16,7 +16,7 @@ test("Test - Single Expression", function() {
      ok(result.start.get('day') == 8, 'Test Result - (Day) ' + JSON.stringify(result.start) )
      
      ok(result.index == 0, 'Wrong index')
-     ok(result.text == 'lunes 8/2/2016', result.text )
+     ok(result.text == 'montag 2016-02-08', result.text )
      
      var resultDate = result.start.date();
      var expectDate = new Date(2016, 2-1, 8, 12);

@@ -11,7 +11,7 @@ import Foundation
 private let PATTERN = "(\\W|^)" +
     "(?:(?:\\,|\\(|\\（)\\s*)?" +
     "(?:a[mn]\\s*?)?" +
-    "(?:(diese[nmrs]|letzte[nmr]|nächste[nmr]|kommende[nrm]?)\\s*)?" +
+    "(?:(diese[nmrs]?|letzte[nmr]?|nächste[nmr]?|kommende[nrm]?)\\s*(?:woche[nr]?)?\\s*)?" +
     "(\(DE_WEEKDAY_OFFSET.keys.joined(separator: "|")))" +
     "(?:\\s*(?:\\,|\\)|\\）))?" +
     "(?:\\s*(dieser?|letzte[nr]?|nächste[nr]?|kommende[nr]?)\\s*Woche)?" +

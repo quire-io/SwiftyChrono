@@ -14,7 +14,7 @@ test("Test - Single Expression", function() {
         ok(result.start.get('day') == 5, 'Test Result - (Day) ' + JSON.stringify(result.start) );
 
         ok(result.index == 0, 'Wrong index');
-        ok(result.text == '5 days ago', result.text );
+        ok(result.text == 'Vor 5 Tagen', result.text );
 
         var resultDate = result.start.date();
         var expectDate = new Date(2012, 8-1, 5, 12);
@@ -34,7 +34,7 @@ test("Test - Single Expression", function() {
         ok(result.start.get('day') == 31, 'Test Result - (Day) ' + JSON.stringify(result.start) );
 
         ok(result.index == 0, 'Wrong index');
-        ok(result.text == '10 days ago', result.text );
+        ok(result.text == 'Vor 10 Tagen', result.text );
 
         var resultDate = result.start.date();
         var expectDate = new Date(2012, 7-1, 31, 12);
@@ -50,7 +50,7 @@ test("Test - Single Expression", function() {
     var result = results[0];
     if(result){
         ok(result.index == 0, 'Wrong index');
-        ok(result.text == '15 minute ago', result.text );
+        ok(result.text == 'vor 15 Minuten', result.text );
         ok(result.start.get('hour') == 11, 'Test Result - (Month) ' + JSON.stringify(result.start) );
         ok(result.start.get('minute') == 59, 'Test Result - (Day) ' + JSON.stringify(result.start) );
 
@@ -67,7 +67,7 @@ test("Test - Single Expression", function() {
     var result = results[0];
     if(result){
         ok(result.index == 3, 'Wrong index');
-        ok(result.text == '12 hours ago', result.text );
+        ok(result.text == 'vor 12 Stunden', result.text );
         ok(result.start.get('hour') == 0, 'Test Result - (Month) ' + JSON.stringify(result.start) );
         ok(result.start.get('minute') == 14, 'Test Result - (Day) ' + JSON.stringify(result.start) );
 
@@ -84,7 +84,7 @@ test("Test - Single Expression", function() {
     var result = results[0];
     if(result){
         ok(result.index == 3, 'Wrong index');
-        ok(result.text == 'half an hour ago', result.text );
+        ok(result.text == 'vor einer halben Stunde', result.text );
         ok(result.start.get('hour') == 11, 'Test Result - (Month) ' + JSON.stringify(result.start) );
         ok(result.start.get('minute') == 44, 'Test Result - (Day) ' + JSON.stringify(result.start) );
 
@@ -102,7 +102,7 @@ test("Test - Single Expression", function() {
     var result = results[0];
     if(result){
         ok(result.index == 0, 'Wrong index');
-        ok(result.text == '12 hours ago', result.text );
+        ok(result.text == 'Vor 12 Stunden', result.text );
         ok(result.start.get('hour') == 0, 'Test Result - (Month) ' + JSON.stringify(result.start) );
         ok(result.start.get('minute') == 14, 'Test Result - (Day) ' + JSON.stringify(result.start) );
 
@@ -120,7 +120,7 @@ test("Test - Single Expression", function() {
     var result = results[0];
     if(result){
         ok(result.index == 0, 'Wrong index');
-        ok(result.text == '12 seconds ago', result.text );
+        ok(result.text == 'vor 12 Sekunden', result.text );
         ok(result.start.get('hour') == 12, 'Test Result - (Month) ' + JSON.stringify(result.start) );
         ok(result.start.get('minute') == 13, 'Test Result - (Day) ' + JSON.stringify(result.start) );
         ok(result.start.get('second') == 48, 'Test Result - (Day) ' + JSON.stringify(result.start) );
@@ -139,7 +139,7 @@ test("Test - Single Expression", function() {
     var result = results[0];
     if(result){
         ok(result.index == 0, 'Wrong index');
-        ok(result.text == 'three seconds ago', result.text );
+        ok(result.text == 'vor 3 Sekunden', result.text );
         ok(result.start.get('hour') == 12, 'Test Result - (Month) ' + JSON.stringify(result.start) );
         ok(result.start.get('minute') == 13, 'Test Result - (Day) ' + JSON.stringify(result.start) );
         ok(result.start.get('second') == 57, 'Test Result - (Day) ' + JSON.stringify(result.start) );
@@ -164,7 +164,7 @@ test("Test - Single Expression", function() {
         ok(result.start.get('day') == 5, 'Test Result - (Day) ' + JSON.stringify(result.start) );
 
         ok(result.index == 0, 'Wrong index');
-        ok(result.text == '5 Days ago', result.text );
+        ok(result.text == 'vor 5 Tage', result.text );
 
         var resultDate = result.start.date();
         var expectDate = new Date(2012, 8-1, 5, 12);
@@ -180,7 +180,7 @@ test("Test - Single Expression", function() {
     var result = results[0];
     if(result){
         ok(result.index == 3, 'Wrong index');
-        ok(result.text == 'half An hour ago', result.text );
+        ok(result.text == 'vor einer halben Stunde', result.text );
         ok(result.start.get('hour') == 11, 'Test Result - (Month) ' + JSON.stringify(result.start) );
         ok(result.start.get('minute') == 44, 'Test Result - (Day) ' + JSON.stringify(result.start) );
 
@@ -191,7 +191,7 @@ test("Test - Single Expression", function() {
 
 
 //     var text = "A days ago, we did something";
-    var text = "Vor einer Woche wir haben etwas getan";
+    var text = "Vor einem Tag wir haben etwas getan";
     var results = chrono.parse(text, new Date(2012,7,10));
     ok(results.length == 1, JSON.stringify( results ) );
 
@@ -203,7 +203,7 @@ test("Test - Single Expression", function() {
         ok(result.start.get('day') == 9, 'Test Result - (Day) ' + JSON.stringify(result.start) );
 
         ok(result.index == 0, 'Wrong index');
-        ok(result.text == 'A days ago', result.text );
+        ok(result.text == 'Vor einem Tag', result.text );
 
         var resultDate = result.start.date();
         var expectDate = new Date(2012, 8-1, 9, 12);
@@ -219,7 +219,7 @@ test("Test - Single Expression", function() {
     var result = results[0];
     if(result){
         ok(result.index == 0, 'Wrong index');
-        ok(result.text == 'a min before', result.text );
+        ok(result.text == 'vor einer Minute', result.text );
         ok(result.start.get('hour') == 12, 'Test Result - (Month) ' + JSON.stringify(result.start) );
         ok(result.start.get('minute') == 13, 'Test Result - (Day) ' + JSON.stringify(result.start) );
 
@@ -246,7 +246,7 @@ test("Test - Single Expression (Casual)", function() {
         ok(result.start.get('day') == 10, 'Test Result - (Day) ' + JSON.stringify(result.start) );
 
         ok(result.index == 0, 'Wrong index');
-        ok(result.text == '5 months ago', result.text );
+        ok(result.text == 'Vor 5 Monaten', result.text );
 
         var resultDate = result.start.date();
         var expectDate = new Date(2012, 3-1, 10, 12);
@@ -266,7 +266,7 @@ test("Test - Single Expression (Casual)", function() {
         ok(result.start.get('day') == 10, 'Test Result - (Day) ' + JSON.stringify(result.start) );
 
         ok(result.index == 0, 'Wrong index');
-        ok(result.text == '5 years ago', result.text );
+        ok(result.text == 'Vor 5 Jahren', result.text );
 
         var resultDate = result.start.date();
         var expectDate = new Date(2007, 8-1, 10, 12);
@@ -287,7 +287,7 @@ test("Test - Single Expression (Casual)", function() {
         ok(result.start.get('day') == 27, 'Test Result - (Day) ' + JSON.stringify(result.start) );
 
         ok(result.index == 0, 'Wrong index');
-        ok(result.text == 'a week ago', result.text );
+        ok(result.text == 'Vor einer Woche', result.text );
 
         var resultDate = result.start.date();
         var expectDate = new Date(2012, 7-1, 27, 12);
@@ -308,7 +308,7 @@ test("Test - Single Expression (Casual)", function() {
         ok(result.start.get('day') == 31, 'Test Result - (Day) ' + JSON.stringify(result.start) );
 
         ok(result.index == 0, 'Wrong index');
-        ok(result.text == 'a few days ago', result.text );
+        ok(result.text == 'vor ein paar Tagen', result.text );
 
         var resultDate = result.start.date();
         var expectDate = new Date(2012, 7-1, 31, 12);
