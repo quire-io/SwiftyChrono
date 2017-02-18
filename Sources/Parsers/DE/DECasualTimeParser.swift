@@ -8,12 +8,12 @@
 
 import Foundation
 
-private let PATTERN = "(\\W|^)((?:(heute)?\\s*(früh|nachmittag|abend|mittag))|(heute\\s+morgen))"
+private let PATTERN = "(\\W|^)((heute|diese[nrms])?\\s*(früh|nachmittag|abend|mittag))"
 private let timeMatch = 4
-private let thisMorning = 5
 
 public class DECasualTimeParser: Parser {
     override var pattern: String { return PATTERN }
+    override var language: Language { return .german }
     
     override public func extract(text: String, ref: Date, match: NSTextCheckingResult, opt: [OptionType: Int]) -> ParsedResult? {
         let (matchText, index) = matchTextAndIndex(from: text, andMatchResult: match)
@@ -34,10 +34,6 @@ public class DECasualTimeParser: Parser {
                 result.start.imply(.hour, to: opt[.noon] ?? 12)
             default: break
             }
-        }
-        
-        if match.isNotEmpty(atRangeIndex: thisMorning) {
-            result.start.imply(.hour, to: opt[.morning] ?? 6)
         }
         
         result.tags[.deCasualTimeParser] = true

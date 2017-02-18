@@ -110,6 +110,7 @@ func casualModeOption() -> ModeOptio {
         DECasualTimeParser(strictMode: false),
         DECasualDateParser(strictMode: false),
         DEWeekdayParser(strictMode: false),
+        DEMorgenTimeParser(strictMode: false),
         
     ], at: 0)
     

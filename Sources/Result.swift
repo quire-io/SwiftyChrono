@@ -67,7 +67,7 @@ public struct ParsedComponents {
         imply(.hour, to: Chrono.defaultImpliedHour)
         imply(.minute, to: Chrono.defaultImpliedMinute)
         imply(.second, to: Chrono.defaultImpliedSecond)
-        imply(.millisecond, to: Chrono.defaultImpliedHour)
+        imply(.millisecond, to: Chrono.defaultImpliedMillisecond)
     }
     
     private init(parsedComponents: ParsedComponents) {
@@ -223,6 +223,7 @@ public enum TagUnit { case
     deTimeAgoFormatParser,
     deTimeExpressionParser,
     deWeekdayParser,
+    deMorgenTimeParser,
     
     extractTimezoneAbbrRefiner,
     extractTimezoneOffsetRefiner,

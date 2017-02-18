@@ -8,8 +8,6 @@
 
 import Foundation
 
-private let PATTERN = "^\\s*(T|at|after|before|on|of|,|-)?\\s*$"
-
 class MergeDateTimeRefiner: Refiner {
     var PATTERN: String { return "" }
     var TAGS: TagUnit { return .none }
@@ -131,7 +129,7 @@ class MergeDateTimeRefiner: Refiner {
         for tag in timeResult.tags.keys {
             dateResult.tags[tag] = true
         }
-        dateResult.tags[.enMergeDateAndTimeRefiner] = true
+        dateResult.tags[TAGS] = true
         return dateResult
     }
 }

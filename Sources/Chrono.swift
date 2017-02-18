@@ -50,14 +50,16 @@ public struct Chrono {
         var allResults = [ParsedResult]()
         
         if let lang = Chrono.preferredLanguage {
+            // first phase: preferredLanguage parsers
             for parser in parsers {
-                // first phase: preferredLanguage parsers
                 if parser.language == .english || parser.language == lang {
                     allResults += parser.execute(text: text, ref: refDate, opt: opt)
                 }
-                
-                // second phase: other language parsers
-                if allResults.isEmpty {
+            }
+            
+            // second phase: other language parsers
+            if allResults.isEmpty {
+                for parser in parsers {
                     if parser.language != .english && parser.language != lang {
                         allResults += parser.execute(text: text, ref: refDate, opt: opt)
                     }

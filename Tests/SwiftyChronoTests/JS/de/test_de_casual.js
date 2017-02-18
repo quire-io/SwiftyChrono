@@ -2,7 +2,7 @@
 test("Test - Single Expression", function() {
 
 
-//    var text = "The Deadline is now";
+
     var text = "Die Frist endet jetzt";
     var results = chrono.casual.parse(text, new Date(2012, 7, 10, 8, 9, 10, 11));
     ok(results.length == 1, JSON.stringify( results ) );
@@ -27,7 +27,7 @@ test("Test - Single Expression", function() {
     }
 
 
-//    var text = "The Deadline is today";
+
      var text = "Die Frist endet heute";
     var results = chrono.casual.parse(text, new Date(2012, 7, 10, 12));
     ok(results.length == 1, JSON.stringify( results ) );
@@ -48,7 +48,7 @@ test("Test - Single Expression", function() {
     }
 
 
-//    var text = "The Deadline is Tomorrow";
+
     var text = "Der Termin ist morgen";
     var results = chrono.casual.parse(text, new Date(2012, 7, 10, 12));
     ok(results.length == 1, JSON.stringify( results ) );
@@ -69,7 +69,7 @@ test("Test - Single Expression", function() {
     }
 
     // Say.."Tomorrow" in the late night (1 AM)
-//    var text = "The Deadline is Tomorrow";
+
     var text = "Der Termin ist morgen";
     var results = chrono.casual.parse(text, new Date(2012, 7, 10, 1));
     ok(results.length == 1, JSON.stringify( results ) );
@@ -82,7 +82,7 @@ test("Test - Single Expression", function() {
     }
 
 
-//    var text = "The Deadline was yesterday";
+
     var text = "Die Frist endete gestern";
     var results = chrono.casual.parse(text, new Date(2012, 7, 10, 12));
     ok(results.length == 1, JSON.stringify( results ) );
@@ -102,7 +102,7 @@ test("Test - Single Expression", function() {
         ok(Math.abs(expectDate.getTime() - resultDate.getTime()) < 100000, 'Test result.startDate ' + resultDate +'/' +expectDate)
     }
      
-//    var text = "The Deadline was this morning ";
+
     var text = "Der Termin war heute Morgen ";
     var results = chrono.casual.parse(text, new Date(2012, 7, 10, 12));
     ok(results.length == 1, JSON.stringify( results ) );
@@ -124,7 +124,7 @@ test("Test - Single Expression", function() {
     }
 
 
-//     var text = "The Deadline was this afternoon ";
+
     var text = "Der Termin war heute Nachmittag ";
     var results = chrono.casual.parse(text, new Date(2012, 7, 10, 12));
     ok(results.length == 1, JSON.stringify( results ) );
@@ -146,7 +146,7 @@ test("Test - Single Expression", function() {
     }
 
 
-//     var text = "The Deadline was this evening ";
+
     var text = "Der Termin war heute Abend ";
     var results = chrono.casual.parse(text, new Date(2012, 7, 10, 12));
     ok(results.length == 1, JSON.stringify( results ) );
@@ -172,7 +172,7 @@ test("Test - Single Expression", function() {
 test("Test - Combined Expression", function() {
 
 
-//     var text = "The Deadline is today 5PM";
+
     var text = "Der Termin war heute 17 Uhr";
     var results = chrono.casual.parse(text, new Date(2012, 7, 10, 12));
     ok(results.length == 1, JSON.stringify( results ) );
@@ -197,7 +197,7 @@ test("Test - Combined Expression", function() {
 
 test("Test - Casual date range", function() {
 
-//     var text = "The event is today - next friday"; // bis -> -
+
     var text = "Die Veranstaltung geht heute bis kommenden Freitag";
     var results = chrono.casual.parse(text, new Date(2012, 7, 4, 12));
     ok(results.length == 1, JSON.stringify( results ) );
@@ -231,7 +231,7 @@ test("Test - Casual date range", function() {
 
 
 
-//     var text = "The event is today - next friday";
+
     var text = "Die Veranstaltung ist heute bis kommenden Freitag";
     var results = chrono.casual.parse(text, new Date(2012, 7, 10, 12));
     ok(results.length == 1, JSON.stringify( results ) );
@@ -270,7 +270,7 @@ test("Test - Casual date range", function() {
 
 test('Test - Random text', function() {
 
-//     var text = "tonight";
+
     var text = "Heute abend";
     var result = chrono.parse(text, new Date(2012, 1-1, 1, 12))[0];
     ok(result.text == text, result.text);
@@ -280,7 +280,7 @@ test('Test - Random text', function() {
     ok(result.start.get('hour') == 18, JSON.stringify(result.start));
     ok(result.start.get('meridiem')  == 1, JSON.stringify(result.start));
 
-//     var text = "tonight 8pm";
+
     var text = "Heute abend 20 Uhr";
     var result = chrono.parse(text, new Date(2012, 1-1, 1, 12))[0];
     ok(result.text == text, result.text);
@@ -291,8 +291,8 @@ test('Test - Random text', function() {
     ok(result.start.get('meridiem')  == 1, JSON.stringify(result.start));
 
 
-//     var text = "tonight at 8";
-    var text = "Heute Abend um 8.";
+
+    var text = "Heute Abend um 8";
     var result = chrono.parse(text, new Date(2012, 1-1, 1, 12))[0];
     ok(result.text == text, result.text);
     ok(result.start.get('hour')  == 20, JSON.stringify(result.start));
@@ -302,7 +302,7 @@ test('Test - Random text', function() {
     ok(result.start.get('meridiem')  == 1, JSON.stringify(result.start));
 
 
-//     var text = "tomorrow before 4pm";
+
     var text = "Morgen vor 16:00 Uhr";
     var result = chrono.parse(text, new Date(2012, 1-1, 1, 12))[0];
     ok(result.text == text, result.text);
@@ -313,7 +313,7 @@ test('Test - Random text', function() {
     ok(result.start.get('meridiem')  == 1, JSON.stringify(result.start));
 
 
-//     var text = "tomorrow after 4pm";
+
     var text = "Morgen nach 16:00 Uhr";
     var result = chrono.parse(text, new Date(2012, 1-1, 1, 12))[0];
     ok(result.text == text, result.text);
@@ -323,7 +323,7 @@ test('Test - Random text', function() {
     ok(result.start.get('day')   == 2, JSON.stringify(result.start));
     ok(result.start.get('meridiem')  == 1, JSON.stringify(result.start));
 
-//     var text = "this evening";
+
     var text = "diesen Abend";
     var result = chrono.parse(text, new Date(2016, 10-1, 1))[0];
     ok(result.text == text, result.text);
@@ -332,7 +332,7 @@ test('Test - Random text', function() {
     ok(result.start.get('day') == 1, JSON.stringify(result.start));
     ok(result.start.get('hour') == 18, JSON.stringify(result.start));
 
-//     var text = "yesterday afternoon";
+
     var text = "gestern Nachmittag";
     var result = chrono.parse(text, new Date(2016, 10-1, 1))[0];
     ok(result.text == text, result.text);
@@ -341,7 +341,7 @@ test('Test - Random text', function() {
     ok(result.start.get('day') == 30, JSON.stringify(result.start));
     ok(result.start.get('hour') == 15, JSON.stringify(result.start));
 
-//     var text = "tomorrow morning";
+
     var text = "morgen früh";
     var result = chrono.parse(text, new Date(2016, 10-1, 1, 8))[0];
     ok(result.text == text, result.text);
@@ -350,33 +350,3 @@ test('Test - Random text', function() {
     ok(result.start.get('day') == 2, JSON.stringify(result.start));
     ok(result.start.get('hour') == 6, JSON.stringify(result.start));
 });
-
-
-//test('Test - Random negative text', function() {
-//
-//    var text = "notoday";
-//    var results = chrono.parse(text);
-//    ok(results.length == 0, JSON.stringify(results) );
-//
-//
-//    var text = "tdtmr";
-//    var results = chrono.parse(text);
-//    ok(results.length == 0, JSON.stringify(results) );
-//
-//    var text = "xyesterday";
-//    var results = chrono.parse(text);
-//    ok(results.length == 0, JSON.stringify(results) );
-//
-//    var text = "nowhere";
-//    var results = chrono.parse(text);
-//    ok(results.length == 0, JSON.stringify(results) );
-//
-//    var text = "noway";
-//    var results = chrono.parse(text);
-//    ok(results.length == 0, JSON.stringify(results) );
-//
-//    var text = "knowledge";
-//    var results = chrono.parse(text);
-//    ok(results.length == 0, JSON.stringify(results) )
-//
-//});

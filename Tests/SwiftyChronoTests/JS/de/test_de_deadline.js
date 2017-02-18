@@ -1,7 +1,7 @@
 
 test("Test - Single Expression", function() {
 
-//     var text = "we have to do something in 5 days.";
+
     var text = "In 5 Tagen müssen wir fertig sein.";
     var results = chrono.parse(text, new Date(2012,7,10));
     ok(results.length == 1, JSON.stringify( results ) );
@@ -22,7 +22,7 @@ test("Test - Single Expression", function() {
     }
 
 
-//     var text = "we have to do something in five days.";
+
     var text = "In fünf Tagen müssen wir fertig sein.";
     var results = chrono.parse(text, new Date(2012,7,10));
     ok(results.length == 1, JSON.stringify( results ) );
@@ -43,7 +43,7 @@ test("Test - Single Expression", function() {
     }
 
 
-//     var text = "we have to do something within 10 day"; // innerhalb von 10 Tagen
+
     var text = "Wir müssen etwas innerhalb von 10 Tagen tun";
     var results = chrono.parse(text, new Date(2012,7,10));
     ok(results.length == 1, JSON.stringify( results ) );
@@ -64,7 +64,7 @@ test("Test - Single Expression", function() {
     }
 
 
-//     var text = "in 5 minutes";
+
      var text = "in 5 Minuten";
     var results = chrono.parse(text, new Date(2012,7,10,12,14));
     ok(results.length == 1, JSON.stringify( results ) );
@@ -79,7 +79,7 @@ test("Test - Single Expression", function() {
         ok(Math.abs(expectDate.getTime() - resultDate.getTime()) < 100000, 'Test result.startDate ' + resultDate +'/' +expectDate)
     }
 
-//     var text = "within 1 hour";
+
     var text = "innerhalb 1 Stunde";
     var results = chrono.parse(text, new Date(2012,7,10,12,14));
     ok(results.length == 1, JSON.stringify( results ) );
@@ -94,7 +94,7 @@ test("Test - Single Expression", function() {
         ok(Math.abs(expectDate.getTime() - resultDate.getTime()) < 100000, 'Test result.startDate ' + resultDate +'/' +expectDate)
     }
 
-//     var text = "In 5 minutes I will go home";
+
     var text = "In 5 Minuten gehe ich nach Hause";
     var results = chrono.parse(text, new Date(2012,7,10,12,14));
     ok(results.length == 1, JSON.stringify( results ) );
@@ -110,7 +110,7 @@ test("Test - Single Expression", function() {
     }
 
 
-//     var text = "This car needs to move in 5 minutes";
+
     var text = "Diese Auto muss sich in 5 minuten bewegen";
     var results = chrono.parse(text, new Date(2012,7,10,12,14));
     ok(results.length == 1, JSON.stringify( results ) );
@@ -126,7 +126,7 @@ test("Test - Single Expression", function() {
     }
 
 
-//     var text = "In 5 seconds A car need to move";
+
     var text = "Diese Auto muss sich in 5 Sekunden bewegen";
     var results = chrono.parse(text, new Date(2012,7, 10, 12, 14));
     ok(results.length == 1, JSON.stringify( results ) );
@@ -142,7 +142,7 @@ test("Test - Single Expression", function() {
     }
 
 
-//     var text = "within half an hour";
+
     var text = "Innerhalb einer halben Stunde";
     var results = chrono.parse(text, new Date(2012,7,10,12,14));
     ok(results.length == 1, JSON.stringify( results ) );
@@ -158,7 +158,7 @@ test("Test - Single Expression", function() {
     }
 
 
-//     var text = "within two weeks";
+
     var text = "innerhalb von zwei Wochen";
     var results = chrono.parse(text, new Date(2012, 7, 10, 12, 14));
     ok(results.length == 1, JSON.stringify( results ) );
@@ -174,7 +174,7 @@ test("Test - Single Expression", function() {
     }
 
 
-//     var text = "within a month";
+
     var text = "innerhalb eines Monats";
     var results = chrono.parse(text, new Date(2012, 7, 10, 12, 14));
     ok(results.length == 1, JSON.stringify( results ) );
@@ -190,7 +190,7 @@ test("Test - Single Expression", function() {
     }
 
 
-//     var text = "within a few months";
+
     var text = "Innerhalb weniger Monate";
     var results = chrono.parse(text, new Date(2012, 7, 10, 12, 14));
     ok(results.length == 1, JSON.stringify( results ) );
@@ -206,7 +206,7 @@ test("Test - Single Expression", function() {
     }
 
 
-//     var text = "within one Year";
+
     var text = "innerhalb eines Jahres";
     var results = chrono.parse(text, new Date(2012, 7, 10, 12, 14));
     ok(results.length == 1, JSON.stringify( results ) );

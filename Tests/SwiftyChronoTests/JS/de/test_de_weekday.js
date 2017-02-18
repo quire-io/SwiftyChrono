@@ -94,7 +94,6 @@ test("Test - Single Expression", function () {
 
 
 
-//     var text = "Let's have a meeting on Friday next week";
     var text = "Wir haben ein Treffen am Freitag nächste Woche";
     var results = chrono.casual.parse(text, new Date(2015, 3, 18));
     ok(results.length == 1, JSON.stringify(results));
@@ -116,7 +115,6 @@ test("Test - Single Expression", function () {
     }
 
 
-//     var text = "I plan on taking the day off on Tuesday, next week";
     var text = "Ich plane einen freien Tag nächste Woche Dienstag.";
     var results = chrono.casual.parse(text, new Date(2015, 3, 18));
     ok(results.length == 1, JSON.stringify(results));
@@ -140,7 +138,6 @@ test("Test - Single Expression", function () {
 
 test("Test - Weekday Overlap", function () {
 
-//     var text = "Sunday, December 7, 2014";
     var text = "Sonntag, den 7. Dezember 2014";
     var results = chrono.casual.parse(text, new Date(2012, 7, 9));
     ok(results.length == 1, JSON.stringify(results));
@@ -168,7 +165,6 @@ test("Test - Weekday Overlap", function () {
     }
 
 
-//     var text = "Sunday 12/7/2014";
     var text = "Sonntag 12.7.2014";
     var results = chrono.casual.parse(text, new Date(2012, 7, 9));
     ok(results.length == 1, JSON.stringify(results));
@@ -199,7 +195,6 @@ test("Test - Weekday Overlap", function () {
 
 test('Test - forward dates only option', function () {
 
-//     var text = "this Friday to this Monday";
     var text = "diesem Freitag bis Montag";
     var results = chrono.casual.parse(text, new Date(2016, 8-1, 4), {forwardDatesOnly: true});
     ok(results.length == 1, JSON.stringify(results));

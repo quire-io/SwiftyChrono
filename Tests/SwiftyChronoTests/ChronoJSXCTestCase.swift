@@ -14,6 +14,7 @@ public protocol ChronoJSTestable {
 }
 
 public class ChronoJSXCTestCase: XCTestCase, ChronoJSTestable {
+    
     let jsContext = JSContext()!
     let chrono = Chrono()
     var testTitle = ""
@@ -33,6 +34,8 @@ public class ChronoJSXCTestCase: XCTestCase, ChronoJSTestable {
     
     override public func setUp() {
         super.setUp()
+        
+        Chrono.preferredLanguage = nil
         
         /// Handle Error
         jsContext.exceptionHandler = { context, exception in

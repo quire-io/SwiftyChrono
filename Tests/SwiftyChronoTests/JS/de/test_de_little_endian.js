@@ -98,7 +98,6 @@ test("Test - Single expression", function() {
         ok(Math.abs(expectDate.getTime() - resultDate.getTime()) < 100000, 'Test result.startDate ' + resultDate +'/' +expectDate)
     }
 
-//    var text = "The Deadline is 10 August";
     var text = "Der Termin ist der 10. August";
     var results = chrono.parse(text, new Date(2012,7,10));
     ok(results.length == 1, JSON.stringify( results ) );
@@ -119,7 +118,6 @@ test("Test - Single expression", function() {
         ok(Math.abs(expectDate.getTime() - resultDate.getTime()) < 100000, 'Test result.startDate ' + resultDate +'/' +expectDate)
     }
 
-//     var text = "The Deadline is Tuesday, 10 January";
     var text = "Der Termin ist Dienstag, 10. Januar";
     var results = chrono.parse(text, new Date(2012,7,10));
     ok(results.length == 1, JSON.stringify( results ) );
@@ -142,7 +140,6 @@ test("Test - Single expression", function() {
     }
 
 
-//    var text = "The Deadline is Tue, 10 January";
     var text = "Der Termin ist Di, 10. Januar";
     var results = chrono.parse(text, new Date(2012,7,10));
     ok(results.length == 1, JSON.stringify( results ) );
@@ -165,7 +162,6 @@ test("Test - Single expression", function() {
     }
 
 
-//     var text = "31st March, 2016";
     var text = "31. März 2016";
     var results = chrono.parse(text, new Date(2012,7,10));
     ok(results.length == 1, JSON.stringify( results ) );
@@ -186,7 +182,6 @@ test("Test - Single expression", function() {
         ok(Math.abs(expectDate.getTime() - resultDate.getTime()) < 100000, 'Test result.startDate ' + resultDate +'/' +expectDate)
     }
 
-//     var text = "23rd february, 2016";
     var text = "23. februar 2016";
     var results = chrono.parse(text, new Date(2012,7,10));
     ok(results.length == 1, JSON.stringify( results ) );
@@ -214,7 +209,6 @@ test("Test - Single expression", function() {
 test("Test - Range expression", function() {
 
 
-//     var text = "10 - 22 August 2012";
     var text = "10. - 22. August 2012";
     var results = chrono.parse(text, new Date(2012,7,10));
     ok(results.length == 1, JSON.stringify( results ) );
@@ -246,7 +240,6 @@ test("Test - Range expression", function() {
     }
 
 
-//     var text = "10 to 22 August 2012";
     var text = "10. bis 22. August 2012";
     var results = chrono.parse(text, new Date(2012,7,10));
     ok(results.length == 1, JSON.stringify( results ) );
@@ -277,7 +270,6 @@ test("Test - Range expression", function() {
         ok(Math.abs(expectDate.getTime() - resultDate.getTime()) < 100000, 'Test result.startDate ' + resultDate +'/' +expectDate)
     }
 
-//     var text = "10 August - 12 September";
     var text = "10. August bis 12. September";
     var results = chrono.parse(text, new Date(2012,7,10));
     ok(results.length == 1, JSON.stringify( results ) );
@@ -308,7 +300,6 @@ test("Test - Range expression", function() {
         ok(Math.abs(expectDate.getTime() - resultDate.getTime()) < 100000, 'Test result.startDate ' + resultDate +'/' +expectDate)
     }
 
-//     var text = "10 August - 12 September 2013";
     var text = "10. August bis 12. September 2013";
     var results = chrono.parse(text, new Date(2012,7,10));
     ok(results.length == 1, JSON.stringify( results ) );
@@ -343,7 +334,6 @@ test("Test - Range expression", function() {
 
 test("Test - Combined expression", function() {
 
-//     var text = "12th of July at 19:00";
     var text = "12. Juli um 19:00 Uhr";
     var results = chrono.parse(text, new Date(2012,7,10));
     ok(results.length == 1, JSON.stringify( results ) );
@@ -365,7 +355,6 @@ test("Test - Combined expression", function() {
     }
 
 
-//     var text = "7 May 11:00";
     var text = "7. Mai 11:00";
     var results = chrono.parse(text, new Date(2012,7,10));
     ok(results.length == 1, JSON.stringify( results ) );
@@ -391,7 +380,6 @@ test("Test - Combined expression", function() {
 test("Test - Ordinal Words", function () {
 
 
-//     var text = 'Twenty-fourth of May';
     var text = 'Vierundzwanzigster Mai';
     var results = chrono.parse(text, new Date(2012,7,10));
     ok(results.length == 1, JSON.stringify( results ) );
@@ -408,7 +396,6 @@ test("Test - Ordinal Words", function () {
     }
 
 
-//     var text = 'Eighth to eleventh May 2010';
     var text = 'Achter bis elfter Mai 2010';
     var results = chrono.parse(text, new Date(2012,7,10));
     ok(results.length == 1, JSON.stringify( results ) );
