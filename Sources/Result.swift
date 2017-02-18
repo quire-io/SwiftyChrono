@@ -225,6 +225,9 @@ public enum TagUnit { case
     deWeekdayParser,
     deMorgenTimeParser,
     
+    zhHantCasualDateParser,
+    zhHantDateParser,
+    
     extractTimezoneAbbrRefiner,
     extractTimezoneOffsetRefiner,
     forwardDateRefiner,

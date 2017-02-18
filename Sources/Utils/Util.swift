@@ -35,6 +35,14 @@ extension NSTextCheckingResult {
 }
 
 extension String {
+    var firstString: String? {
+        guard let char = characters.first else {
+            return nil
+        }
+        
+        return String(char)
+    }
+    
     func subString(with range: NSRange) -> String {
         return (self as NSString).substring(with: range)
     }
