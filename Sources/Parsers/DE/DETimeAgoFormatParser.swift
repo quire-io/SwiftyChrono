@@ -12,8 +12,7 @@ private let PATTERN = "(\\W|^)vor\\s*" +
     "(\(DE_INTEGER_WORDS_PATTERN)|[0-9]+|\(DE_INTEGER1_WORDS_PATTERN)?(?:\\s*(?:wenige[r|n]?|einigen?|paar))?|(?:\(DE_INTEGER1_WORDS_PATTERN))?\\s*halbe(?:n|s)?)\\s*" +
     "(sekunden?|minuten?|stunden?|tag(?:en|e)?|wochen?|monat(?:en|e|s)?|jahr(?:en|(?:es)|e)??)(?=(?:\\W|$))"
 
-private let HALF = 0.5
-private let HALF_SECOND = millisecondsToNanoSeconds(500) // unit: nanosecond
+
 
 public class DETimeAgoFormatParser: Parser {
     override var pattern: String { return PATTERN }
@@ -28,10 +27,10 @@ public class DETimeAgoFormatParser: Parser {
         let (matchText, index) = matchTextAndIndex(from: text, andMatchResult: match)
         var result = ParsedResult(ref: ref, index: index, text: matchText)
         
-        let number: Double
+        let number: Int
         let numberText = match.string(from: text, atRangeIndex: 2).lowercased()
         if let number0 = DE_INTEGER_WORDS[numberText] {
-            number = Double(number0)
+            number = number0
         } else if DE_INTEGER1_WORDS[numberText] != nil {
             number = 1
         } else if NSRegularExpression.isMatch(forPattern: "wenige|einige|paar", in: numberText) {
@@ -39,7 +38,7 @@ public class DETimeAgoFormatParser: Parser {
         } else if NSRegularExpression.isMatch(forPattern: "halbe", in: numberText) {
             number = HALF
         } else {
-            number = Double(numberText)!
+            number = Int(numberText)!
         }
         
         var date = ref
@@ -55,18 +54,18 @@ public class DETimeAgoFormatParser: Parser {
             return result
         }
         if NSRegularExpression.isMatch(forPattern: "stunde", in: matchText3) {
-            date = number != HALF ? date.added(-Int(number), .hour) : date.added(-30, .minute)
+            date = number != HALF ? date.added(-number, .hour) : date.added(-30, .minute)
             return ymdResult()
         } else if NSRegularExpression.isMatch(forPattern: "minute", in: matchText3) {
-            date = number != HALF ? date.added(-Int(number), .minute) : date.added(-30, .second)
+            date = number != HALF ? date.added(-number, .minute) : date.added(-30, .second)
             return ymdResult()
         } else if NSRegularExpression.isMatch(forPattern: "sekunde", in: matchText3) {
-            date = number != HALF ? date.added(-Int(number), .second) : date.added(-HALF_SECOND, .nanosecond)
+            date = number != HALF ? date.added(-number, .second) : date.added(-HALF_SECOND_IN_MS, .nanosecond)
             return ymdResult()
         }
         
         if NSRegularExpression.isMatch(forPattern: "woche", in: matchText3) {
-            date = number != HALF ? date.added(-Int(number) * 7, .day) : date.added(-3, .day).added(-12, .hour)
+            date = number != HALF ? date.added(-number * 7, .day) : date.added(-3, .day).added(-12, .hour)
             
             result.start.imply(.day, to: date.day)
             result.start.imply(.month, to: date.month)
@@ -75,11 +74,11 @@ public class DETimeAgoFormatParser: Parser {
             result.tags[.deTimeAgoFormatParser] = true
             return result
         } else if NSRegularExpression.isMatch(forPattern: "tag", in: matchText3) {
-            date = number != HALF ? date.added(-Int(number), .day) : date.added(-12, .hour)
+            date = number != HALF ? date.added(-number, .day) : date.added(-12, .hour)
         } else if NSRegularExpression.isMatch(forPattern: "monat", in: matchText3) {
-            date = number != HALF ? date.added(-Int(number), .month) : date.added(-(date.numberOf(.day, inA: .month) ?? 30)/2, .day)
+            date = number != HALF ? date.added(-number, .month) : date.added(-(date.numberOf(.day, inA: .month) ?? 30)/2, .day)
         } else if NSRegularExpression.isMatch(forPattern: "jahr", in: matchText3) {
-            date = number != HALF ? date.added(-Int(number), .year) : date.added(-6, .month)
+            date = number != HALF ? date.added(-number, .year) : date.added(-6, .month)
         }
         
         result.start.assign(.day, value: date.day)

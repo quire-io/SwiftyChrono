@@ -8,6 +8,9 @@
 
 import Foundation
 
+let HALF = Int.min
+let HALF_SECOND_IN_MS = millisecondsToNanoSeconds(500) // unit: nanosecond
+
 /// get ascending order from two number.
 /// ATTENSION:
 func sortTwoNumbers(_ index1: Int, _ index2: Int) -> (lessNumber: Int, greaterNumber: Int) {

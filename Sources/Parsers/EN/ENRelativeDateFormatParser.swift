@@ -18,8 +18,7 @@ private let modifierWordGroup = 2
 private let multiplierWordGroup = 3
 private let relativeWordGroup = 4
 
-private let HALF = 0.5
-private let HALF_SECOND = millisecondsToNanoSeconds(500) // unit: nanosecond
+
 
 public class ENRelativeDateFormatParser: Parser {
     override var pattern: String { return PATTERN }
@@ -28,13 +27,13 @@ public class ENRelativeDateFormatParser: Parser {
         let (matchText, index) = matchTextAndIndex(from: text, andMatchResult: match)
         var result = ParsedResult(ref: ref, index: index, text: matchText)
         
-        let modifier: Double = match.isNotEmpty(atRangeIndex: modifierWordGroup) && NSRegularExpression.isMatch(forPattern: "^next", in: match.string(from: text, atRangeIndex: modifierWordGroup).lowercased()) ? 1 : -1
+        let modifier = match.isNotEmpty(atRangeIndex: modifierWordGroup) && NSRegularExpression.isMatch(forPattern: "^next", in: match.string(from: text, atRangeIndex: modifierWordGroup).lowercased()) ? 1 : -1
         result.tags[.enRelativeDateFormatParser] = true
         
-        var number: Double
+        var number: Int
         let numberText = match.isNotEmpty(atRangeIndex: multiplierWordGroup) ? match.string(from: text, atRangeIndex: multiplierWordGroup).lowercased() : ""
         if let number0 = EN_INTEGER_WORDS[numberText] {
-            number = Double(number0)
+            number = number0
         } else if numberText == "" {
             number = 1
         } else if NSRegularExpression.isMatch(forPattern: "few", in: numberText) {
@@ -42,37 +41,36 @@ public class ENRelativeDateFormatParser: Parser {
         } else if NSRegularExpression.isMatch(forPattern: "half", in: numberText) {
             number = HALF
         } else {
-            number = Double(numberText)!
+            number = Int(numberText)!
         }
         
         let isHalf = number == HALF
         number *= modifier
-        let integerNum = Int(isHalf ? modifier : number)
         
         var date = ref
         if match.isNotEmpty(atRangeIndex: relativeWordGroup) {
             let relativeWord = match.string(from: text, atRangeIndex: relativeWordGroup)
             
             if NSRegularExpression.isMatch(forPattern: "day", in: relativeWord) {
-                date = isHalf ? date.added(integerNum * 12 , .hour) : date.added(integerNum * 1, .day)
+                date = isHalf ? date.added(modifier * 12 , .hour) : date.added(number, .day)
                 result.start.assign(.year, value: date.year)
                 result.start.assign(.month, value: date.month)
                 result.start.assign(.day, value: date.day)
             } else if NSRegularExpression.isMatch(forPattern: "week", in: relativeWord) {
-                date = isHalf ? date.added(integerNum * 3, .day).added(integerNum * 12 , .hour) : date.added(integerNum * 7, .day)
+                date = isHalf ? date.added(modifier * 3, .day).added(number * 12 , .hour) : date.added(number * 7, .day)
                 // We don't know the exact date for next/last week so we imply
                 // them
                 result.start.imply(.day, to: date.day)
                 result.start.imply(.month, to: date.month)
                 result.start.imply(.year, to: date.year)
             } else if NSRegularExpression.isMatch(forPattern: "month", in: relativeWord) {
-                date = isHalf ? date.added(integerNum * (date.numberOf(.day, inA: .month) ?? 30)/2 , .day) : date.added(integerNum * 1, .month)
+                date = isHalf ? date.added(modifier * (date.numberOf(.day, inA: .month) ?? 30)/2 , .day) : date.added(number * 1, .month)
                 // We don't know the exact day for next/last month
                 result.start.imply(.day, to: date.day)
                 result.start.assign(.year, value: date.year)
                 result.start.assign(.month, value: date.month)
             } else if NSRegularExpression.isMatch(forPattern: "year", in: relativeWord) {
-                date = isHalf ? date.added(integerNum * 6 , .month) : date.added(integerNum * 1, .year)
+                date = isHalf ? date.added(modifier * 6 , .month) : date.added(number, .year)
                 // We don't know the exact day for month on next/last year
                 result.start.imply(.day, to: date.day)
                 result.start.imply(.month, to: date.month)
@@ -85,15 +83,15 @@ public class ENRelativeDateFormatParser: Parser {
         let relativeWord = match.isNotEmpty(atRangeIndex: relativeWordGroup) ? match.string(from: text, atRangeIndex: relativeWordGroup) : ""
         
         if NSRegularExpression.isMatch(forPattern: "hour", in: relativeWord) {
-            date = number != HALF ? date.added(integerNum * 30, .minute) : date.added(integerNum * 1, .hour)
+            date = isHalf ? date.added(modifier * 30, .minute) : date.added(number, .hour)
             result.start.imply(.minute, to: date.minute)
             result.start.imply(.second, to: date.second)
         } else if NSRegularExpression.isMatch(forPattern: "min", in: relativeWord) {
-            date = number != HALF ? date.added(integerNum * 30, .second) : date.added(integerNum * 1, .minute)
+            date = isHalf ? date.added(modifier * 30, .second) : date.added(number, .minute)
             result.start.assign(.minute, value: date.minute)
             result.start.imply(.second, to: date.second)
         } else if NSRegularExpression.isMatch(forPattern: "second", in: relativeWord) {
-            date = number != HALF ? date.added(integerNum * HALF_SECOND, .nanosecond) : date.added(integerNum * 1, .second)
+            date = isHalf ? date.added(modifier * HALF_SECOND_IN_MS, .nanosecond) : date.added(number, .second)
             result.start.assign(.minute, value: date.minute)
             result.start.assign(.second, value: date.second)
         }

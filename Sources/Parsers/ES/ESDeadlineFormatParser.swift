@@ -10,8 +10,7 @@ import Foundation
 
 private let PATTERN = "(\\W|^)(dentro\\s*de|en)\\s*([0-9]+|medi[oa]|una?)\\s*(minutos?|horas?|d[ií]as?)\\s*(?=(?:\\W|$))"
 
-private let HALF = 0.5
-private let HALF_SECOND = millisecondsToNanoSeconds(500) // unit: nanosecond
+
 
 public class ESDeadlineFormatParser: Parser {
     override var pattern: String { return PATTERN }
@@ -22,7 +21,7 @@ public class ESDeadlineFormatParser: Parser {
         var result = ParsedResult(ref: ref, index: index, text: matchText)
         result.tags[.esDeadlineFormatParser] = true
         
-        let number: Double
+        let number: Int
         let numberText = match.string(from: text, atRangeIndex: 3).lowercased()
         let parsedNumber = Int(numberText)
         
@@ -33,13 +32,13 @@ public class ESDeadlineFormatParser: Parser {
                 number = 1
             }
         } else {
-            number = Double(parsedNumber!)
+            number = parsedNumber!
         }
         
         let number4 = match.string(from: text, atRangeIndex: 4).lowercased()
         var date = ref
         if NSRegularExpression.isMatch(forPattern: "d[ií]a", in: number4) {
-            date = number != HALF ? date.added(Int(number), .day) : date.added(12, .hour)
+            date = number != HALF ? date.added(number, .day) : date.added(12, .hour)
             
             result.start.assign(.year, value: date.year)
             result.start.assign(.month, value: date.month)
@@ -49,9 +48,9 @@ public class ESDeadlineFormatParser: Parser {
         
         
         if NSRegularExpression.isMatch(forPattern: "hora", in: number4) {
-            date = number != HALF ? date.added(Int(number), .hour) : date.added(30, .minute)
+            date = number != HALF ? date.added(number, .hour) : date.added(30, .minute)
         } else if NSRegularExpression.isMatch(forPattern: "minuto", in: number4) {
-            date = number != HALF ? date.added(Int(number), .minute) : date.added(30, .second)
+            date = number != HALF ? date.added(number, .minute) : date.added(30, .second)
         }
         
         result.start.imply(.year, to: date.year)

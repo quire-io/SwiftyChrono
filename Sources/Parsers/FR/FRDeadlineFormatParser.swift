@@ -20,8 +20,7 @@ private let STRICT_PATTERN = "(\\W|^)" +
     "(secondes?|minutes?|heures?|jours?)\\s*" +
     "(?=\\W|$)"
 
-private let HALF = 0.5
-private let HALF_SECOND = millisecondsToNanoSeconds(500) // unit: nanosecond
+
 
 public class FRDeadlineFormatParser: Parser {
     override var pattern: String { return strictMode ? STRICT_PATTERN : PATTERN }
@@ -32,10 +31,10 @@ public class FRDeadlineFormatParser: Parser {
         var result = ParsedResult(ref: ref, index: index, text: matchText)
         result.tags[.frDeadlineFormatParser] = true
         
-        let number: Double
+        let number: Int
         let numberText = match.string(from: text, atRangeIndex: 3).lowercased()
         if let number0 = FR_INTEGER_WORDS[numberText] {
-            number = Double(number0)
+            number = number0
         } else if numberText == "un" || numberText == "une" {
             number = 1
         } else if NSRegularExpression.isMatch(forPattern: "quelques?", in: numberText) {
@@ -43,7 +42,7 @@ public class FRDeadlineFormatParser: Parser {
         } else if NSRegularExpression.isMatch(forPattern: "demi-?", in: numberText) {
             number = HALF
         } else {
-            number = Double(numberText)!
+            number = Int(numberText)!
         }
         
         var date = ref
@@ -55,27 +54,27 @@ public class FRDeadlineFormatParser: Parser {
             return result
         }
         if NSRegularExpression.isMatch(forPattern: "jour", in: matchText4) {
-            date = number != HALF ? date.added(Int(number), .day) : date.added(12, .hour)
+            date = number != HALF ? date.added(number, .day) : date.added(12, .hour)
             return ymdResult()
         } else if NSRegularExpression.isMatch(forPattern: "semaine", in: matchText4) {
-            date = number != HALF ? date.added(Int(number * 7), .day) : date.added(3, .day).added(12, .hour)
+            date = number != HALF ? date.added(number * 7, .day) : date.added(3, .day).added(12, .hour)
             return ymdResult()
         } else if NSRegularExpression.isMatch(forPattern: "mois", in: matchText4) {
-            date = number != HALF ? date.added(Int(number), .month) : date.added((date.numberOf(.day, inA: .month) ?? 30)/2, .day)
+            date = number != HALF ? date.added(number, .month) : date.added((date.numberOf(.day, inA: .month) ?? 30)/2, .day)
             return ymdResult()
         } else if NSRegularExpression.isMatch(forPattern: "année", in: matchText4) {
-            date = number != HALF ? date.added(Int(number), .year) : date.added(6, .month)
+            date = number != HALF ? date.added(number, .year) : date.added(6, .month)
             return ymdResult()
         }
         
         
         
         if NSRegularExpression.isMatch(forPattern: "heure", in: matchText4) {
-            date = number != HALF ? date.added(Int(number), .hour) : date.added(30, .minute)
+            date = number != HALF ? date.added(number, .hour) : date.added(30, .minute)
         } else if NSRegularExpression.isMatch(forPattern: "min", in: matchText4) {
-            date = number != HALF ? date.added(Int(number), .minute) : date.added(30, .second)
+            date = number != HALF ? date.added(number, .minute) : date.added(30, .second)
         } else if NSRegularExpression.isMatch(forPattern: "secondes", in: matchText4) {
-            date = number != HALF ? date.added(Int(number), .second) : date.added(HALF_SECOND, .nanosecond)
+            date = number != HALF ? date.added(number, .second) : date.added(HALF_SECOND_IN_MS, .nanosecond)
         }
         
         

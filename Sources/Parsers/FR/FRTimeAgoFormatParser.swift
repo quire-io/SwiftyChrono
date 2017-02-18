@@ -10,8 +10,7 @@ import Foundation
 
 private let PATTERN = "(\\W|^)il y a\\s*([0-9]+|une?)\\s*(minutes?|heures?|semaines?|jours?|mois|années?|ans?)(?=(?:\\W|$))"
 
-private let HALF = 0.5
-private let HALF_SECOND = millisecondsToNanoSeconds(500) // unit: nanosecond
+
 
 public class FRTimeAgoFormatParser: Parser {
     override var pattern: String { return PATTERN }
@@ -27,7 +26,7 @@ public class FRTimeAgoFormatParser: Parser {
         var result = ParsedResult(ref: ref, index: index, text: matchText)
         
         
-        let number: Double
+        let number: Int
         let numberText = match.string(from: text, atRangeIndex: 2).lowercased()
         let parsedNumber = Int(numberText)
         
@@ -38,7 +37,7 @@ public class FRTimeAgoFormatParser: Parser {
                 number = 1
             }
         } else {
-            number = Double(parsedNumber!)
+            number = parsedNumber!
         }
         
         
@@ -54,15 +53,15 @@ public class FRTimeAgoFormatParser: Parser {
             return result
         }
         if NSRegularExpression.isMatch(forPattern: "heure", in: matchText3) {
-            date = number != HALF ? date.added(-Int(number), .hour) : date.added(-30, .minute)
+            date = number != HALF ? date.added(-number, .hour) : date.added(-30, .minute)
             return ymdResult()
         } else if NSRegularExpression.isMatch(forPattern: "minute", in: matchText3) {
-            date = number != HALF ? date.added(-Int(number), .minute) : date.added(-30, .second)
+            date = number != HALF ? date.added(-number, .minute) : date.added(-30, .second)
             return ymdResult()
         }
         
         if NSRegularExpression.isMatch(forPattern: "semaine", in: matchText3) {
-            date = number != HALF ? date.added(-Int(number) * 7, .day) : date.added(-3, .day).added(-12, .hour)
+            date = number != HALF ? date.added(-number * 7, .day) : date.added(-3, .day).added(-12, .hour)
             
             result.start.imply(.day, to: date.day)
             result.start.imply(.month, to: date.month)
@@ -71,11 +70,11 @@ public class FRTimeAgoFormatParser: Parser {
             result.tags[.frTimeAgoFormatParser] = true
             return result
         } else if NSRegularExpression.isMatch(forPattern: "jour", in: matchText3) {
-            date = number != HALF ? date.added(-Int(number), .day) : date.added(-12, .hour)
+            date = number != HALF ? date.added(-number, .day) : date.added(-12, .hour)
         } else if NSRegularExpression.isMatch(forPattern: "mois", in: matchText3) {
-            date = number != HALF ? date.added(-Int(number), .month) : date.added(-(date.numberOf(.day, inA: .month) ?? 30)/2, .day)
+            date = number != HALF ? date.added(-number, .month) : date.added(-(date.numberOf(.day, inA: .month) ?? 30)/2, .day)
         } else if NSRegularExpression.isMatch(forPattern: "années?|ans?", in: matchText3) {
-            date = number != HALF ? date.added(-Int(number), .year) : date.added(-6, .month)
+            date = number != HALF ? date.added(-number, .year) : date.added(-6, .month)
         }
         
         result.start.assign(.day, value: date.day)

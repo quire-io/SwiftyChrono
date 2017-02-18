@@ -20,8 +20,7 @@ private let STRICT_PATTERN = "(\\W|^)" +
     "(seconds?|minutes?|hours?|days?)\\s*" +
     "ago(?=(?:\\W|$))"
 
-private let HALF = 0.5
-private let HALF_SECOND = millisecondsToNanoSeconds(500) // unit: nanosecond
+
 
 public class ENTimeAgoFormatParser: Parser {
     override var pattern: String { return strictMode ? STRICT_PATTERN : PATTERN }
@@ -35,10 +34,10 @@ public class ENTimeAgoFormatParser: Parser {
         let (matchText, index) = matchTextAndIndex(from: text, andMatchResult: match)
         var result = ParsedResult(ref: ref, index: index, text: matchText)
         
-        let number: Double
+        let number: Int
         let numberText = match.string(from: text, atRangeIndex: 2).lowercased()
         if let number0 = EN_INTEGER_WORDS[numberText] {
-            number = Double(number0)
+            number = number0
         } else if numberText == "a" || numberText == "an" {
             number = 1
         } else if NSRegularExpression.isMatch(forPattern: "few", in: numberText) {
@@ -46,7 +45,7 @@ public class ENTimeAgoFormatParser: Parser {
         } else if NSRegularExpression.isMatch(forPattern: "half", in: numberText) {
             number = HALF
         } else {
-            number = Double(numberText)!
+            number = Int(numberText)!
         }
         
         var date = ref
@@ -62,18 +61,18 @@ public class ENTimeAgoFormatParser: Parser {
             return result
         }
         if NSRegularExpression.isMatch(forPattern: "hour", in: matchText3) {
-            date = number != HALF ? date.added(-Int(number), .hour) : date.added(-30, .minute)
+            date = number != HALF ? date.added(-number, .hour) : date.added(-30, .minute)
             return ymdResult()
         } else if NSRegularExpression.isMatch(forPattern: "min", in: matchText3) {
-            date = number != HALF ? date.added(-Int(number), .minute) : date.added(-30, .second)
+            date = number != HALF ? date.added(-number, .minute) : date.added(-30, .second)
             return ymdResult()
         } else if NSRegularExpression.isMatch(forPattern: "second", in: matchText3) {
-            date = number != HALF ? date.added(-Int(number), .second) : date.added(-HALF_SECOND, .nanosecond)
+            date = number != HALF ? date.added(-number, .second) : date.added(-HALF_SECOND_IN_MS, .nanosecond)
             return ymdResult()
         }
         
         if NSRegularExpression.isMatch(forPattern: "week", in: matchText3) {
-            date = number != HALF ? date.added(-Int(number) * 7, .day) : date.added(-3, .day).added(-12, .hour)
+            date = number != HALF ? date.added(-number * 7, .day) : date.added(-3, .day).added(-12, .hour)
             
             result.start.imply(.day, to: date.day)
             result.start.imply(.month, to: date.month)
@@ -82,11 +81,11 @@ public class ENTimeAgoFormatParser: Parser {
             result.tags[.enTimeAgoFormatParser] = true
             return result
         } else if NSRegularExpression.isMatch(forPattern: "day", in: matchText3) {
-            date = number != HALF ? date.added(-Int(number), .day) : date.added(-12, .hour)
+            date = number != HALF ? date.added(-number, .day) : date.added(-12, .hour)
         } else if NSRegularExpression.isMatch(forPattern: "month", in: matchText3) {
-            date = number != HALF ? date.added(-Int(number), .month) : date.added(-(date.numberOf(.day, inA: .month) ?? 30)/2, .day)
+            date = number != HALF ? date.added(-number, .month) : date.added(-(date.numberOf(.day, inA: .month) ?? 30)/2, .day)
         } else if NSRegularExpression.isMatch(forPattern: "year", in: matchText3) {
-            date = number != HALF ? date.added(-Int(number), .year) : date.added(-6, .month)
+            date = number != HALF ? date.added(-number, .year) : date.added(-6, .month)
         }
         
         result.start.assign(.day, value: date.day)
