@@ -12,7 +12,7 @@ private let PATTERN = "(\\W|^)" +
     "(?:(?:\\,|\\(|\\（)\\s*)?" +
     "(?:on\\s*?)?" +
     "(?:(this|last|past|next)\\s*)?" +
-    "(\(EN_WEEKDAY_OFFSET.keys.joined(separator: "|")))" +
+    "(\(EN_WEEKDAY_OFFSET_PATTERN))" +
     "(?:\\s*(?:\\,|\\)|\\）))?" +
     "(?:\\s*(this|last|past|next)\\s*week)?" +
     "(?=\\W|$)"

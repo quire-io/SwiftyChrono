@@ -57,6 +57,11 @@ private func baseOption(strictMode: Bool) -> ModeOptio {
         DETimeExpressionParser(strictMode: strictMode),
         
         // ZH-Hant
+        ZHHantCasualDateParser(strictMode: strictMode),
+        ZHHantDateParser(strictMode: strictMode),
+        ZHHantDeadlineFormatParser(strictMode: strictMode),
+        ZHHantTimeExpressionParser(strictMode: strictMode),
+        ZHHantWeekdayParser(strictMode: strictMode),
         
     ], refiners: [
         // Removing overlaping first
@@ -118,5 +123,5 @@ func casualModeOption() -> ModeOptio {
 }
 
 public enum Language {
-    case english, spanish, french, japanese, german
+    case english, spanish, french, japanese, german, chinese
 }

@@ -25,9 +25,10 @@ private let timeGroup3 = 6
 
 public class ZHHantCasualDateParser: Parser {
     override var pattern: String { return PATTERN }
+    override var language: Language { return .chinese }
     
     override public func extract(text: String, ref: Date, match: NSTextCheckingResult, opt: [OptionType: Int]) -> ParsedResult? {
-        let (matchText, index) = matchTextAndIndex(from: text, andMatchResult: match)
+        let (matchText, index) = matchTextAndIndexForCHHant(from: text, andMatchResult: match)
         var result = ParsedResult(ref: ref, index: index, text: matchText)
         
         let refMoment = ref

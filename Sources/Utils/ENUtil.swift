@@ -27,6 +27,8 @@ let EN_WEEKDAY_OFFSET = [
     "sat": 6
 ]
 
+let EN_WEEKDAY_OFFSET_PATTERN = "(?:" + EN_WEEKDAY_OFFSET.keys.joined(separator: "|") + ")"
+
 let EN_MONTH_OFFSET = [
     "january": 1,
     "jan": 1,
