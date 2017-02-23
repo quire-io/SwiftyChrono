@@ -13,8 +13,7 @@ public enum OptionType: String { case
     afternoon = "afternoon",
     evening = "evening",
     noon = "noon",
-    forwardDate = "forwardDate",
-    forwardDatesOnly = "forwardDatesOnly"
+    forwardDate = "forwardDate"
 }
 
 public struct Chrono {
@@ -80,7 +79,7 @@ public struct Chrono {
         return allResults
     }
     
-    public func parseDate(text: String, refDate: Date, opt: [OptionType: Int]) -> Date? {
+    public func parseDate(text: String, refDate: Date = Date(), opt: [OptionType: Int] = [:]) -> Date? {
         let results = Chrono.casual.parse(text: text, refDate: refDate, opt: opt)
         return results.first?.start.date
     }
