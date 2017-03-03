@@ -8,7 +8,7 @@ Pod::Spec.new do |spec|
     spec.summary      = 'A natural language date parser in Swift (ported from chrono.js)'
     spec.author       = 'Jerrywell'
     spec.homepage     = 'https://github.com/quire-io/SwiftyChrono'
-    spec.license      = { :type => 'MIT', :file => 'LICENSE.md' }
+    spec.license      = { :type => 'MIT', :file => 'LICENSE' }
     spec.source       = { :git => 'https://github.com/quire-io/SwiftyChrono.git', :tag => 'v1.0.0' }
     spec.source_files = 'Sources/**/*.swift'
     spec.social_media_url = 'https://twitter.com/quire_io'
