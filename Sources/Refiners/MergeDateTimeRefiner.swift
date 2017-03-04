@@ -13,6 +13,7 @@ class MergeDateTimeRefiner: Refiner {
     var TAGS: TagUnit { return .none }
     
     override public func refine(text: String, results: [ParsedResult], opt: [OptionType: Int]) -> [ParsedResult] {
+        var results = results
         let resultsLength = results.count
         if resultsLength < 2 { return results }
         
@@ -29,15 +30,19 @@ class MergeDateTimeRefiner: Refiner {
             if isDateOnly(result: previousResult) && isTimeOnly(result: currentResult!) &&
                 isAbleToMerge(text: text, previousResult: previousResult, currentResult: currentResult!) {
                 
-                previousResult = mergeResult(refText: text, dateResult: previousResult, timeResult: currentResult!)
-                currentResult = nil
+                results[i] = mergeResult(refText: text, dateResult: previousResult, timeResult: currentResult!)
+                currentResult = results[i]
+                
                 i += 1
+                continue
             } else if isDateOnly(result: currentResult!) && isTimeOnly(result: previousResult) &&
                 isAbleToMerge(text: text, previousResult: previousResult, currentResult: currentResult!) {
                 
-                previousResult = mergeResult(refText: text, dateResult: currentResult!, timeResult: previousResult)
-                currentResult = nil
+                results[i] = mergeResult(refText: text, dateResult: currentResult!, timeResult: previousResult)
+                currentResult = results[i]
+                
                 i += 1
+                continue
             }
             
             mergedResults.append(previousResult)

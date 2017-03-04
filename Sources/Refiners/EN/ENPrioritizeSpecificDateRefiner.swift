@@ -77,6 +77,7 @@ func mergeResult(text: String, specificResult: ParsedResult, nonSpecificResult: 
 
 class ENPrioritizeSpecificDateRefiner: Refiner {
     override public func refine(text: String, results: [ParsedResult], opt: [OptionType: Int]) -> [ParsedResult] {
+        var results = results
         let resultsLength = results.count
         if resultsLength < 2 { return results }
         
@@ -91,14 +92,20 @@ class ENPrioritizeSpecificDateRefiner: Refiner {
             
             if isMoreSpecific(previousResult: previousResult, currentResult: currentResult!) &&
                 isAbleToMerge(text: text, previousResult: previousResult, currentResult: currentResult!) {
-                previousResult = mergeResult(text: text, specificResult: previousResult, nonSpecificResult: currentResult!)
-                currentResult = nil
+                
+                results[i] = mergeResult(text: text, specificResult: previousResult, nonSpecificResult: currentResult!)
+                currentResult = results[i]
+                
                 i += 1
+                continue
             } else if isMoreSpecific(previousResult: currentResult!, currentResult: previousResult) &&
                 isAbleToMerge(text: text, previousResult: previousResult, currentResult: currentResult!) {
-                previousResult = mergeResult(text: text, specificResult: currentResult!, nonSpecificResult: previousResult)
-                currentResult = nil
+                
+                results[i] = mergeResult(text: text, specificResult: currentResult!, nonSpecificResult: previousResult)
+                currentResult = results[i]
+                
                 i += 1
+                continue
             }
             
             mergedResults.append(previousResult)
