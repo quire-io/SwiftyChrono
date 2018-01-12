@@ -90,7 +90,7 @@ func strictModeOption() -> ModeOptio {
     return baseOption(strictMode: true)
 }
 
-func casualModeOption() -> ModeOptio {
+public func casualModeOption() -> ModeOptio {
     var options = baseOption(strictMode: false)
     
     options.parsers.insert(contentsOf: [

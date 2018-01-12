@@ -43,7 +43,7 @@ public class ESTimeExpressionParser: Parser {
     
     override public func extract(text: String, ref: Date, match: NSTextCheckingResult, opt: [OptionType: Int]) -> ParsedResult? {
         // This pattern can be overlaped Ex. [12] AM, 1[2] AM
-        let idx = match.rangeAt(0).location
+        let idx = match.range(at: 0).location
         let str = text.substring(from: idx - 1, to: idx)
         if idx > 0 && NSRegularExpression.isMatch(forPattern: "\\w", in: str) {
             return nil
@@ -239,7 +239,9 @@ public class ESTimeExpressionParser: Parser {
         }
         
         if result.end!.date.timeIntervalSince1970 < result.start.date.timeIntervalSince1970 {
-            result.end?.imply(.day, to: result.end![.day]! + 1)
+            var newResult = result
+            newResult.end?.imply(.day, to: result.end![.day]! + 1)
+            result = newResult
         }
         
         return result
