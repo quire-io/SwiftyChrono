@@ -45,7 +45,7 @@ public class DETimeExpressionParser: Parser {
     
     override public func extract(text: String, ref: Date, match: NSTextCheckingResult, opt: [OptionType: Int]) -> ParsedResult? {
         // This pattern can be overlaped Ex. [12] AM, 1[2] AM
-        let idx = match.rangeAt(0).location
+        let idx = match.range(at: 0).location
         let str = text.substring(from: idx - 1, to: idx)
         if idx > 0 && NSRegularExpression.isMatch(forPattern: "\\w", in: str) {
             return nil

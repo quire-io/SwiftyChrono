@@ -25,15 +25,15 @@ func sortTwoNumbers(_ index1: Int, _ index2: Int) -> (lessNumber: Int, greaterNu
 
 extension NSTextCheckingResult {
     func isNotEmpty(atRangeIndex index: Int) -> Bool {
-        return rangeAt(index).length != 0
+        return range(at: index).length != 0
     }
     
     func isEmpty(atRangeIndex index: Int) -> Bool {
-        return rangeAt(index).length == 0
+        return range(at: index).length == 0
     }
     
     func string(from text: String, atRangeIndex index: Int) -> String {
-        return text.subString(with: rangeAt(index))
+        return text.subString(with: range(at: index))
     }
 }
 

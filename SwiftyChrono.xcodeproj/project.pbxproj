@@ -863,6 +863,7 @@
 		C4FE689A1E31FB0800C04AD9 /* ENMergeDateRangeRefiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FE68951E31FB0800C04AD9 /* ENMergeDateRangeRefiner.swift */; };
 		C4FE689B1E31FB0800C04AD9 /* ENMergeDateRangeRefiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FE68951E31FB0800C04AD9 /* ENMergeDateRangeRefiner.swift */; };
 		C4FE689C1E31FB0800C04AD9 /* ENMergeDateRangeRefiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FE68951E31FB0800C04AD9 /* ENMergeDateRangeRefiner.swift */; };
+		D97F11B4205224CB003EE64A /* LICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = D97F11B3205224CB003EE64A /* LICENSE.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -905,7 +906,6 @@
 		BBB55AFE1C8F8CBB0050DDA9 /* SwiftyChrono.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyChrono.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBB55B071C8F8CBB0050DDA9 /* SwiftyChrono-Test.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SwiftyChrono-Test.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBB55B1C1C8F90F60050DDA9 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
-		BBB55B1D1C8F9E850050DDA9 /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		BBB55B1E1C8F9E920050DDA9 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C40992841E3216520009CA05 /* ENMonthNameMiddleEndianParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENMonthNameMiddleEndianParser.swift; sourceTree = "<group>"; };
 		C409928C1E321FC10009CA05 /* ENMonthNameParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENMonthNameParser.swift; sourceTree = "<group>"; };
@@ -1033,6 +1033,7 @@
 		C4ED15B31E37448400C4676B /* OverlapRemovalRefiner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlapRemovalRefiner.swift; sourceTree = "<group>"; };
 		C4ED15BB1E3757FC00C4676B /* UnlikelyFormatFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnlikelyFormatFilter.swift; sourceTree = "<group>"; };
 		C4FE68951E31FB0800C04AD9 /* ENMergeDateRangeRefiner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENMergeDateRangeRefiner.swift; sourceTree = "<group>"; };
+		D97F11B3205224CB003EE64A /* LICENSE.md */ = {isa = PBXFileReference; explicitFileType = net.daringfireball.markdown; fileEncoding = 4; path = LICENSE.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1096,7 +1097,7 @@
 			children = (
 				BBB55B1E1C8F9E920050DDA9 /* README.md */,
 				BB086D9E1DF5AEF400CBF8BB /* CHANGELOG.md */,
-				BBB55B1D1C8F9E850050DDA9 /* LICENSE.md */,
+				D97F11B3205224CB003EE64A /* LICENSE.md */,
 				BB241BC51DD9F6490067F917 /* Package.swift */,
 				BB241BC71DD9F7D60067F917 /* SwiftyChrono.podspec */,
 				BBB55B1C1C8F90F60050DDA9 /* .travis.yml */,
@@ -1597,11 +1598,11 @@
 				TargetAttributes = {
 					BBB55AB11C8F80020050DDA9 = {
 						CreatedOnToolsVersion = 7.3;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0920;
 					};
 					BBB55ABB1C8F80020050DDA9 = {
 						CreatedOnToolsVersion = 7.3;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0920;
 					};
 					BBB55AD31C8F88F20050DDA9 = {
 						CreatedOnToolsVersion = 7.3;
@@ -1684,6 +1685,7 @@
 				C43A7A8F1E4AD3D4005E3BFF /* test_de_casual.js in Resources */,
 				C43A78771E484B5E005E3BFF /* test_en_little_endian.js in Resources */,
 				C43A78D21E484B5E005E3BFF /* test_es_slash.js in Resources */,
+				D97F11B4205224CB003EE64A /* LICENSE.md in Resources */,
 				C43A79261E484B5F005E3BFF /* test_jp_standard.js in Resources */,
 				C43A78E01E484B5F005E3BFF /* test_es_time_exp.js in Resources */,
 				C43A7AAB1E4AD3D4005E3BFF /* test_de_slash.js in Resources */,
@@ -2730,6 +2732,8 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -2749,6 +2753,8 @@
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -2762,7 +2768,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_IDENTIFIER_BASE).Tests";
 				PRODUCT_NAME = "$(PROJECT_NAME)-Test";
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -2775,7 +2782,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_IDENTIFIER_BASE).Tests";
 				PRODUCT_NAME = "$(PROJECT_NAME)-Test";
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
