@@ -43,7 +43,11 @@ public class ChronoJSXCTestCase: XCTestCase, ChronoJSTestable {
             let lineNumber = exception?.objectForKeyedSubscript("line").toString()
             let column = exception?.objectForKeyedSubscript("column")
             
-            assertionFailure("error: \(exception?.description)\n stack trace: \(stacktrace)\n line number: \(lineNumber) \ncolumn: \(column)")
+            let exceptionDescription = exception?.description ?? "No Exception Description"
+            let stacktraceString = stacktrace ?? "No stacktrace string"
+            let lineNumberString = lineNumber ?? "No lineNumber string"
+            
+            assertionFailure("error: \(exceptionDescription)\n stack trace: \(stacktraceString)\n line number: \(lineNumberString) \ncolumn: \(String(describing: column))")
         }
         
         /// register classs to js context
@@ -75,7 +79,7 @@ public class ChronoJSXCTestCase: XCTestCase, ChronoJSTestable {
             }
             
             if !passed {
-                print("the \(self.nthTest) case of text:\"\(self.lastTextForFailCase)\", results: \(self.lastResultsForFailCase.first?.start.date)")
+                print("the \(self.nthTest) case of text:\"\(self.lastTextForFailCase)\", results: \(String(describing: self.lastResultsForFailCase.first?.start.date))")
             }
             
             if let message = message {
