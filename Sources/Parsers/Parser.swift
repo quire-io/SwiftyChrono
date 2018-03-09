@@ -36,11 +36,12 @@ public class Parser {
                 if !result.isMoveIndexMode { // extraction is success, normal mode
                     // If success, start from the end of the result
                     startIndex = result.index + result.text.count
-//                    remainingText = text.substring(from: text.index(text.startIndex, offsetBy: startIndex))
-                    let range = text.index(text.startIndex, offsetBy: startIndex)
-                    let subStr = text[range]
-                    remainingText = String(subStr)
-
+                    
+                    let startingRange = text.index(text.startIndex, offsetBy: startIndex)
+                    let endRange = text.index(text.endIndex, offsetBy: 0)
+                    
+                    let range = startingRange..<endRange
+                    remainingText = String(text[range])
                     
                     if !strictMode || result.hasPossibleDates() {
                         results.append(result)
@@ -53,15 +54,12 @@ public class Parser {
                 // If fail, move on by 1
                 let location = existingMatch.range.location + 1
                 //                remainingText = text.substring(from: text.index(text.startIndex, offsetBy: location))
-                // PROBLEM
-                if location < text.count {
-                    let range = text.index(text.startIndex, offsetBy: location)
-                    let subStr = text[range]
-                    remainingText = String(subStr)
-                    startIndex = location
-                } else {
-                    remainingText = ""
-                }
+                let rangeFix = text.index(text.startIndex, offsetBy: location)
+                let endRange = text.index(text.endIndex, offsetBy: 0)
+                let range = rangeFix..<endRange
+                
+                remainingText = String(text[range])
+                startIndex = location
             }
             
             let remainingTextLength = remainingText.count

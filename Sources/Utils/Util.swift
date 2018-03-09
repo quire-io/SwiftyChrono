@@ -51,30 +51,32 @@ extension String {
     }
     
     func substring(from idx: Int) -> String {
-//        return substring(from: index(startIndex, offsetBy: idx))
-        //        let index = self.index(self.startIndex, offsetBy: idx)
-        //        let subStr = self[..<index]
-        //        return String(subStr)
-        return String(self.prefix(idx))
+        let startIdx = index(startIndex, offsetBy: idx)
+        let endIdx = index(endIndex, offsetBy: 0)
+        let range = startIdx..<endIdx
+        return String(self[range])
     }
     
     func substring(from startIdx: Int, to endIdx: Int? = nil) -> String {
         if startIdx < 0 || (endIdx != nil && endIdx! < 0) {
             return ""
         }
-//        let start = characters.index(startIndex, offsetBy: startIdx)
-//        let end = endIdx != nil ? characters.index(startIndex, offsetBy: endIdx!) : endIndex
-        let start = self.index(self.startIndex, offsetBy: startIdx)
-        let end = endIdx != nil ? self.index(self.startIndex, offsetBy: endIdx!) : self.endIndex
-        let range = start..<end
-        let subStr = self[range]
-        
-        return String(subStr)
+        let start = self.index(startIndex, offsetBy: startIdx)
+        let end = endIdx != nil ? self.index(startIndex, offsetBy: endIdx!) : endIndex
+        let rangeFix = start..<end
+        return String(self[rangeFix])
     }
     
     func range(ofStartIndex idx: Int, length: Int) -> Range<String.Index> {
         let startIndex0 = index(startIndex, offsetBy: idx)
-        let endIndex0 = index(startIndex, offsetBy: idx + length)
+        let endIndex0: String.Index
+        if idx + length > self.count {
+            // causes out of bound error
+            // so we just set by length
+            endIndex0 = index(startIndex, offsetBy: self.count)
+        } else {
+            endIndex0 = index(startIndex, offsetBy: idx + length)
+        }
         return Range(uncheckedBounds: (lower: startIndex0, upper: endIndex0))
     }
     
