@@ -25,21 +25,21 @@ func sortTwoNumbers(_ index1: Int, _ index2: Int) -> (lessNumber: Int, greaterNu
 
 extension NSTextCheckingResult {
     func isNotEmpty(atRangeIndex index: Int) -> Bool {
-        return range(at: index).length != 0
+        return rangeAt(index).length != 0
     }
     
     func isEmpty(atRangeIndex index: Int) -> Bool {
-        return range(at: index).length == 0
+        return rangeAt(index).length == 0
     }
     
     func string(from text: String, atRangeIndex index: Int) -> String {
-        return text.subString(with: range(at: index))
+        return text.subString(with: rangeAt(index))
     }
 }
 
 extension String {
     var firstString: String? {
-        guard let char = characters.first else {
+        guard let char = self.first else {
             return nil
         }
         
@@ -51,16 +51,25 @@ extension String {
     }
     
     func substring(from idx: Int) -> String {
-        return substring(from: index(startIndex, offsetBy: idx))
+//        return substring(from: index(startIndex, offsetBy: idx))
+        //        let index = self.index(self.startIndex, offsetBy: idx)
+        //        let subStr = self[..<index]
+        //        return String(subStr)
+        return String(self.prefix(idx))
     }
     
     func substring(from startIdx: Int, to endIdx: Int? = nil) -> String {
         if startIdx < 0 || (endIdx != nil && endIdx! < 0) {
             return ""
         }
-        let start = characters.index(startIndex, offsetBy: startIdx)
-        let end = endIdx != nil ? characters.index(startIndex, offsetBy: endIdx!) : endIndex
-        return substring(with: start..<end)
+//        let start = characters.index(startIndex, offsetBy: startIdx)
+//        let end = endIdx != nil ? characters.index(startIndex, offsetBy: endIdx!) : endIndex
+        let start = self.index(self.startIndex, offsetBy: startIdx)
+        let end = endIdx != nil ? self.index(self.startIndex, offsetBy: endIdx!) : self.endIndex
+        let range = start..<end
+        let subStr = self[range]
+        
+        return String(subStr)
     }
     
     func range(ofStartIndex idx: Int, length: Int) -> Range<String.Index> {
@@ -82,7 +91,7 @@ extension String {
 
 extension NSRegularExpression {
     static func isMatch(forPattern pattern: String, in text: String) -> Bool {
-        return (try? NSRegularExpression(pattern: pattern, options: .caseInsensitive))?.firstMatch(in: text, range: NSRange(location: 0, length: text.characters.count)) != nil
+        return (try? NSRegularExpression(pattern: pattern, options: .caseInsensitive))?.firstMatch(in: text, range: NSRange(location: 0, length: text.count)) != nil
     }
 }
 

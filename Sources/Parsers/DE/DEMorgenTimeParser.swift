@@ -35,7 +35,7 @@ public class DEMorgenTimeParser: Parser {
         } else if time.hasSuffix("früh") {
             result.start.imply(.day, to: ref.day + 1)
         } else {
-            if let weekday = DE_WEEKDAY_OFFSET[time.substring(from: 0, to: time.characters.count - "Morgen".characters.count).trimmed()] {
+            if let weekday = DE_WEEKDAY_OFFSET[time.substring(from: 0, to: time.count - "Morgen".count).trimmed()] {
                 
                 result.start.assign(.weekday, value: weekday)
             }
