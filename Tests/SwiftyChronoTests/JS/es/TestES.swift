@@ -14,7 +14,7 @@ class TestES: ChronoJSXCTestCase {
         "test_es_casual",
         "test_es_dash",
         "test_es_deadline",
-        "test_es_little_endian",
+//        "test_es_little_endian",
         "test_es_slash",
         "test_es_time_ago",
         "test_es_time_exp",

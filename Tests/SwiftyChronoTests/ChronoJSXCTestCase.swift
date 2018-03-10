@@ -129,7 +129,6 @@ public class ChronoJSXCTestCase: XCTestCase, ChronoJSTestable {
         }
         jsContext.setObject(unsafeBitCast(chronoParseDate, to: AnyObject.self), forKeyedSubscript: "chronoParseDate" as (NSCopying & NSObjectProtocol)!)
         
-        
         /// expose test() at the top scope for using objectForKeyedSubscript
         jsContext.evaluateScript(
             "test = function(title, testFunc) {" +
