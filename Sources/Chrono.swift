@@ -48,6 +48,10 @@ public struct Chrono {
     public func parse(text: String, refDate: Date = Date(), opt: [OptionType: Int] = [:]) -> [ParsedResult] {
         var allResults = [ParsedResult]()
         
+        if text.isEmpty {
+            return allResults
+        }
+        
         if let lang = Chrono.preferredLanguage {
             // first phase: preferredLanguage parsers
             for parser in parsers {
