@@ -51,14 +51,14 @@ public class DESlashDateFormatParser: Parser {
             // Long skip, if there is some overlapping like:
             // XX[/YY/ZZ]
             // [XX/YY/]ZZ
-            let match0 = match.rangeAt(0)
+            let match0 = match.range(at: 0)
             return ParsedResult.moveIndexMode(index: match0.location + match0.length)
         }
         
         let openGroup = match.isNotEmpty(atRangeIndex: openningGroup) ? match.string(from: text, atRangeIndex: openningGroup) : ""
         let endGroup = match.isNotEmpty(atRangeIndex: endingGroup) ? match.string(from: text, atRangeIndex: endingGroup) : ""
         let fullMatchText = match.string(from: text, atRangeIndex: 0)
-        let index = match.rangeAt(0).location + match.rangeAt(openningGroup).length
+        let index = match.range(at: 0).location + match.range(at: openningGroup).length
         let matchText = fullMatchText.substring(from: openGroup.characters.count, to: fullMatchText.characters.count - endGroup.characters.count)
         var result = ParsedResult(ref: ref, index: index, text: matchText)
         

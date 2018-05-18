@@ -62,16 +62,16 @@ public class Parser {
     }
     
     final func matchTextAndIndex(from text: String, andMatchResult matchResult: NSTextCheckingResult) -> (matchText: String, index: Int) {
-        let index1Length = matchResult.rangeAt(1).length
+        let index1Length = matchResult.range(at: 1).length
         let matchText = matchResult.string(from: text, atRangeIndex: 0).substring(from: index1Length)
-        let index = matchResult.rangeAt(0).location + index1Length
+        let index = matchResult.range(at: 0).location + index1Length
         
         return (matchText, index)
     }
     
     final func matchTextAndIndexForCHHant(from text: String, andMatchResult matchResult: NSTextCheckingResult) -> (matchText: String, index: Int) {
         let matchText = matchResult.string(from: text, atRangeIndex: 0)
-        let index = matchResult.rangeAt(0).location
+        let index = matchResult.range(at: 0).location
         
         return (matchText, index)
     }
