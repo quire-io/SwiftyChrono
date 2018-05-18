@@ -245,7 +245,7 @@ public class ENTimeExpressionParser: Parser {
             }
         }
 
-        var localRes = localRes
+        var localRes = result
         if localRes.end!.date.timeIntervalSince1970 < result.start.date.timeIntervalSince1970 {
             localRes.end?.imply(.day, to: result.end![.day]! + 1)
         }
