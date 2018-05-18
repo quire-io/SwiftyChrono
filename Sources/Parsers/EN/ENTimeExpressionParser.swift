@@ -244,11 +244,12 @@ public class ENTimeExpressionParser: Parser {
                 result.end!.imply(.meridiem, to: 1)
             }
         }
-        
-        if result.end!.date.timeIntervalSince1970 < result.start.date.timeIntervalSince1970 {
-            result.end?.imply(.day, to: result.end![.day]! + 1)
+
+        var localRes = localRes
+        if localRes.end!.date.timeIntervalSince1970 < result.start.date.timeIntervalSince1970 {
+            localRes.end?.imply(.day, to: result.end![.day]! + 1)
         }
         
-        return result
+        return localRes
     }
 }

@@ -237,12 +237,13 @@ public class FRTimeExpressionParser: Parser {
         if meridiem >= 0 {
             result.end!.assign(.meridiem, value: meridiem)
         }
-        
-        if result.end!.date.timeIntervalSince1970 < result.start.date.timeIntervalSince1970 {
-            result.end?.imply(.day, to: result.end![.day]! + 1)
+
+        var localRes = result
+        if localRes.end!.date.timeIntervalSince1970 < result.start.date.timeIntervalSince1970 {
+            localRes.end?.imply(.day, to: result.end![.day]! + 1)
         }
         
-        return result
+        return localRes
     }
 }
 
