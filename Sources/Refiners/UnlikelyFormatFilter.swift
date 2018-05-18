@@ -14,6 +14,6 @@ private let regex = try! NSRegularExpression(pattern: PATTERN, options: NSRegula
 class UnlikelyFormatFilter: Filter {
     override func isValid(text: String, result: ParsedResult, opt: [OptionType: Int]) -> Bool {
         let textToMatch = result.text.replacingOccurrences(of: " ", with: "")
-        return regex.firstMatch(in: textToMatch, range: NSRange(location: 0, length: textToMatch.characters.count)) == nil
+        return regex.firstMatch(in: textToMatch, range: NSRange(location: 0, length: textToMatch.count)) == nil
     }
 }

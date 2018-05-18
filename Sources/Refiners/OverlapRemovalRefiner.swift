@@ -21,9 +21,9 @@ class OverlapRemovalRefiner: Refiner {
             var result = results[i]
             
             // If overlap, compare the length and discard the shorter one
-            let previousTextLength = previousResult.text.characters.count
+            let previousTextLength = previousResult.text.count
             if result.index < previousResult.index + previousTextLength {
-                if result.text.characters.count > previousTextLength {
+                if result.text.count > previousTextLength {
                     previousResult = result
                 }
             } else {
