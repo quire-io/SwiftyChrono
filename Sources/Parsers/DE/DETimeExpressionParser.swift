@@ -108,7 +108,7 @@ public class DETimeExpressionParser: Parser {
                 return nil
             }
             
-            let ampm = String(match.string(from: text, atRangeIndex: amPmHourGroup).characters.first!).lowercased()
+            let ampm = String(match.string(from: text, atRangeIndex: amPmHourGroup).first!).lowercased()
             if ampm == "a" {
                 meridiem = 0
                 if hour == 12 {
@@ -137,8 +137,8 @@ public class DETimeExpressionParser: Parser {
         // ==============================================================
         
         let regex = try? NSRegularExpression(pattern: SECOND_REG_PATTERN, options: .caseInsensitive)
-        let secondText = text.substring(from: result.index + result.text.characters.count)
-        guard let match = regex?.firstMatch(in: secondText, range: NSRange(location: 0, length: secondText.characters.count)) else {
+        let secondText = text.substring(from: result.index + result.text.count)
+        guard let match = regex?.firstMatch(in: secondText, range: NSRange(location: 0, length: secondText.count)) else {
             // Not accept number only result
             if NSRegularExpression.isMatch(forPattern: "^\\d+$", in: result.text) {
                 return nil
@@ -198,7 +198,7 @@ public class DETimeExpressionParser: Parser {
                 return nil
             }
             
-            let ampm = String(match.string(from: secondText, atRangeIndex: amPmHourGroup).characters.first!).lowercased()
+            let ampm = String(match.string(from: secondText, atRangeIndex: amPmHourGroup).first!).lowercased()
             if ampm == "a" {
                 meridiem = 0
                 if hour == 12 {

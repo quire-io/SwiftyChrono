@@ -28,14 +28,14 @@ public class Parser {
         
         var startIndex = 0
         var remainingText = text
-        var match = regex?.firstMatch(in: text, range: NSRange(location: startIndex, length: remainingText.characters.count))
+        var match = regex?.firstMatch(in: text, range: NSRange(location: startIndex, length: remainingText.count))
         
         while let existingMatch = match {
             let result = extract(text: text, ref: ref, match: existingMatch, opt: opt)
             if let result = result {
                 if !result.isMoveIndexMode { // extraction is success, normal mode
                     // If success, start from the end of the result
-                    startIndex = result.index + result.text.characters.count
+                    startIndex = result.index + result.text.count
                     remainingText = text.substring(from: text.index(text.startIndex, offsetBy: startIndex))
                     
                     if !strictMode || result.hasPossibleDates() {
@@ -52,7 +52,7 @@ public class Parser {
                 startIndex = location
             }
             
-            let remainingTextLength = remainingText.characters.count
+            let remainingTextLength = remainingText.count
             
             match = remainingTextLength > 0 ?
                 regex?.firstMatch(in: text, range: NSRange(location: startIndex, length: remainingTextLength)) : nil
