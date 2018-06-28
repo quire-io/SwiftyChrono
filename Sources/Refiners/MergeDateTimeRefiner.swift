@@ -65,7 +65,7 @@ class MergeDateTimeRefiner: Refiner {
     }
     
     private func isAbleToMerge(text: String, previousResult: ParsedResult, currentResult: ParsedResult) -> Bool {
-        let (startIndex, endIndex) = sortTwoNumbers(previousResult.index + previousResult.text.characters.count, currentResult.index)
+        let (startIndex, endIndex) = sortTwoNumbers(previousResult.index + previousResult.text.count, currentResult.index)
         
         let textBetween = text.substring(from: startIndex, to: endIndex)
         return NSRegularExpression.isMatch(forPattern: PATTERN, in: textBetween)
@@ -125,11 +125,11 @@ class MergeDateTimeRefiner: Refiner {
         
         let startIndex = min(dateResult.index, timeResult.index)
         let endIndex = max(
-            dateResult.index + dateResult.text.characters.count,
-            timeResult.index + timeResult.text.characters.count)
+            dateResult.index + dateResult.text.count,
+            timeResult.index + timeResult.text.count)
         
         dateResult.index = startIndex
-        dateResult.text = text.substring(with: text.range(ofStartIndex: startIndex, andEndIndex: endIndex))
+        dateResult.text = text.substring(from: startIndex, to: endIndex)
         
         for tag in timeResult.tags.keys {
             dateResult.tags[tag] = true

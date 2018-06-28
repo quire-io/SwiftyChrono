@@ -43,7 +43,7 @@ public class FRTimeExpressionParser: Parser {
     
     override public func extract(text: String, ref: Date, match: NSTextCheckingResult, opt: [OptionType: Int]) -> ParsedResult? {
         // This pattern can be overlaped Ex. [12] AM, 1[2] AM
-        let idx = match.rangeAt(0).location
+			let idx = match.range(at: 0).location
         let str = text.substring(from: idx - 1, to: idx)
         if idx > 0 && NSRegularExpression.isMatch(forPattern: "\\w", in: str) {
             return nil
@@ -106,7 +106,7 @@ public class FRTimeExpressionParser: Parser {
                 return nil
             }
             
-            let ampm = String(match.string(from: text, atRangeIndex: amPmHourGroup).characters.first!).lowercased()
+            let ampm = match.string(from: text, atRangeIndex: amPmHourGroup).substring(from: 0, to: 1).lowercased()
             if ampm == "a" {
                 meridiem = 0
                 if hour == 12 {
@@ -133,8 +133,8 @@ public class FRTimeExpressionParser: Parser {
         // ==============================================================
         
         let regex = try? NSRegularExpression(pattern: SECOND_REG_PATTERN, options: .caseInsensitive)
-        let secondText = text.substring(from: result.index + result.text.characters.count)
-        guard let match = regex?.firstMatch(in: secondText, range: NSRange(location: 0, length: secondText.characters.count)) else {
+        let secondText = text.substring(from: result.index + result.text.count)
+        guard let match = regex?.firstMatch(in: secondText, range: NSRange(location: 0, length: secondText.count)) else {
             // Not accept number only result
             if NSRegularExpression.isMatch(forPattern: "^\\d+$", in: result.text) {
                 return nil
@@ -194,7 +194,7 @@ public class FRTimeExpressionParser: Parser {
                 return nil
             }
             
-            let ampm = String(match.string(from: secondText, atRangeIndex: amPmHourGroup).characters.first!).lowercased()
+            let ampm = String(match.string(from: secondText, atRangeIndex: amPmHourGroup).substring(from: 0, to: 1)).lowercased()
             if ampm == "a" {
                 meridiem = 0
                 if hour == 12 {
@@ -239,7 +239,8 @@ public class FRTimeExpressionParser: Parser {
         }
         
         if result.end!.date.timeIntervalSince1970 < result.start.date.timeIntervalSince1970 {
-            result.end?.imply(.day, to: result.end![.day]! + 1)
+						let to = result.end![.day]! + 1
+            result.end?.imply(.day, to: to)
         }
         
         return result

@@ -25,25 +25,21 @@ func sortTwoNumbers(_ index1: Int, _ index2: Int) -> (lessNumber: Int, greaterNu
 
 extension NSTextCheckingResult {
     func isNotEmpty(atRangeIndex index: Int) -> Bool {
-        return rangeAt(index).length != 0
+			return range(at: index).length != 0
     }
     
     func isEmpty(atRangeIndex index: Int) -> Bool {
-        return rangeAt(index).length == 0
+			return range(at: index).length == 0
     }
     
     func string(from text: String, atRangeIndex index: Int) -> String {
-        return text.subString(with: rangeAt(index))
+			return text.subString(with: range(at: index))
     }
 }
 
 extension String {
     var firstString: String? {
-        guard let char = characters.first else {
-            return nil
-        }
-        
-        return String(char)
+        return substring(from: 0, to: 1)
     }
     
     func subString(with range: NSRange) -> String {
@@ -51,16 +47,16 @@ extension String {
     }
     
     func substring(from idx: Int) -> String {
-        return substring(from: index(startIndex, offsetBy: idx))
+        return String(self[index(startIndex, offsetBy: idx)...])
     }
     
     func substring(from startIdx: Int, to endIdx: Int? = nil) -> String {
         if startIdx < 0 || (endIdx != nil && endIdx! < 0) {
             return ""
         }
-        let start = characters.index(startIndex, offsetBy: startIdx)
-        let end = endIdx != nil ? characters.index(startIndex, offsetBy: endIdx!) : endIndex
-        return substring(with: start..<end)
+			let start = index(startIndex, offsetBy: startIdx)
+			let end = endIdx != nil ? index(startIndex, offsetBy: endIdx!) : endIndex
+			return String(self[start..<end])
     }
     
     func range(ofStartIndex idx: Int, length: Int) -> Range<String.Index> {
@@ -82,7 +78,7 @@ extension String {
 
 extension NSRegularExpression {
     static func isMatch(forPattern pattern: String, in text: String) -> Bool {
-        return (try? NSRegularExpression(pattern: pattern, options: .caseInsensitive))?.firstMatch(in: text, range: NSRange(location: 0, length: text.characters.count)) != nil
+        return (try? NSRegularExpression(pattern: pattern, options: .caseInsensitive))?.firstMatch(in: text, range: NSRange(location: 0, length: text.count)) != nil
     }
 }
 

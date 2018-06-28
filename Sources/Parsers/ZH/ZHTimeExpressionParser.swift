@@ -1,5 +1,5 @@
 //
-//  ZHHantTimeExpressionParser.swift
+//  ZHTimeExpressionParser.swift
 //  SwiftyChrono
 //
 //  Created by Jerry Chen on 2/18/17.
@@ -17,11 +17,11 @@ private let FIRST_REG_PATTERN = "(?:由|從|自)?" +
     "(?:(上(?:午|晝)|朝(?:早)|早(?:上)|下(?:午|晝)|晏(?:晝)|晚(?:上)|夜(?:晚)?|中(?:午)|凌(?:晨)))?" +
     ")?" +
     "(?:[\\s,，]*)" +
-    "(?:(\\d+|\(ZHHANT_NUMBER_PATTERN)+)(?:\\s*)(?:點|時|:|：)" +
+    "(?:(\\d+|\(ZH_NUMBER_PATTERN)+)(?:\\s*)(?:點|時|:|：|点|时)" +
     "(?:\\s*)" +
-    "(\\d+|半|正|整|\(ZHHANT_NUMBER_PATTERN)+)?(?:\\s*)(?:分|:|：)?" +
+    "(\\d+|半|正|整|\(ZH_NUMBER_PATTERN)+)?(?:\\s*)(?:分|:|：)?" +
     "(?:\\s*)" +
-    "(\\d+|\(ZHHANT_NUMBER_PATTERN)+)?(?:\\s*)(?:秒)?)" +
+    "(\\d+|\(ZH_NUMBER_PATTERN)+)?(?:\\s*)(?:秒)?)" +
     "(?:\\s*(A\\.M\\.|P\\.M\\.|AM?|PM?))?";
 
 private let SECOND_REG_PATTERN = "(?:\\s*(?:到|至|\\-|\\–|\\~|\\〜)\\s*)" +
@@ -33,11 +33,11 @@ private let SECOND_REG_PATTERN = "(?:\\s*(?:到|至|\\-|\\–|\\~|\\〜)\\s*)" +
     "(?:(上(?:午|晝)|朝(?:早)|早(?:上)|下(?:午|晝)|晏(?:晝)|晚(?:上)|夜(?:晚)?|中(?:午)|凌(?:晨)))?" +
     ")?" +
     "(?:[\\s,，]*)" +
-    "(?:(\\d+|\(ZHHANT_NUMBER_PATTERN)+)(?:\\s*)(?:點|時|:|：)" +
+    "(?:(\\d+|\(ZH_NUMBER_PATTERN)+)(?:\\s*)(?:點|時|:|：|点|时)" +
     "(?:\\s*)" +
-    "(\\d+|半|正|整|\(ZHHANT_NUMBER_PATTERN)+)?(?:\\s*)(?:分|:|：)?" +
+    "(\\d+|半|正|整|\(ZH_NUMBER_PATTERN)+)?(?:\\s*)(?:分|:|：)?" +
     "(?:\\s*)" +
-    "(\\d+|\(ZHHANT_NUMBER_PATTERN)+)?(?:\\s*)(?:秒)?)" +
+    "(\\d+|\(ZH_NUMBER_PATTERN)+)?(?:\\s*)(?:秒)?)" +
     "(?:\\s*(A\\.M\\.|P\\.M\\.|AM?|PM?))?"
 
 private let dayGroup1 = 1
@@ -50,13 +50,13 @@ private let minuteGroup = 7
 private let secondGroup = 8
 private let amPmHourGroup = 9
 
-public class ZHHantTimeExpressionParser: Parser {
+public class ZHTimeExpressionParser: Parser {
     override var pattern: String { return FIRST_REG_PATTERN }
     override var language: Language { return .chinese }
     
     override public func extract(text: String, ref: Date, match: NSTextCheckingResult, opt: [OptionType: Int]) -> ParsedResult? {
         // This pattern can be overlaped Ex. [12] AM, 1[2] AM
-        let idx = match.rangeAt(0).location
+			let idx = match.range(at: 0).location
         let str = text.substring(from: idx - 1, to: idx)
         if idx > 0 && NSRegularExpression.isMatch(forPattern: "[a-zA-Z0-9_]", in: str) {
             return nil
@@ -230,8 +230,8 @@ public class ZHHantTimeExpressionParser: Parser {
         // ==============================================================
         
         let regex = try? NSRegularExpression(pattern: SECOND_REG_PATTERN, options: .caseInsensitive)
-        let secondText = text.substring(from: result.index + result.text.characters.count)
-        guard let match = regex?.firstMatch(in: secondText, range: NSRange(location: 0, length: secondText.characters.count)) else {
+        let secondText = text.substring(from: result.index + result.text.count)
+        guard let match = regex?.firstMatch(in: secondText, range: NSRange(location: 0, length: secondText.count)) else {
             // Not accept number only result
             if NSRegularExpression.isMatch(forPattern: "^\\d+$", in: result.text) {
                 return nil

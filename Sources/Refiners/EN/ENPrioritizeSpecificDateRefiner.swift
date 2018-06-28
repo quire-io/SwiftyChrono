@@ -33,7 +33,7 @@ private func isMoreSpecific(previousResult: ParsedResult, currentResult: ParsedR
 }
 
 private func isAbleToMerge(text: String, previousResult: ParsedResult, currentResult: ParsedResult) -> Bool {
-    let (startIndex, endIndex) = sortTwoNumbers(previousResult.index + previousResult.text.characters.count, currentResult.index)
+    let (startIndex, endIndex) = sortTwoNumbers(previousResult.index + previousResult.text.count, currentResult.index)
     let textBetween = text.substring(from: startIndex, to: endIndex)
     
     // Only accepts merge if one of them comes from casual relative date
@@ -61,8 +61,8 @@ func mergeResult(text: String, specificResult: ParsedResult, nonSpecificResult: 
 
     let startIndex = min(specificResult.index, nonSpecificResult.index)
     let endIndex = max(
-        specificResult.index + specificResult.text.characters.count,
-        nonSpecificResult.index + nonSpecificResult.text.characters.count)
+        specificResult.index + specificResult.text.count,
+        nonSpecificResult.index + nonSpecificResult.text.count)
     
     specificResult.index = startIndex
     specificResult.text = text.substring(from: startIndex, to: endIndex)

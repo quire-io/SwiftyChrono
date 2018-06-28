@@ -48,7 +48,7 @@ class MergeDateRangeRefiner: Refiner {
     }
     
     private func isAbleToMerge(text: String, result1: ParsedResult, result2: ParsedResult) -> Bool {
-        let (startIndex, endIndex) = sortTwoNumbers(result1.index + result1.text.characters.count, result2.index)
+        let (startIndex, endIndex) = sortTwoNumbers(result1.index + result1.text.count, result2.index)
         let textBetween = text.substring(from: startIndex, to: endIndex)
         
         return NSRegularExpression.isMatch(forPattern: PATTERN, in: textBetween)
@@ -90,8 +90,8 @@ class MergeDateRangeRefiner: Refiner {
         
         let startIndex = min(fromResult.index, toResult.index)
         let endIndex = max(
-            fromResult.index + fromResult.text.characters.count,
-            toResult.index + toResult.text.characters.count)
+            fromResult.index + fromResult.text.count,
+            toResult.index + toResult.text.count)
         
         fromResult.index = startIndex
         fromResult.text = text.substring(from: startIndex, to: endIndex)

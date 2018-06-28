@@ -1,5 +1,5 @@
 //
-//  ZHHantDeadlineFormatParser.swift
+//  ZHDeadlineFormatParser.swift
 //  SwiftyChrono
 //
 //  Created by Jerry Chen on 2/18/17.
@@ -9,15 +9,15 @@
 import Foundation
 
 private let PATTERN =
-    "(\\d+|\(ZHHANT_NUMBER_PATTERN)+|半|幾)(?:\\s*)" +
-    "(?:個)?" +
-    "(秒(?:鐘)?|分鐘|小時|鐘|日|天|星期|禮拜|月|年)" +
-    "(?:(?:之|過)?後|(?:之)?內)"
+    "(\\d+|\(ZH_NUMBER_PATTERN)+|半|幾|几)(?:\\s*)" +
+    "(?:個|个)?" +
+    "(秒(?:鐘|钟)?|分鐘|小時|鐘|日|天|星期|禮拜|月|年|分钟|小时|钟|礼拜)" +
+		"(?:(?:之|過)?後|(?:之)?(內|内)|(?:之|过)?后)"
 
 private let numberGroup = 1
 private let unitGroup = 2
 
-public class ZHHantDeadlineFormatParser: Parser {
+public class ZHDeadlineFormatParser: Parser {
     override var pattern: String { return PATTERN }
     override var language: Language { return .chinese }
     
@@ -30,7 +30,7 @@ public class ZHHantDeadlineFormatParser: Parser {
         
         let numberString = match.string(from: text, atRangeIndex: numberGroup)
         let number: Int
-        if numberString == "幾" {
+        if numberString == "幾" || numberString == "几" {
             number = 3
         } else if numberString == "半" {
             number = HALF
@@ -59,7 +59,7 @@ public class ZHHantDeadlineFormatParser: Parser {
         if unitAbbr == "日" || unitAbbr == "天" {
             date = number == HALF ? date.added(12, .hour) : date.added(number, .day)
             return ymdResult()
-        } else if unitAbbr == "星" || unitAbbr == "禮" {
+        } else if unitAbbr == "星" || unitAbbr == "禮" || unitAbbr == "礼"  {
             date = number == HALF ? date.added(3, .day).added(12, .hour) : date.added(number * 7, .day)
             return ymdResult()
         } else if unitAbbr == "月" {
@@ -75,7 +75,7 @@ public class ZHHantDeadlineFormatParser: Parser {
             date = number == HALF ? date.added(HALF_SECOND_IN_MS, .nanosecond) : date.added(number, .second)
         } else if unitAbbr == "分" {
             date = number == HALF ? date.added(30, .second) : date.added(number, .minute)
-        } else if unitAbbr == "小" || unitAbbr == "鐘" {
+        } else if unitAbbr == "小" || unitAbbr == "鐘" || unitAbbr == "钟" {
             date = number == HALF ? date.added(30, .minute) : date.added(number, .hour)
         }
         

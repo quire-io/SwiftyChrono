@@ -27,11 +27,11 @@ class ExtractTimezoneAbbrRefiner: Refiner {
                 continue
             }
             
-            let substring = text.substring(from: result.index + result.text.characters.count)
+            let substring = text.substring(from: result.index + result.text.count)
             
             if
                 let regex = (try? NSRegularExpression(pattern: PATTERN, options: .caseInsensitive)),
-                let match = regex.firstMatch(in: substring, range: NSRange(location: 0, length: substring.characters.count))
+                let match = regex.firstMatch(in: substring, range: NSRange(location: 0, length: substring.count))
             {
                 let timezoneAbbr = (match.isNotEmpty(atRangeIndex: 1) ? match.string(from: substring, atRangeIndex: 1) : "").uppercased()
                 guard let timezoneOffset = timezoneAbbrs[timezoneAbbr] else {

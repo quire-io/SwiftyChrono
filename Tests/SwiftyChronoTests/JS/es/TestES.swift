@@ -24,7 +24,7 @@ class TestES: ChronoJSXCTestCase {
         Chrono.sixMinutesFixBefore1900 = true
         
         for fileName in files {
-            let js = try! String(contentsOfFile: Bundle(identifier: "io.quire.lib.SwiftyChrono.iOS")!.path(forResource: fileName, ofType: "js")!)
+            let js = try! String(contentsOfFile: Bundle(identifier: "io.quire.lib.SwiftyChrono")!.path(forResource: fileName, ofType: "js")!)
             evalJS(js, fileName: fileName)
         }
     }

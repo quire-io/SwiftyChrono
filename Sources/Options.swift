@@ -57,11 +57,11 @@ private func baseOption(strictMode: Bool) -> ModeOptio {
         DETimeExpressionParser(strictMode: strictMode),
         
         // ZH-Hant
-        ZHHantCasualDateParser(strictMode: strictMode),
-        ZHHantDateParser(strictMode: strictMode),
-        ZHHantDeadlineFormatParser(strictMode: strictMode),
-        ZHHantTimeExpressionParser(strictMode: strictMode),
-        ZHHantWeekdayParser(strictMode: strictMode),
+        ZHCasualDateParser(strictMode: strictMode),
+        ZHDateParser(strictMode: strictMode),
+        ZHDeadlineFormatParser(strictMode: strictMode),
+        ZHTimeExpressionParser(strictMode: strictMode),
+        ZHWeekdayParser(strictMode: strictMode),
         
     ], refiners: [
         // Removing overlaping first
@@ -90,7 +90,7 @@ func strictModeOption() -> ModeOptio {
     return baseOption(strictMode: true)
 }
 
-func casualModeOption() -> ModeOptio {
+public func casualModeOption() -> ModeOptio {
     var options = baseOption(strictMode: false)
     
     options.parsers.insert(contentsOf: [
