@@ -29,10 +29,10 @@ class ExtractTimezoneOffsetRefiner: Refiner {
                 continue
             }
             
-            let substring = text.substring(from: result.index + result.text.characters.count)
+            let substring = text.substring(from: result.index + result.text.count)
             guard
                 let regex = (try? NSRegularExpression(pattern: PATTERN, options: .caseInsensitive)),
-                let match = regex.firstMatch(in: substring, range: NSRange(location: 0, length: substring.characters.count))
+                let match = regex.firstMatch(in: substring, range: NSRange(location: 0, length: substring.count))
             else {
                 i += 1
                 newResults.append(result)

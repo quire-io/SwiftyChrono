@@ -28,15 +28,15 @@ public class Parser {
         
         var startIndex = 0
         var remainingText = text
-        var match = regex?.firstMatch(in: text, range: NSRange(location: startIndex, length: remainingText.characters.count))
+        var match = regex?.firstMatch(in: text, range: NSRange(location: startIndex, length: remainingText.count))
         
         while let existingMatch = match {
             let result = extract(text: text, ref: ref, match: existingMatch, opt: opt)
             if let result = result {
                 if !result.isMoveIndexMode { // extraction is success, normal mode
                     // If success, start from the end of the result
-                    startIndex = result.index + result.text.characters.count
-                    remainingText = text.substring(from: text.index(text.startIndex, offsetBy: startIndex))
+                    startIndex = result.index + result.text.count
+                    remainingText = String(text[text.index(text.startIndex, offsetBy: startIndex)...])
                     
                     if !strictMode || result.hasPossibleDates() {
                         results.append(result)
@@ -48,11 +48,11 @@ public class Parser {
             } else { // extraction is failure
                 // If fail, move on by 1
                 let location = existingMatch.range.location + 1
-                remainingText = text.substring(from: text.index(text.startIndex, offsetBy: location))
+                remainingText = String(text[text.index(text.startIndex, offsetBy: location)...])
                 startIndex = location
             }
             
-            let remainingTextLength = remainingText.characters.count
+            let remainingTextLength = remainingText.count
             
             match = remainingTextLength > 0 ?
                 regex?.firstMatch(in: text, range: NSRange(location: startIndex, length: remainingTextLength)) : nil
@@ -62,16 +62,16 @@ public class Parser {
     }
     
     final func matchTextAndIndex(from text: String, andMatchResult matchResult: NSTextCheckingResult) -> (matchText: String, index: Int) {
-        let index1Length = matchResult.rangeAt(1).length
+			let index1Length = matchResult.range(at: 1).length
         let matchText = matchResult.string(from: text, atRangeIndex: 0).substring(from: index1Length)
-        let index = matchResult.rangeAt(0).location + index1Length
+			let index = matchResult.range(at: 0).location + index1Length
         
         return (matchText, index)
     }
     
     final func matchTextAndIndexForCHHant(from text: String, andMatchResult matchResult: NSTextCheckingResult) -> (matchText: String, index: Int) {
         let matchText = matchResult.string(from: text, atRangeIndex: 0)
-        let index = matchResult.rangeAt(0).location
+			let index = matchResult.range(at: 0).location
         
         return (matchText, index)
     }

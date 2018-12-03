@@ -1,5 +1,5 @@
 //
-//  ZHHantCasualDateParser.swift
+//  ZHCasualDateParser.swift
 //  SwiftyChrono
 //
 //  Created by Jerry Chen on 2/18/17.
@@ -23,7 +23,7 @@ private let timeGroup2 = 4
 private let dayGroup3 = 5
 private let timeGroup3 = 6
 
-public class ZHHantCasualDateParser: Parser {
+public class ZHCasualDateParser: Parser {
     override var pattern: String { return PATTERN }
     override var language: Language { return .chinese }
     

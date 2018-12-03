@@ -37,7 +37,7 @@ public class ESCasualDateParser: Parser {
         let refMoment = ref
         var startMoment = refMoment
         let regex = try! NSRegularExpression(pattern: "\\s+")
-        let lowerText = regex.stringByReplacingMatches(in: matchText.lowercased(), range: NSRange(location: 0, length: matchText.characters.count), withTemplate: " ")
+        let lowerText = regex.stringByReplacingMatches(in: matchText.lowercased(), range: NSRange(location: 0, length: matchText.count), withTemplate: " ")
         
         if lowerText == "mañana" {
             // Check not "Tomorrow" on late night

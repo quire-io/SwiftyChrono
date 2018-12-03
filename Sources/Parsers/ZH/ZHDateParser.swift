@@ -9,23 +9,23 @@
 import Foundation
 
 private let PATTERN =
-    "(\\d{2,4}|\(ZHHANT_NUMBER_PATTERN){2,4})?" +
+    "(\\d{2,4}|\(ZH_NUMBER_PATTERN){2,4})?" +
     "(?:\\s*)" +
     "(?:年)?" +
     "(?:[\\s|,|，]*)" +
-    "(\\d{1,2}|\(ZHHANT_NUMBER_PATTERN){1,2})" +
+    "(\\d{1,2}|\(ZH_NUMBER_PATTERN){1,2})" +
     "(?:\\s*)" +
     "(?:月)" +
     "(?:\\s*)" +
-    "(\\d{1,2}|\(ZHHANT_NUMBER_PATTERN){1,2})?" +
+    "(\\d{1,2}|\(ZH_NUMBER_PATTERN){1,2})?" +
     "(?:\\s*)" +
-    "(?:日|號)?"
+    "(?:日|號|号)?"
 
 private let yearGroup = 1
 private let monthGroup = 2
 private let dayGroup = 3
 
-public class ZHHantDateParser: Parser {
+public class ZHDateParser: Parser {
     override var pattern: String { return PATTERN }
     override var language: Language { return .chinese }
     

@@ -1,5 +1,5 @@
 //
-//  ZHHantWeekdayParser.swift
+//  ZHWeekdayParser.swift
 //  SwiftyChrono
 //
 //  Created by Jerry Chen on 2/18/17.
@@ -9,15 +9,15 @@
 import Foundation
 
 private let PATTERN =
-    "(上|今|下|這|呢)?" +
-    "(?:個)?" +
-    "(?:星期|禮拜)" +
-    "(\(ZHHANT_WEEKDAY_OFFSET_PATTERN))"
+    "(上|今|下|這|呢|这)?" +
+    "(?:個|个)?" +
+    "(?:星期|禮拜|礼拜)" +
+    "(\(ZH_WEEKDAY_OFFSET_PATTERN))"
 
 private let prefixGroup = 1
 private let weekdayGroup = 2
 
-public class ZHHantWeekdayParser: Parser {
+public class ZHWeekdayParser: Parser {
     override var pattern: String { return PATTERN }
     override var language: Language { return .chinese }
     
@@ -26,7 +26,7 @@ public class ZHHantWeekdayParser: Parser {
         var result = ParsedResult(ref: ref, index: index, text: matchText)
         
         let dayOfWeek = match.string(from: text, atRangeIndex: weekdayGroup)
-        guard let offset = ZHHANT_WEEKDAY_OFFSET[dayOfWeek] else {
+        guard let offset = ZH_WEEKDAY_OFFSET[dayOfWeek] else {
             return nil
         }
         
@@ -37,7 +37,7 @@ public class ZHHantWeekdayParser: Parser {
             modifier = "last"
         } else if prefix == "下" {
             modifier = "next"
-        } else if prefix == "今" || prefix == "這" || prefix == "呢" {
+        } else if prefix == "今" || prefix == "這" || prefix == "呢" || prefix == "这" {
             modifier = "this"
         }
         
