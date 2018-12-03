@@ -20,6 +20,11 @@ This project is currently being used in the [Quire](https://quire.io) iOS app.
 
 ### Requirements
 
+Swift 4.2
+* Xcode 10
+* Swift 4.2
+
+Swift 3
 * iOS 9.0+ | macOS 10.10+ | tvOS 9.0+ | watchOS 2.0+
 * Xcode 8
 * Swift 3.0

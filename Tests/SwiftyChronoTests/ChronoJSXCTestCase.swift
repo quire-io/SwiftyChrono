@@ -43,7 +43,7 @@ public class ChronoJSXCTestCase: XCTestCase, ChronoJSTestable {
             let lineNumber = exception?.objectForKeyedSubscript("line").toString()
             let column = exception?.objectForKeyedSubscript("column")
             
-            assertionFailure("error: \(exception?.description)\n stack trace: \(stacktrace)\n line number: \(lineNumber) \ncolumn: \(column)")
+            assertionFailure("error: \(String(describing: exception?.description))\n stack trace: \(String(describing: stacktrace))\n line number: \(lineNumber ?? "") \ncolumn: \(String(describing: column))")
         }
         
         /// register classs to js context
@@ -55,14 +55,14 @@ public class ChronoJSXCTestCase: XCTestCase, ChronoJSTestable {
         let setTestTitle: @convention(block) (String) -> Void = { title in
             self.testTitle = title
         }
-        jsContext.setObject(unsafeBitCast(setTestTitle, to: AnyObject.self), forKeyedSubscript: "setTestTitle" as (NSCopying & NSObjectProtocol)!)
+        jsContext.setObject(unsafeBitCast(setTestTitle, to: AnyObject.self), forKeyedSubscript: "setTestTitle" as (NSCopying & NSObjectProtocol))
         
         /// set function callbacks
         //  clearTestTitle()
         let clearTestTitle: @convention(block) () -> Void = { () in
             self.testTitle = ""
         }
-        jsContext.setObject(unsafeBitCast(clearTestTitle, to: AnyObject.self), forKeyedSubscript: "clearTestTitle" as (NSCopying & NSObjectProtocol)!)
+        jsContext.setObject(unsafeBitCast(clearTestTitle, to: AnyObject.self), forKeyedSubscript: "clearTestTitle" as (NSCopying & NSObjectProtocol))
         
         /// set function callbacks
         //  ok(passed: Bool, message: String)
@@ -75,7 +75,7 @@ public class ChronoJSXCTestCase: XCTestCase, ChronoJSTestable {
             }
             
             if !passed {
-                print("the \(self.nthTest) case of text:\"\(self.lastTextForFailCase)\", results: \(self.lastResultsForFailCase.first?.start.date)")
+                print("the \(self.nthTest) case of text:\"\(self.lastTextForFailCase)\", results: \(String(describing: self.lastResultsForFailCase.first?.start.date))")
             }
             
             if let message = message {
@@ -84,7 +84,7 @@ public class ChronoJSXCTestCase: XCTestCase, ChronoJSTestable {
                 XCTAssert(passed)
             }
         }
-        jsContext.setObject(unsafeBitCast(ok, to: AnyObject.self), forKeyedSubscript: "ok" as (NSCopying & NSObjectProtocol)!)
+        jsContext.setObject(unsafeBitCast(ok, to: AnyObject.self), forKeyedSubscript: "ok" as (NSCopying & NSObjectProtocol))
         
         /// set function callbacks
         //  chronoParse()
@@ -102,7 +102,7 @@ public class ChronoJSXCTestCase: XCTestCase, ChronoJSTestable {
             self.lastResultsForFailCase = parseResults
             return results as NSArray
         }
-        jsContext.setObject(unsafeBitCast(chronoParse, to: AnyObject.self), forKeyedSubscript: "chronoParse" as (NSCopying & NSObjectProtocol)!)
+        jsContext.setObject(unsafeBitCast(chronoParse, to: AnyObject.self), forKeyedSubscript: "chronoParse" as (NSCopying & NSObjectProtocol))
         
         /// set function callbacks
         //  chronoParseDate()
@@ -123,7 +123,7 @@ public class ChronoJSXCTestCase: XCTestCase, ChronoJSTestable {
             return (results.first?.start.date ?? Date()) as NSDate
             
         }
-        jsContext.setObject(unsafeBitCast(chronoParseDate, to: AnyObject.self), forKeyedSubscript: "chronoParseDate" as (NSCopying & NSObjectProtocol)!)
+        jsContext.setObject(unsafeBitCast(chronoParseDate, to: AnyObject.self), forKeyedSubscript: "chronoParseDate" as (NSCopying & NSObjectProtocol))
         
         
         /// expose test() at the top scope for using objectForKeyedSubscript
