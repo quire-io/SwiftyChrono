@@ -32,6 +32,11 @@ public class ChronoJSXCTestCase: XCTestCase, ChronoJSTestable {
         jsContext.evaluateScript(script)
     }
     
+    public func resourcePath(testCasePath: String = #file, name: String, type: String) -> String {
+        let bundle = Bundle(identifier: "io.quire.lib.SwiftyChrono")!
+        return bundle.path(forResource: name, ofType: type)!
+    }
+
     override public func setUp() {
         super.setUp()
         
