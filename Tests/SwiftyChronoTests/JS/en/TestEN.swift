@@ -33,7 +33,7 @@ class TestEN: ChronoJSXCTestCase {
         Chrono.preferredLanguage = .english
         
         for fileName in files {
-            let js = try! String(contentsOfFile: Bundle(identifier: "io.quire.lib.SwiftyChrono")!.path(forResource: fileName, ofType: "js")!)
+            let js = try! String(contentsOfFile: resourcePath(name: fileName, type: "js"))
             evalJS(js, fileName: fileName)
         }
     }

@@ -32,6 +32,17 @@ public class ChronoJSXCTestCase: XCTestCase, ChronoJSTestable {
         jsContext.evaluateScript(script)
     }
     
+    public func resourcePath(testCasePath: String = #file, name: String, type: String) -> String {
+        if let bundle = Bundle(identifier: "io.quire.lib.SwiftyChrono"), let path = bundle.path(forResource: name, ofType: type) {
+            return path
+        } else {
+            // bundle does not exist (expect that if you regenerated SwiftyChrono.xcodeproj with SPM)
+            // assume resource is in the same folder than the test case source file
+            let folder = testCasePath.components(separatedBy: "/").dropLast().joined(separator: "/")
+            return "\(folder)/\(name).\(type)"
+        }
+    }
+
     override public func setUp() {
         super.setUp()
         
