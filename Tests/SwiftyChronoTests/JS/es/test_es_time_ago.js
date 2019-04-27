@@ -48,8 +48,8 @@ test("Test - Single Expression", function() {
     if(result){
         ok(result.index == 0, 'Wrong index')
         ok(result.text == 'hace 15 minutos', result.text )
-        ok(result.start.get('hour') == 11, 'Test Result - (Month) ' + JSON.stringify(result.start) )
-        ok(result.start.get('minute') == 59, 'Test Result - (Day) ' + JSON.stringify(result.start) )
+        ok(result.start.get('hour') == 11, 'Test Result - (Hour) ' + JSON.stringify(result.start) )
+        ok(result.start.get('minute') == 59, 'Test Result - (Minute) ' + JSON.stringify(result.start) )
 
         var resultDate = result.start.date();
         var expectDate = new Date(2012,7,10,11,59);

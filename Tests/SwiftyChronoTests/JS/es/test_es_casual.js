@@ -66,7 +66,7 @@ test("Test - Single Expression", function() {
     }
 
     // Say.."Tomorrow" in the late night (1 AM)
-    var text = "La fecha límite es Tomorrow";
+    var text = "La fecha límite es Mañana";
     var results = chrono.casual.parse(text, new Date(2012, 7, 10, 1));
     ok(results.length == 1, JSON.stringify( results ) )
 
@@ -111,7 +111,7 @@ test("Test - Single Expression", function() {
         ok(result.start.get('year') == 2012, 'Test Result - (Year) ' + JSON.stringify(result.start) )
         ok(result.start.get('month') == 8, 'Test Result - (Month) ' + JSON.stringify(result.start) )
         ok(result.start.get('day') == 9, 'Test Result - (Day) ' + JSON.stringify(result.start) )
-        ok(result.start.get('hour') == 0, 'Test Result - (hour) ' + JSON.stringify(result.start) )
+        ok(result.start.get('hour') == 0, 'Test Result - (Hour) ' + JSON.stringify(result.start) )
 
         var resultDate = result.start.date();
         var expectDate = new Date(2012, 7, 9, 0);
@@ -132,7 +132,7 @@ test("Test - Single Expression", function() {
         ok(result.start.get('year') == 2012, 'Test Result - (Year) ' + JSON.stringify(result.start) )
         ok(result.start.get('month') == 8, 'Test Result - (Month) ' + JSON.stringify(result.start) )
         ok(result.start.get('day') == 10, 'Test Result - (Day) ' + JSON.stringify(result.start) )
-        ok(result.start.get('hour') == 6, 'Test Result - (hour) ' + JSON.stringify(result.start) )
+        ok(result.start.get('hour') == 6, 'Test Result - (Hour) ' + JSON.stringify(result.start) )
 
         var resultDate = result.start.date();
         var expectDate = new Date(2012, 7, 10, 6);
@@ -153,7 +153,7 @@ test("Test - Single Expression", function() {
         ok(result.start.get('year') == 2012, 'Test Result - (Year) ' + JSON.stringify(result.start) )
         ok(result.start.get('month') == 8, 'Test Result - (Month) ' + JSON.stringify(result.start) )
         ok(result.start.get('day') == 10, 'Test Result - (Day) ' + JSON.stringify(result.start) )
-        ok(result.start.get('hour') == 18, 'Test Result - (hour) ' + JSON.stringify(result.start) )
+        ok(result.start.get('hour') == 18, 'Test Result - (Hour) ' + JSON.stringify(result.start) )
 
         var resultDate = result.start.date();
         var expectDate = new Date(2012, 7, 10, 18);

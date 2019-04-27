@@ -13,7 +13,7 @@ private let PATTERN = "(\\W|^)" +
     "(?:(este|pasado|pr[oó]ximo)\\s*)?" +
     "(\(ES_WEEKDAY_OFFSET.keys.joined(separator: "|")))" +
     "(?:\\s*(?:\\,|\\)|\\）))?" +
-    "(?:\\s*(este|pasado|pr[óo]ximo)\\s*week)?" +
+    "(?:\\s*(esta|pasada|pr[óo]xima)\\s*semana)?" +
     "(?=\\W|$)"
 
 private let prefixGroup = 2
@@ -39,13 +39,13 @@ public class ESWeekdayParser: Parser {
         if prefix != nil || postfix != nil {
             let norm = (prefix ?? postfix ?? "").lowercased()
             
-            if norm == "pasado" {
+            if norm == "pasado" || norm == "pasada" {
                 modifier = "last"
             }
-            else if norm == "próximo" || norm == "proximo" {
+            else if norm == "próximo" || norm == "proximo" || norm == "próxima" || norm == "proxima" {
                 modifier = "next"
             }
-            else if norm == "este" {
+            else if norm == "este" || norm == "esta" {
                 modifier =  "this"
             }
         }

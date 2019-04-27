@@ -153,7 +153,7 @@ test("Test - Single expression", function() {
         ok(result.start.get('year') == 2013, 'Test Result - (Year) ' + JSON.stringify(result.start) );
         ok(result.start.get('month') == 1, 'Test Result - (Month) ' + JSON.stringify(result.start) );
         ok(result.start.get('day') == 10, 'Test Result - (Day) ' + JSON.stringify(result.start) );
-        ok(result.start.get('weekday') == 2, 'Test Result - (Day) ' + JSON.stringify(result.start) );
+        ok(result.start.get('weekday') == 2, 'Test Result - (Weekday) ' + JSON.stringify(result.start) );
 
         var resultDate = result.start.date();
         var expectDate = new Date(2013, 1-1, 10, 12);
@@ -175,7 +175,7 @@ test("Test - Single expression", function() {
         ok(result.start.get('year') == 2013, 'Test Result - (Year) ' + JSON.stringify(result.start) );
         ok(result.start.get('month') == 1, 'Test Result - (Month) ' + JSON.stringify(result.start) );
         ok(result.start.get('day') == 10, 'Test Result - (Day) ' + JSON.stringify(result.start) );
-        ok(result.start.get('weekday') == 2, 'Test Result - (Day) ' + JSON.stringify(result.start) );
+        ok(result.start.get('weekday') == 2, 'Test Result - (Weekday) ' + JSON.stringify(result.start) );
 
         var resultDate = result.start.date();
         var expectDate = new Date(2013, 1-1, 10, 12);
