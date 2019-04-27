@@ -62,6 +62,13 @@ private func baseOption(strictMode: Bool) -> ModeOptio {
         ZHDeadlineFormatParser(strictMode: strictMode),
         ZHTimeExpressionParser(strictMode: strictMode),
         ZHWeekdayParser(strictMode: strictMode),
+
+        // CA
+        CATimeAgoFormatParser(strictMode: strictMode),
+        CADeadlineFormatParser(strictMode: strictMode),
+        CATimeExpressionParser(strictMode: strictMode),
+        CAMonthNameLittleEndianParser(strictMode: strictMode),
+        CASlashDateFormatParser(strictMode: strictMode),
         
     ], refiners: [
         // Removing overlaping first
@@ -116,6 +123,10 @@ public func casualModeOption() -> ModeOptio {
         DECasualDateParser(strictMode: false),
         DEWeekdayParser(strictMode: false),
         DEMorgenTimeParser(strictMode: false),
+
+        // CA
+        CACasualDateParser(strictMode: false),
+        CAWeekdayParser(strictMode: false),
         
     ], at: 0)
     
