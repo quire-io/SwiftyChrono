@@ -123,5 +123,5 @@ public func casualModeOption() -> ModeOptio {
 }
 
 public enum Language {
-    case english, spanish, french, japanese, german, chinese
+    case english, spanish, catalan, french, japanese, german, chinese
 }
