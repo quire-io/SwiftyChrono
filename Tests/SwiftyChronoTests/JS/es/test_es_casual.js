@@ -66,7 +66,7 @@ test("Test - Single Expression", function() {
     }
 
     // Say.."Tomorrow" in the late night (1 AM)
-    var text = "La fecha límite es Tomorrow";
+    var text = "La fecha límite es Mañana";
     var results = chrono.casual.parse(text, new Date(2012, 7, 10, 1));
     ok(results.length == 1, JSON.stringify( results ) )
 
