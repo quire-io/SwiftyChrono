@@ -111,7 +111,7 @@ test("Test - Single Expression", function() {
         ok(result.start.get('year') == 2012, 'Test Result - (Year) ' + JSON.stringify(result.start) );
         ok(result.start.get('month') == 8, 'Test Result - (Month) ' + JSON.stringify(result.start) );
         ok(result.start.get('day') == 9, 'Test Result - (Day) ' + JSON.stringify(result.start) );
-        ok(result.start.get('hour') == 0, 'Test Result - (hour) ' + JSON.stringify(result.start) );
+        ok(result.start.get('hour') == 0, 'Test Result - (Hour) ' + JSON.stringify(result.start) );
 
         var resultDate = result.start.date();
         var expectDate = new Date(2012, 7, 9, 0);
@@ -132,7 +132,7 @@ test("Test - Single Expression", function() {
         ok(result.start.get('year') == 2012, 'Test Result - (Year) ' + JSON.stringify(result.start) );
         ok(result.start.get('month') == 8, 'Test Result - (Month) ' + JSON.stringify(result.start) );
         ok(result.start.get('day') == 10, 'Test Result - (Day) ' + JSON.stringify(result.start) );
-        ok(result.start.get('hour') == 6, 'Test Result - (hour) ' + JSON.stringify(result.start) );
+        ok(result.start.get('hour') == 6, 'Test Result - (Hour) ' + JSON.stringify(result.start) );
 
         var resultDate = result.start.date();
         var expectDate = new Date(2012, 7, 10, 6);
@@ -153,7 +153,7 @@ test("Test - Single Expression", function() {
         ok(result.start.get('year') == 2012, 'Test Result - (Year) ' + JSON.stringify(result.start) );
         ok(result.start.get('month') == 8, 'Test Result - (Month) ' + JSON.stringify(result.start) );
         ok(result.start.get('day') == 10, 'Test Result - (Day) ' + JSON.stringify(result.start) );
-        ok(result.start.get('hour') == 15, 'Test Result - (hour) ' + JSON.stringify(result.start) );
+        ok(result.start.get('hour') == 15, 'Test Result - (Hour) ' + JSON.stringify(result.start) );
 
         var resultDate = result.start.date();
         var expectDate = new Date(2012, 7, 10, 15);
@@ -174,7 +174,7 @@ test("Test - Single Expression", function() {
         ok(result.start.get('year') == 2012, 'Test Result - (Year) ' + JSON.stringify(result.start) );
         ok(result.start.get('month') == 8, 'Test Result - (Month) ' + JSON.stringify(result.start) );
         ok(result.start.get('day') == 10, 'Test Result - (Day) ' + JSON.stringify(result.start) );
-        ok(result.start.get('hour') == 18, 'Test Result - (hour) ' + JSON.stringify(result.start) );
+        ok(result.start.get('hour') == 18, 'Test Result - (Hour) ' + JSON.stringify(result.start) );
 
         var resultDate = result.start.date();
         var expectDate = new Date(2012, 7, 10, 18);
@@ -223,7 +223,7 @@ test("Test - Casual date range", function() {
         ok(result.start.get('year') == 2012, 'Test Result - (Year) ' + JSON.stringify(result.start) );
         ok(result.start.get('month') == 8, 'Test Result - (Month) ' + JSON.stringify(result.start) );
         ok(result.start.get('day') == 4, 'Test Result - (Day) ' + JSON.stringify(result.start) );
-        ok(result.start.get('hour') == 12, 'Test Result - (Day) ' + JSON.stringify(result.start) );
+        ok(result.start.get('hour') == 12, 'Test Result - (Hour) ' + JSON.stringify(result.start) );
 
         var resultDate = result.start.date();
         var expectDate = new Date(2012, 7, 4, 12);
@@ -234,7 +234,7 @@ test("Test - Casual date range", function() {
         ok(result.end.get('year') == 2012, 'Test Result - (Year) ' + JSON.stringify(result.start) );
         ok(result.end.get('month') == 8, 'Test Result - (Month) ' + JSON.stringify(result.start) );
         ok(result.end.get('day') == 10, 'Test Result - (Day) ' + JSON.stringify(result.start) );
-        ok(result.end.get('hour') == 12, 'Test Result - (Day) ' + JSON.stringify(result.start) );
+        ok(result.end.get('hour') == 12, 'Test Result - (Hour) ' + JSON.stringify(result.start) );
 
         var resultDate = result.end.date();
         var expectDate = new Date(2012, 7, 10, 12);
@@ -256,7 +256,7 @@ test("Test - Casual date range", function() {
         ok(result.start.get('year') == 2012, 'Test Result - (Year) ' + JSON.stringify(result.start) );
         ok(result.start.get('month') == 8, 'Test Result - (Month) ' + JSON.stringify(result.start) );
         ok(result.start.get('day') == 10, 'Test Result - (Day) ' + JSON.stringify(result.start) );
-        ok(result.start.get('hour') == 12, 'Test Result - (Day) ' + JSON.stringify(result.start) );
+        ok(result.start.get('hour') == 12, 'Test Result - (Hour) ' + JSON.stringify(result.start) );
 
         var resultDate = result.start.date();
         var expectDate = new Date(2012, 7, 10, 12);
@@ -267,7 +267,7 @@ test("Test - Casual date range", function() {
         ok(result.end.get('year') == 2012, 'Test Result - (Year) ' + JSON.stringify(result.start) );
         ok(result.end.get('month') == 8, 'Test Result - (Month) ' + JSON.stringify(result.start) );
         ok(result.end.get('day') == 17, 'Test Result - (Day) ' + JSON.stringify(result.start) );
-        ok(result.end.get('hour') == 12, 'Test Result - (Day) ' + JSON.stringify(result.start) );
+        ok(result.end.get('hour') == 12, 'Test Result - (Hour) ' + JSON.stringify(result.start) );
 
         var resultDate = result.end.date();
         var expectDate = new Date(2012, 7, 17, 12);
