@@ -203,7 +203,15 @@ public enum TagUnit { case
     esTimeAgoFormatParser,
     esTimeExpressionParser,
     esWeekdayParser,
-    
+
+    caCasualDateParser,
+    caDeadlineFormatParser,
+    caMonthNameLittleEndianParser,
+    caSlashDateFormatParser,
+    caTimeAgoFormatParser,
+    caTimeExpressionParser,
+    caWeekdayParser,
+
     frCasualDateParser,
     frDeadlineFormatParser,
     frMonthNameLittleEndianParser,
