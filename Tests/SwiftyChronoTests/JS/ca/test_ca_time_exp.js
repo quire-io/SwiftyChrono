@@ -228,15 +228,18 @@ test("Test - Random date + time expression", function() {
     ok(result.text == text, result.text)
 
     var text = "al migdia";
-    var result = chrono.parse(text)[0];
+    var results = chrono.parse(text)
+    ok(results.length == 1, JSON.stringify( results ) )
+    var result = results[0];
     if(result) {
         ok(result.text == text, result.text)
-        ok(result.start.get('hour') == 12, JSON.stringify(result.start))
         ok(result.start.get('hour') == 12, JSON.stringify(result.start))
     }
 
     var text = "a mitjanit";
-    var result = chrono.parse(text)[0];
+    var results = chrono.parse(text)
+    ok(results.length == 1, JSON.stringify( results ) )
+    var result = results[0];
     if (result) {
         ok(result.text == text, result.text)
     }

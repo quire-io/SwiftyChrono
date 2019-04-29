@@ -348,11 +348,11 @@ test("Test - Impossible Dates (Casual Mode)", function() {
     var text = "32 Agost 2015";
     var expectDate = new Date(2015, 8, 1, 12, 0);
     var results = chrono.parse(text);
-    if(results) {
-        if(results[0]) {
-            var resultDate = results[0].start.date();
-            ok(results.length == 1, JSON.stringify(results) )
-            ok(Math.abs(expectDate.getTime() - resultDate.getTime()) < 1000, resultDate +'/' +expectDate);
-        }
+    ok(results.length == 1, JSON.stringify( results ) );
+    var result = results[0];
+    ok(result, JSON.stringify( results ) );
+    if(result) {
+        var resultDate = result.start.date();
+        ok(Math.abs(expectDate.getTime() - resultDate.getTime()) < 1000, resultDate +'/' +expectDate);
     }
 });
