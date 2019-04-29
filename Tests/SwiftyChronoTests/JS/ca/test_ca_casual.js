@@ -191,6 +191,7 @@ test('Test - Random text', function() {
 
     var text = "aquesta nit";
     var result = chrono.parse(text, new Date(2012, 1-1, 1, 12))[0];
+    ok(result, text)
     if(result) {
         ok(result.text == text, result.text)
         ok(result.start.get('year') == 2012, JSON.stringify(result.start))
@@ -202,6 +203,7 @@ test('Test - Random text', function() {
 
     var text = "aquesta nit 8pm";
     var result = chrono.parse(text, new Date(2012, 1-1, 1, 12))[0];
+    ok(result, text)
     if(result) {
         ok(result.text == text, result.text)
         ok(result.start.get('hour')  == 20, JSON.stringify(result.start))
@@ -214,6 +216,7 @@ test('Test - Random text', function() {
 
     var text = "aquesta nit a les 8";
     var result = chrono.parse(text, new Date(2012, 1-1, 1, 12))[0];
+    ok(result, text)
     if(result) {
         ok(result.text == text, result.text)
         ok(result.start.get('hour')  == 20, JSON.stringify(result.start))
@@ -226,6 +229,7 @@ test('Test - Random text', function() {
 
     var text = "dijous";
     var result = chrono.parse(text)[0];
+    ok(result, text)
     if(result) {
         ok(result.text == text, result.text)
         ok(result.start.get('weekday') == 4, result.text)
@@ -234,6 +238,7 @@ test('Test - Random text', function() {
 
     var text = "divendres";
     var result = chrono.parse(text)[0];
+    ok(result, text)
     if(result) {
         ok(result.text == text, result.text)
         ok(result.start.get('weekday') == 5, result.text)
