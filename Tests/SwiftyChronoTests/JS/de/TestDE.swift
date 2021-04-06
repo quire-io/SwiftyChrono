@@ -8,6 +8,7 @@
 
 import XCTest
 import JavaScriptCore
+@testable import SwiftyChrono
 
 class TestDE: ChronoJSXCTestCase {
     private let files = [
