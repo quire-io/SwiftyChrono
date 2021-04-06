@@ -63,6 +63,14 @@ private func baseOption(strictMode: Bool) -> ModeOptio {
         ZHTimeExpressionParser(strictMode: strictMode),
         ZHWeekdayParser(strictMode: strictMode),
         
+        // RU
+        RUDeadlineFormatParser(strictMode: strictMode),
+        RUMonthNameLittleEndianParser(strictMode: strictMode),
+        RUMonthNameParser(strictMode: strictMode),
+        RUSlashDateFormatParser(strictMode: strictMode),
+        RUTimeAgoFormatParser(strictMode: strictMode),
+        RUTimeExpressionParser(strictMode: strictMode),
+        
     ], refiners: [
         // Removing overlaping first
         OverlapRemovalRefiner(),
