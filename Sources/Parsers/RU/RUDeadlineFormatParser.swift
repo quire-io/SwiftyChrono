@@ -10,7 +10,7 @@ import Foundation
 private let PATTERN = "(\\W|^)" +
     "(через|спустя)\\s*" +
     "(" + RU_INTEGER_WORDS_PATTERN + "|[0-9]+|несколько|одну|один\\s*пол|одну)?\\s*" +
-    "((секунда|секунд|секунды|секунду)|(минут|минуту|минуты)|(часов|час|часа)|(дней|день|дня)|(недель|неделю|неделя|недели)|(месяцев|месяц|месяца)|(лет|год|года))" +
+    "((секунда|секунд|секунды|секунду)|(минут|минуту|минуты)|(часов|час|часа)|(дней|день|дня)|(недель|неделю|неделя|недели)|(месяцев|месяц|месяца)|(лет|год|года))\\s*" +
     "(?=\\W|$)"
 
 
@@ -34,7 +34,7 @@ public class RUDeadlineFormatParser: Parser {
         
         let number: Int
         let numberText = match.string(from: text, atRangeIndex: 3).lowercased()
-        if let number0 = EN_INTEGER_WORDS[numberText] {
+        if let number0 = RU_INTEGER_WORDS[numberText] {
             number = number0
         } else if numberText == "один" || numberText == "одну" {
             number = 1
@@ -42,8 +42,10 @@ public class RUDeadlineFormatParser: Parser {
             number = 3
         } else if NSRegularExpression.isMatch(forPattern: "пол", in: numberText) {
             number = HALF
+        } else if let num = Int(numberText) {
+            number = num
         } else {
-            number = Int(numberText)!
+            number = 1
         }
         
         var date = ref
