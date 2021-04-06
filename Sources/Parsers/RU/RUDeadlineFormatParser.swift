@@ -24,7 +24,8 @@ private let STRICT_PATTERN = "(\\W|^)" +
 
 
 public class RUDeadlineFormatParser: Parser {
-    override var pattern: String { return strictMode ? STRICT_PATTERN : PATTERN }
+    override var pattern: String { strictMode ? STRICT_PATTERN : PATTERN }
+    override var language: Language { .russian }
     
     override public func extract(text: String, ref: Date, match: NSTextCheckingResult, opt: [OptionType: Int]) -> ParsedResult? {
         let (matchText, index) = matchTextAndIndex(from: text, andMatchResult: match)

@@ -85,6 +85,8 @@ private func baseOption(strictMode: Bool) -> ModeOptio {
         JPMergeDateRangeRefiner(),
         DEMergeDateTimeRefiner(),
         DEMergeDateRangeRefiner(),
+        RUMergeDateTimeRefiner(),
+        RUMergeDateRangeRefiner(),
         
         // Extract additional info later
         ExtractTimezoneOffsetRefiner(),
@@ -125,11 +127,16 @@ public func casualModeOption() -> ModeOptio {
         DEWeekdayParser(strictMode: false),
         DEMorgenTimeParser(strictMode: false),
         
+        // RU
+        RUCasualTimeParser(strictMode: false),
+        RUCasualDateParser(strictMode: false),
+        RUWeekdayParser(strictMode: false),
+        
     ], at: 0)
     
     return options
 }
 
 public enum Language {
-    case english, spanish, french, japanese, german, chinese
+    case english, spanish, french, japanese, german, chinese, russian
 }

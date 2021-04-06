@@ -38,7 +38,8 @@ private let secondGroup = 4
 private let amPmHourGroup = 5
 
 public class RUTimeExpressionParser: Parser {
-    override var pattern: String { return FIRST_REG_PATTERN }
+    override var pattern: String { FIRST_REG_PATTERN }
+    override var language: Language { .russian }
     
     override public func extract(text: String, ref: Date, match: NSTextCheckingResult, opt: [OptionType: Int]) -> ParsedResult? {
         // This pattern can be overlaped Ex. [12] AM, 1[2] AM

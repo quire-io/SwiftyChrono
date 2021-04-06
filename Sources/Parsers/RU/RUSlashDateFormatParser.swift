@@ -29,7 +29,8 @@ private let dayGroup = 4
 private let yearGroup = 5
 
 public class RUSlashDateFormatParser: Parser {
-    override var pattern: String { return PATTERN }
+    override var pattern: String { PATTERN }
+    override var language: Language { .russian }
     
     override public func extract(text: String, ref: Date, match: NSTextCheckingResult, opt: [OptionType: Int]) -> ParsedResult? {
         if (match.isNotEmpty(atRangeIndex: openningGroup) && match.string(from: text, atRangeIndex: openningGroup) == "/") ||

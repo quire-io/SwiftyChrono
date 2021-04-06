@@ -10,7 +10,8 @@ import Foundation
 private let PATTERN = "(\\W|^)(сейчас|сегодня|вчера|ночью|прошлым\\s*вечером|сегодня ночью|прошлой\\s*ночью|(?:завтра|вчера)\\s*|послезавтра|позавчера)(?=\\W|$)"
 
 public class RUCasualDateParser: Parser {
-    override var pattern: String { return PATTERN }
+    override var pattern: String { PATTERN }
+    override var language: Language { .russian }
     
     override public func extract(text: String, ref: Date, match: NSTextCheckingResult, opt: [OptionType: Int]) -> ParsedResult? {
         let (matchText, index) = matchTextAndIndex(from: text, andMatchResult: match)

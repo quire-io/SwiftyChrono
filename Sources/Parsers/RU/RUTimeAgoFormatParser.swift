@@ -19,6 +19,7 @@ private let STRICT_PATTERN = "(\\W|^)" +
 
 public class RUTimeAgoFormatParser: Parser {
     override var pattern: String { strictMode ? STRICT_PATTERN : PATTERN }
+    override var language: Language { .russian }
     
     override public func extract(text: String, ref: Date, match: NSTextCheckingResult, opt: [OptionType: Int]) -> ParsedResult? {
         let idx = match.range(at: 0).location

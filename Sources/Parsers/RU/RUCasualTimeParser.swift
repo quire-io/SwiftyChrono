@@ -13,6 +13,7 @@ private let timeMatch = 4
 
 public class RUCasualTimeParser: Parser {
     override var pattern: String { PATTERN }
+    override var language: Language { .russian }
     
     override public func extract(text: String, ref: Date, match: NSTextCheckingResult, opt: [OptionType: Int]) -> ParsedResult? {
         let (matchText, index) = matchTextAndIndex(from: text, andMatchResult: match)

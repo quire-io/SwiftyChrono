@@ -67,6 +67,7 @@ public func ruUpdateParsedComponent(result: ParsedResult, ref: Date, offset: Int
 
 public class RUWeekdayParser: Parser {
     override var pattern: String { PATTERN }
+    override var language: Language { .russian }
     
     override public func extract(text: String, ref: Date, match: NSTextCheckingResult, opt: [OptionType: Int]) -> ParsedResult? {
         let (matchText, index) = matchTextAndIndex(from: text, andMatchResult: match)
