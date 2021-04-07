@@ -231,6 +231,16 @@ public enum TagUnit { case
     zhHantTimeExpressionParser,
     zhHantWeekdayParser,
     
+    ruCasualTimeParser,
+    ruCasualDateParser,
+    ruDeadlineFormatParser,
+    ruMonthNameLittleEndianParser,
+    ruMonthNameParser,
+    ruSlashDateFormatParser,
+    ruTimeAgoFormatParser,
+    ruTimeExpressionParser,
+    ruWeekdayParser,
+    
     extractTimezoneAbbrRefiner,
     extractTimezoneOffsetRefiner,
     forwardDateRefiner,
@@ -243,7 +253,10 @@ public enum TagUnit { case
     frMergeDateAndTimeRefiner,
     
     deMergeDateAndTimeRefiner,
-    deMergeDateRangeRefiner
+    deMergeDateRangeRefiner,
+    
+    ruMergeDateAndTimeRefiner,
+    ruMergeDateRangeRefiner
 }
 
 

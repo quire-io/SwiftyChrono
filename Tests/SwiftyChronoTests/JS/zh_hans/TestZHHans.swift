@@ -10,6 +10,7 @@ import Foundation
 
 import XCTest
 import JavaScriptCore
+@testable import SwiftyChrono
 
 class TestZHHans: ChronoJSXCTestCase {
 	private let files = [
