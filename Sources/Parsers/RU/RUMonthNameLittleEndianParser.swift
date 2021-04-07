@@ -7,16 +7,29 @@
 
 import Foundation
 
-private let PATTERN = "(\\W|^)" + "([0-9]{1,2})\\s*" + "(" + RU_MONTH_PATTERN + ")\\s*" + "(([0-9]{1,4})?)"+"(?=\\W|$)"
+private let PATTERN = "(\\W|^)" +
+    "(?:(?:в|с)\\s*?)?" +
+    "(?:(Понедельник|Вторник|Среда|Четверг|Пятница|Суббота|Воскресенье|Пн|Вт|Ср|Чт|Пт|Сб|Вс)\\s*,?\\s*)?" +
+    "(([0-9]{1,2})(?:е|й|я|го)?|\(RU_ORDINAL_WORDS_PATTERN))" +
+    "(?:\\s*" +
+        "(?:до|\\-|\\–|по|\\s)\\s*" +
+        "(([0-9]{1,2})(?:е|й|я|го)?|\(RU_ORDINAL_WORDS_PATTERN))" +
+    ")?\\s*(?:of)?\\s*" +
+    "(Янв(?:аря|\\.)?|Фев(?:раля|\\.)?|Мар(?:та|\\.)?|Апр(?:еля|\\.)?|Мая|Июн(?:я|\\.)?|Июл(?:я|\\.)?|Авг(?:уста|\\.)?|Сент(?:ября|\\.)?|Окт(?:ября|\\.)?|Ноя(?:бря|\\.)?|Дек(?:абря|\\.)?)" +
+    "(?:" +
+        ",?\\s*([0-9]{1,4}(?![^\\s]\\d))" +
+        "(\\s*(?:BE|AD|BC))?" +
+    ")?" +
+    "(?=\\W|$)"
 
-private let weekdayGroup = 100
-private let dateGroup = 2
-//private let dateNumGroup = 4
-private let dateToGroup = 100
-//private let dateToNumGroup = 6
-private let monthNameGroup = 3
-private let yearGroup = 4
-private let yearBeGroup = 100
+private let weekdayGroup = 2
+private let dateGroup = 3
+private let dateNumGroup = 4
+private let dateToGroup = 5
+private let dateToNumGroup = 6
+private let monthNameGroup = 7
+private let yearGroup = 8
+private let yearBeGroup = 9
 
 public class RUMonthNameLittleEndianParser: Parser {
     override var pattern: String { PATTERN }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-private let PATTERN = "(\\W|^)((утром|обед|в полдень|вечером|в полночь|ночью|ночь))"
+private let PATTERN = "(\\W|^)((этим|этой|в эту)?\\s*(утром|обед|в полдень|ночь))"//"(\\W|^)((?:утром|обед|в полдень|вечером|в полночь|ночью|ночь))"
 private let timeMatch = 4
 
 public class RUCasualTimeParser: Parser {
@@ -24,7 +24,7 @@ public class RUCasualTimeParser: Parser {
             switch time {
             case "обед":
                 result.start.imply(.hour, to: opt[.afternoon] ?? 15)
-            case "вечером", "ночью":
+            case "вечером", "ночью", "ночь":
                 result.start.imply(.hour, to: opt[.evening] ?? 22)
             case "утром":
                 result.start.imply(.hour, to: opt[.morning] ?? 6)
