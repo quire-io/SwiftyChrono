@@ -85,10 +85,10 @@ public enum OptionType: String { case
     }
     
     @objc public func parseDate(text: String, refDate: Date = Date()) -> Date? {
-        let results = Chrono.casual.parse(text: text, refDate: refDate, opt: [.forwardDate: 1])
+        let results = self.parse(text: text, refDate: refDate, opt: [.forwardDate: 1])
         return results.first?.start.date
     }
-    
-    public static let strict = Chrono(modeOption: strictModeOption())
+
+    @objc public static let strict = Chrono(modeOption: strictModeOption())
     @objc public static let casual = Chrono(modeOption: casualModeOption())
 }
