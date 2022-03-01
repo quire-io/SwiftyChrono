@@ -9,6 +9,8 @@
 import XCTest
 import JavaScriptCore
 
+@testable import SwiftyChrono
+
 class TestFR: ChronoJSXCTestCase {
     private let files = [
         "test_fr_casual",
@@ -25,7 +27,7 @@ class TestFR: ChronoJSXCTestCase {
         Chrono.sixMinutesFixBefore1900 = true
         
         for fileName in files {
-            let js = try! String(contentsOfFile: Bundle(identifier: "io.quire.lib.SwiftyChrono")!.path(forResource: fileName, ofType: "js")!)
+            let js = try! String(contentsOfFile: Bundle.module.path(forResource: fileName, ofType: "js")!)
             evalJS(js, fileName: fileName)
         }
     }

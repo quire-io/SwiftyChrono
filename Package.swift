@@ -30,6 +30,12 @@ let package = Package(
             path: "Sources"),
         .testTarget(
             name: "SwiftyChronoTests",
-            dependencies: ["SwiftyChrono"]),
+            dependencies: ["SwiftyChrono"],
+            resources: [
+                .process("JS/"),
+                .process("test_example.js"),
+                .process("test_system.js")
+            ]
+        ),
     ]
 )

@@ -8,6 +8,7 @@
 
 import XCTest
 import JavaScriptCore
+@testable import SwiftyChrono
 
 public protocol ChronoJSTestable {
     func evalJS(_ script: String, fileName: String)
@@ -31,6 +32,7 @@ public class ChronoJSXCTestCase: XCTestCase, ChronoJSTestable {
         print("start to test: \(fileName)")
         jsContext.evaluateScript(script)
     }
+    
     
     override public func setUp() {
         super.setUp()
