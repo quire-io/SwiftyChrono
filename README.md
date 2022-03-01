@@ -1,3 +1,5 @@
+forked for swift 5 compatibility
+
 ## SwiftyChrono
 
 A natural language date parser in Swift, designed to extract date information from any given text.
