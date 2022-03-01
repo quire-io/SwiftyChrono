@@ -26,3 +26,6 @@ xcuserdata
 
 ## Playgrounds
 playground.xcworkspace
+
+.build/
+.swiftpm/xcode/
