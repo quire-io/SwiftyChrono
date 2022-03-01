@@ -1,4 +1,5 @@
-forked for swift 5 compatibility
+forked for swift 5 compatibility.
+![cd](https://github.com/batmac/SwiftyChrono/actions/workflows/swift.yml/badge.svg?event=push)
 
 ## SwiftyChrono
 
