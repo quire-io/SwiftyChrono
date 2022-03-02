@@ -20,12 +20,12 @@ class TestFR: ChronoJSXCTestCase {
         "test_fr_slash",
         "test_fr_time_ago",
         "test_fr_time_exp",
-        "test_fr_weekday",
+        "test_fr_weekday"
     ]
-    
+
     func testExample() {
         Chrono.sixMinutesFixBefore1900 = true
-        
+
         for fileName in files {
             let js = try! String(contentsOfFile: Bundle.module.path(forResource: fileName, ofType: "js")!)
             evalJS(js, fileName: fileName)

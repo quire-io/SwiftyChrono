@@ -11,7 +11,6 @@ import JavaScriptCore
 
 @testable import SwiftyChrono
 
-
 class TestDE: ChronoJSXCTestCase {
     private let files = [
         "test_de_casual",
@@ -21,16 +20,15 @@ class TestDE: ChronoJSXCTestCase {
         "test_de_slash",
         "test_de_time_ago",
         "test_de_time_exp",
-        "test_de_weekday",
+        "test_de_weekday"
     ]
-    
+
     func testExample() {
         Chrono.sixMinutesFixBefore1900 = true
-        
+
         for fileName in files {
             let js = try! String(contentsOfFile: Bundle.module.path(forResource: fileName, ofType: "js")!)
             evalJS(js, fileName: fileName)
         }
     }
 }
-

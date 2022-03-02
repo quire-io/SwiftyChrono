@@ -44,7 +44,7 @@ private let day2Group = 8
 public class DESlashDateFormatParser: Parser {
     override var pattern: String { return PATTERN }
     override var language: Language { return .german }
-    
+
     override public func extract(text: String, ref: Date, match: NSTextCheckingResult, opt: [OptionType: Int]) -> ParsedResult? {
         if (match.isNotEmpty(atRangeIndex: openningGroup) && match.string(from: text, atRangeIndex: openningGroup) == "/") ||
             (match.isNotEmpty(atRangeIndex: endingGroup) && match.string(from: text, atRangeIndex: endingGroup) == "/") {
@@ -54,23 +54,23 @@ public class DESlashDateFormatParser: Parser {
             let match0 = match.range(at: 0)
             return ParsedResult.moveIndexMode(index: match0.location + match0.length)
         }
-        
+
         let openGroup = match.isNotEmpty(atRangeIndex: openningGroup) ? match.string(from: text, atRangeIndex: openningGroup) : ""
         let endGroup = match.isNotEmpty(atRangeIndex: endingGroup) ? match.string(from: text, atRangeIndex: endingGroup) : ""
         let fullMatchText = match.string(from: text, atRangeIndex: 0)
         let index = match.range(at: 0).location + match.range(at: openningGroup).length
         let matchText = fullMatchText.substring(from: openGroup.count, to: fullMatchText.count - endGroup.count)
         var result = ParsedResult(ref: ref, index: index, text: matchText)
-        
+
         if NSRegularExpression.isMatch(forPattern: "^\\d\\.\\d$", in: matchText) ||
             NSRegularExpression.isMatch(forPattern: "^\\d\\.\\d{1,2}\\.\\d{1,2}$", in: matchText) {
             return nil
         }
-        
+
         var year: Int
         var month: Int
         var day: Int
-        
+
         if match.isNotEmpty(atRangeIndex: day1Group) {
             year = match.isNotEmpty(atRangeIndex: year1Group) ? Int(match.string(from: text, atRangeIndex: year1Group)) ?? ref.year : ref.year
             month = match.isNotEmpty(atRangeIndex: month1Group) ? Int(match.string(from: text, atRangeIndex: month1Group)) ?? 0 : 0
@@ -80,8 +80,7 @@ public class DESlashDateFormatParser: Parser {
             month = match.isNotEmpty(atRangeIndex: month2Group) ? Int(match.string(from: text, atRangeIndex: month2Group)) ?? 0 : 0
             day = match.isNotEmpty(atRangeIndex: day2Group) ? Int(match.string(from: text, atRangeIndex: day2Group)) ?? 0 : 0
         }
-        
-        
+
         if month < 1 || month > 12 {
             if month > 12 {
                 // dd/mm/yyyy date format if day looks like a month, and month
@@ -97,27 +96,26 @@ public class DESlashDateFormatParser: Parser {
                 }
             }
         }
-        
+
         if day < 1 || day > 31 {
             return nil
         }
-        
+
         if year < 100 {
             year += year > 50 ? 1900 : 2000
         }
-        
+
         result.start.assign(.day, value: day)
         result.start.assign(.month, value: month)
         result.start.assign(.year, value: year)
-        
-        //Day of week
+
+        // Day of week
         if match.isNotEmpty(atRangeIndex: weekdayGroup) {
             let weekday = match.string(from: text, atRangeIndex: weekdayGroup).lowercased()
             result.start.assign(.weekday, value: DE_WEEKDAY_OFFSET[weekday])
         }
-        
+
         result.tags[.deSlashDateFormatParser] = true
         return result
     }
 }
-

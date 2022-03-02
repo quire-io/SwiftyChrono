@@ -26,24 +26,24 @@ private let dateNumberGroup = 4
 
 public class ENSlashDateFormatStartWithYearParser: Parser {
     override var pattern: String { return PATTERN }
-    
+
     override public func extract(text: String, ref: Date, match: NSTextCheckingResult, opt: [OptionType: Int]) -> ParsedResult? {
-        
+
         let (matchText, index) = matchTextAndIndex(from: text, andMatchResult: match)
         var result = ParsedResult(ref: ref, index: index, text: matchText)
-        
+
         result.start.assign(.year, value: Int(match.string(from: text, atRangeIndex: yearNumberGroup)))
         result.start.assign(.month, value: Int(match.string(from: text, atRangeIndex: monthNumberGroup)))
         result.start.assign(.day, value: Int(match.string(from: text, atRangeIndex: dateNumberGroup)))
-        
+
         guard let month = result.start[.month], let day = result.start[.day] else {
             return nil
         }
-        
+
         if month > 12 || month < 1 || day > 31 || day < 1 {
             return nil
         }
-        
+
         result.tags[.enSlashDateFormatStartWithYearParser] = true
         return result
     }

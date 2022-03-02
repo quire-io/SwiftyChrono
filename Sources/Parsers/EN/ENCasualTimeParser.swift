@@ -13,11 +13,11 @@ private let timeMatch = 4
 
 public class ENCasualTimeParser: Parser {
     override var pattern: String { return PATTERN }
-    
+
     override public func extract(text: String, ref: Date, match: NSTextCheckingResult, opt: [OptionType: Int]) -> ParsedResult? {
         let (matchText, index) = matchTextAndIndex(from: text, andMatchResult: match)
         var result = ParsedResult(ref: ref, index: index, text: matchText)
-        
+
         if match.isNotEmpty(atRangeIndex: timeMatch) {
             let time = match.string(from: text, atRangeIndex: timeMatch)
             switch time {
@@ -32,7 +32,7 @@ public class ENCasualTimeParser: Parser {
             default: break
             }
         }
-        
+
         result.tags[.enCasualTimeParser] = true
         return result
     }

@@ -14,16 +14,15 @@ import JavaScriptCore
 class TestJP: ChronoJSXCTestCase {
     private let files = [
         "test_jp_casual",
-        "test_jp_standard",
+        "test_jp_standard"
     ]
-    
+
     func testExample() {
         Chrono.sixMinutesFixBefore1900 = true
-        
+
         for fileName in files {
             let js = try! String(contentsOfFile: Bundle.module.path(forResource: fileName, ofType: "js")!)
             evalJS(js, fileName: fileName)
         }
     }
 }
-

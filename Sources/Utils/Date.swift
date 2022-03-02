@@ -22,7 +22,7 @@ extension Date {
     func setOrAdded(_ value: Int, _ component: Calendar.Component) -> Date {
         let d = self
         var value = value
-        
+
         switch component {
         case .year:
             value -= d.year
@@ -45,11 +45,11 @@ extension Date {
         }
         return d.added(value, component)
     }
-    
+
     func isAfter(_ other: Date) -> Bool {
         return self.timeIntervalSince1970 > other.timeIntervalSince1970
     }
-    
+
     var year: Int { return cal.component(.year, from: self) }
     var month: Int { return cal.component(.month, from: self) }
     var day: Int { return cal.component(.day, from: self) }
@@ -62,7 +62,7 @@ extension Date {
         // by default, start from 1. we mimic the moment.js' SPEC, start from 0
         return cal.component(.weekday, from: self) - 1
     }
-    
+
     var utcYear: Int { return utcCal.component(.year, from: self) }
     var utcMonth: Int { return utcCal.component(.month, from: self) }
     var utcDay: Int { return utcCal.component(.day, from: self) }
@@ -75,7 +75,7 @@ extension Date {
         // by default, start from 1. we mimic the moment.js' SPEC, start from 0
         return utcCal.component(.weekday, from: self) - 1
     }
-    
+
     /// ask number of day in the current month.
     ///
     /// e.g. the "unit" will be .day, the "baseUnit" will be .month
@@ -83,14 +83,14 @@ extension Date {
         if let range = cal.range(of: unit, in: baseUnit, for: self) {
             return range.upperBound - range.lowerBound
         }
-        
+
         return nil
     }
-    
+
     func differenceOfTimeInterval(to date: Date) -> TimeInterval {
         return timeIntervalSince1970 - date.timeIntervalSince1970
     }
-    
+
     /// offset minutes between UTC and current time zone, the value could be 60, 0, -60, etc.
     var utcOffset: Int {
         get {
@@ -103,7 +103,7 @@ extension Date {
             self = Date(timeInterval: interval, since: self)
         }
     }
-    
+
     func added(_ value: Int, _ unit: Calendar.Component) -> Date {
         return cal.date(byAdding: unit, value: value, to: self)!
     }

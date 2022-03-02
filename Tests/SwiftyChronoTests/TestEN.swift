@@ -26,14 +26,14 @@ class TestEN: ChronoJSXCTestCase {
         "test_en_slash",
         "test_en_time_ago",
         "test_en_time_exp",
-        "test_en_weekday",
+        "test_en_weekday"
     ]
-    
+
     func testExample() {
         Chrono.sixMinutesFixBefore1900 = true
         // there are few words conflict with german day keywords
         Chrono.preferredLanguage = .english
-        
+
         for fileName in files {
             let js = try! String(contentsOfFile: Bundle.module.path(forResource: fileName, ofType: "js")!)
             evalJS(js, fileName: fileName)

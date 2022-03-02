@@ -13,15 +13,15 @@ private let PATTERN = "(\\W|^)(jetzt|heute|letzte\\s*Nacht|(?:morgen|gestern)\\s
 public class DECasualDateParser: Parser {
     override var pattern: String { return PATTERN }
     override var language: Language { return .german }
-    
+
     override public func extract(text: String, ref: Date, match: NSTextCheckingResult, opt: [OptionType: Int]) -> ParsedResult? {
         let (matchText, index) = matchTextAndIndex(from: text, andMatchResult: match)
         var result = ParsedResult(ref: ref, index: index, text: matchText)
-        
+
         let refMoment = ref
         var startMoment = refMoment
         let lowerText = matchText.lowercased()
-        
+
         if NSRegularExpression.isMatch(forPattern: "^morgen", in: lowerText) {
             // Check not "Tomorrow" on late night
             if refMoment.hour > 1 {
@@ -40,7 +40,7 @@ public class DECasualDateParser: Parser {
             result.start.imply(.second, to: refMoment.second)
             result.start.imply(.millisecond, to: refMoment.millisecond)
         }
-        
+
         result.start.assign(.day, value: startMoment.day)
         result.start.assign(.month, value: startMoment.month)
         result.start.assign(.year, value: startMoment.year)
@@ -48,4 +48,3 @@ public class DECasualDateParser: Parser {
         return result
     }
 }
-

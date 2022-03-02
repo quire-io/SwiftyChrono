@@ -23,13 +23,13 @@ private let postfixGroup = 4
 
 public func updateParsedComponent(result: ParsedResult, ref: Date, offset: Int, modifier: String) -> ParsedResult {
     var result = result
-    
+
     var startMoment = ref
     var startMomentFixed = false
     let refOffset = startMoment.weekday
-    
+
     var weekday: Int
-    
+
     if modifier == "last" || modifier == "past" {
         weekday = offset - 7
         startMomentFixed = true
@@ -47,9 +47,9 @@ public func updateParsedComponent(result: ParsedResult, ref: Date, offset: Int, 
             weekday = offset
         }
     }
-    
+
     startMoment = startMoment.setOrAdded(weekday, .weekday)
-    
+
     result.start.assign(.weekday, value: offset)
     if startMomentFixed {
         result.start.assign(.day, value: startMoment.day)
@@ -60,26 +60,26 @@ public func updateParsedComponent(result: ParsedResult, ref: Date, offset: Int, 
         result.start.imply(.month, to: startMoment.month)
         result.start.imply(.year, to: startMoment.year)
     }
-    
+
     return result
 }
 
 public class ENWeekdayParser: Parser {
     override var pattern: String { return PATTERN }
-    
+
     override public func extract(text: String, ref: Date, match: NSTextCheckingResult, opt: [OptionType: Int]) -> ParsedResult? {
         let (matchText, index) = matchTextAndIndex(from: text, andMatchResult: match)
         var result = ParsedResult(ref: ref, index: index, text: matchText)
-        
+
         let dayOfWeek = match.string(from: text, atRangeIndex: weekdayGroup).lowercased()
         guard let offset = EN_WEEKDAY_OFFSET[dayOfWeek] else {
             return nil
         }
-        
+
         let prefix: String? = match.isNotEmpty(atRangeIndex: prefixGroup) ? match.string(from: text, atRangeIndex: prefixGroup) : nil
         let postfix: String? = match.isNotEmpty(atRangeIndex: postfixGroup) ? match.string(from: text, atRangeIndex: postfixGroup) : nil
         let norm = (prefix ?? postfix ?? "").lowercased()
-        
+
         result = updateParsedComponent(result: result, ref: ref, offset: offset, modifier: norm)
         result.tags[.enWeekdayParser] = true
         return result

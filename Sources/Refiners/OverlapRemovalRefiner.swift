@@ -12,14 +12,14 @@ class OverlapRemovalRefiner: Refiner {
     override public func refine(text: String, results: [ParsedResult], opt: [OptionType: Int]) -> [ParsedResult] {
         let resultsLength = results.count
         if resultsLength < 2 { return results }
-        
+
         var filteredResults = [ParsedResult]()
         var previousResult: ParsedResult = results[0]
-        
+
         var i = 1
         while i < resultsLength {
             let result = results[i]
-            
+
             // If overlap, compare the length and discard the shorter one
             let previousTextLength = previousResult.text.count
             if result.index < previousResult.index + previousTextLength {
@@ -32,10 +32,10 @@ class OverlapRemovalRefiner: Refiner {
             }
             i += 1
         }
-        
+
         // The last one
         filteredResults.append(previousResult)
-        
+
         return filteredResults
     }
 }

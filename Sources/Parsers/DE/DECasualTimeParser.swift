@@ -14,11 +14,11 @@ private let timeMatch = 4
 public class DECasualTimeParser: Parser {
     override var pattern: String { return PATTERN }
     override var language: Language { return .german }
-    
+
     override public func extract(text: String, ref: Date, match: NSTextCheckingResult, opt: [OptionType: Int]) -> ParsedResult? {
         let (matchText, index) = matchTextAndIndex(from: text, andMatchResult: match)
         var result = ParsedResult(ref: ref, index: index, text: matchText)
-        
+
         if match.isNotEmpty(atRangeIndex: timeMatch) {
             let time = match.string(from: text, atRangeIndex: timeMatch).lowercased()
             switch time {
@@ -35,7 +35,7 @@ public class DECasualTimeParser: Parser {
             default: break
             }
         }
-        
+
         result.tags[.deCasualTimeParser] = true
         return result
     }

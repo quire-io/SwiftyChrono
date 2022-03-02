@@ -12,20 +12,20 @@ private let PATTERN = "(\\W|^)(now|today|tonight|last\\s*night|(?:tomorrow|tmr|y
 
 public class ENCasualDateParser: Parser {
     override var pattern: String { return PATTERN }
-    
+
     override public func extract(text: String, ref: Date, match: NSTextCheckingResult, opt: [OptionType: Int]) -> ParsedResult? {
         let (matchText, index) = matchTextAndIndex(from: text, andMatchResult: match)
         var result = ParsedResult(ref: ref, index: index, text: matchText)
-        
+
         let refMoment = ref
         var startMoment = refMoment
         let lowerText = matchText.lowercased()
-        
+
         if lowerText == "tonight" {
             // Normally means this coming midnight
             result.start.imply(.hour, to: 22)
             result.start.imply(.meridiem, to: 1)
-            
+
         } else if NSRegularExpression.isMatch(forPattern: "^tomorrow|^tmr", in: lowerText) {
             // Check not "Tomorrow" on late night
             if refMoment.hour > 1 {
@@ -44,7 +44,7 @@ public class ENCasualDateParser: Parser {
             result.start.imply(.second, to: refMoment.second)
             result.start.imply(.millisecond, to: refMoment.millisecond)
         }
-        
+
         result.start.assign(.day, value: startMoment.day)
         result.start.assign(.month, value: startMoment.month)
         result.start.assign(.year, value: startMoment.year)

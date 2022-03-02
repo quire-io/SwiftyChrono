@@ -20,14 +20,14 @@ private let unitGroup = 2
 public class ZHDeadlineFormatParser: Parser {
     override var pattern: String { return PATTERN }
     override var language: Language { return .chinese }
-    
+
     override public func extract(text: String, ref: Date, match: NSTextCheckingResult, opt: [OptionType: Int]) -> ParsedResult? {
         let (matchText, index) = matchTextAndIndexForCHHant(from: text, andMatchResult: match)
         var result = ParsedResult(ref: ref, index: index, text: matchText)
-        
+
         // let refMoment = ref
         // let startMoment = refMoment
-        
+
         let numberString = match.string(from: text, atRangeIndex: numberGroup)
         let number: Int
         if numberString == "幾" || numberString == "几" {
@@ -43,23 +43,23 @@ public class ZHDeadlineFormatParser: Parser {
                 return nil
             }
         }
-        
+
         var date = ref
         let unit = match.string(from: text, atRangeIndex: unitGroup)
         let unitAbbr = unit.firstString ?? ""
         result.tags[.zhHantDeadlineFormatParser] = true
-        
+
         func ymdResult() -> ParsedResult {
             result.start.assign(.year, value: date.year)
             result.start.assign(.month, value: date.month)
             result.start.assign(.day, value: date.day)
             return result
         }
-        
+
         if unitAbbr == "日" || unitAbbr == "天" {
             date = number == HALF ? date.added(12, .hour) : date.added(number, .day)
             return ymdResult()
-        } else if unitAbbr == "星" || unitAbbr == "禮" || unitAbbr == "礼"  {
+        } else if unitAbbr == "星" || unitAbbr == "禮" || unitAbbr == "礼" {
             date = number == HALF ? date.added(3, .day).added(12, .hour) : date.added(number * 7, .day)
             return ymdResult()
         } else if unitAbbr == "月" {
@@ -69,8 +69,7 @@ public class ZHDeadlineFormatParser: Parser {
             date = number == HALF ? date.added(6, .month) : date.added(number, .year)
             return ymdResult()
         }
-        
-        
+
         if unitAbbr == "秒" {
             date = number == HALF ? date.added(HALF_SECOND_IN_MS, .nanosecond) : date.added(number, .second)
         } else if unitAbbr == "分" {
@@ -78,14 +77,14 @@ public class ZHDeadlineFormatParser: Parser {
         } else if unitAbbr == "小" || unitAbbr == "鐘" || unitAbbr == "钟" {
             date = number == HALF ? date.added(30, .minute) : date.added(number, .hour)
         }
-        
+
         result.start.imply(.year, to: date.year)
         result.start.imply(.month, to: date.month)
         result.start.imply(.day, to: date.day)
         result.start.assign(.hour, value: date.hour)
         result.start.assign(.minute, value: date.minute)
         result.start.assign(.second, value: date.second)
-        
+
         return result
     }
 }

@@ -19,40 +19,38 @@ private let dayGroup = 6
 public class JPStandardParser: Parser {
     override var pattern: String { return PATTERN }
     override var language: Language { return .japanese }
-    
+
     override public func extract(text: String, ref: Date, match: NSTextCheckingResult, opt: [OptionType: Int]) -> ParsedResult? {
         let index = match.range(at: 0).location
         let matchText = match.string(from: text, atRangeIndex: 0)
-        
+
         var startMoment = ref
         var result = ParsedResult(ref: ref, index: index, text: matchText)
-        
+
         let month = Int(match.string(from: text, atRangeIndex: monthGroup).hankakuOnlyNumber)!
-        
+
         let day = Int(match.string(from: text, atRangeIndex: dayGroup).hankakuOnlyNumber)!
-        
-        
+
         startMoment = startMoment
             .setOrAdded(day, .day)
             .setOrAdded(month, .month)
-        
+
         result.start.assign(.day, value: startMoment.day)
         result.start.assign(.month, value: startMoment.month)
-        
-        
+
         if match.isEmpty(atRangeIndex: yearGroup) {
-            
-            //Find the most appropriated year
+
+            // Find the most appropriated year
             startMoment = startMoment.setOrAdded(ref.year, .year)
             let nextYear = startMoment.added(1, .year)
             let lastYear = startMoment.added(-1, .year)
-            
+
             if abs(nextYear.differenceOfTimeInterval(to: ref)) < abs(startMoment.differenceOfTimeInterval(to: ref)) {
                 startMoment = nextYear
             } else if abs(lastYear.differenceOfTimeInterval(to: ref)) < abs(startMoment.differenceOfTimeInterval(to: ref)) {
                 startMoment = lastYear
             }
-            
+
             result.start.assign(.day, value: startMoment.day)
             result.start.assign(.month, value: startMoment.month)
             result.start.imply(.year, to: startMoment.year)
@@ -68,14 +66,11 @@ public class JPStandardParser: Parser {
                     year += 1925
                 }
             }
-            
+
             result.start.assign(.year, value: year)
         }
-        
+
         result.tags[.jpStandardParser] = true
         return result
     }
 }
-
-
-

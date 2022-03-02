@@ -10,7 +10,7 @@ import XCTest
 @testable import SwiftyChrono
 
 /// for manual debug
-//class SwiftyChronoTests: XCTestCase {
+// class SwiftyChronoTests: XCTestCase {
 //    func testHello() {
 //        let results = Chrono().parse(text: "2014-04-18 1pm-3", refDate: Date(2012,7,10))
 //        
@@ -18,4 +18,4 @@ import XCTest
 //        let c = results.first?.end?.date
 //        print("\(d) \(c)")
 //    }
-//}
+// }

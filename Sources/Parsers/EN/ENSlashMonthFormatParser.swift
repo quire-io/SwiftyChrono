@@ -26,20 +26,20 @@ private let yearGroup = 3
 
 public class ENSlashMonthFormatParser: Parser {
     override var pattern: String { return PATTERN }
-    
-    override public func extract(text: String, ref: Date, match: NSTextCheckingResult, opt: [OptionType: Int]) -> ParsedResult? {        
+
+    override public func extract(text: String, ref: Date, match: NSTextCheckingResult, opt: [OptionType: Int]) -> ParsedResult? {
         let openGroup = match.isNotEmpty(atRangeIndex: openningGroup) ? match.string(from: text, atRangeIndex: openningGroup) : ""
         let endGroup = match.isNotEmpty(atRangeIndex: endingGroup) ? match.string(from: text, atRangeIndex: endingGroup) : ""
         let fullMatchText = match.string(from: text, atRangeIndex: 0)
         let index = match.range(at: 0).location + match.range(at: openningGroup).length
         let matchText = fullMatchText.substring(from: openGroup.count, to: fullMatchText.count - endGroup.count).trimmed()
-        
+
         var result = ParsedResult(ref: ref, index: index, text: matchText)
-        
+
         result.start.imply(.day, to: 1)
         result.start.assign(.month, value: Int(match.string(from: text, atRangeIndex: monthGroup)))
         result.start.assign(.year, value: Int(match.string(from: text, atRangeIndex: yearGroup)))
-        
+
         result.tags[.enSlashMonthFormatParser] = true
         return result
     }

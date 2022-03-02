@@ -15,7 +15,7 @@ let package = Package(
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "SwiftyChrono",
-            targets: ["SwiftyChrono"]),
+            targets: ["SwiftyChrono"])
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -36,6 +36,6 @@ let package = Package(
                 .process("test_example.js"),
                 .process("test_system.js")
             ]
-        ),
+        )
     ]
 )

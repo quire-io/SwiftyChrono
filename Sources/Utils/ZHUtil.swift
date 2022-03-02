@@ -23,7 +23,7 @@ let ZH_NUMBER = [
     "九": 9,
     "十": 10,
     "廿": 20,
-    "卅": 30,
+    "卅": 30
 ]
 
 let ZH_NUMBER_PATTERN = "[" + ZH_NUMBER.keys.joined(separator: "") + "]"
@@ -36,14 +36,14 @@ let ZH_WEEKDAY_OFFSET = [
     "三": 3,
     "四": 4,
     "五": 5,
-    "六": 6,
+    "六": 6
 ]
 
 let ZH_WEEKDAY_OFFSET_PATTERN = "[" + ZH_WEEKDAY_OFFSET.keys.joined(separator: "") + "]"
 
 func ZHStringToNumber(text: String) -> Int {
-    var number = 0;
-    
+    var number = 0
+
     for char in text.map({ String($0) }) {
         let n = ZH_NUMBER[char]!
         if char == "十" {
@@ -52,18 +52,16 @@ func ZHStringToNumber(text: String) -> Int {
             number += n
         }
     }
-    
+
     return number
 }
 
 func ZHStringToYear(text: String) -> Int {
     var string = ""
-    
+
     for char in text.map({ String($0) }) {
         string += "\(ZH_NUMBER[char]!)"
     }
-    
+
     return Int(string)!
 }
-
-

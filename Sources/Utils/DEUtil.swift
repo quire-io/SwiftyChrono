@@ -14,7 +14,7 @@ let DE_WEEKDAY_OFFSET = [
     "montag": 1,
     "mo": 1,
     "dienstag": 2,
-    "di":2,
+    "di": 2,
     "mittwoch": 3,
     "mi": 3,
     "donnerstag": 4,
@@ -72,7 +72,7 @@ let DE_INTEGER1_WORDS = [
     "einer": 1,
     "ein": 1,
     "eines": 1,
-    "einem": 1,
+    "einem": 1
 ]
 let DE_INTEGER1_WORDS_PATTERN = "(?:" + DE_INTEGER1_WORDS.keys.joined(separator: "|") + ")"
 
@@ -135,4 +135,4 @@ let DE_ORDINAL_WORDS = DE_ORDINAL_WORDS_BASIC.reduce([String: Int]()) { (result,
     return result
 }
 
-let DE_ORDINAL_WORDS_PATTERN = "(?:\(DE_ORDINAL_WORDS_BASIC.keys.map{ $0 + "[nrms]?" }.joined(separator: "|").replacingOccurrences(of: " ", with: "[ -]")))";
+let DE_ORDINAL_WORDS_PATTERN = "(?:\(DE_ORDINAL_WORDS_BASIC.keys.map { $0 + "[nrms]?" }.joined(separator: "|").replacingOccurrences(of: " ", with: "[ -]")))"

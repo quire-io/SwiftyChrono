@@ -12,21 +12,19 @@ private let PATTERN = "(\\W|^)vor\\s*" +
     "(\(DE_INTEGER_WORDS_PATTERN)|[0-9]+|\(DE_INTEGER1_WORDS_PATTERN)?(?:\\s*(?:wenige[r|n]?|einigen?|paar))?|(?:\(DE_INTEGER1_WORDS_PATTERN))?\\s*halbe(?:n|s)?)\\s*" +
     "(sekunden?|minuten?|stunden?|tag(?:en|e)?|wochen?|monat(?:en|e|s)?|jahr(?:en|(?:es)|e)??)(?=(?:\\W|$))"
 
-
-
 public class DETimeAgoFormatParser: Parser {
     override var pattern: String { return PATTERN }
     override var language: Language { return .german }
-    
+
     override public func extract(text: String, ref: Date, match: NSTextCheckingResult, opt: [OptionType: Int]) -> ParsedResult? {
         let idx = match.range(at: 0).location
         if idx > 0 && NSRegularExpression.isMatch(forPattern: "\\w", in: text.substring(from: idx - 1, to: idx)) {
             return nil
         }
-        
+
         let (matchText, index) = matchTextAndIndex(from: text, andMatchResult: match)
         var result = ParsedResult(ref: ref, index: index, text: matchText)
-        
+
         let number: Int
         let numberText = match.string(from: text, atRangeIndex: 2).lowercased()
         if let number0 = DE_INTEGER_WORDS[numberText] {
@@ -40,7 +38,7 @@ public class DETimeAgoFormatParser: Parser {
         } else {
             number = Int(numberText)!
         }
-        
+
         var date = ref
         let matchText3 = match.string(from: text, atRangeIndex: 3)
         func ymdResult() -> ParsedResult {
@@ -63,10 +61,10 @@ public class DETimeAgoFormatParser: Parser {
             date = number != HALF ? date.added(-number, .second) : date.added(-HALF_SECOND_IN_MS, .nanosecond)
             return ymdResult()
         }
-        
+
         if NSRegularExpression.isMatch(forPattern: "woche", in: matchText3) {
             date = number != HALF ? date.added(-number * 7, .day) : date.added(-3, .day).added(-12, .hour)
-            
+
             result.start.imply(.day, to: date.day)
             result.start.imply(.month, to: date.month)
             result.start.imply(.year, to: date.year)
@@ -80,7 +78,7 @@ public class DETimeAgoFormatParser: Parser {
         } else if NSRegularExpression.isMatch(forPattern: "jahr", in: matchText3) {
             date = number != HALF ? date.added(-number, .year) : date.added(-6, .month)
         }
-        
+
         result.start.assign(.day, value: date.day)
         result.start.assign(.month, value: date.month)
         result.start.assign(.year, value: date.year)
@@ -88,4 +86,3 @@ public class DETimeAgoFormatParser: Parser {
         return result
     }
 }
-

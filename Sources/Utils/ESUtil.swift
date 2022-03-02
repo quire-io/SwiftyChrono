@@ -14,7 +14,7 @@ let ES_WEEKDAY_OFFSET = [
     "lunes": 1,
     "lun": 1,
     "martes": 2,
-    "mar":2,
+    "mar": 2,
     "miércoles": 3,
     "miercoles": 3,
     "mie": 3,
@@ -25,7 +25,7 @@ let ES_WEEKDAY_OFFSET = [
     "vie": 5,
     "sábado": 6,
     "sabado": 6,
-    "sab": 6,
+    "sab": 6
 ]
 
 let ES_MONTH_OFFSET = [
@@ -66,5 +66,5 @@ let ES_MONTH_OFFSET = [
     "nov.": 11,
     "diciembre": 12,
     "dic": 12,
-    "dic.": 12,
+    "dic.": 12
 ]

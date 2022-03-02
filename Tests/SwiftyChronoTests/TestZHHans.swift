@@ -19,16 +19,15 @@ class TestZHHans: ChronoJSXCTestCase {
 		"test_zh_hans_date",
 		"test_zh_hans_deadline",
 		"test_zh_hans_time_exp",
-		"test_zh_hans_weekday",
+		"test_zh_hans_weekday"
 		]
-	
+
 	func testExample() {
 		Chrono.sixMinutesFixBefore1900 = true
-		
+
 		for fileName in files {
             let js = try! String(contentsOfFile: Bundle.module.path(forResource: fileName, ofType: "js")!)
 			evalJS(js, fileName: fileName)
 		}
 	}
 }
-

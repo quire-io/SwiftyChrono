@@ -14,17 +14,15 @@ private let PATTERN = "(\\W|^)" +
     "(sekunden?|minuten?|stunden?|tag(?:en|e)?|wochen?|monat(?:en|e|s)?|jahr(?:en|(?:es)|e)??)\\s*" +
     "(?=\\W|$)"
 
-
-
 public class DEDeadlineFormatParser: Parser {
     override var pattern: String { return PATTERN }
     override var language: Language { return .german }
-    
+
     override public func extract(text: String, ref: Date, match: NSTextCheckingResult, opt: [OptionType: Int]) -> ParsedResult? {
         let (matchText, index) = matchTextAndIndex(from: text, andMatchResult: match)
         var result = ParsedResult(ref: ref, index: index, text: matchText)
         result.tags[.deDeadlineFormatParser] = true
-        
+
         let number: Int
         let numberText = match.string(from: text, atRangeIndex: 3).lowercased()
         if let number0 = DE_INTEGER_WORDS[numberText] {
@@ -38,7 +36,7 @@ public class DEDeadlineFormatParser: Parser {
         } else {
             number = Int(numberText)!
         }
-        
+
         var date = ref
         let matchText4 = match.string(from: text, atRangeIndex: 4)
         func ymdResult() -> ParsedResult {
@@ -60,9 +58,7 @@ public class DEDeadlineFormatParser: Parser {
             date = number != HALF ? date.added(number, .year) : date.added(6, .month)
             return ymdResult()
         }
-        
-        
-        
+
         if NSRegularExpression.isMatch(forPattern: "stunde", in: matchText4) {
             date = number != HALF ? date.added(Int(number), .hour) : date.added(30, .minute)
         } else if NSRegularExpression.isMatch(forPattern: "minute", in: matchText4) {
@@ -70,17 +66,14 @@ public class DEDeadlineFormatParser: Parser {
         } else if NSRegularExpression.isMatch(forPattern: "sekunde", in: matchText4) {
             date = number != HALF ? date.added(Int(number), .second) : date.added(HALF_SECOND_IN_MS, .nanosecond)
         }
-        
-        
+
         result.start.imply(.year, to: date.year)
         result.start.imply(.month, to: date.month)
         result.start.imply(.day, to: date.day)
         result.start.assign(.hour, value: date.hour)
         result.start.assign(.minute, value: date.minute)
         result.start.assign(.second, value: date.second)
-        
+
         return result
     }
 }
-
-
