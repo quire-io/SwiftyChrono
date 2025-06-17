@@ -10,9 +10,9 @@ import Foundation
 
 private let FIRST_REG_PATTERN = "(?:由|從|自)?" +
     "(?:" +
-    "(今|明|聽|昨|尋|琴)(早|朝|晚)|" +
+    "(今|明|聽|昨|尋|琴|后)(早|朝|晚)|" +
     "(上(?:午|晝)|朝(?:早)|早(?:上)|下(?:午|晝)|晏(?:晝)|晚(?:上)|夜(?:晚)?|中(?:午)|凌(?:晨))|" +
-    "(今|明|聽|昨|尋|琴)(?:日|天)" +
+    "(今|明|聽|昨|尋|琴|后)(?:日|天)" +
     "(?:[\\s,，]*)" +
     "(?:(上(?:午|晝)|朝(?:早)|早(?:上)|下(?:午|晝)|晏(?:晝)|晚(?:上)|夜(?:晚)?|中(?:午)|凌(?:晨)))?" +
     ")?" +
@@ -26,9 +26,9 @@ private let FIRST_REG_PATTERN = "(?:由|從|自)?" +
 
 private let SECOND_REG_PATTERN = "(?:\\s*(?:到|至|\\-|\\–|\\~|\\〜)\\s*)" +
     "(?:" +
-    "(今|明|聽|昨|尋|琴)(早|朝|晚)|" +
+    "(今|明|聽|昨|尋|琴|后)(早|朝|晚)|" +
     "(上(?:午|晝)|朝(?:早)|早(?:上)|下(?:午|晝)|晏(?:晝)|晚(?:上)|夜(?:晚)?|中(?:午)|凌(?:晨))|" +
-    "(今|明|聽|昨|尋|琴)(?:日|天)" +
+    "(今|明|聽|昨|尋|琴|后)(?:日|天)" +
     "(?:[\\s,，]*)" +
     "(?:(上(?:午|晝)|朝(?:早)|早(?:上)|下(?:午|晝)|晏(?:晝)|晚(?:上)|夜(?:晚)?|中(?:午)|凌(?:晨)))?" +
     ")?" +
@@ -74,11 +74,10 @@ public class ZHTimeExpressionParser: Parser {
         if match.isNotEmpty(atRangeIndex: dayGroup1) {
             let day1 = match.string(from: text, atRangeIndex: dayGroup1)
             
-            if day1 == "明" || day1 == "聽" {
-                // Check not "Tomorrow" on late night
-                if refMoment.hour > 1 {
-                    startMoment = startMoment.added(1, .day)
-                }
+            if day1 == "后" {
+                startMoment = startMoment.added(2, .day)
+            } else if day1 == "明" || day1 == "聽" {
+                if refMoment.hour > 1 { startMoment = startMoment.added(1, .day) }
             } else if day1 == "昨" || day1 == "尋" || day1 == "琴" {
                 startMoment = startMoment.added(-1, .day)
             }
@@ -87,7 +86,9 @@ public class ZHTimeExpressionParser: Parser {
             result.start.assign(.year, value: startMoment.year)
         } else if match.isNotEmpty(atRangeIndex: dayGroup3) {
             let day3 = match.string(from: text, atRangeIndex: dayGroup3)
-            if day3 == "明" || day3 == "聽" {
+            if day3 == "后" {
+                startMoment = startMoment.added(2, .day)
+            } else if day3 == "明" || day3 == "聽" {
                 startMoment = startMoment.added(1, .day)
             } else if day3 == "昨" || day3 == "尋" || day3 == "琴" {
                 startMoment = startMoment.added(-1, .day)
@@ -247,11 +248,10 @@ public class ZHTimeExpressionParser: Parser {
         // ----- Day
         if match.isNotEmpty(atRangeIndex: dayGroup1) {
             let day1 = match.string(from: secondText, atRangeIndex: dayGroup1)
-            if day1 == "明" || day1 == "聽" {
-                // Check not "Tomorrow" on late night
-                if refMoment.hour > 1 {
-                    endMoment = endMoment.added(1, .day)
-                }
+            if day1 == "后" {                                 // ★ 后天 = +2
+                endMoment = endMoment.added(2, .day)
+            } else if day1 == "明" || day1 == "聽" {
+                if refMoment.hour > 1 { endMoment = endMoment.added(1, .day) }
             } else if day1 == "昨" || day1 == "尋" || day1 == "琴" {
                 endMoment = endMoment.added(-1, .day)
             }
@@ -261,7 +261,9 @@ public class ZHTimeExpressionParser: Parser {
             result.end!.assign(.year, value: endMoment.year)
         } else if match.isNotEmpty(atRangeIndex: dayGroup3) {
             let day3 = match.string(from: secondText, atRangeIndex: dayGroup3)
-            if day3 == "明" || day3 == "聽" {
+            if day3 == "后" {                                 // ★ 后天 = +2
+                endMoment = endMoment.added(2, .day)
+            } else if day3 == "明" || day3 == "聽" {
                 endMoment = endMoment.added(1, .day)
             } else if day3 == "昨" || day3 == "尋" || day3 == "琴" {
                 endMoment = endMoment.added(-1, .day)
