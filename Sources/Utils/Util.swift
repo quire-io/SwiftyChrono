@@ -54,12 +54,33 @@ extension String {
     }
     
     func substring(from startIdx: Int, to endIdx: Int? = nil) -> String {
+        // 检查负数索引
         if startIdx < 0 || (endIdx != nil && endIdx! < 0) {
             return ""
         }
-			let start = index(startIndex, offsetBy: startIdx)
-			let end = endIdx != nil ? index(startIndex, offsetBy: endIdx!) : endIndex
-			return String(self[start..<end])
+
+        // 安全地获取 start 索引，使用 limitedBy 防止越界
+        guard let start = index(startIndex, offsetBy: startIdx, limitedBy: endIndex) else {
+            return ""
+        }
+
+        // 安全地获取 end 索引
+        let end: String.Index
+        if let endIdx = endIdx {
+            guard let tempEnd = index(startIndex, offsetBy: endIdx, limitedBy: endIndex) else {
+                return ""
+            }
+            end = tempEnd
+        } else {
+            end = endIndex
+        }
+
+        // 检查 start <= end
+        guard start <= end else {
+            return ""
+        }
+
+        return String(self[start..<end])
     }
     
     func range(ofStartIndex idx: Int, length: Int) -> Range<String.Index> {
