@@ -71,8 +71,17 @@ public class Parser {
     
     final func matchTextAndIndexForCHHant(from text: String, andMatchResult matchResult: NSTextCheckingResult) -> (matchText: String, index: Int) {
         let matchText = matchResult.string(from: text, atRangeIndex: 0)
-        let index = matchResult.range(at: 0).location
-        
+        let range = matchResult.range
+
+        // 将 NSRange 转换为正确的 String.Range，获取字符位置
+        // 这样可以正确处理 emoji 等由多个 UTF-16 code units 组成的字符
+        guard let stringRange = Range(range, in: text) else {
+            // 如果转换失败，说明 NSRange 与实际字符串不匹配，返回 0 作为安全值
+            return (matchText, 0)
+        }
+
+        // 计算从字符串开始到匹配位置的字符距离
+        let index = text.distance(from: text.startIndex, to: stringRange.lowerBound)
         return (matchText, index)
     }
 }
