@@ -11,7 +11,7 @@ import Foundation
 private let PATTERN =
     "(上|今|下|這|呢|这)?" +
     "(?:個|个)?" +
-    "(?:星期|禮拜|礼拜)" +
+    "(?:星期|禮拜|礼拜|周)" +
     "(\(ZH_WEEKDAY_OFFSET_PATTERN))"
 
 private let prefixGroup = 1
