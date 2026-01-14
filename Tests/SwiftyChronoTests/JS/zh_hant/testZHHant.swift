@@ -10,6 +10,7 @@ import Foundation
 
 import XCTest
 import JavaScriptCore
+@testable import SwiftyChrono
 
 class TestZHHant: ChronoJSXCTestCase {
     private let files = [
@@ -22,9 +23,15 @@ class TestZHHant: ChronoJSXCTestCase {
     
     func testExample() {
         Chrono.sixMinutesFixBefore1900 = true
-        
+
         for fileName in files {
-            let js = try! String(contentsOfFile: Bundle(identifier: "io.quire.lib.SwiftyChrono")!.path(forResource: fileName, ofType: "js")!)
+            var jsPath: String?
+            jsPath = Bundle(identifier: "io.quire.lib.SwiftyChrono")?.path(forResource: fileName, ofType: "js")
+            if jsPath == nil {
+                let testDir = URL(fileURLWithPath: #file).deletingLastPathComponent()
+                jsPath = testDir.appendingPathComponent("\(fileName).js").path
+            }
+            let js = try! String(contentsOfFile: jsPath!)
             evalJS(js, fileName: fileName)
         }
     }

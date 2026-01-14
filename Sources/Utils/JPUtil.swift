@@ -7,13 +7,19 @@
 //
 
 import Foundation
+#if os(Linux)
+    import CoreFoundation
+    import Glibc
+#endif
 
 // source: https://gist.github.com/sgr-ksmt/2dcf11a64cdb22d44517
 extension String {
     private func convertFullWidthToHalfWidth(reverse: Bool) -> String {
-        let str = NSMutableString(string: self) as CFMutableString
+        let chars = Array(self.utf16)
+        let cfStr = CFStringCreateWithCharacters(nil, chars, self.utf16.count)
+        let str = CFStringCreateMutableCopy(nil, 0, cfStr)!
         CFStringTransform(str, nil, kCFStringTransformFullwidthHalfwidth, reverse)
-        return str as String
+        return String(describing: str)
     }
     
     var hankaku: String {
