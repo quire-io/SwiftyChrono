@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct ParsedResult {
+@MainActor public struct ParsedResult {
     public let ref: Date
     public var index: Int
     public var text: String
@@ -49,7 +49,7 @@ public struct ParsedResult {
     }
 }
 
-public struct ParsedComponents {
+@MainActor public struct ParsedComponents: Sendable {
     public var knownValues = [ComponentUnit: Int]()
     public var impliedValues = [ComponentUnit: Int]()
     
@@ -175,7 +175,7 @@ public struct ParsedComponents {
     }
 }
 
-public enum ComponentUnit {
+public enum ComponentUnit: Sendable {
     case year, month, day, hour, minute, second, millisecond, weekday, timeZoneOffset, meridiem
 }
 

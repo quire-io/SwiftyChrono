@@ -10,6 +10,7 @@ import Foundation
 
 private let PATTERN = "^\\s*(at|after|before|on|,|-|\\(|\\))?\\s*$"
 
+@MainActor
 private func isMoreSpecific(previousResult: ParsedResult, currentResult: ParsedResult) -> Bool {
     var moreSpecific = false
     
@@ -32,6 +33,7 @@ private func isMoreSpecific(previousResult: ParsedResult, currentResult: ParsedR
     return moreSpecific
 }
 
+@MainActor
 private func isAbleToMerge(text: String, previousResult: ParsedResult, currentResult: ParsedResult) -> Bool {
     let (startIndex, endIndex) = sortTwoNumbers(previousResult.index + previousResult.text.count, currentResult.index)
     let textBetween = text.substring(from: startIndex, to: endIndex)
@@ -56,6 +58,7 @@ private func isAbleToMerge(text: String, previousResult: ParsedResult, currentRe
     return includesRelativeResult && NSRegularExpression.isMatch(forPattern: PATTERN, in: textBetween) && referToSameDate
 }
 
+@MainActor
 func mergeResult(text: String, specificResult: ParsedResult, nonSpecificResult: ParsedResult) -> ParsedResult {
     var specificResult = specificResult
 
@@ -75,7 +78,7 @@ func mergeResult(text: String, specificResult: ParsedResult, nonSpecificResult: 
     return specificResult
 }
 
-class ENPrioritizeSpecificDateRefiner: Refiner {
+@MainActor class ENPrioritizeSpecificDateRefiner: Refiner {
     override public func refine(text: String, results: [ParsedResult], opt: [OptionType: Int]) -> [ParsedResult] {
         var results = results
         let resultsLength = results.count

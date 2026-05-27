@@ -18,6 +18,7 @@ public struct ModeOptio {
     }
 }
 
+@MainActor
 private func baseOption(strictMode: Bool) -> ModeOptio {
     return ModeOptio(parsers: [
         // EN
@@ -86,10 +87,12 @@ private func baseOption(strictMode: Bool) -> ModeOptio {
     ])
 }
 
+@MainActor
 func strictModeOption() -> ModeOptio {
     return baseOption(strictMode: true)
 }
 
+@MainActor 
 public func casualModeOption() -> ModeOptio {
     var options = baseOption(strictMode: false)
     

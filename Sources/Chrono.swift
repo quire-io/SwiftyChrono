@@ -16,7 +16,8 @@ public enum OptionType: String { case
     forwardDate = "forwardDate"
 }
 
-public struct Chrono {
+@MainActor 
+public struct Chrono: Sendable {
     /// iOS's Calender.Component to date that has 6 minutes less if the date is before 1900 (compared to JavaScript or Java)
     /// If your use case will include both be ealier than 1900 and its minutes, seconds, nanoseconds, (milliseconds)
     /// you should turn on this fix.
@@ -83,7 +84,7 @@ public struct Chrono {
         return allResults
     }
     
-    public func parseDate(text: String, refDate: Date = Date(), opt: [OptionType: Int] = [:]) -> Date? {
+    @MainActor public func parseDate(text: String, refDate: Date = Date(), opt: [OptionType: Int] = [:]) -> Date? {
         let results = Chrono.casual.parse(text: text, refDate: refDate, opt: opt)
         return results.first?.start.date
     }

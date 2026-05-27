@@ -21,6 +21,7 @@ private let prefixGroup = 2
 private let weekdayGroup = 3
 private let postfixGroup = 4
 
+@MainActor 
 public class DEWeekdayParser: Parser {
     override var pattern: String { return PATTERN }
     override var language: Language { return .german }

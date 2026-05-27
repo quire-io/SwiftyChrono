@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Parser {
+@MainActor public class Parser {
     let strictMode: Bool
     var pattern: String { return "" }
     var language: Language { return .english }
