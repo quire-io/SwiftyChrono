@@ -8,6 +8,7 @@
 import Foundation
 import XCTest
 import JavaScriptCore
+@testable import SwiftyChrono
 
 extension XCTestCase {
     func ok(_ result: Bool) {
