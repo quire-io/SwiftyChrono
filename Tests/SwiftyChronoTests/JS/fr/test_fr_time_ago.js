@@ -48,8 +48,8 @@ test("Test - Single Expression", function() {
     if(result){
         ok(result.index == 0, 'Wrong index');
         ok(result.text == 'il y a 15 minutes', result.text );
-        ok(result.start.get('hour') == 11, 'Test Result - (Month) ' + JSON.stringify(result.start) );
-        ok(result.start.get('minute') == 59, 'Test Result - (Day) ' + JSON.stringify(result.start) );
+        ok(result.start.get('hour') == 11, 'Test Result - (Hour) ' + JSON.stringify(result.start) );
+        ok(result.start.get('minute') == 59, 'Test Result - (Minute) ' + JSON.stringify(result.start) );
 
         var resultDate = result.start.date();
         var expectDate = new Date(2012,7,10,11,59);
@@ -65,8 +65,8 @@ test("Test - Single Expression", function() {
     if(result){
         ok(result.index == 3, 'Wrong index');
         ok(result.text == 'il y a    12 heures', result.text );
-        ok(result.start.get('hour') == 0, 'Test Result - (Month) ' + JSON.stringify(result.start) );
-        ok(result.start.get('minute') == 14, 'Test Result - (Day) ' + JSON.stringify(result.start) );
+        ok(result.start.get('hour') == 0, 'Test Result - (Hour) ' + JSON.stringify(result.start) );
+        ok(result.start.get('minute') == 14, 'Test Result - (Minute) ' + JSON.stringify(result.start) );
 
         var resultDate = result.start.date();
         var expectDate = new Date(2012,7,10,0,14);
@@ -81,8 +81,8 @@ test("Test - Single Expression", function() {
     if(result){
         ok(result.index == 3, 'Wrong index');
         ok(result.text == 'half an hour ago', result.text );
-        ok(result.start.get('hour') == 11, 'Test Result - (Month) ' + JSON.stringify(result.start) );
-        ok(result.start.get('minute') == 44, 'Test Result - (Day) ' + JSON.stringify(result.start) );
+        ok(result.start.get('hour') == 11, 'Test Result - (Hour) ' + JSON.stringify(result.start) );
+        ok(result.start.get('minute') == 44, 'Test Result - (Minute) ' + JSON.stringify(result.start) );
 
         var resultDate = result.start.date();
         var expectDate = new Date(2012,7,10,11,44);
@@ -98,8 +98,8 @@ test("Test - Single Expression", function() {
     if(result){
         ok(result.index == 0, 'Wrong index');
         ok(result.text == 'il y a 12 heures', result.text );
-        ok(result.start.get('hour') == 0, 'Test Result - (Month) ' + JSON.stringify(result.start) );
-        ok(result.start.get('minute') == 14, 'Test Result - (Day) ' + JSON.stringify(result.start) );
+        ok(result.start.get('hour') == 0, 'Test Result - (Hour) ' + JSON.stringify(result.start) );
+        ok(result.start.get('minute') == 14, 'Test Result - (Minute) ' + JSON.stringify(result.start) );
 
         var resultDate = result.start.date();
         var expectDate = new Date(2012,7,10,0,14);
