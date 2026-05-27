@@ -2,6 +2,7 @@
 
 * Swift 5.10+
 * Fully supports Swift Package Manager
+* Catalan support (#16, Thanks @hectr)
 
 # 1.1.0
 
