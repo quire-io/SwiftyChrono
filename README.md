@@ -14,6 +14,10 @@ SwiftyChrono supports most date and time formats, such as:
 
 There are more available patterns. You can simply download it and try.
 
+### License
+
+MIT
+
 ### Status
 
 This project is currently being used in the [Quire](https://quire.io) iOS app.
@@ -36,7 +40,7 @@ Or add it to your `Package.swift`:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/quire-io/SwiftyChrono.git", from: "1.1.0"),
+    .package(url: "https://github.com/quire-io/SwiftyChrono.git", from: "2.0.0"),
 ]
 ```
 

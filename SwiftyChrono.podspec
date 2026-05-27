@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
     spec.name         = 'SwiftyChrono'
-    spec.version      = '1.1.0'
+    spec.version      = '2.0.0'
     spec.osx.deployment_target = "10.13"
     spec.ios.deployment_target = "12.0"
     spec.tvos.deployment_target = "12.0"
@@ -9,7 +9,7 @@ Pod::Spec.new do |spec|
     spec.author       = 'Jerrywell'
     spec.homepage     = 'https://github.com/quire-io/SwiftyChrono'
     spec.license      = { :type => 'MIT', :file => 'LICENSE' }
-    spec.source       = { :git => 'https://github.com/quire-io/SwiftyChrono.git', :tag => 'v1.1.0' }
+    spec.source       = { :git => 'https://github.com/quire-io/SwiftyChrono.git', :tag => 'v2.0.0' }
     spec.source_files = 'Sources/**/*.swift'
     spec.social_media_url = 'https://twitter.com/quire_io'
     spec.documentation_url = 'https://github.com/quire-io/SwiftyChrono'
