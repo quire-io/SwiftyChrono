@@ -5,6 +5,12 @@ import PackageDescription
 
 let package = Package(
     name: "SwiftyChrono",
+    platforms: [
+        .iOS(.v12),
+        .macOS(.v10_13),
+        .tvOS(.v12),
+        .watchOS(.v4),
+    ],
     products: [
         .library(
             name: "SwiftyChrono",
@@ -16,13 +22,11 @@ let package = Package(
         .target(
             name: "SwiftyChrono",
             dependencies: [],
-            path: "Sources",
-            exclude: ["Info.plist"]),
+            path: "Sources"),
         .testTarget(
             name: "SwiftyChronoTests",
             dependencies: ["SwiftyChrono"],
             path: "Tests/SwiftyChronoTests",
-            exclude: ["Info.plist"],
             resources: [.copy("JS")]),
     ],
     swiftLanguageVersions: [.v5]

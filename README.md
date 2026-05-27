@@ -20,19 +20,27 @@ This project is currently being used in the [Quire](https://quire.io) iOS app.
 
 ### Requirements
 
-Swift 4.2
-* Xcode 10
-* Swift 4.2
-
-Swift 3
-* iOS 9.0+ | macOS 10.10+ | tvOS 9.0+ | watchOS 2.0+
-* Xcode 8
-* Swift 3.0
-* 64 bit device (didn't test on 32 bit device)
+Swift 5.10+
 
 ### Install
 
-CocoaPods
+#### Swift Package Manager
+
+In Xcode, choose **File → Add Package Dependencies…** and enter the repository URL:
+
+```
+https://github.com/quire-io/SwiftyChrono.git
+```
+
+Or add it to your `Package.swift`:
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/quire-io/SwiftyChrono.git", from: "1.1.0"),
+]
+```
+
+#### CocoaPods
 
 ```ruby
 use_frameworks!
