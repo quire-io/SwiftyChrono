@@ -12,7 +12,7 @@ private let PATTERN = "(\\W|^)" +
     "(?:(Diumenge|Dilluns|Dimarts|Dimecres|Dijous|Divendres|Dissabte|Dg|Dl|Dt|Dc|Dj|Dv|Ds)\\s*,?\\s*)?" +
     "([0-9]{1,2})(?:r|n|t|è)?" +
     "(?:\\s*(?:des|de|del|\\-|\\–|al?|fins|\\s)\\s*([0-9]{1,2})(?:r|n|t|è)?)?\\s*(?:de|d')?\\s*" +
-    "(Gen(?:er|\\.)?|Feb(?:rer|\\.)?|Mar(?:ç|\\.)?|Abr(?:il|\\.)?|Mai(?:g|\\.)?|Jun(?:y|\\.)?|Jul(?:iol|\\.)?|Ago(?:st|\\.)?|Set(?:embre|\\.)?|Oct(?:ubre|\\.)?|Nov(?:embre|\\.)?|Des(?:embre|\\.)?)" +
+    "(Gen(?:er|\\.)?|Febr(?:er|\\.)?|Mar(?:ç|\\.)?|Abr(?:il|\\.)?|Mai(?:g|\\.)?|Jun(?:y|\\.)?|Jul(?:iol|\\.)?|Ag(?:ost|\\.)?|Set(?:embre|\\.)?|Oct(?:ubre|\\.)?|Nov(?:embre|\\.)?|Des(?:embre|\\.)?)" +
     "(?:\\s*(?:del?|de)?(\\s*[0-9]{1,4}(?![^\\s]\\d))(\\s*[ad]\\.?\\s*c\\.?|a\\.?\\s*d\\.?)?)?" +
     "(?=\\W|$)"
 
@@ -31,7 +31,11 @@ public class CAMonthNameLittleEndianParser: Parser {
         let (matchText, index) = matchTextAndIndex(from: text, andMatchResult: match)
         var result = ParsedResult(ref: ref, index: index, text: matchText)
         
-        let month = CA_MONTH_OFFSET[match.string(from: text, atRangeIndex: monthNameGroup).lowercased()]!
+        // No force-unwrap: if the pattern ever matches a spelling the table does
+        // not carry, decline the match rather than terminating the host process.
+        guard let month = CA_MONTH_OFFSET[match.string(from: text, atRangeIndex: monthNameGroup).lowercased()] else {
+            return nil
+        }
         
         let day = Int(match.string(from: text, atRangeIndex: dateGroup))!
         

@@ -40,7 +40,12 @@ public class DEMonthNameLittleEndianParser: Parser {
         let (matchText, index) = matchTextAndIndex(from: text, andMatchResult: match)
         var result = ParsedResult(ref: ref, index: index, text: matchText)
         
-        let month = DE_MONTH_OFFSET[match.string(from: text, atRangeIndex: monthNameGroup).lowercased()]!
+        // Trim, because several patterns capture trailing whitespace into the
+        // month group, and guard, because a parser must decline input it cannot
+        // read rather than terminate the host process.
+        guard let month = DE_MONTH_OFFSET[match.string(from: text, atRangeIndex: monthNameGroup).lowercased().trimmed()] else {
+            return nil
+        }
         
         let day = match.isNotEmpty(atRangeIndex: dateNumGroup) ?
             Int(match.string(from: text, atRangeIndex: dateNumGroup))! :

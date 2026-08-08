@@ -32,7 +32,12 @@ public class FRMonthNameLittleEndianParser: Parser {
         var result = ParsedResult(ref: ref, index: index, text: matchText)
         
         let a = match.string(from: text, atRangeIndex: monthNameGroup).lowercased()
-        let month = FR_MONTH_OFFSET[a]!
+        // Trim, because several patterns capture trailing whitespace into the
+        // month group, and guard, because a parser must decline input it cannot
+        // read rather than terminate the host process.
+        guard let month = FR_MONTH_OFFSET[a.trimmed()] else {
+            return nil
+        }
         
         let day = Int(match.string(from: text, atRangeIndex: dateGroup).replacingOccurrences(of: "er", with: ""))!
         
