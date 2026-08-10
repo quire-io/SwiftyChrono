@@ -10,11 +10,11 @@ import Foundation
 
 private let PATTERN = "^\\s*(T|à|a|vers|de|,|-)?\\s*$"
 
-private func isDateOnly(result: ParsedResult) -> Bool {
+@MainActor private func isDateOnly(result: ParsedResult) -> Bool {
     return !result.start.isCertain(component: .hour) || result.tags[.frCasualDateParser] != nil
 }
 
-private func isTimeOnly(result: ParsedResult) -> Bool {
+@MainActor private func isTimeOnly(result: ParsedResult) -> Bool {
     return !result.start.isCertain(component: .month) && !result.start.isCertain(component: .weekday)
 }
 
@@ -25,7 +25,7 @@ private func isAbleToMerge(text: String, previousResult: ParsedResult, currentRe
     return NSRegularExpression.isMatch(forPattern: PATTERN, in: textBetween)
 }
 
-private func mergeResult(refText text: String, dateResult: ParsedResult, timeResult: ParsedResult) -> ParsedResult {
+@MainActor private func mergeResult(refText text: String, dateResult: ParsedResult, timeResult: ParsedResult) -> ParsedResult {
     var dateResult = dateResult
     let beginDate = dateResult.start
     let beginTime = timeResult.start
